@@ -1,0 +1,27 @@
+@import ../../sass/var.sass
+
+form
+  padding: 20px
+  margin: 60px 0
+
+input[type="file"]
+  background: transparent
+  box-shadow: none
+
+textarea
+  min-height: 200px
+  resize: vertical
+
+input[type="text"],
+textarea
+  box-shadow: none
+
+  &:focus
+    transform: scale(1)
+    background: #fff
+    box-shadow: $card-shadow
+
+.fileupload
+  display: flex
+  justify-content: space-around
+  align-items: center

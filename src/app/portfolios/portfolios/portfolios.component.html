@@ -1,0 +1,22 @@
+<kg-headerbar></kg-headerbar>
+<div class="portfolios">
+    <div class="container">
+        <div *ngIf="portfolios; else noPortfolios">
+            <div class="card-container spacetop">
+                <kg-portfolio-card *ngFor="let portfolio of portfolios" (click)="openPortfolio(portfolio.$key)">
+                    <kg-portfolio-card-image [data]="portfolio"></kg-portfolio-card-image>
+                    <kg-portfolio-card-infor [data]="portfolio"></kg-portfolio-card-infor>
+                </kg-portfolio-card>
+            </div>
+        </div>
+        <ng-template #noPortfolios>
+            <div class="card-container spacetop">
+                <kg-portfolio-card class="disabled" *ngFor="let disabled of [1,2,3,4,5,6,7,8]">
+                    <kg-portfolio-card-image></kg-portfolio-card-image>
+                    <kg-portfolio-card-infor></kg-portfolio-card-infor>
+                </kg-portfolio-card>
+            </div>
+        </ng-template>
+    </div>
+</div>
+<kg-footer></kg-footer>

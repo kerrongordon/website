@@ -1,0 +1,19 @@
+<section id="contact" class="contact">
+    <h2 class="header">Stay in touch</h2>
+    <div class="container">
+        <form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)">
+            <div class="name">
+                <input id="name" class="formInput" type="text" name="name" placeholder="Your Name" [formControl]="complexForm.controls['name']" required>
+            </div>
+            <div class="email">
+                <input id="email" class="formInput" type="email" name="email" placeholder="Your Email" [formControl]="complexForm.controls['email']" required>
+            </div>
+            <div class="message">
+                <textarea id="message" name="message" placeholder="Your Message" [formControl]="complexForm.controls['message']" required></textarea>
+            </div>
+            <div class="submit">
+                <button type="submit" class="button" [disabled]="!complexForm.valid">Send Message</button>
+            </div>
+        </form>
+    </div>
+</section>

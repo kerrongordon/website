@@ -1,0 +1,68 @@
+@import ../../../sass/var.sass
+
+.skills
+  padding-bottom: 30px
+
+.skill
+  width: 100%
+  margin: 20px 0
+
+.skillbar
+  width: 100%
+  background: #ccc
+  height: 5px
+  border-radius: 2px
+  box-shadow: inset 0 0 2px 0 rgba(0,0,0,.5)
+
+.skillbar__level
+  background: $accent-one
+  box-shadow: $eshadow
+  width: 0%
+  height: 5px
+  display: block
+
+.skilltitle
+  margin-bottom: 10px
+  font-size: 13px
+  font-style: italic
+  font-family: Cinzel Decorative,cursive
+
+.title__level 
+  float: right
+  background: $accent-two
+  color: $font-coac
+  padding: 5px 0
+  width: 25px
+  height: 25px
+  font-size: 11px
+  text-align: center
+  border-radius: 50%
+  box-shadow: $eshadow
+
+.disabled
+  span, h5, .skillbar
+    background-color: rgba($font-cobg, 0.5)
+    color: transparent
+    line-height: 20px
+    box-shadow: none
+    border-radius: 0
+
+  .title__level
+    display: none
+
+
+@media all and (min-width: $rw-tablet)
+  .skills
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-around
+
+  .skill
+    width: 45%
+    margin: 10px 0
+
+
+@media all and (min-width: $rw-desktop)
+  .skills
+    max-width: 800px
+    margin: 0 auto

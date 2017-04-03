@@ -1,0 +1,17 @@
+<kg-headerbar></kg-headerbar>
+<div *ngIf="portfolio">
+    <div class="container">
+        <div class="card infor">
+            <h3>{{portfolio.title}}</h3>
+
+            <p>{{portfolio.info}}</p>
+
+            <div [innerHTML]="mdOutput"></div>
+        </div>
+
+        <div class="card">
+            <img src="{{portfolio.imagePath}}" alt="thumnail">
+        </div>
+    </div>
+</div>
+<kg-footer></kg-footer>

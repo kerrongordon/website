@@ -1,0 +1,23 @@
+@import ../../../sass/var.sass
+
+.description
+  padding: 30px 0 10px
+
+.disabled
+  span
+    background-color: rgba($font-cobg, 0.5)
+    color: transparent
+    line-height: 20px
+    display: block
+    height: 1.5rem
+    margin-bottom: 1.2rem
+
+  span:nth-last-child(1)
+    margin-bottom: 2.5rem
+
+
+@media all and (min-width: $rw-tablet)
+  .description
+    text-align: center
+    max-width: 500px
+    margin: 0 auto

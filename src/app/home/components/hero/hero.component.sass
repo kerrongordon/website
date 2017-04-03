@@ -1,0 +1,34 @@
+@import ../../../sass/var.sass
+
+.hero
+  background: $accent-one
+  color: $font-coac
+  height: 300px
+  width: 100%
+
+h1
+  font-size: 2em
+  font-family: Cinzel Decorative,cursive
+  color: inherit
+
+.disabled
+  h1
+    background-color: rgba($font-coac, 0.5)
+    display: block
+    width: 50%
+    height: 1em
+
+
+@media all and (min-width: $rw-tablet)
+  .hero
+    height: 400px
+
+  h1
+    font-size: 3em
+
+@media all and (min-width: $rw-desktop)
+  .hero
+    height: 600px
+
+  h1
+    font-size: 4em

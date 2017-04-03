@@ -1,0 +1,142 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import ./app/sass/cssreset
+
+// milligram
+@import ../node_modules/milligram/src/Color
+@import ../node_modules/milligram/src/Base
+@import ../node_modules/milligram/src/Blockquote
+@import ../node_modules/milligram/src/Button
+@import ../node_modules/milligram/src/Code
+@import ../node_modules/milligram/src/Divider
+// @import ../node_modules/milligram/src/Form
+// @import ../node_modules/milligram/src/Grid
+@import ../node_modules/milligram/src/Link
+@import ../node_modules/milligram/src/List
+@import ../node_modules/milligram/src/Spacing
+@import ../node_modules/milligram/src/Table
+@import ../node_modules/milligram/src/Typography
+@import ../node_modules/milligram/src/Image
+@import ../node_modules/milligram/src/Utility
+
+
+@import ./app/sass/var
+
+*
+  box-sizing: border-box
+
+body
+  background: $bg-color
+  color: $font-cobg
+
+.container 
+  margin: 0 auto
+  max-width: 112.0rem
+  padding: 0 2.0rem
+  position: relative
+  width: 100%
+
+.ct
+  display: flex
+  justify-content: center
+  align-items: center
+
+img
+  width: 100%
+  vertical-align: middle
+
+.header
+  text-align: center
+  font-weight: 300
+  font-family: Cinzel Decorative,cursive
+  font-size: 2rem
+  color: $font-cobg
+  margin-bottom: 70px
+  margin-top: 25px
+  position: relative
+
+.header:before
+  content: ''
+  display: block
+  width: 80%
+  position: absolute
+  bottom: -25px
+  left: 50%
+  margin-left: -40%
+  height: 1px
+  background: -webkit-radial-gradient(center, ellipse, rgba(0, 0, 0, 0.2) 0, rgba(255, 255, 255, 0) 75%)
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.2) 0, rgba(255, 255, 255, 0) 75%)
+
+.card
+  position: relative
+  background: $font-coac
+  width: 100%
+  border-radius: 4px
+  overflow: hidden
+  text-decoration: none
+  color: $font-cobg
+  transform: scale(1)
+  transition: $transition
+  box-shadow: $card-shadow
+
+.hideOText
+  flex: 1
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+
+.card-container
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
+
+
+input,
+textarea
+  width: 100%
+  border: none
+  resize: none
+  outline: none
+  padding: 16px
+  border-radius: $card-border
+  background: $font-coac
+  color: $font-cobg
+  transform: translateY(0px)
+  transition: $transition
+  box-shadow: $card-shadow
+
+input:focus, textarea:focus
+  transform: scale(1.05)
+  box-shadow: $card-shadow-hover
+
+
+.button, button,
+input[type='button'], input[type='reset'],
+input[type='submit']
+  background-color: $accent-one
+  border-color: $accent-one
+  transition: $transition
+  box-shadow: $card-shadow
+
+  &:hover, &:focus
+    box-shadow: $card-shadow-hover
+    background-color: $accent-one
+    border-color: $accent-one
+
+  &:active
+    box-shadow: none
+
+.button[disabled], button[disabled], 
+input[type='button'][disabled], 
+input[type='reset'][disabled], 
+input[type='submit'][disabled]
+  box-shadow: none
+
+
+@media all and (min-width: $rw-tablet)
+  kg-portfolio-card
+    width: 250px !important
+
+@media all and (min-width: $rw-desktop)
+  kg-portfolio-card
+    width: 240px !important

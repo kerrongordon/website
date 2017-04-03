@@ -1,0 +1,44 @@
+@import ../../sass/var
+
+\:host
+  display: block
+  position: relative
+  background-color: $card-bg
+  border-radius: 2px
+  overflow: hidden
+  z-index: 1
+  margin: 10px
+  width: 100%
+  cursor: pointer
+  transform: scale(1)
+  transition: $transition
+  box-shadow: $card-shadow
+
+.view
+  position: absolute
+  top: 115%
+  left: 0
+  right: 0
+  bottom: 0
+  background: $card-bg
+  transition: $transition
+  display: flex
+  justify-content: center
+  align-items: center
+
+
+\:host:hover
+  transform: scale(1.05)
+  box-shadow: $card-shadow-hover
+  z-index: 5
+
+  .view
+    top: 175px
+
+
+\:host.disabled:hover
+  transform: scale(1)
+  box-shadow: $card-shadow
+
+  .view
+    top: 115%
