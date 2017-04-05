@@ -1,4 +1,4 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { fallIn } from '../../router.animations';
 
 @Component({
@@ -8,8 +8,6 @@ import { fallIn } from '../../router.animations';
   animations: [fallIn()]
 })
 export class PortfolioCardComponent implements OnInit {
-
-  // @HostBinding('@fallIn') get fallIn() { return ''; }
 
   constructor() { }
 

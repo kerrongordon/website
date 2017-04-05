@@ -1,51 +1,109 @@
-import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
-import { Router } from '@angular/router';
-import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
+import { Component, OnInit, HostListener, ElementRef, AfterViewInit } from '@angular/core';
 
-import { AddportfolioComponent } from '../../addportfolio/addportfolio/addportfolio.component';
+import { AppService } from '../../services/app.service';
+import { AuthService } from '../../services/auth.service';
+import { DatabaseService } from '../../services/database.service';
 
 @Component({
   selector: 'kg-headerbar',
   templateUrl: './headerbar.component.html',
-  styleUrls: ['./headerbar.component.sass']
+  styleUrls: ['./headerbar.component.sass'],
+  providers: [AppService, AuthService, DatabaseService]
 })
-export class HeaderbarComponent implements OnInit {
+export class HeaderbarComponent implements OnInit, AfterViewInit {
 
   public auth: any;
+  public inputFocus;
+  public inputFocus2;
+  public currentSectionName;
+  public isHeaderBerFixed;
 
-  constructor(private af: AngularFire, private router: Router, private lcat: Location) { }
+  public searchTitle: any[];
+  public searchMarkdown: any[];
+  public searchInfo: any[];
+
+  private searchBoxWidth: any;
+
+  constructor(
+    private _authService: AuthService,
+    private _appService: AppService,
+    private _databaseService: DatabaseService,
+    private el: ElementRef
+  ) { }
+
+  @HostListener('window:scroll', [])
+    onWindowScroll() {
+        this.currentSectionName = this.getCurrentSectionName();
+    }
+
+  @HostListener('window:resize', [])
+    onResize() {
+      this.getSearchBoxWidth();
+    }
+
+  private getCurrentSectionName() {
+    if (document.body.scrollTop === 0) {
+      return this.isHeaderBerFixed = 'headerIsNotFixed';
+    } else {
+      return this.isHeaderBerFixed = 'headerIsFixed';
+    }
+  }
 
   ngOnInit() {
-    this.af.auth.subscribe(data => this.auth = data);
+    this._authService.isAuth().subscribe(data => this.auth = data);
   }
 
-  goBack(): void {
-    this.lcat.back();
+  searchFocus() {
+    this.inputFocus = !this.inputFocus ? 'menubarhide' : '';
+    this.inputFocus2 = !this.inputFocus2 ? 'clearspacehide' : '';
   }
 
-  goToAddNewPortfolio() {
-    this.router.navigateByUrl('/addportfolio');
+  searchPortfolios(event) {
+    this._databaseService.getPortfolios().subscribe(data => {
+      this.searchTitle = data.filter((sh) => { return sh.title.toLowerCase().indexOf(event) > -1; });
+      this.searchMarkdown = data.filter((sh) => { return sh.markdown.toLowerCase().indexOf(event) > -1; });
+      this.searchInfo = data.filter((sh) => { return sh.info.toLowerCase().indexOf(event) > -1; });
+      console.log(this.searchTitle);
+      console.log(this.searchMarkdown);
+      console.log(this.searchInfo);
+    });
   }
 
-  login(): void {
-    this.router.navigateByUrl('/login');
+  ngAfterViewInit() {
+    this.getSearchBoxWidth();
+  }
+
+  getSearchBoxWidth() {
+    this.searchBoxWidth = document.getElementById('search').offsetWidth;
+    console.log(this.searchBoxWidth);
   }
 
   goHome(): void {
-    this.router.navigateByUrl('');
+    return this._appService.goToHomePage();
+  }
+
+  login(): void {
+    return this._appService.goToLoginPage();
   }
 
   goAdmin(): void {
-    this.router.navigateByUrl('/admin');
+    return this._appService.goToAdminPage();
   }
 
   goPortfolios(): void {
-    this.router.navigateByUrl('/portfolios');
+    return this._appService.goToPortfoliosPage();
+  }
+
+  goToAddNewPortfolio(): void {
+    return this._appService.goToAddNewPortfolioPage();
+  }
+
+  goBack(): void {
+    return this._appService.goBackToPreviousPage();
   }
 
   logout(): void {
-    this.af.auth.logout();
+    this._authService.logOut();
     this.login();
   }
 

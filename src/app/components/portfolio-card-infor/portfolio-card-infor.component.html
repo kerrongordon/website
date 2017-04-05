@@ -1,7 +1,7 @@
 <div class="contain" *ngIf="data; else noData">
     <div class="title">
         <span class="main-title" [@moveInLeft]="">{{data.title}}</span>
-        <span class="sub-title" [@moveInLeft]="">Sub title</span>
+        <span class="sub-title" [@moveInLeft]="">{{data.type}}</span>
     </div>
 </div>
 

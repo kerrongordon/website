@@ -1,33 +1,41 @@
 @import ../../sass/var
 
+.headbarbg
+  background-color: $accent-one
+  position: fixed
+  top: 0
+  width: 100%
+  z-index: 9999
+
 .headbar
   background-color: $accent-one
+  position: relative
   padding: 16px
   width: 100%
+  z-index: 5
 
 .bar
   display: flex
   justify-content: space-between
   align-items: center
 
-svg
-  width: 30px
-  height: 30px
-  padding: 5px
-  transform: translateY(3.5px)
-
-  path
-    fill: #fff
-
 .rebbon
   height: 100px
   width: 100%
-  background-color: $accent-one
+  position: relative
+  z-index: 1
+  transition: height 0.3s ease
 
 button
   padding: 0
   margin: 0
   box-shadow: none
+  background: transparent
+  border-color: transparent
+  opacity: 0.7
+
+  &:hover
+    opacity: 1
 
 .searchbar
   width: 80%
@@ -70,10 +78,15 @@ input
   button
     padding: 0 2rem
 
+  span
+    margin: 3px 0 0 5px
+    display: none
+    float: right
+
 .btn-addportfolio
   position: absolute
-  bottom: -43px
-  right: 10px
+  bottom: -20px
+  right: 20px
   z-index: 5
 
   button
@@ -82,18 +95,54 @@ input
     border-radius: 50%
     height: 40px
     width: 40px
+    opacity: 1
+    transform: scale(1)
     box-shadow: $card-shadow
 
+    &:hover
+      box-shadow: $card-shadow-hover
+      transform: scale(1.1)
+
+.clearspace
+  height: 175px
+  transition: height 0.3s ease
+
+.headerIsFixed
+  box-shadow: $card-shadow-hover
+
+  .rebbon
+    height: 0px
+    overflow: hidden
+
+  & + .clearspace
+    height: 75px
+
+
+.searchbarOutput 
+  position: fixed
+  left: 50%
+  top: 65px
+  height: 300px
+  z-index: 9999
+  background: #fff
+  padding: 16px
+  margin: 0 auto
+  transform: translateX(-50%)
+  overflow: hidden
+  border-radius: 2px
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.117647), 0px 1px 4px rgba(0, 0, 0, 0.117647)
 
 @media all and (min-width: 400px)
   .btn-addportfolio
-    bottom: -20px
-    right: 20px
-
     button
       height: 45px
       width: 45px
       padding: 3px
+
+@media all and (min-width: 480px)
+  .menubtn
+    span
+      display: block
 
 
 @media all and (min-width: $rw-tablet)
@@ -118,8 +167,22 @@ input
     width: 35px
     height: 35px
 
+  .clearspace
+    height: 275px
+
 
 @media all and (min-width: $rw-desktop)
   .rebbon
     height: 300px
+
+  .clearspace
+    height: 375px
   
+
+
+.menubarhide
+  overflow: hidden
+  height: 0px
+
+.clearspacehide
+  height: 75px

@@ -23,8 +23,12 @@ export class AuthService {
       });
     }
 
-  amIauth() {
+  public isAuth() {
     return this.isLogin = this.auth;
+  }
+
+  public logOut() {
+    return this.auth.logout();
   }
 
 }

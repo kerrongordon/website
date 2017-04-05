@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy, HostBinding } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { moveInLeft } from '../../router.animations';
 
 @Component({
@@ -10,13 +10,10 @@ import { moveInLeft } from '../../router.animations';
 })
 export class PortfolioCardInforComponent implements OnInit {
 
-  // @HostBinding('@moveInLeft') get moveInLeft() { return ''; }
-
   @Input() data: any;
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }

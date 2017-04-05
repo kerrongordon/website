@@ -10,7 +10,6 @@
   margin: 10px
   width: 100%
   cursor: pointer
-  transform: scale(1)
   transition: $transition
   box-shadow: $card-shadow
 
@@ -28,7 +27,6 @@
 
 
 \:host:hover
-  transform: scale(1.05)
   box-shadow: $card-shadow-hover
   z-index: 5
 
@@ -37,8 +35,11 @@
 
 
 \:host.disabled:hover
-  transform: scale(1)
   box-shadow: $card-shadow
 
   .view
     top: 115%
+
+span
+  display: block
+  float: right
