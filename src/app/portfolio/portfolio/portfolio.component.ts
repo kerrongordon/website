@@ -23,15 +23,16 @@ export class PortfolioComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.updateMe();
+    this.router.events.subscribe(() => this.updateMe());
+  }
 
+  updateMe() {
     this.id = this.route.snapshot.params['id'];
-
     this.db.getPortfolioDetails(this.id).subscribe(portfolio => {
       this.portfolio = portfolio;
       this.mdOutput = this.md.convert(portfolio.markdown);
     });
-
   }
-
 
 }

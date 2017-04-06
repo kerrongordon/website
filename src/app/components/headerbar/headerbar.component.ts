@@ -1,4 +1,5 @@
 import { Component, OnInit, HostListener, ElementRef, AfterViewInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AppService } from '../../services/app.service';
 import { AuthService } from '../../services/auth.service';
@@ -22,13 +23,14 @@ export class HeaderbarComponent implements OnInit, AfterViewInit {
   public searchMarkdown: any[];
   public searchInfo: any[];
 
-  private searchBoxWidth: any;
+  public searchBoxWidth: any;
 
   constructor(
     private _authService: AuthService,
     private _appService: AppService,
     private _databaseService: DatabaseService,
-    private el: ElementRef
+    private el: ElementRef,
+    private rt: Router
   ) { }
 
   @HostListener('window:scroll', [])
@@ -60,13 +62,21 @@ export class HeaderbarComponent implements OnInit, AfterViewInit {
 
   searchPortfolios(event) {
     this._databaseService.getPortfolios().subscribe(data => {
-      this.searchTitle = data.filter((sh) => { return sh.title.toLowerCase().indexOf(event) > -1; });
-      this.searchMarkdown = data.filter((sh) => { return sh.markdown.toLowerCase().indexOf(event) > -1; });
-      this.searchInfo = data.filter((sh) => { return sh.info.toLowerCase().indexOf(event) > -1; });
-      console.log(this.searchTitle);
-      console.log(this.searchMarkdown);
-      console.log(this.searchInfo);
+
+      if (event === '') {
+        this.resetSearch();
+       } else {
+        this.searchTitle = data.filter((sh) => { return sh.title.toLowerCase().indexOf(event) > -1; });
+        this.searchMarkdown = data.filter((sh) => { return sh.markdown.toLowerCase().indexOf(event) > -1; });
+        this.searchInfo = data.filter((sh) => { return sh.info.toLowerCase().indexOf(event) > -1; });
+       }
     });
+  }
+
+  resetSearch() {
+    this.searchTitle = null;
+    this.searchMarkdown = null;
+    this.searchInfo = null;
   }
 
   ngAfterViewInit() {
@@ -74,8 +84,7 @@ export class HeaderbarComponent implements OnInit, AfterViewInit {
   }
 
   getSearchBoxWidth() {
-    this.searchBoxWidth = document.getElementById('search').offsetWidth;
-    console.log(this.searchBoxWidth);
+    return this.searchBoxWidth = document.getElementById('search').offsetWidth;
   }
 
   goHome(): void {
@@ -105,6 +114,11 @@ export class HeaderbarComponent implements OnInit, AfterViewInit {
   logout(): void {
     this._authService.logOut();
     this.login();
+  }
+
+  openPortfolio(key) {
+    this.rt.navigate(['/portfolio/', key]);
+    this.resetSearch();
   }
 
 }

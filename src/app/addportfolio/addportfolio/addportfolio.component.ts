@@ -21,10 +21,14 @@ export class AddportfolioComponent implements OnInit {
 
   public mdOutput: string;
 
-  public dateMade: string;
   public auth: any;
   public userName: string;
   public photoURL: string;
+
+  public thumbnailfile: any;
+  public desktopImagefile: any;
+
+  public uploading = 'none';
 
   constructor(
     private db: DatabaseService,
@@ -40,15 +44,28 @@ export class AddportfolioComponent implements OnInit {
       this.userName = data.google.displayName;
       this.photoURL = data.google.photoURL;
     });
-    console.log(this);
+
   }
 
   updateOutput(mdText: string) {
     this.mdOutput = this.md.convert(mdText);
   }
 
+  onThumbnail(event: EventTarget) {
+    const eventObj: MSInputMethodContext = <MSInputMethodContext> event;
+    const target: HTMLInputElement = <HTMLInputElement> eventObj.target;
+    const files: FileList = target.files;
+    this.thumbnailfile = files[0];
+  }
 
-  addNewPortfolio(event) {
+  onDesktopImage(event: EventTarget) {
+    const eventObj: MSInputMethodContext = <MSInputMethodContext> event;
+    const target: HTMLInputElement = <HTMLInputElement> eventObj.target;
+    const files: FileList = target.files;
+    this.desktopImagefile = files[0];
+  }
+
+  addNewPortfolio(event): void {
     event.preventDefault();
     const date = new Date();
     const portfolio = {
@@ -58,10 +75,20 @@ export class AddportfolioComponent implements OnInit {
       markdown: this.markdown,
       username: this.userName,
       userPhoto: this.photoURL,
+      thumbnailfile: this.thumbnailfile,
+      desktopImagefile: this.desktopImagefile,
       timestamp: date.getTime()
     };
 
-    this.db.addPortfolio(portfolio);
+    if (this.title !== '' ||
+        this.info !== '' ||
+        this.type !== '' ||
+        this.markdown !== '' ||
+        this.thumbnailfile !== null ||
+        this.desktopImagefile !== null) {
+          this.uploading = 'block';
+          this.db.addPortfolio(portfolio);
+        }
   }
 
 }

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, HostListener } from '@angular/core';
 import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 import { Router } from '@angular/router';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
@@ -27,8 +27,26 @@ export class DatabaseService {
   private thunbI: any;
   private deskI: any;
 
+  public thumbnailProgress: number;
+  public desktopImageProgress: number;
 
-  constructor(public af: AngularFire, private rt: Router, private http: Http) { }
+
+  constructor(public af: AngularFire, private rt: Router, private http: Http) {
+    // this.load();
+   }
+
+  // load() {
+  //   console.log('i am load');
+  //   this.getPortfolios().subscribe(data => {
+  //     if ( localStorage.getItem('kgportfolios') === null || localStorage.getItem('kgportfolios') === undefined ) {
+  //       console.log('No Portfolios found.......creating....');
+  //       localStorage.setItem('kgportfolios', JSON.stringify(data));
+  //     } else {
+  //       console.log('Loading Portfolios......');
+  //     }
+  //   });
+
+  // }
 
   public getNameAndDescription() {
     return this.nameAndDescription = this.af.database.object('siteInfor') as FirebaseObjectObservable<NameAndDescription>;
@@ -60,10 +78,8 @@ export class DatabaseService {
   }
 
   public addPortfolio(portfolio) {
-
     this.addThumbnail(portfolio);
     this.addDesktopImage(portfolio);
-
     Promise.all([
       this.thunbI,
       this.deskI
@@ -71,29 +87,24 @@ export class DatabaseService {
       this.portfolios.push(portfolio);
       this.rt.navigate(['portfolios']);
     });
-
   }
 
   private addThumbnail(portfolio) {
-      for (const selectedFile of [(<HTMLInputElement>document.getElementById('thumbnail')).files[0]]) {
-        const path = `/${this.folder}/${portfolio.title}/thumbnail/${selectedFile.name}`;
-        const iRef = this.storageRef.child(path);
-        return this.thunbI = iRef.put(selectedFile).then((snapshot) => {
-          portfolio.thumbnail = snapshot.metadata.name;
-          portfolio.thumbnailPath = snapshot.downloadURL;
-        });
-      }
+    const path = `/${this.folder}/${portfolio.title}/thumbnail/${portfolio.thumbnailfile.name}`;
+    const iRef = this.storageRef.child(path).put(portfolio.thumbnailfile);
+    return this.thunbI = iRef.then(snapshot => {
+      portfolio.thumbnail = snapshot.metadata.name;
+      portfolio.thumbnailPath = snapshot.downloadURL;
+    });
   }
 
   private addDesktopImage(portfolio) {
-    for (const selectedFile of [(<HTMLInputElement>document.getElementById('desktopImage')).files[0]]) {
-      const path = `/${this.folder}/${portfolio.title}/desktopImage/${selectedFile.name}`;
-      const iRef = this.storageRef.child(path);
-      return this.deskI = iRef.put(selectedFile).then((snapshot) => {
-        portfolio.image = snapshot.metadata.name;
-        portfolio.imagePath = snapshot.downloadURL;
-      });
-    }
+    const path = `/${this.folder}/${portfolio.title}/desktop/${portfolio.desktopImagefile.name}`;
+    const iRef = this.storageRef.child(path).put(portfolio.desktopImagefile);
+    return this.deskI = iRef.then(snapshot => {
+      portfolio.image = snapshot.metadata.name;
+      portfolio.imagePath = snapshot.downloadURL;
+    });
   }
 
 }

@@ -8,18 +8,18 @@
                 <div class="searchbar">
                     <input id="search" type="search" name="" placeholder="Search Portfolios" (keyup)="searchPortfolios($event.target.value)" (blur)="searchFocus()" (focus)="searchFocus()">
                     <div class="searchbarOutput" for="search" [ngStyle]="{'width': searchBoxWidth + 'px'}">
-                        <h4>By Title</h4>
-                        <div *ngFor="let title of searchTitle">
-                            {{title.title}}
-                        </div>
-                        <h4>By Summary</h4>
-                        <div *ngFor="let info of searchInfo">
-                            {{info.info}}
-                        </div>
-                        <h4>By Content</h4>
-                        <div *ngFor="let markdown of searchMarkdown">
-                            {{markdown.title}}
-                        </div>
+                        <h4 *ngIf="searchTitle?.length > 0">By Title</h4>
+                        <li *ngFor="let title of searchTitle">
+                            <a href="javascript:void(0)" (click)="openPortfolio(title.$key)">{{title.title}}</a>
+                        </li>
+                        <h4 *ngIf="searchInfo?.length > 0">By Summary</h4>
+                        <li *ngFor="let info of searchInfo">
+                            <a href="javascript:void(0)" (click)="openPortfolio(info.$key)">{{info.info}}</a>
+                        </li>
+                        <h4 *ngIf="searchMarkdown?.length > 0">By Content</h4>
+                        <li *ngFor="let markdown of searchMarkdown">
+                            <a href="javascript:void(0)" (click)="openPortfolio(markdown.$key)">{{markdown.title}}</a>
+                        </li>
                     </div>
                 </div>
                 <div class="login" *ngIf="!auth">
