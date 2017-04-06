@@ -1,7 +1,7 @@
 <div class="contain" *ngIf="data; else noImage">
-    <div class="image" [@fadeInOut]="" [style.background-image]="'url(' + data.thumbnailPath + ')'"></div>
+    <div class="image" [style.background-image]="'url(' + data.thumbnailPath + ')'"></div>
 </div>
 
 <ng-template #noImage>
-    <div class="img" [@fadeInOut]=""></div>
+    <div class="img"></div>
 </ng-template>

@@ -1,21 +1,16 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { moveIn } from '../../../router.animations';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { fadeInOut } from '../../../router.animations';
 
 @Component({
   selector: 'kg-about',
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.sass'],
-  animations: [moveIn()],
+  animations: [fadeInOut()],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AboutComponent implements OnInit {
+export class AboutComponent {
 
   @Input() description: string;
   @Input() skills: any;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
 }

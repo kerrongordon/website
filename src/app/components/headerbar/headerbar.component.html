@@ -6,7 +6,7 @@
                     <button type="button" (click)="goBack()"><svg viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg></button>
                 </div>
                 <div class="searchbar">
-                    <input id="search" type="search" name="" placeholder="Search Portfolios" (keyup)="searchPortfolios($event.target.value)" (blur)="searchFocus()" (focus)="searchFocus()">
+                    <input *ngIf="portfolios; else noPortfolios" id="search" type="search" name="" placeholder="Search Portfolios" (keyup)="searchPortfolios($event.target.value)" (blur)="searchFocus($event)" (focus)="searchFocus($event)">
                     <div class="searchbarOutput" for="search" [ngStyle]="{'width': searchBoxWidth + 'px'}">
                         <h4 *ngIf="searchTitle?.length > 0">By Title</h4>
                         <li *ngFor="let title of searchTitle">
@@ -21,6 +21,9 @@
                             <a href="javascript:void(0)" (click)="openPortfolio(markdown.$key)">{{markdown.title}}</a>
                         </li>
                     </div>
+                    <ng-template #noPortfolios>
+                        <input id="search" type="search" name="" placeholder="Loading..." (blur)="searchFocus()" (focus)="searchFocus()">
+                    </ng-template>
                 </div>
                 <div class="login" *ngIf="!auth">
                     <button type="button" (click)="login()"><svg viewBox="0 0 24 24"><path d="M10,17.25V14H3V10H10V6.75L15.25,12L10,17.25M8,2H17A2,2 0 0,1 19,4V20A2,2 0 0,1 17,22H8A2,2 0 0,1 6,20V16H8V20H17V4H8V8H6V4A2,2 0 0,1 8,2Z" /></svg></button>

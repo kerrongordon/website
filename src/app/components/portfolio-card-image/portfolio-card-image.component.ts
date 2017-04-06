@@ -1,20 +1,15 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { fadeInOut } from '../../router.animations';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'kg-portfolio-card-image',
   templateUrl: './portfolio-card-image.component.html',
   styleUrls: ['./portfolio-card-image.component.sass'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [fadeInOut()]
 })
-export class PortfolioCardImageComponent implements OnInit {
+export class PortfolioCardImageComponent {
+  @Input() data: Data;
+}
 
-  @Input() data: any;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+interface Data {
+  thumbnailPath: string;
 }

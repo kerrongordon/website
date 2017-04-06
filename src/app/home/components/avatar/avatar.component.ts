@@ -1,19 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Icons } from '../../../class/icons';
+import { fadeInOut } from '../../../router.animations';
 
 @Component({
   selector: 'kg-avatar',
   templateUrl: './avatar.component.html',
-  styleUrls: ['./avatar.component.sass']
+  styleUrls: ['./avatar.component.sass'],
+  animations: [fadeInOut()]
 })
-export class AvatarComponent implements OnInit {
+export class AvatarComponent {
 
   public avatar: any;
-
-  constructor( ) { }
-
-  ngOnInit() {
-    this.avatar = Icons.avatar;
-  }
 
 }

@@ -3,12 +3,12 @@
     <div class="container">
         <div *ngIf="portfolios; else noPortfolios">
             <div class="card-container">
-                <kg-portfolio-card *ngFor="let portfolio of portfolios" (click)="openPortfolio(portfolio.$key)">
+                <kg-portfolio-card *ngFor="let portfolio of portfolios" (click)="openPortfolio.emit(portfolio.$key)">
                     <kg-portfolio-card-image [data]="portfolio"></kg-portfolio-card-image>
                     <kg-portfolio-card-infor [data]="portfolio"></kg-portfolio-card-infor>
                 </kg-portfolio-card>
             </div>
-            <div class="viewall"><button type="button" (click)="openPortfolios()">View All</button></div>
+            <div class="viewall"><button type="button" (click)="openPortfolios.emit()">View All</button></div>
         </div>
         <ng-template #noPortfolios>
             <div class="card-container">
@@ -17,7 +17,7 @@
                     <kg-portfolio-card-infor></kg-portfolio-card-infor>
                 </kg-portfolio-card>
             </div>
-            <div class="viewall"><button type="button" (click)="openPortfolios()" disabled>View All</button></div>
+            <div class="viewall"><button type="button" disabled>View All</button></div>
         </ng-template>
     </div>
 </section>

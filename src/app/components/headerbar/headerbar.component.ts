@@ -1,17 +1,19 @@
-import { Component, OnInit, HostListener, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, HostListener, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AppService } from '../../services/app.service';
 import { AuthService } from '../../services/auth.service';
-import { DatabaseService } from '../../services/database.service';
 
 @Component({
   selector: 'kg-headerbar',
   templateUrl: './headerbar.component.html',
   styleUrls: ['./headerbar.component.sass'],
-  providers: [AppService, AuthService, DatabaseService]
+  providers: [AppService, AuthService],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderbarComponent implements OnInit, AfterViewInit {
+
+  @Input() portfolios: any;
 
   public auth: any;
   public inputFocus;
@@ -28,8 +30,6 @@ export class HeaderbarComponent implements OnInit, AfterViewInit {
   constructor(
     private _authService: AuthService,
     private _appService: AppService,
-    private _databaseService: DatabaseService,
-    private el: ElementRef,
     private rt: Router
   ) { }
 
@@ -55,22 +55,20 @@ export class HeaderbarComponent implements OnInit, AfterViewInit {
     this._authService.isAuth().subscribe(data => this.auth = data);
   }
 
-  searchFocus() {
+  searchFocus(event) {
     this.inputFocus = !this.inputFocus ? 'menubarhide' : '';
     this.inputFocus2 = !this.inputFocus2 ? 'clearspacehide' : '';
+    this.searchPortfolios(event);
   }
 
   searchPortfolios(event) {
-    this._databaseService.getPortfolios().subscribe(data => {
-
-      if (event === '') {
+    if (event === '' || event === null || event === undefined) {
         this.resetSearch();
        } else {
-        this.searchTitle = data.filter((sh) => { return sh.title.toLowerCase().indexOf(event) > -1; });
-        this.searchMarkdown = data.filter((sh) => { return sh.markdown.toLowerCase().indexOf(event) > -1; });
-        this.searchInfo = data.filter((sh) => { return sh.info.toLowerCase().indexOf(event) > -1; });
+        this.searchTitle = this.portfolios.filter((sh) => { return sh.title.toLowerCase().indexOf(event) > -1; });
+        this.searchMarkdown = this.portfolios.filter((sh) => { return sh.markdown.toLowerCase().indexOf(event) > -1; });
+        this.searchInfo = this.portfolios.filter((sh) => { return sh.info.toLowerCase().indexOf(event) > -1; });
        }
-    });
   }
 
   resetSearch() {
@@ -116,9 +114,9 @@ export class HeaderbarComponent implements OnInit, AfterViewInit {
     this.login();
   }
 
-  openPortfolio(key) {
-    this.rt.navigate(['/portfolio/', key]);
-    this.resetSearch();
+  openPortfolio(key): void {
+    this._appService.goToPortfolioPage(key);
+    return this.resetSearch();
   }
 
 }

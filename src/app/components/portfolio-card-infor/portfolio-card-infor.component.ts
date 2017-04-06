@@ -10,10 +10,15 @@ import { moveInLeft } from '../../router.animations';
 })
 export class PortfolioCardInforComponent implements OnInit {
 
-  @Input() data: any;
+  @Input() data: Data;
 
   constructor() { }
 
   ngOnInit() { }
 
+}
+
+interface Data {
+  title: string;
+  type: string;
 }

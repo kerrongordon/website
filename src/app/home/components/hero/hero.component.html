@@ -1,9 +1,9 @@
 <div class="hero ct" *ngIf="name; else noName">
-    <h1 [@moveIn]=""><span>{{name}}</span></h1>
+    <h1 [@fadeInOut]=""><span>{{name}}</span></h1>
 </div>
 
 <ng-template #noName>
     <div class="hero ct disabled">
-        <h1 [@moveIn]=""><span></span></h1>
+        <h1><span></span></h1>
     </div>
 </ng-template>

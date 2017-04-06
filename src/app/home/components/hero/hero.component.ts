@@ -1,19 +1,15 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { moveIn } from '../../../router.animations';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { fadeInOut } from '../../../router.animations';
 
 @Component({
   selector: 'kg-hero',
   templateUrl: './hero.component.html',
   styleUrls: ['./hero.component.sass'],
-  animations: [moveIn()],
+  animations: [fadeInOut()],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HeroComponent implements OnInit {
+export class HeroComponent {
 
   @Input() name: string;
-
-  constructor() { }
-
-  ngOnInit() { }
 
 }

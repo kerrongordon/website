@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Location } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Injectable()
 export class AppService {
@@ -8,7 +8,11 @@ export class AppService {
   constructor(
     private router: Router,
     private _location: Location
-  ) { }
+  ) {
+    this.router.events.filter(event => event instanceof NavigationEnd).subscribe(event => {
+        window.scroll(0, 0);
+    });
+    }
 
   public goToHomePage(): void {
     this.router.navigateByUrl('');
@@ -28,6 +32,10 @@ export class AppService {
 
   public goToAddNewPortfolioPage(): void {
     this.router.navigateByUrl('/addportfolio');
+  }
+
+  public goToPortfolioPage(key): void {
+    this.router.navigate(['/portfolio/', key]);
   }
 
   public goBackToPreviousPage(): void {

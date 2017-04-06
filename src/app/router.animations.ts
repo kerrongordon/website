@@ -49,3 +49,13 @@ export function fadeInOut() {
     ])
   ]);
 }
+
+export function fadeIn() {
+  return trigger('fadeIn', [
+    transition(':enter', [
+      style({opacity: '0'}),
+      animate('1s ease-in-out', style({opacity: '1'}))
+    ])
+  ]);
+}
+

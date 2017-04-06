@@ -9,13 +9,15 @@ import 'rxjs/add/operator/catch';
 
 import * as firebase from 'firebase';
 
+import { Portfolio } from '../interface/portfolio';
+
 @Injectable()
 export class DatabaseService {
 
   private nameAndDescription: FirebaseObjectObservable<any>;
   private Skills: FirebaseListObservable<any[]>;
   private portfolios: FirebaseListObservable<any[]>;
-  private portfolio: FirebaseObjectObservable<any>;
+  private portfolio: FirebaseObjectObservable<Portfolio>;
   private folder = 'portfolios';
   private storageRef: any;
 
@@ -57,7 +59,7 @@ export class DatabaseService {
   }
 
   public getPortfolios() {
-    return this.portfolios = this.af.database.list('portfolios') as FirebaseListObservable<any[]>;
+    return this.portfolios = this.af.database.list('portfolios') as FirebaseListObservable<Portfolio[]>;
   }
 
   public getPortfolioDetails(id) {
@@ -69,7 +71,6 @@ export class DatabaseService {
   }
 
   public postEmail(data) {
-    console.log(data);
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
     return this.http.post('https://formspree.io/kgpsounds.com@gmail.com', data, headers)

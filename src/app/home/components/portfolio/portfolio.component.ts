@@ -1,5 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'kg-portfolio',
@@ -7,20 +6,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./portfolio.component.sass'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PortfolioComponent implements OnInit {
+export class PortfolioComponent {
 
   @Input() portfolios: any[];
-
-  constructor(private rt: Router) { }
-
-  ngOnInit() { }
-
-  openPortfolios(key) {
-    this.rt.navigate(['/portfolios/']);
-  }
-
-  openPortfolio(key) {
-    this.rt.navigate(['/portfolio/', key]);
-  }
+  @Output() openPortfolios = new EventEmitter;
+  @Output() openPortfolio = new EventEmitter;
 
 }
+

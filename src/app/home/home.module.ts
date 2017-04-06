@@ -12,6 +12,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { ComponentModule } from '../components/component.module';
 import { SkillsComponent } from './components/skills/skills.component';
 
+
 @NgModule({
   imports: [
     CommonModule,
