@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DatabaseService } from '../../services/database.service';
 import { MarkdownService } from '../../services/markdown.service';
@@ -9,10 +9,11 @@ import { MarkdownService } from '../../services/markdown.service';
   styleUrls: ['./portfolio.component.sass'],
   providers: [DatabaseService, MarkdownService]
 })
-export class PortfolioComponent implements OnInit {
+export class PortfolioComponent implements OnInit, OnDestroy {
 
   private id: any;
   public portfolio: any;
+  public portfolios: any;
   public mdOutput: string;
 
   constructor(
@@ -24,15 +25,25 @@ export class PortfolioComponent implements OnInit {
 
   ngOnInit() {
     this.updateMe();
+    this. getPortfolios();
     this.router.events.subscribe(() => this.updateMe());
   }
 
   updateMe() {
     this.id = this.route.snapshot.params['id'];
-    this.db.getPortfolioDetails(this.id).subscribe(portfolio => {
+    return this.db.getPortfolioDetails(this.id).subscribe(portfolio => {
       this.portfolio = portfolio;
       this.mdOutput = this.md.convert(portfolio.markdown);
     });
+  }
+
+  getPortfolios() {
+    return this.db.getPortfolios().subscribe(data => this.portfolios = data);
+  }
+
+  ngOnDestroy() {
+    this.updateMe().unsubscribe();
+    this.getPortfolios().unsubscribe();
   }
 
 }

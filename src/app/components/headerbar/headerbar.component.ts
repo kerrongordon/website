@@ -58,7 +58,6 @@ export class HeaderbarComponent implements OnInit, AfterViewInit {
   searchFocus(event) {
     this.inputFocus = !this.inputFocus ? 'menubarhide' : '';
     this.inputFocus2 = !this.inputFocus2 ? 'clearspacehide' : '';
-    this.searchPortfolios(event);
   }
 
   searchPortfolios(event) {
@@ -115,8 +114,9 @@ export class HeaderbarComponent implements OnInit, AfterViewInit {
   }
 
   openPortfolio(key): void {
+    console.log('key', key);
     this._appService.goToPortfolioPage(key);
-    return this.resetSearch();
+    this.resetSearch();
   }
 
 }
