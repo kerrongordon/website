@@ -1,14 +1,17 @@
 <kg-headerbar [portfolios]="portfolios"></kg-headerbar>
 <div *ngIf="portfolio">
     <div class="container">
-        <div class="card infor">
-            <h3>{{portfolio.title}}</h3>
-
-            <p>{{portfolio.info}}</p>
-
-            <div [innerHTML]="mdOutput"></div>
+        <div class="card portfolio-details">
+            <div class="content">
+                <div class="block overview">
+                    <h3>{{portfolio.title}}</h3>
+                    <p>{{portfolio.info}}</p>
+                </div>
+                <div class="block features">
+                    <div [innerHTML]="mdOutput"></div>
+                </div>
+            </div>
         </div>
-
         <div class="card">
             <img src="{{portfolio.imagePath}}" alt="thumnail">
         </div>
