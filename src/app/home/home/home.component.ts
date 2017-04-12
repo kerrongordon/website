@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private getPortfolios() {
     return this.data.getPortfolios().subscribe(data => {
-      this.portfolios = data.filter((el, index) => index < 4);
+      this.portfolios = data.slice().reverse().filter((el, index) => index < 4);
     });
   }
 

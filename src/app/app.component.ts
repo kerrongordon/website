@@ -9,4 +9,8 @@ import { moveIn } from './router.animations';
 })
 export class AppComponent {
   title = 'kg works!';
+
+  iamclick(event) {
+    console.log(event);
+  }
 }

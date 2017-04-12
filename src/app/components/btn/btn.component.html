@@ -1,0 +1,4 @@
+<button type="{{type}}" [disabled]="disabled" (click)="btnClick.emit($event)">
+  <div class="material-icons icon">{{icon}}</div>
+  <div class="content"><ng-content></ng-content></div>
+</button>

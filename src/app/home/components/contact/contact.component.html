@@ -12,7 +12,7 @@
                 <textarea id="message" name="message" placeholder="Your Message" [formControl]="complexForm.controls['message']" required></textarea>
             </div>
             <div class="submit">
-                <button type="submit" class="button" [disabled]="!complexForm.valid">Send Message</button>
+                <kg-btn type="submit" icon="send" class="icon-right" [disabled]="!complexForm.valid">Send Message</kg-btn>
             </div>
         </form>
     </div>

@@ -44,7 +44,7 @@ export class HeaderbarComponent implements OnInit, AfterViewInit {
     }
 
   private getCurrentSectionName() {
-    if (document.body.scrollTop === 0) {
+    if (window.pageYOffset === 0) {
       return this.isHeaderBerFixed = 'headerIsNotFixed';
     } else {
       return this.isHeaderBerFixed = 'headerIsFixed';

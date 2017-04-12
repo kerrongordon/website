@@ -8,7 +8,9 @@
                     <kg-portfolio-card-infor [data]="portfolio"></kg-portfolio-card-infor>
                 </kg-portfolio-card>
             </div>
-            <div class="viewall"><button type="button" (click)="openPortfolios.emit()">View All</button></div>
+            <div class="viewall">
+                <kg-btn type="button" icon="all_out" (btnClick)="openPortfolios.emit()">View All</kg-btn>
+            </div>
         </div>
         <ng-template #noPortfolios>
             <div class="card-container">
@@ -17,7 +19,9 @@
                     <kg-portfolio-card-infor></kg-portfolio-card-infor>
                 </kg-portfolio-card>
             </div>
-            <div class="viewall"><button type="button" disabled>View All</button></div>
+            <div class="viewall">
+                <kg-btn type="button" disabled="true" icon="all_out">View All</kg-btn>
+            </div>
         </ng-template>
     </div>
 </section>

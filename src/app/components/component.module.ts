@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { BtnComponent } from './btn/btn.component';
 import { HeaderbarComponent } from './headerbar/headerbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { PortfolioCardComponent } from './portfolio-card/portfolio-card.component';
@@ -11,7 +12,21 @@ import { PortfolioCardInforComponent } from './portfolio-card-infor/portfolio-ca
   imports: [
     CommonModule
   ],
-  declarations: [FooterComponent, HeaderbarComponent, PortfolioCardComponent, PortfolioCardImageComponent, PortfolioCardInforComponent],
-  exports: [FooterComponent, HeaderbarComponent, PortfolioCardComponent, PortfolioCardImageComponent, PortfolioCardInforComponent]
+  declarations: [
+    BtnComponent,
+    FooterComponent,
+    HeaderbarComponent,
+    PortfolioCardComponent,
+    PortfolioCardImageComponent,
+    PortfolioCardInforComponent
+  ],
+  exports: [
+    BtnComponent,
+    FooterComponent,
+    HeaderbarComponent,
+    PortfolioCardComponent,
+    PortfolioCardImageComponent,
+    PortfolioCardInforComponent
+  ]
 })
 export class ComponentModule { }

@@ -19,7 +19,7 @@ export class PortfoliosComponent implements OnInit, OnDestroy {
   }
 
   portfoliosData() {
-    return this.db.getPortfolios().subscribe(data => this.portfolios = data);
+    return this.db.getPortfolios().subscribe(data => this.portfolios = data.slice().reverse());
   }
 
   openPortfolio(key): void {

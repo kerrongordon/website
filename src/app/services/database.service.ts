@@ -2,7 +2,7 @@ import { Injectable, HostListener } from '@angular/core';
 import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 import { Router } from '@angular/router';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import {Observable} from 'rxjs/Rx';
+import {Observable} from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -20,14 +20,15 @@ export class DatabaseService {
   private portfolio: FirebaseObjectObservable<Portfolio>;
   private folder = 'portfolios';
   private storageRef: any;
+  private email = 'kgpsounds.com@gmail.com';
 
   public thumbnail: string;
   public thumbnailPath: string;
   public image: string;
   public imagePath: string;
 
-  private thunbI: any;
-  private deskI: any;
+  private upLoadhumbnail: any;
+  private upLoadDesktopImage: any;
 
   public thumbnailProgress: number;
   public desktopImageProgress: number;
@@ -67,13 +68,13 @@ export class DatabaseService {
   }
 
   public loadFirebaseStorage() {
-    this.storageRef = firebase.storage().ref();
+    return this.storageRef = firebase.storage().ref();
   }
 
   public postEmail(data) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
-    return this.http.post('https://formspree.io/kgpsounds.com@gmail.com', data, headers)
+    return this.http.post(`https://formspree.io/${this.email}`, data, headers)
       .map((res: Response) => res.json())
       .catch((error) => Observable.throw(error.json().error || 'Server error'));
   }
@@ -82,8 +83,8 @@ export class DatabaseService {
     this.addThumbnail(portfolio);
     this.addDesktopImage(portfolio);
     Promise.all([
-      this.thunbI,
-      this.deskI
+      this.upLoadhumbnail,
+      this.upLoadDesktopImage
     ]).then(value => {
       this.portfolios.push(portfolio);
       this.rt.navigate(['portfolios']);
@@ -93,7 +94,7 @@ export class DatabaseService {
   private addThumbnail(portfolio) {
     const path = `/${this.folder}/${portfolio.title}/thumbnail/${portfolio.thumbnailfile.name}`;
     const iRef = this.storageRef.child(path).put(portfolio.thumbnailfile);
-    return this.thunbI = iRef.then(snapshot => {
+    return this.upLoadhumbnail = iRef.then(snapshot => {
       portfolio.thumbnail = snapshot.metadata.name;
       portfolio.thumbnailPath = snapshot.downloadURL;
     });
@@ -102,7 +103,7 @@ export class DatabaseService {
   private addDesktopImage(portfolio) {
     const path = `/${this.folder}/${portfolio.title}/desktop/${portfolio.desktopImagefile.name}`;
     const iRef = this.storageRef.child(path).put(portfolio.desktopImagefile);
-    return this.deskI = iRef.then(snapshot => {
+    return this.upLoadDesktopImage = iRef.then(snapshot => {
       portfolio.image = snapshot.metadata.name;
       portfolio.imagePath = snapshot.downloadURL;
     });
