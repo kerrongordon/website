@@ -1,0 +1,5 @@
+<img *ngIf="image; else noAvatar" class="avatar" src="{{image}}" alt="{{name}}">
+
+<ng-template #noAvatar>
+  <div class="avatar"></div>
+</ng-template>

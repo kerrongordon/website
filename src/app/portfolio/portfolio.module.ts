@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { ComponentModule } from '../components/component.module';
+
 import { PortfolioComponent } from './portfolio/portfolio.component';
+import { HeadModule } from '../components-modules/head/head.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    ComponentModule,
+    HeadModule,
     RouterModule.forChild([
       { path: '', component: PortfolioComponent }
     ])

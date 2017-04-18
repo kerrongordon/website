@@ -1,4 +1,5 @@
 import { Component, OnInit, HostBinding, OnDestroy } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AppService } from '../../services/app.service';
 import { DatabaseService } from '../../services/database.service';
 
@@ -10,11 +11,20 @@ import { DatabaseService } from '../../services/database.service';
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
-  public infor: any;
+  public title: any;
+  public description: any;
   public skills: any;
   public portfolios: any;
 
-  constructor(private data: DatabaseService, private as: AppService) { }
+  complexForm: FormGroup;
+
+  constructor(private data: DatabaseService, private as: AppService, private fb: FormBuilder) {
+    this.complexForm = fb.group({
+      'name': [null, Validators.compose([Validators.required, Validators.minLength(3)])],
+      'email': [null, Validators.compose([Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')])],
+      'message': [null, Validators.compose([Validators.required, Validators.minLength(20)])]
+    });
+  }
 
   ngOnInit() {
     this.getTitleAndDescription();
@@ -23,7 +33,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private getTitleAndDescription() {
-    return this.data.getNameAndDescription().subscribe(infor => this.infor = infor);
+    return this.data.getNameAndDescription().subscribe(infor => {
+      this.description = infor.description;
+      this.title = infor.name;
+    });
   }
 
   private getSkills() {
@@ -36,16 +49,22 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
   }
 
-  public handleEmail(event): void {
-    this.data.postEmail(event).subscribe();
-  }
-
   public openPortfolios(): void {
     return this.as.goToPortfoliosPage();
   }
 
   public openPortfolio(key): void {
     return this.as.goToPortfolioPage(key);
+  }
+
+  submitForm(value): void {
+    if (!value.name || !value.email || !value.message) { return; }
+    if (this.complexForm.status === 'VALID') {
+        this.data.postEmail(value).subscribe();
+        this.complexForm.reset();
+        return;
+    }
+    return;
   }
 
   ngOnDestroy() {

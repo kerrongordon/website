@@ -1,0 +1,9 @@
+<div *ngIf="title; else noTitle">
+	<h4 class="hideOText">{{title}}</h4>
+	<p class="hideOText">{{info}}</p>
+</div>
+
+<ng-template #noTitle>
+	<div class="loading-text big loading-content"></div>
+	<div class="loading-text loading-content"></div>
+</ng-template>

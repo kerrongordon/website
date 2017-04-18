@@ -3,34 +3,33 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
-import { HeroComponent } from './components/hero/hero.component';
-import { AvatarComponent } from './components/avatar/avatar.component';
-import { AboutComponent } from './components/about/about.component';
-import { PortfolioComponent } from './components/portfolio/portfolio.component';
-import { ContactComponent } from './components/contact/contact.component';
 
-import { ComponentModule } from '../components/component.module';
-import { SkillsComponent } from './components/skills/skills.component';
-
+import { AvatarModule } from '../components-modules/avatar/avatar.module';
+import { DescriptionModule } from '../components-modules/description/description.module';
+import { ProgressbarModule } from '../components-modules/progressbar/progressbar.module';
+import { CardModule } from '../components-modules/card/card.module';
+import { BtnModule } from '../components-modules/btn/btn.module';
+import { FooterModule } from '../components-modules/footer/footer.module';
+import { HeadModule } from '../components-modules/head/head.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    ComponentModule,
     FormsModule,
+    AvatarModule,
+    DescriptionModule,
+    ProgressbarModule,
+    CardModule,
+    BtnModule,
+    FooterModule,
+    HeadModule,
     ReactiveFormsModule,
     RouterModule.forChild([
       { path: '', component: HomeComponent }
     ])
   ],
   declarations: [
-    HomeComponent,
-    HeroComponent,
-    AvatarComponent,
-    AboutComponent,
-    PortfolioComponent,
-    ContactComponent,
-    SkillsComponent
+    HomeComponent
   ]
 })
 export class HomeModule { }

@@ -1,5 +1,5 @@
-<kg-headerbar [portfolios]="portfolios"></kg-headerbar>
 <div *ngIf="portfolio">
+<kg-head title="{{portfolio.title}}">
     <div class="container">
         <div class="card portfolio-details">
             <div class="content">
@@ -16,5 +16,6 @@
             <img src="{{portfolio.imagePath}}" alt="thumnail">
         </div>
     </div>
+</kg-head>
 </div>
-<kg-footer></kg-footer>
+<!--<kg-footer></kg-footer>-->

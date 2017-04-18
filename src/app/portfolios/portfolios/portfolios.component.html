@@ -1,22 +1,54 @@
-<kg-headerbar [portfolios]="portfolios"></kg-headerbar>
-<div class="portfolios">
-    <div class="container">
-        <div *ngIf="portfolios; else noPortfolios">
-            <div class="card-container spacetop">
-                <kg-portfolio-card *ngFor="let portfolio of portfolios" (click)="openPortfolio(portfolio.$key)">
-                    <kg-portfolio-card-image [data]="portfolio"></kg-portfolio-card-image>
-                    <kg-portfolio-card-infor [data]="portfolio"></kg-portfolio-card-infor>
-                </kg-portfolio-card>
-            </div>
-        </div>
-        <ng-template #noPortfolios>
-            <div class="card-container spacetop">
-                <kg-portfolio-card class="disabled" *ngFor="let disabled of [1,2,3,4,5,6,7,8]">
-                    <kg-portfolio-card-image></kg-portfolio-card-image>
-                    <kg-portfolio-card-infor></kg-portfolio-card-infor>
-                </kg-portfolio-card>
-            </div>
-        </ng-template>
-    </div>
-</div>
+<div *ngIf="portfolios; else noPortfolios">
+<kg-head (searchValue)="searchValue($event)" (clearSearch)="clearSearch()" title="{{pageTitle}}">
+
+  <div class="card-container" *ngIf="searchTitle?.length === null || searchInfo?.length === null || searchMarkdown?.length === null">
+    <kg-card *ngFor="let portfolio of portfolios" (click)="openPortfolio(portfolio.$key)">
+      <kg-card-image [image]="portfolio.thumbnailPath"></kg-card-image>
+      <kg-card-content [title]="portfolio.title" [info]="portfolio.info"></kg-card-content>
+      <kg-card-infor></kg-card-infor>
+    </kg-card>
+  </div>
+
+  <h4 *ngIf="searchTitle?.length > 0" class="seach-title">By Title</h4>
+  <div class="card-container search" *ngIf="searchTitle?.length > 0">
+    <kg-card *ngFor="let title of searchTitle" (click)="openPortfolio(title.$key)">
+      <kg-card-image [image]="title.thumbnailPath"></kg-card-image>
+      <kg-card-content [title]="title.title" [info]="title.info"></kg-card-content>
+      <kg-card-infor></kg-card-infor>
+    </kg-card>
+  </div>
+
+  <h4 *ngIf="searchInfo?.length > 0" class="seach-title">By Summary</h4>
+  <div class="card-container search" *ngIf="searchInfo?.length > 0">
+    <kg-card *ngFor="let info of searchInfo" (click)="openPortfolio(info.$key)">
+      <kg-card-image [image]="info.thumbnailPath"></kg-card-image>
+      <kg-card-content [title]="info.title" [info]="info.info"></kg-card-content>
+      <kg-card-infor></kg-card-infor>
+    </kg-card>
+  </div>
+
+  <h4 *ngIf="searchMarkdown?.length > 0" class="seach-title">By Content</h4>
+  <div class="card-container search" *ngIf="searchMarkdown?.length > 0">
+    <kg-card *ngFor="let markdown of searchMarkdown" (click)="openPortfolio(markdown.$key)">
+      <kg-card-image [image]="markdown.thumbnailPath"></kg-card-image>
+      <kg-card-content [title]="markdown.title" [info]="markdown.info"></kg-card-content>
+      <kg-card-infor></kg-card-infor>
+    </kg-card>
+  </div>
+
+</kg-head>
 <kg-footer></kg-footer>
+</div>
+
+<ng-template #noPortfolios>
+  <kg-head class="loading-head" loading="true" title="Loading">
+  <div class="card-container">
+    <kg-card class="loading" *ngFor="let loading of [1,2,3,4,5,6,7,8,9,10,11,12]">
+      <kg-card-image></kg-card-image>
+      <kg-card-content></kg-card-content>
+      <kg-card-infor></kg-card-infor>
+    </kg-card>
+  </div>
+</kg-head>
+<kg-footer></kg-footer>
+</ng-template> 

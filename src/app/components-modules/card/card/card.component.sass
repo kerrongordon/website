@@ -1,0 +1,19 @@
+@import ../../sass/var
+
+\:host
+  background-color: $card-bg
+  position: relative
+  display: block
+  margin: 10px
+  overflow: hidden
+  cursor: pointer
+  transition: $transition
+  border-radius: $card-border
+  box-shadow: $card-shadow
+
+  &:hover, &:focus
+    box-shadow: $card-shadow-hover
+
+\:host.loading
+  box-shadow: none
+  cursor: progress

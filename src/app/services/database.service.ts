@@ -2,7 +2,7 @@ import { Injectable, HostListener } from '@angular/core';
 import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 import { Router } from '@angular/router';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -26,6 +26,8 @@ export class DatabaseService {
   public thumbnailPath: string;
   public image: string;
   public imagePath: string;
+
+  public emailError: any;
 
   private upLoadhumbnail: any;
   private upLoadDesktopImage: any;
@@ -72,9 +74,10 @@ export class DatabaseService {
   }
 
   public postEmail(data) {
+    console.log(data);
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
-    return this.http.post(`https://formspree.io/${this.email}`, data, headers)
+    return this.http.post('https://formspree.io/kgpsounds.com@gmail.com', data, headers)
       .map((res: Response) => res.json())
       .catch((error) => Observable.throw(error.json().error || 'Server error'));
   }
