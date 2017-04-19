@@ -1,0 +1,11 @@
+<div class="card-footer" *ngIf="postDate; else noPostDate">
+  <div class="stats hideOText">
+    <i class="material-icons">access_time</i> {{date}}
+  </div>
+</div>
+
+<ng-template #noPostDate>
+	<div class="card-footer" >
+  		<div class="stats loading-text loading-content"></div>
+	</div>
+</ng-template>

@@ -1,4 +1,4 @@
-import { Injectable, HostListener } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 import { Router } from '@angular/router';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
@@ -9,7 +9,7 @@ import 'rxjs/add/operator/catch';
 
 import * as firebase from 'firebase';
 
-import { Portfolio } from '../interface/portfolio';
+import { Portfolio } from '../config/interface/portfolio';
 
 @Injectable()
 export class DatabaseService {
@@ -20,7 +20,6 @@ export class DatabaseService {
   private portfolio: FirebaseObjectObservable<Portfolio>;
   private folder = 'portfolios';
   private storageRef: any;
-  private email = 'kgpsounds.com@gmail.com';
 
   public thumbnail: string;
   public thumbnailPath: string;
@@ -74,7 +73,6 @@ export class DatabaseService {
   }
 
   public postEmail(data) {
-    console.log(data);
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
     return this.http.post('https://formspree.io/kgpsounds.com@gmail.com', data, headers)

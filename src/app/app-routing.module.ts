@@ -3,12 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthService } from './services/auth.service';
 
 const routes: Routes = [
-  { path: '', loadChildren: './home/home.module#HomeModule' },
-  { path: 'login', loadChildren: './login/login.module#LoginModule' },
-  { path: 'admin', loadChildren: './admin/admin.module#AdminModule', canActivate: [AuthService] },
-  { path: 'portfolio/:id', loadChildren: './portfolio/portfolio.module#PortfolioModule' },
-  { path: 'addportfolio', loadChildren: './addportfolio/addportfolio.module#AddportfolioModule', canActivate: [AuthService]},
-  { path: 'portfolios', loadChildren: './portfolios/portfolios.module#PortfoliosModule' },
+  { path: '', loadChildren: './pages/home/home.module#HomeModule' },
+  { path: 'login', loadChildren: './pages/login/login.module#LoginModule' },
+  { path: 'admin', loadChildren: './pages/admin/admin.module#AdminModule', canActivate: [AuthService] },
+  { path: 'portfolio/:id', loadChildren: './pages/portfolio/portfolio.module#PortfolioModule' },
+  { path: 'addportfolio', loadChildren: './pages/addportfolio/addportfolio.module#AddportfolioModule', canActivate: [AuthService]},
+  { path: 'portfolios', loadChildren: './pages/portfolios/portfolios.module#PortfoliosModule' },
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
@@ -18,3 +18,5 @@ const routes: Routes = [
   providers: [AuthService]
 })
 export class AppRoutingModule { }
+
+

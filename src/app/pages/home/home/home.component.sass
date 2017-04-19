@@ -1,0 +1,116 @@
+@import ../../../config/sass/var
+
+.home
+  transition: all 1s ease-in-out
+p
+  color: $accent-one
+
+.skills 
+  display: flex
+  justify-content: space-between
+  flex-wrap: wrap
+
+.skill 
+  transition: $transition
+  margin: 10px
+
+.skilltitle
+  position: relative
+  font-family: Cinzel Decorative,cursive
+
+.title__level 
+  position: absolute
+  background: $accent-two
+  color: $font-coac
+  right: 0
+  top: -5px
+  padding: 4px 0
+  width: 20px
+  height: 20px
+  font-size: 9px
+  text-align: center
+  border-radius: 50%
+  box-shadow: $eshadow
+
+.header
+  text-align: center
+  font-weight: 300
+  font-family: Cinzel Decorative,cursive
+  font-size: 2rem
+  color: $font-cobg
+  margin-bottom: 70px
+  margin-top: 60px
+  position: relative
+
+.header:before
+  content: ''
+  display: block
+  width: 80%
+  position: absolute
+  bottom: -25px
+  left: 50%
+  margin-left: -40%
+  height: 1px
+  background: -webkit-radial-gradient(center, ellipse, rgba(0, 0, 0, 0.2) 0, rgba(255, 255, 255, 0) 75%)
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.2) 0, rgba(255, 255, 255, 0) 75%)
+
+
+.portfolios
+  display: flex
+  justify-content: space-around
+  flex-wrap: wrap
+  max-width: 1000px
+  margin: 0 auto
+
+.contact 
+  margin: 0 auto 60px
+  max-width: 600px
+
+.input-contain
+  margin: 16px 0
+
+textarea
+  min-height: 250px
+
+
+.allportfolios
+  margin: 50px 0
+
+.submit,
+.allportfolios
+  display: flex
+  justify-content: center
+
+.disabled-input
+  box-shadow: none
+  background-color: #f6f7f8
+  color: #f6f7f8
+
+  input,
+  textarea
+    pointer-events: none
+    
+    &::placeholder
+      color: #f6f7f8
+
+@media (min-width: 0px) and (max-width: $rw-mobile)
+  .skill 
+    width: 100%
+
+@media (min-width: $rw-mobile) and (max-width: $rw-tablet)
+  .skill 
+    width: 43%
+
+  kg-card
+    width: 300px
+
+@media only screen and (min-width: $rw-tablet)
+  .skills
+    margin: 0 auto
+    max-width: 800px
+
+  .skill 
+    width: 45%
+
+  kg-card
+    width: 230px

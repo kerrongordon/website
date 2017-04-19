@@ -1,0 +1,8 @@
+{
+  "rules": {
+    ".read": "true",
+      "$uid": {
+        ".write": "auth.token.email_verified == true && auth.token.email.matches(/kgpsounds.com@gmail.com/)"
+      }
+  }
+}

@@ -1,16 +1,8 @@
 import { Component } from '@angular/core';
-import { moveIn } from './router.animations';
 
 @Component({
   selector: 'kg-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass'],
-  animations: [moveIn()]
+  styleUrls: ['./app.component.sass']
 })
-export class AppComponent {
-  title = 'kg works!';
-
-  iamclick(event) {
-    console.log(event);
-  }
-}
+export class AppComponent {}

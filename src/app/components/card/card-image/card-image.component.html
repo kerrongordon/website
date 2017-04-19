@@ -1,0 +1,4 @@
+<img *ngIf="image; else noImage" class="img" src="{{image}}" alt="Portfolios Images" (error)="LoadDefault()">
+<ng-template #noImage>
+	<div class="img loading-content"></div>
+</ng-template>

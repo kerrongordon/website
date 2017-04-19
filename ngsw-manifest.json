@@ -1,0 +1,29 @@
+{
+  "external": {
+    "urls": [
+      {
+        "url": "//fonts.googleapis.com/css?family=Cinzel+Decorative"
+      },
+      {
+        "url": "//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+      },
+      {
+        "url": "//fonts.googleapis.com/icon?family=Material+Icons"
+      }
+    ]
+  },
+  "routing": {
+    "index": "/index.html",
+    "routes": {
+      "/": {
+        "prefix": false
+      },
+      "/portfolios": {
+        "prefix": true
+      },
+      "/login": {
+        "prefix": true
+      }
+    }
+  }
+}

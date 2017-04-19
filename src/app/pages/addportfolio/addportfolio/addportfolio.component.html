@@ -1,0 +1,49 @@
+<kg-head title="Add Portfolio">
+    <form (ngSubmit)="addNewPortfolio($event)">
+        <div class="input-contain">
+          <span class="material-icons icon">account_circle</span>
+          <input class="input" type="text" [(ngModel)]="title" name="title" placeholder="Title">
+        </div>
+        <div class="input-contain">
+          <span class="material-icons icon">account_circle</span>
+          <input class="input" type="text" [(ngModel)]="type" name="type" placeholder="Project Type">
+        </div>
+        
+        <div class="input-contain">
+          <span class="material-icons icon">account_circle</span>
+          <textarea class="input" [(ngModel)]="info" name="info" placeholder="Add Small Content Here"></textarea>
+        </div>
+        
+        <div class="input-contain">
+          <span class="material-icons icon">account_circle</span>
+          <textarea class="input" [(ngModel)]="markdown" name="markdown" (keyup)="updateOutput($event.target.value)" placeholder="Add Markdown Here"></textarea>
+        </div>
+
+        <div class="input-contain">
+          <span class="material-icons icon">account_circle</span>
+          <div class="input" [innerHTML]="mdOutput"></div>
+        </div>
+
+        <div class="fileupload">
+            <div class="thumbnail">
+                <label for="thumbnail" class="uplabel">Thumbnail</label>
+                <input (change)="onThumbnail($event)" class="upbtn" id="thumbnail" type="file" name="image" placeholder="Thumbnail">
+            </div>
+
+            <div class="desktopImage">
+                <label for="desktopImage" class="uplabel">full Site Image</label>
+                <input (change)="onDesktopImage($event)" class="upbtn" id="desktopImage" type="file" name="image">
+            </div>
+        </div>
+
+        <button type="submit" class="button">Submit</button>
+    </form>
+</kg-head>
+<kg-footer></kg-footer>
+
+<div class="submitdata" [ngStyle]="{'display': uploading}">
+    <div class="uploading">
+        <div class="cp-spinner cp-flip"></div>
+        <div>UpLoading...</div>
+    </div>
+</div>
