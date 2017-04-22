@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { AddportfolioComponent } from './addportfolio/addportfolio.component';
 import { HeadModule } from '../../components/head/head.module';
 import { FooterModule } from '../../components/footer/footer.module';
+import { BtnModule } from '../../components/btn/btn.module';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { FooterModule } from '../../components/footer/footer.module';
     FormsModule,
     HeadModule,
     FooterModule,
+    BtnModule,
     RouterModule.forChild([
       { path: '', component: AddportfolioComponent }
     ])

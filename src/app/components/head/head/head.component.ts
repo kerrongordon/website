@@ -22,6 +22,7 @@ export class HeadComponent implements OnInit, AfterContentInit {
   public toggleMenuClass: string;
   public searchInfo: string;
   public wait: any;
+  public inputFoucs = '';
 
   constructor(private router: Router, private as: AppService) { }
 
@@ -39,6 +40,7 @@ export class HeadComponent implements OnInit, AfterContentInit {
     if (this.router.url !== '/portofolios') {
       this.inputFocusRibban = 'hzero';
       this.inputFocusPort = 'hport';
+      this.inputFoucs = 'inputFoucs';
       this.searchPortfolios(this.searchInfo);
       this.router.navigate(['/portfolios'], {fragment: 'search'});
     }
@@ -49,6 +51,7 @@ export class HeadComponent implements OnInit, AfterContentInit {
     this.wait = setTimeout(() => {
       this.inputFocusRibban = '';
       this.inputFocusPort = '';
+      this.inputFoucs = '';
       this.clearSearch.emit();
     }, 100);
   }

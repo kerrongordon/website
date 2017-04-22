@@ -1,6 +1,6 @@
 <kg-header-bar id="search">
   <kg-btn type="button" icon="arrow_back" class="icon-only flat" (click)="goBack()"></kg-btn>
-  <div class="input-contain">
+  <div class="input-contain" [ngClass]="inputFoucs">
     <span class="material-icons icon">search</span>
     <input id="searchInput" class="input" type="search" name="search" placeholder="Seach Portfolios" (keyup)="searchPortfolios($event.target.value)" (focus)="seachFocus()" (blur)="seachBlur()">
   </div>

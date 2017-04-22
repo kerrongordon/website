@@ -19,3 +19,15 @@
 
 .hideImg
   opacity: 0
+
+@media (min-width: 0px) and (max-width: $rw-mobile)
+  \:host
+    display: none
+
+@media (min-width: $rw-mobile) and (max-width: $rw-tablet)
+  \:host
+    display: block
+
+@media only screen and (min-width: $rw-tablet)
+  \:host
+    display: block

@@ -19,9 +19,10 @@ textarea
   display: flex
   justify-content: space-around
   align-items: center
+  flex-wrap: wrap
 
 .submitdata
-  background: rgba(#000, 0.5)
+  background: rgba(#000, 0.8)
   position: fixed
   top: 0
   left: 0
@@ -36,12 +37,17 @@ textarea
 
 .uploading
   width: 100%
-  max-width: 500px
+  max-width: 200px
   background: #fff
-  margin: 20% auto
+  margin: 40vh auto
   padding: 20px
   box-shadow: $card-shadow
   display: flex
   justify-content: center
   align-items: center
   flex-direction: column
+
+.center
+  display: flex
+  justify-content: space-around
+  padding: 16px

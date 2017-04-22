@@ -82,14 +82,15 @@ export class AddportfolioComponent implements OnInit {
       timestamp: date.getTime()
     };
 
-    if (this.title !== '' ||
-        this.info !== '' ||
-        this.type !== '' ||
-        this.markdown !== '' ||
-        this.thumbnailfile !== null ||
-        this.desktopBase64 !== null ||
-        this.thumbnailBase64 !== null ||
-        this.desktopImagefile !== null) {
+
+    if (this.title &&
+        this.info &&
+        this.type &&
+        this.markdown &&
+        this.thumbnailfile &&
+        this.desktopBase64 &&
+        this.thumbnailBase64 &&
+        this.desktopImagefile ) {
           this.uploading = 'block';
           this.db.addPortfolio(portfolio);
         }

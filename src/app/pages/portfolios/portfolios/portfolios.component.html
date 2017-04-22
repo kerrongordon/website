@@ -9,7 +9,7 @@
     </kg-card>
   </div>
 
-  <h4 *ngIf="searchTitle?.length > 0" class="seach-title">By Title</h4>
+  <h6 *ngIf="searchTitle?.length > 0" class="seach-title">By Title</h6>
   <div class="card-container search" *ngIf="searchTitle?.length > 0">
     <kg-card *ngFor="let title of searchTitle" (click)="openPortfolio(title.$key)">
       <kg-card-image [image]="title.thumbnailPath" [base64]="title.thumbnailBase64"></kg-card-image>
@@ -18,7 +18,7 @@
     </kg-card>
   </div>
 
-  <h4 *ngIf="searchInfo?.length > 0" class="seach-title">By Summary</h4>
+  <h6 *ngIf="searchInfo?.length > 0" class="seach-title">By Summary</h6>
   <div class="card-container search" *ngIf="searchInfo?.length > 0">
     <kg-card *ngFor="let info of searchInfo" (click)="openPortfolio(info.$key)">
       <kg-card-image [image]="info.thumbnailPath" [base64]="info.thumbnailBase64"></kg-card-image>
@@ -27,7 +27,7 @@
     </kg-card>
   </div>
 
-  <h4 *ngIf="searchMarkdown?.length > 0" class="seach-title">By Content</h4>
+  <h6 *ngIf="searchMarkdown?.length > 0" class="seach-title">By Content</h6>
   <div class="card-container search" *ngIf="searchMarkdown?.length > 0">
     <kg-card *ngFor="let markdown of searchMarkdown" (click)="openPortfolio(markdown.$key)">
       <kg-card-image [image]="markdown.thumbnailPath" [base64]="markdown.thumbnailBase64"></kg-card-image>

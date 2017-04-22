@@ -4,7 +4,6 @@
   background-color: $card-bg
   position: relative
   display: block
-  margin: 10px
   overflow: hidden
   cursor: pointer
   transition: $transition
@@ -17,3 +16,15 @@
 \:host.loading
   box-shadow: none
   cursor: progress
+
+@media (min-width: 0px) and (max-width: $rw-mobile)
+  \:host
+    margin: 5px 0
+
+@media (min-width: $rw-mobile) and (max-width: $rw-tablet)
+  \:host
+    margin: 7px
+
+@media only screen and (min-width: $rw-tablet)
+  \:host
+    margin: 10px

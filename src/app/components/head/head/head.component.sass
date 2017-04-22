@@ -3,16 +3,30 @@
 .input-contain
   width: 100%
   padding: 5px
+  background: rgba($card-bg, 0.4)
+  box-shadow: none
+  color: $card-bg
+  transition: $transition
+
+  input
+    &::placeholder
+      transition: $transition
+      color: $card-bg
+
+.inputFoucs
+  background: $card-bg
+  color: $font-cobg
+  box-shadow: $card-shadow-hover
+
+  input
+    &::placeholder
+      color: $font-cobg
 
 .page
-  margin-top: -150px
   transition: $transition
 
 .hzero
   height: 0
-
-.hport
-  margin: 130px auto
 
 \:host.loading-head
   kg-header-bar,
@@ -22,3 +36,24 @@
   .input-contain
     box-shadow: none
     pointer-events: none
+
+@media (min-width: 0px) and (max-width: $rw-mobile)
+  .page
+    margin-top: 16px
+
+  .hport
+    margin: 100px auto
+
+@media (min-width: $rw-mobile) and (max-width: $rw-tablet)
+  .page
+    margin-top: -100px
+
+  .hport
+    margin: 120px auto
+
+@media only screen and (min-width: $rw-tablet)
+  .page
+    margin-top: -150px
+
+  .hport
+    margin: 125px auto
