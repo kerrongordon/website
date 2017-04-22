@@ -24,6 +24,15 @@
           <div class="input" [innerHTML]="mdOutput"></div>
         </div>
 
+        <div class="input-contain">
+          <span class="material-icons icon">account_circle</span>
+          <input class="input" type="text" [(ngModel)]="thumbnailBase64" name="thumbnailBase64" placeholder="Base64 Thumbnail">
+        </div>
+        <div class="input-contain">
+          <span class="material-icons icon">account_circle</span>
+          <input class="input" type="text" [(ngModel)]="desktopBase64" name="desktopBase64" placeholder="Base64 Desktop Image">
+        </div>
+
         <div class="fileupload">
             <div class="thumbnail">
                 <label for="thumbnail" class="uplabel">Thumbnail</label>

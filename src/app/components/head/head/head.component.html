@@ -4,7 +4,7 @@
     <span class="material-icons icon">search</span>
     <input id="searchInput" class="input" type="search" name="search" placeholder="Seach Portfolios" (keyup)="searchPortfolios($event.target.value)" (focus)="seachFocus()" (blur)="seachBlur()">
   </div>
-  <kg-btn type="button" icon="menu" class="icon-only flat" (btnClick)="toggleMenu()"></kg-btn>
+  <kg-btn type="button" icon="more_vert" class="icon-only flat" (btnClick)="toggleMenu()"></kg-btn>
 </kg-header-bar>
 <kg-menubar [ngClass]="toggleMenuClass"></kg-menubar>
 <kg-ribban [ngClass]="inputFocusRibban">

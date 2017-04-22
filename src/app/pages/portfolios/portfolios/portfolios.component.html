@@ -3,7 +3,7 @@
 
   <div class="card-container" *ngIf="searchTitle?.length === null || searchInfo?.length === null || searchMarkdown?.length === null">
     <kg-card *ngFor="let portfolio of portfolios" (click)="openPortfolio(portfolio.$key)">
-      <kg-card-image [image]="portfolio.thumbnailPath"></kg-card-image>
+      <kg-card-image [image]="portfolio.thumbnailPath" [base64]="portfolio.thumbnailBase64"></kg-card-image>
       <kg-card-content [title]="portfolio.title" [info]="portfolio.info"></kg-card-content>
       <kg-card-infor [postDate]="portfolio.timestamp"></kg-card-infor>
     </kg-card>
@@ -12,7 +12,7 @@
   <h4 *ngIf="searchTitle?.length > 0" class="seach-title">By Title</h4>
   <div class="card-container search" *ngIf="searchTitle?.length > 0">
     <kg-card *ngFor="let title of searchTitle" (click)="openPortfolio(title.$key)">
-      <kg-card-image [image]="title.thumbnailPath"></kg-card-image>
+      <kg-card-image [image]="title.thumbnailPath" [base64]="title.thumbnailBase64"></kg-card-image>
       <kg-card-content [title]="title.title" [info]="title.info"></kg-card-content>
       <kg-card-infor [postDate]="title.timestamp"></kg-card-infor>
     </kg-card>
@@ -21,7 +21,7 @@
   <h4 *ngIf="searchInfo?.length > 0" class="seach-title">By Summary</h4>
   <div class="card-container search" *ngIf="searchInfo?.length > 0">
     <kg-card *ngFor="let info of searchInfo" (click)="openPortfolio(info.$key)">
-      <kg-card-image [image]="info.thumbnailPath"></kg-card-image>
+      <kg-card-image [image]="info.thumbnailPath" [base64]="info.thumbnailBase64"></kg-card-image>
       <kg-card-content [title]="info.title" [info]="info.info"></kg-card-content>
       <kg-card-infor [postDate]="info.timestamp"></kg-card-infor>
     </kg-card>
@@ -30,7 +30,7 @@
   <h4 *ngIf="searchMarkdown?.length > 0" class="seach-title">By Content</h4>
   <div class="card-container search" *ngIf="searchMarkdown?.length > 0">
     <kg-card *ngFor="let markdown of searchMarkdown" (click)="openPortfolio(markdown.$key)">
-      <kg-card-image [image]="markdown.thumbnailPath"></kg-card-image>
+      <kg-card-image [image]="markdown.thumbnailPath" [base64]="markdown.thumbnailBase64"></kg-card-image>
       <kg-card-content [title]="markdown.title" [info]="markdown.info"></kg-card-content>
       <kg-card-infor [postDate]="markdown.timestamp"></kg-card-infor>
     </kg-card>

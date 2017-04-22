@@ -35,22 +35,7 @@ export class DatabaseService {
   public desktopImageProgress: number;
 
 
-  constructor(public af: AngularFire, private rt: Router, private http: Http) {
-    // this.load();
-   }
-
-  // load() {
-  //   console.log('i am load');
-  //   this.getPortfolios().subscribe(data => {
-  //     if ( localStorage.getItem('kgportfolios') === null || localStorage.getItem('kgportfolios') === undefined ) {
-  //       console.log('No Portfolios found.......creating....');
-  //       localStorage.setItem('kgportfolios', JSON.stringify(data));
-  //     } else {
-  //       console.log('Loading Portfolios......');
-  //     }
-  //   });
-
-  // }
+  constructor(public af: AngularFire, private rt: Router, private http: Http) {}
 
   public getNameAndDescription() {
     return this.nameAndDescription = this.af.database.object('siteInfor') as FirebaseObjectObservable<NameAndDescription>;
@@ -98,6 +83,7 @@ export class DatabaseService {
     return this.upLoadhumbnail = iRef.then(snapshot => {
       portfolio.thumbnail = snapshot.metadata.name;
       portfolio.thumbnailPath = snapshot.downloadURL;
+      console.log(snapshot);
     });
   }
 
@@ -107,6 +93,7 @@ export class DatabaseService {
     return this.upLoadDesktopImage = iRef.then(snapshot => {
       portfolio.image = snapshot.metadata.name;
       portfolio.imagePath = snapshot.downloadURL;
+      console.log(snapshot);
     });
   }
 

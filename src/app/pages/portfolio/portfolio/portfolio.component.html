@@ -1,21 +1,19 @@
 <div *ngIf="portfolio">
-<kg-head title="{{portfolio.title}}">
-    <div class="container">
-        <div class="card portfolio-details">
-            <div class="content">
-                <div class="block overview">
-                    <h3>{{portfolio.title}}</h3>
-                    <p>{{portfolio.info}}</p>
-                </div>
-                <div class="block features">
-                    <div [innerHTML]="mdOutput"></div>
-                </div>
-            </div>
+  <kg-head title="{{portfolio.title}}">
+    <div class="maxw">
+      <kg-card class="portcontent">
+        <p>{{portfolio.info}}</p>
+        <div class="block features">
+          <div [innerHTML]="mdOutput"></div>
         </div>
-        <div class="card">
-            <img src="{{portfolio.imagePath}}" alt="thumnail">
-        </div>
+      </kg-card>
+      <kg-card class="desktop-image" [ngClass]="tpggleThum">
+        <img class="img" src="{{portfolio.desktopBase64}}" alt="Portfolios Images">
+      </kg-card>
+      <kg-card class="desktop-image" [ngClass]="tpggleImge">
+        <img class="img" src="{{portfolio.imagePath}}" alt="Portfolios Images" (load)="ImageLoadedd()" (error)="LoadDefault()">
+      </kg-card>
     </div>
-</kg-head>
+  </kg-head>
+  <kg-footer></kg-footer>
 </div>
-<!--<kg-footer></kg-footer>-->

@@ -3,6 +3,7 @@
   "description": "Cloud Functions for Firebase",
   "dependencies": {
     "@google-cloud/storage": "^1.1.0",
+    "base64-img": "^1.0.3",
     "child-process-promise": "^2.2.1",
     "firebase-admin": "~4.1.2",
     "firebase-functions": "^0.5"

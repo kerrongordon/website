@@ -1,65 +1,73 @@
 /*jshint esversion: 6 */ 
-
-var functions = require('firebase-functions');
+const functions = require('firebase-functions');
+const admin = require('firebase-admin');
 const gcs = require('@google-cloud/storage')();
 const spawn = require('child-process-promise').spawn;
+const base64Img = require('base64-img');
 
-exports.helloWorld = functions.https.onRequest((request, response) => {
- response.send("Hello from Firebase!");
-});
+admin.initializeApp(functions.config().firebase);
 
-exports.generateThumbnail = functions.storage.object().onChange(event => {
-// [END generateThumbnailTrigger]
-  // [START eventAttributes]
-  const object = event.data; // The Storage object.
+// exports.resizeImage = functions.storage.object().onChange(event => {
+//   const object = event.data;
+//   const fileBucket = object.bucket;
+//   const filePath = object.name;
+//   const contentType = object.contentType;
+//   const resourceState = object.resourceState;
 
-  const fileBucket = object.bucket; // The Storage bucket that contains the file.
-  const filePath = object.name; // File path in the bucket.
-  const contentType = object.contentType; // File content type.
-  const resourceState = object.resourceState; // The resourceState is 'exists' or 'not_exists' (for file/folder deletions).
-  // [END eventAttributes]
+//   if (!contentType.startsWith('image/')) {
+//     console.log('This is not an image.');
+//     return;
+//   }
 
-  // [START stopConditions]
-  // Exit if this is triggered on a file that is not an image.
-  if (!contentType.startsWith('image/')) {
-    console.log('This is not an image.');
-    return;
-  }
+//   const fileName = filePath.split('/').pop();
+//   if (fileName.startsWith('thumb_')) {
+//     console.log('Already a Thumbnail.');
+//     return;
+//   }
 
-  // Get the file name.
-  const fileName = filePath.split('/').pop();
-  // Exit if the image is already a thumbnail.
-  if (fileName.startsWith('thumb_')) {
-    console.log('Already a Thumbnail.');
-    return;
-  }
+//   if (resourceState === 'not_exists') {
+//     console.log('This is a deletion event.');
+//     return;
+//   }
 
-  // Exit if this is a move or deletion event.
-  if (resourceState === 'not_exists') {
-    console.log('This is a deletion event.');
-    return;
-  }
-  // [END stopConditions]
+//   if (!filePath.includes('desktop/')) {
+//     console.log('you are thumbnail object', object);
+//     generateThumbnail(fileBucket, fileName, filePath, '300x300>', 'thumbnailSmall');
+//     return;
+//   }
 
-  // [START thumbnailGeneration]
-  // Download file from bucket.
-  const bucket = gcs.bucket(fileBucket);
-  const tempFilePath = `/tmp/${fileName}`;
-  return bucket.file(filePath).download({
-    destination: tempFilePath
-  }).then(() => {
-    console.log('Image downloaded locally to', tempFilePath);
-    // Generate a thumbnail using ImageMagick.
-    return spawn('convert', [tempFilePath, '-thumbnail', '200x200>', tempFilePath]).then(() => {
-      console.log('Thumbnail created at', tempFilePath);
-      // We add a 'thumb_' prefix to thumbnails file name. That's where we'll upload the thumbnail.
-      const thumbFilePath = filePath.replace(/(\/)?([^\/]*)$/, `$1thumb_$2`);
-      // Uploading the thumbnail.
-      return bucket.upload(tempFilePath, {
-        destination: thumbFilePath
-      });
-    });
-  });
-  // [END thumbnailGeneration]
-});
-// [END generateThumbnail]
+//   if (!filePath.includes('thumbnail/')) {
+//     console.log('you are desktop object', object);
+//     generateThumbnail(fileBucket, fileName, filePath, '1200x1200>', 'desktopBig');
+//     return;
+//   }
+  
+// });
+
+// function generateThumbnail(fileBucket, fileName, filePath, imageSize, type) {
+//   const bucket = gcs.bucket(fileBucket);
+//   const tempFilePath = `/tmp/${fileName}`;
+//   return bucket.file(filePath).download({
+//     destination: tempFilePath
+//   }).then(() => {
+//     console.log('L50 Image downloaded locally to', tempFilePath);
+//     return spawn('convert', [tempFilePath, '-thumbnail', imageSize, tempFilePath]).then(() => {
+//       console.log('L52 Thumbnail created at', tempFilePath);
+//       const thumbFilePath = filePath.replace(/(\/)?([^\/]*)$/, `$1thumb_$2`);
+//       return bucket.upload(tempFilePath, {
+//         destination: thumbFilePath
+//       }).then(() => {
+//         return functions.database.ref('/portfolios/{portfolioId}')
+//           .onWrite(event => {
+//             var portfolio = event.data.val();
+//             console.log('L63 thumbFilePath ', thumbFilePath);
+//             console.log('L64 thumbFilePath ');
+//             portfolio.type = 'I am a Push Do database';
+//             return event.data.ref.push(portfolio);
+//         });
+//       });
+//     });
+//   });
+// }
+
+

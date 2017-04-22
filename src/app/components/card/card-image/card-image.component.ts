@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { errorImage } from '../../../config/class/errorimage';
 
 @Component({
   selector: 'kg-card-image',
@@ -10,16 +9,19 @@ import { errorImage } from '../../../config/class/errorimage';
 export class CardImageComponent implements OnInit {
 
   @Input() image: string;
-  public error: string;
+  @Input() base64: string;
+  public fadeInImage = 'hideImg';
 
-  constructor() {
-    this.error = errorImage.img;
-   }
+  constructor() { }
 
   ngOnInit() { }
 
   LoadDefault() {
-    this.image = this.error;
+    this.image = this.base64;
+  }
+
+  ImageLoadedd() {
+    this.fadeInImage = !this.fadeInImage ? 'hideImg' : '';
   }
 
 }

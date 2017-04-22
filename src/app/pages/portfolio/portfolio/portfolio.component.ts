@@ -15,6 +15,8 @@ export class PortfolioComponent implements OnInit, OnDestroy {
   public portfolio: any;
   public portfolios: any;
   public mdOutput: string;
+  public tpggleImge = 'hideImage';
+  public tpggleThum = '';
 
   constructor(
     private db: DatabaseService,
@@ -39,6 +41,15 @@ export class PortfolioComponent implements OnInit, OnDestroy {
 
   getPortfolios() {
     return this.db.getPortfolios().subscribe(data => this.portfolios = data);
+  }
+
+  ImageLoadedd(): void {
+    this.tpggleImge = !this.tpggleImge ? 'hideImage' : 'showImage';
+    this.tpggleThum = !this.tpggleThum ? 'hideImage' : 'hideImage';
+  } 
+  
+  LoadDefault(): void {
+    this.portfolio.imagePath = this.portfolio.desktopBase64;
   }
 
   ngOnDestroy() {

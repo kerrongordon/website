@@ -16,6 +16,8 @@ export class AddportfolioComponent implements OnInit {
   public info: string;
   public type: string;
   public markdown: string;
+  public thumbnailBase64: string;
+  public desktopBase64: string;
 
   public mdOutput: string;
 
@@ -75,6 +77,8 @@ export class AddportfolioComponent implements OnInit {
       userPhoto: this.photoURL,
       thumbnailfile: this.thumbnailfile,
       desktopImagefile: this.desktopImagefile,
+      desktopBase64: this.desktopBase64,
+      thumbnailBase64: this.thumbnailBase64,
       timestamp: date.getTime()
     };
 
@@ -83,6 +87,8 @@ export class AddportfolioComponent implements OnInit {
         this.type !== '' ||
         this.markdown !== '' ||
         this.thumbnailfile !== null ||
+        this.desktopBase64 !== null ||
+        this.thumbnailBase64 !== null ||
         this.desktopImagefile !== null) {
           this.uploading = 'block';
           this.db.addPortfolio(portfolio);
