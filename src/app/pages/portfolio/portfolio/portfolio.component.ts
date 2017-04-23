@@ -34,7 +34,6 @@ export class PortfolioComponent implements OnInit, OnDestroy {
     return this.db.getPortfolioDetails(this.id).subscribe(portfolio => {
       this.portfolio = portfolio;
       this.mdOutput = this.md.convert(portfolio.markdown);
-      console.log(portfolio);
     });
   }
 
