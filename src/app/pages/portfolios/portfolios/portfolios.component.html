@@ -9,31 +9,40 @@
     </kg-card>
   </div>
 
-  <h6 *ngIf="searchTitle?.length > 0" class="seach-title">By Title</h6>
-  <div class="card-container search" *ngIf="searchTitle?.length > 0">
-    <kg-card *ngFor="let title of searchTitle" (click)="openPortfolio(title.$key)">
-      <kg-card-image [image]="title.thumbnailPath" [base64]="title.thumbnailBase64"></kg-card-image>
-      <kg-card-content [title]="title.title" [info]="title.info"></kg-card-content>
-      <kg-card-infor [postDate]="title.timestamp"></kg-card-infor>
-    </kg-card>
-  </div>
+  <div class="container">
+  <div class="seacrhView">
 
-  <h6 *ngIf="searchInfo?.length > 0" class="seach-title">By Summary</h6>
-  <div class="card-container search" *ngIf="searchInfo?.length > 0">
-    <kg-card *ngFor="let info of searchInfo" (click)="openPortfolio(info.$key)">
-      <kg-card-image [image]="info.thumbnailPath" [base64]="info.thumbnailBase64"></kg-card-image>
-      <kg-card-content [title]="info.title" [info]="info.info"></kg-card-content>
-      <kg-card-infor [postDate]="info.timestamp"></kg-card-infor>
-    </kg-card>
-  </div>
+    <div class="titlesearch seacrhOutput" *ngIf="searchTitle?.length > 0"> 
+      <h6 class="seach-title">By Title</h6>
+      <div class="card-container search">
+        <kg-card *ngFor="let title of searchTitle" (click)="openPortfolio(title.$key)">
+          <kg-card-content [title]="title.title" [info]="title.info"></kg-card-content>
+          <kg-card-infor [postDate]="title.timestamp"></kg-card-infor>
+        </kg-card>
+      </div>
+    </div>
+  
+    <div class="infoSearch seacrhOutput" *ngIf="searchInfo?.length > 0"> 
+      <h6 class="seach-title">By Summary</h6>
+      <div class="card-container search">
+        <kg-card *ngFor="let info of searchInfo" (click)="openPortfolio(info.$key)">
+          <kg-card-content [title]="info.title" [info]="info.info"></kg-card-content>
+          <kg-card-infor [postDate]="info.timestamp"></kg-card-infor>
+        </kg-card>
+      </div>
+    </div>
 
-  <h6 *ngIf="searchMarkdown?.length > 0" class="seach-title">By Content</h6>
-  <div class="card-container search" *ngIf="searchMarkdown?.length > 0">
-    <kg-card *ngFor="let markdown of searchMarkdown" (click)="openPortfolio(markdown.$key)">
-      <kg-card-image [image]="markdown.thumbnailPath" [base64]="markdown.thumbnailBase64"></kg-card-image>
-      <kg-card-content [title]="markdown.title" [info]="markdown.info"></kg-card-content>
-      <kg-card-infor [postDate]="markdown.timestamp"></kg-card-infor>
-    </kg-card>
+    <div class="markdownSearch seacrhOutput" *ngIf="searchMarkdown?.length > 0"> 
+      <h6 class="seach-title">By Content</h6>
+      <div class="card-container search">
+        <kg-card *ngFor="let markdown of searchMarkdown" (click)="openPortfolio(markdown.$key)">
+          <kg-card-content [title]="markdown.title" [info]="markdown.info"></kg-card-content>
+          <kg-card-infor [postDate]="markdown.timestamp"></kg-card-infor>
+        </kg-card>
+      </div>
+    </div>
+
+  </div>
   </div>
 
 </kg-head>

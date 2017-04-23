@@ -1,14 +1,32 @@
 @import ../../../config/sass/var
 
-.login
-  width: 500px
-  height: 400px
-  margin: 60px auto
-  display: flex
-  justify-content: space-around
+\:host
+	background-color: $accent-one
+	position: relative
+	display: block
+	width: 100%
+	height: 100vh
+	color: #fff
+	display: flex
+	justify-content: center
   align-items: center
-  flex-wrap: wrap
-  flex-direction: column
 
-img
-  max-width: 150px
+kg-card
+	max-width: 300px
+	margin: 25vh auto 0
+
+.loginForm
+	padding: 16px
+
+.submit
+  display: flex
+  justify-content: center
+  margin: 20px
+
+.login-footer
+	background-color: $accent-one
+	display: block
+	color: #fff
+	position: fixed
+	bottom: 0
+	width: 100%

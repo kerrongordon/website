@@ -53,7 +53,7 @@ export class HeadComponent implements OnInit, AfterContentInit {
       this.inputFocusPort = '';
       this.inputFoucs = '';
       this.clearSearch.emit();
-    }, 100);
+    }, 300);
   }
 
   toggleMenu(): void {

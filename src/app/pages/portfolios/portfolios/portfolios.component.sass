@@ -7,9 +7,7 @@
   display: flex
   flex-wrap: wrap
   justify-content: center
-
-// .search
-//   justify-content: flex-start
+  margin-bottom: 70px
 
 .seach-title
   padding: 20px 0
@@ -22,6 +20,16 @@
   kg-card
     width: 100%
 
+  .seacrhView
+    display: block
+
+  .seacrhOutput
+    width: 100%
+    margin: 0px
+
+    kg-card
+      width: 100%
+
 @media (min-width: $rw-mobile) and (max-width: $rw-tablet)
   kg-card
     width: 230px
@@ -29,3 +37,14 @@
 @media only screen and (min-width: $rw-tablet)
   kg-card
     width: 230px
+
+  .seacrhView
+    display: flex
+    margin-top: -50px
+
+  .seacrhOutput
+    width: 33.3%
+    margin: 10px
+
+    kg-card
+      width: 100%

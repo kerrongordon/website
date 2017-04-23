@@ -20,18 +20,35 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.requestPermission();
   }
 
-  loginGoogle() {
+  public requestPermission() {
+    return Notification.requestPermission();
+  }
+
+  spawnNotification(theBody, theTitle) {
+    let options = {
+        body: theBody,
+        icon: '/assets/icons/ms-icon-144x144.png'
+    }
+    let n = new Notification(theTitle,options);
+  }
+
+  login(event) {
+    event.preventDefault();
     this.af.auth.login({
       provider: AuthProviders.Google,
       method: AuthMethods.Popup,
     }).then(
         (success) => {
         this.router.navigate(['/admin']);
+        return;
       }).catch(
         (err) => {
         this.error = err;
+        this.spawnNotification(err, 'Login Error');
+        return;
       });
   }
 

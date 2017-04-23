@@ -12,7 +12,7 @@ export class AppService {
     this.router.events.filter(event => event instanceof NavigationEnd).subscribe(event => {
         window.scroll(0, 0);
     });
-    }
+  }
 
   public goToHomePage(): void {
     this.router.navigateByUrl('');

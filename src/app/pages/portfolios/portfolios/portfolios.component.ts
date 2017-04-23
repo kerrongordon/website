@@ -35,9 +35,9 @@ export class PortfoliosComponent implements OnInit, OnDestroy {
     if (event === '' || event === null || event === undefined) {
         this.resetSearch();
        } else {
-        this.searchTitle = this.portfolios.filter(sh => sh.title.toLowerCase().indexOf(event) > -1);
-        this.searchMarkdown = this.portfolios.filter(sh => sh.markdown.toLowerCase().indexOf(event) > -1);
-        this.searchInfo = this.portfolios.filter(sh => sh.info.toLowerCase().indexOf(event) > -1);
+        this.searchTitle = this.portfolios.filter(sh => sh.title.toLowerCase().indexOf(event) > -1).filter((el, index) => index < 4);
+        this.searchMarkdown = this.portfolios.filter(sh => sh.markdown.toLowerCase().indexOf(event) > -1).filter((el, index) => index < 4);
+        this.searchInfo = this.portfolios.filter(sh => sh.info.toLowerCase().indexOf(event) > -1).filter((el, index) => index < 4);
        }
   }
 
