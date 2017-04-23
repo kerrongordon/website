@@ -5,9 +5,6 @@ kg-card
   margin-bottom: 30px
   cursor: auto
 
-.portcontent
-  padding: 16px
-
 .desktop-image
   img
     width: 100%
@@ -24,6 +21,11 @@ kg-card
   display: none
   opacity: 0
 
+.features
+  border-bottom: solid 1px #eeeeee
+  margin-bottom: 20px
+  padding-bottom: 16px
+
 .showImage
   animation: fade 1s ease-in-out
 
@@ -32,3 +34,42 @@ kg-card
     opacity: 0
   100%
     opacity: 1
+
+.portcontent
+  transition: $transition
+
+.user
+  background: $accent-two
+  display: flex
+  color: #fff
+
+.userPhoto
+  img
+    width: 100px
+    height: 100px
+    border-radius: 50%
+    padding: 16px
+
+.name
+  h4
+    margin: 0
+    padding: 23px 0 0
+    font-size: 1.5rem
+    text-transform: capitalize
+  
+.type
+  padding: 0 0 16px
+  text-transform: capitalize
+
+
+@media (min-width: 0px) and (max-width: $rw-mobile)
+  .portcontent
+    padding: 20px 16px 16px
+
+@media (min-width: $rw-mobile) and (max-width: $rw-tablet)
+  .portcontent
+    padding: 40px
+
+@media only screen and (min-width: $rw-tablet)
+  .portcontent
+    padding: 80px

@@ -13,7 +13,6 @@ export class PortfolioComponent implements OnInit, OnDestroy {
 
   private id: any;
   public portfolio: any;
-  public portfolios: any;
   public mdOutput: string;
   public tpggleImge = 'hideImage';
   public tpggleThum = '';
@@ -27,7 +26,6 @@ export class PortfolioComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.updateMe();
-    this. getPortfolios();
     this.router.events.subscribe(() => this.updateMe());
   }
 
@@ -36,11 +34,8 @@ export class PortfolioComponent implements OnInit, OnDestroy {
     return this.db.getPortfolioDetails(this.id).subscribe(portfolio => {
       this.portfolio = portfolio;
       this.mdOutput = this.md.convert(portfolio.markdown);
+      console.log(portfolio);
     });
-  }
-
-  getPortfolios() {
-    return this.db.getPortfolios().subscribe(data => this.portfolios = data);
   }
 
   ImageLoadedd(): void {
@@ -54,7 +49,6 @@ export class PortfolioComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.updateMe().unsubscribe();
-    this.getPortfolios().unsubscribe();
   }
 
 }
