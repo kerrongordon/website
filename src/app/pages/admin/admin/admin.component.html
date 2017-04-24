@@ -1,2 +1,22 @@
-<kg-head title="Admin"></kg-head>
+<kg-head title="Admin">
+	<div class="page">
+		<kg-card *ngIf="auth">
+			<div class="user">
+				<div class="user-img">
+					<img src="{{auth.photoURL}}" alt="{{auth.providerId}}">
+				</div>
+				<div class="user-infor">
+					<h4>{{auth.displayName}}</h4>
+					<h6>{{auth.email}}</h6>
+				</div>
+			</div>
+		</kg-card>
+		<div class="post" *ngIf="portfolios">
+			<kg-card *ngFor="let portfolio of portfolios">
+				<kg-card-content [title]="portfolio.title" [info]="portfolio.info"></kg-card-content>
+	      		<kg-card-infor [postDate]="portfolio.timestamp"></kg-card-infor>
+			</kg-card>
+		</div>
+	</div>
+</kg-head>
 <kg-footer></kg-footer>
