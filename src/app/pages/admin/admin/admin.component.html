@@ -1,22 +1,40 @@
 <kg-head title="Admin">
-	<div class="page">
-		<kg-card *ngIf="auth">
-			<div class="user">
-				<div class="user-img">
-					<img src="{{auth.photoURL}}" alt="{{auth.providerId}}">
-				</div>
-				<div class="user-infor">
-					<h4>{{auth.displayName}}</h4>
-					<h6>{{auth.email}}</h6>
-				</div>
-			</div>
-		</kg-card>
-		<div class="post" *ngIf="portfolios">
-			<kg-card *ngFor="let portfolio of portfolios">
-				<kg-card-content [title]="portfolio.title" [info]="portfolio.info"></kg-card-content>
-	      		<kg-card-infor [postDate]="portfolio.timestamp"></kg-card-infor>
-			</kg-card>
-		</div>
-	</div>
+  <div class="page">
+
+    <div class="userInfoBar">
+
+      <kg-card *ngIf="auth">
+        <div class="user">
+          <div class="user-img">
+            <img src="{{auth.photoURL}}" alt="{{auth.providerId}}">
+          </div>
+          <div class="user-infor">
+            <h4>{{auth.displayName}}</h4>
+            <h6>{{auth.email}}</h6>
+          </div>
+        </div>
+      </kg-card>
+
+      <kg-card *ngIf="description">
+        <div class="description">
+          <p (click)="editDescription()" [ngClass]="toggleDesp">{{description.description}}</p>
+          <textarea class="hide" [ngClass]="toggleDes" (keyup)="editDescriptionInfo($event.target.value)" (blur)="doneEditDescription()" [value]="description.description"></textarea>
+        </div>
+      </kg-card>
+
+    </div>
+
+    <div class="post" *ngIf="portfolios">
+      <kg-card *ngFor="let portfolio of portfolios" class="post-item">
+        <kg-card-content [title]="portfolio.title" [info]="portfolio.info"></kg-card-content>
+        <kg-card-infor [postDate]="portfolio.timestamp"></kg-card-infor>
+        <div class="button-group">
+          <kg-btn type="botton" icon="edit" class="btn">Edit</kg-btn>
+          <kg-btn typr="botton" icon="delete" class="btn delete" (btnClick)="removePortfolio(portfolio.$key)">Remove</kg-btn>
+        </div>
+      </kg-card>
+    </div>
+
+  </div>
 </kg-head>
 <kg-footer></kg-footer>

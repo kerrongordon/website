@@ -13,13 +13,17 @@ export class AdminComponent implements OnInit {
   infor: any;
   public auth: any;
   public portfolios: any;
+  public description: any;
+
+  public toggleDes: string;
+  public toggleDesp: string;
 
   constructor(private db: DatabaseService, private user: AuthService) { }
 
   ngOnInit() {
-    // this.ds.homePageInfor().subscribe(data => this.infor = data);
     this.userInfor();
     this.getPortfolios();
+    this.userDescription();
   }
 
   public userInfor() {
@@ -27,7 +31,32 @@ export class AdminComponent implements OnInit {
   }
 
   public getPortfolios() {
-  	this.db.getPortfolios().subscribe(data => this.portfolios = data);
+  	return this.db.getPortfolios().subscribe(data => this.portfolios = data);
+  }
+
+  public removePortfolio(key) {
+    return this.db.getPortfolioDetails(key).remove()
+      .then(success => console.log(success))
+      .catch(error => console.log(error));
+  }
+
+  public userDescription() {
+    return this.db.getNameAndDescription().subscribe(data => this.description = data);
+  }
+
+  public editDescription(): void {
+    this.toggleDes = 'show';
+    this.toggleDesp = 'hide';
+  }
+
+  public doneEditDescription(): void {
+    this.toggleDes = 'hide';
+    this.toggleDesp = 'show';
+  }
+
+  public editDescriptionInfo(data) {
+    let description = { description: data }
+    return this.db.getNameAndDescription().update(description);
   }
 
 }
