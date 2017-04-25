@@ -6,6 +6,7 @@
 	transition: $transition
 
 .user
+	background: url(/assets/userbg.jpg) 50% 50% /cover 
 	background-color: $accent-two
 	color: #fff
 	padding: 16px
@@ -38,6 +39,19 @@ h6
 	right: 16px
 	background-color: #fff
 
+	&.items
+		pointer-events: none
+		opacity: 0
+		animation: hide 0.5s ease-in-out
+
+.post-item
+	&:hover, &:focus
+		.button-group
+			&.items
+				opacity: 1
+				pointer-events: all
+				animation: fade 0.5s ease-in-out
+
 .btn
 	margin: 0 5px
 
@@ -53,6 +67,100 @@ h6
 		border: none
 		color: $font-cobg
 
+.skills
+	padding: 16px
+
+	p 
+		font-size: 0.9rem
+
+.skill-item
+	display: flex
+	justify-content: space-between
+	padding: 8px 5px
+	border-bottom: solid 1px #eee
+	transition: $transition
+
+	&:hover
+		background-color: $accent-one
+		color: $font-coac
+		box-shadow: $card-shadow-hover
+		border-color: $accent-one
+		border-radius: 2px
+
+	&:nth-last-child(1)
+		border: none
+
+.removieItem
+	position: fixed
+	z-index: 99999
+	background: rgba(#000, 0.85)
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0
+	display: flex
+	justify-content: center
+	align-items: center
+	animation: fade 0.5s ease-in-out
+
+.dialog
+	max-width: 500px
+	height: 150px
+	display: flex
+	margin: 20px
+	justify-content: center
+	align-items: center
+	opacity: 0
+	text-align: center
+
+	p
+		font-size: 1rem
+		padding: 60px 20px
+
+		strong
+			display: block
+
+.show
+	.dialog
+		opacity: 1
+		animation: moveDown 0.7s ease-in-out
+
+
+@keyframes fade
+	0%
+		opacity: 0
+	100%
+		opacity: 1
+
+@keyframes moveDown
+	0%
+		margin-top: -800px
+		opacity: 0
+	100%
+		margin-top: 20px
+		opacity: 1
+
+
+@keyframes hide
+	0%
+		opacity: 1
+	90%
+		opacity: 0
+	100%
+		display: none
+
+
+.skpopup
+	background: $card-bg
+	border-radius: 2px
+	display: flex
+	justify-content: center
+	padding: 60px 16px
+
+.input-level
+	width: 40%
+	margin: 0 0 0 60px
+
 
 // @media (min-width: 0px) and (max-width: $rw-mobile)
 	
@@ -66,6 +174,12 @@ h6
 	.post-item
 		position: relative
 		width: 47%
+
+	.deskill
+		display: flex
+
+		kg-card
+			width: 50%
 
 @media only screen and (min-width: $rw-tablet)
 	.page

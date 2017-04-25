@@ -45,6 +45,10 @@ export class DatabaseService {
     return this.Skills = this.af.database.list('skills') as FirebaseListObservable<Skill[]>;
   }
 
+  public getSkill(key) {
+    return this.af.database.object('skills/' + key) as FirebaseObjectObservable<any>;
+  }
+
   public getPortfolios() {
     return this.portfolios = this.af.database.list('portfolios') as FirebaseListObservable<Portfolio[]>;
   }

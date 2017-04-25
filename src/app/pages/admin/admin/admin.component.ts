@@ -1,27 +1,45 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DatabaseService } from '../../../services/database.service';
 import { AuthService } from '../../../services/auth.service';
+import { AppService } from '../../../services/app.service';
 
 @Component({
   selector: 'kg-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.sass'],
-  providers: [DatabaseService, AuthService]
+  providers: [DatabaseService, AuthService, AppService]
 })
-export class AdminComponent implements OnInit {
+export class AdminComponent implements OnInit, OnDestroy {
 
   infor: any;
   public auth: any;
   public portfolios: any;
   public description: any;
+  public skills: any;
+  public itemToBeRemoveTitle: string;
+
+  public title: string;
+  public level: string;
+
+  public skillId: string;
+  public getskillId: any;
 
   public toggleDes: string;
   public toggleDesp: string;
+  public toggledialog: string;
+  public toggledialogSkill: string;
 
-  constructor(private db: DatabaseService, private user: AuthService) { }
+  private selectitem: string;
+
+  constructor(
+    private db: DatabaseService,
+    private user: AuthService,
+    private app: AppService
+  ) { }
 
   ngOnInit() {
     this.userInfor();
+    this.getSkills();
     this.getPortfolios();
     this.userDescription();
   }
@@ -34,10 +52,39 @@ export class AdminComponent implements OnInit {
   	return this.db.getPortfolios().subscribe(data => this.portfolios = data);
   }
 
-  public removePortfolio(key) {
-    return this.db.getPortfolioDetails(key).remove()
-      .then(success => console.log(success))
+  public getSkills() {
+    return this.db.getSkills().subscribe(data => this.skills = data);
+  }
+
+  public openASkill(key?) {
+    this.skillId = key;
+    return this.db.getSkill(key).subscribe(data => {
+      this.getskillId = data;
+      this.toggledialogSkill = 'show';
+    });
+  }
+
+  public removePortfolio(key?) {
+    this.selectitem = key
+    return this.db.getPortfolioDetails(key).subscribe(data => {
+      this.itemToBeRemoveTitle = data.title; 
+      this.toggledialog = 'show';
+    });
+  }
+
+  public deletePortfolio() {
+    return this.db.getPortfolioDetails(this.selectitem).remove()
+      .then(() => this.toggledialog = '')
       .catch(error => console.log(error));
+  }
+
+  public updateSkill(event) {
+    event.preventDefault();
+    console.log(event);
+  }
+
+  public goToPortfolio(key) {
+    return this.app.goToPortfolioPage(key);
   }
 
   public userDescription() {
@@ -57,6 +104,15 @@ export class AdminComponent implements OnInit {
   public editDescriptionInfo(data) {
     let description = { description: data }
     return this.db.getNameAndDescription().update(description);
+  }
+
+  ngOnDestroy() {
+    this.userInfor().unsubscribe();
+    this.getSkills().unsubscribe();
+    this.getPortfolios().unsubscribe();
+    this.userDescription().unsubscribe();
+    this.openASkill().unsubscribe();
+    this.removePortfolio().unsubscribe();
   }
 
 }
