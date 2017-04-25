@@ -25,7 +25,7 @@
 
         <kg-card *ngIf="skills">
           <div class="skills">
-            <div *ngFor="let skill of skills" class="skill-item" (click)="openASkill(skill.$key)">
+            <div *ngFor="let skill of skills" class="skill-item" (click)="openASkill(skill.$key, $event)">
               <p>{{skill.title}}</p>
               <p>{{skill.level}}</p>
             </div>
@@ -70,16 +70,14 @@
 <div class="hide" [ngClass]="toggledialogSkill">
   <div class="removieItem">
     <kg-card class="dialog">
-      <form (ngSubmit)="updateSkill($event)">
       <div class="skpopup" *ngIf="getskillId">
-        <input type="text" name="title" [(value)]="getskillId.title" class="inpsk input-skill" placeholder="Skill">
-        <input type="text" name="level" [(value)]="getskillId.level" class="inpsk input-level" placeholder="Level">
+        <input type="text" name="title" (keyup)="updateSkillTitle($event.target.value)" value="{{getskillId.title}}" class="inpsk input-skill" placeholder="Skill">
+        <input type="text" name="level" (keyup)="updateSkillLevel($event.target.value)" value="{{getskillId.level}}" class="inpsk input-level" placeholder="Level">
       </div>
       <div class="button-group">
-        <kg-btn typr="submit" icon="save" class="btn">save</kg-btn>
+        <kg-btn typr="submit" icon="save" class="btn accent-one" (btnClick)="updateSkill()">save</kg-btn>
         <kg-btn type="botton" icon="cancel" class="btn" (btnClick)="toggledialogSkill = ''">Cancel</kg-btn>
       </div>
-      </form>
     </kg-card>
   </div>
 </div>

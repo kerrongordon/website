@@ -41,9 +41,9 @@ button
   &:active
     box-shadow: $card-shadow
 
-\:host.accent-two
+\:host.accent-one
   button
-    background-color: $accent-two
+    background-color: $accent-one
 
 \:host.delete
   button
@@ -80,11 +80,9 @@ button[disabled]
 \:host.icon-only
   button
     color: rgba($btn-color, 0.8)
-    // transform: scale(1)
     
     &:hover, &:focus
       background-color: transparent
-      // transform: scale(1.01)
       color: $btn-color
 
   .icon
@@ -105,8 +103,13 @@ $floating-size: 56px
     margin: 0
     line-height: $floating-size
 
+\:host.icon-dark
+  .icon
+    color: #444
+
 \:host.disabled
   button
     background-color: #f6f7f8
     box-shadow: none
     cursor: progress
+

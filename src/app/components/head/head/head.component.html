@@ -1,4 +1,4 @@
-<kg-header-bar id="search">
+<kg-header-bar id="search" [ngClass]="toggleheaderbar">
   <kg-btn type="button" icon="arrow_back" class="icon-only flat" (click)="goBack()"></kg-btn>
   <div class="input-contain" [ngClass]="inputFoucs">
     <span class="material-icons icon">search</span>
@@ -7,7 +7,7 @@
   <kg-btn type="button" icon="more_vert" class="icon-only flat" (btnClick)="toggleMenu()"></kg-btn>
 </kg-header-bar>
 <kg-menubar [ngClass]="toggleMenuClass"></kg-menubar>
-<kg-ribban [ngClass]="inputFocusRibban">
+<kg-ribban [ngClass]="inputFocusRibban" id="ribban">
   <kg-title>{{title}}</kg-title>
 </kg-ribban>
 <div class="page" [ngClass]="inputFocusPort">

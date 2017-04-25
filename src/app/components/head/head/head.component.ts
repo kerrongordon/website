@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, Input, EventEmitter, ChangeDetectionStrategy, AfterContentInit } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter, ChangeDetectionStrategy, AfterContentInit, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppService } from '../../../services/app.service';
 
@@ -17,12 +17,21 @@ export class HeadComponent implements OnInit, AfterContentInit {
   @Output() searchValue = new EventEmitter;
   @Output() clearSearch = new EventEmitter;
 
+  public ribbanHeight: number;
+
+  @HostListener('window:scroll', ['$event'])
+    onWindowScroll(event) {
+      this.ribbanHeight = document.getElementById('ribban').offsetHeight - 75;
+      this.getScrollInfor();
+    }
+
   public inputFocusRibban: string;
   public inputFocusPort: string;
   public toggleMenuClass: string;
   public searchInfo: string;
   public wait: any;
   public inputFoucs = '';
+  public toggleheaderbar: string;
 
   constructor(private router: Router, private as: AppService) { }
 
@@ -30,9 +39,20 @@ export class HeadComponent implements OnInit, AfterContentInit {
 
   }
 
+  private getScrollInfor() {
+    if (document.body.scrollTop >= this.ribbanHeight) {
+      this.toggleheaderbar = 'amScrolling';
+    } else {
+      if (this.router.url != '/portfolios#search') {
+        this.toggleheaderbar = '';
+      }
+    }
+  }
+
   ngAfterContentInit() {
      if (this.router.url === '/portfolios#search') {
        document.getElementById('searchInput').focus();
+       return this.toggleheaderbar = 'amScrolling';
      }
   }
 
@@ -41,6 +61,7 @@ export class HeadComponent implements OnInit, AfterContentInit {
       this.inputFocusRibban = 'hzero';
       this.inputFocusPort = 'hport';
       this.inputFoucs = 'inputFoucs';
+      this.toggleheaderbar = '';
       this.searchPortfolios(this.searchInfo);
       this.router.navigate(['/portfolios'], {fragment: 'search'});
     }
@@ -52,6 +73,7 @@ export class HeadComponent implements OnInit, AfterContentInit {
       this.inputFocusRibban = '';
       this.inputFocusPort = '';
       this.inputFoucs = '';
+      this.toggleheaderbar = '';
       this.clearSearch.emit();
     }, 300);
   }

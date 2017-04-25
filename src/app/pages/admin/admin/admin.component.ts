@@ -31,6 +31,9 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   private selectitem: string;
 
+  public newSkillTitle: string;
+  public newSkillLevel: string;
+
   constructor(
     private db: DatabaseService,
     private user: AuthService,
@@ -60,6 +63,8 @@ export class AdminComponent implements OnInit, OnDestroy {
     this.skillId = key;
     return this.db.getSkill(key).subscribe(data => {
       this.getskillId = data;
+      this.newSkillTitle = data.title;
+      this.newSkillLevel = data.level;
       this.toggledialogSkill = 'show';
     });
   }
@@ -78,9 +83,21 @@ export class AdminComponent implements OnInit, OnDestroy {
       .catch(error => console.log(error));
   }
 
-  public updateSkill(event) {
-    event.preventDefault();
-    console.log(event);
+  public updateSkillTitle(title) {
+    return this.newSkillTitle = title;
+  }
+
+  public updateSkillLevel(level) {
+    return this.newSkillLevel = level;
+  }
+
+  public updateSkill() {
+    let skill = {
+      title: this.newSkillTitle,
+      level: this.newSkillLevel
+    }
+    return this.db.getSkill(this.skillId).update(skill)
+      .then(() => this.toggledialogSkill = 'hide');
   }
 
   public goToPortfolio(key) {
