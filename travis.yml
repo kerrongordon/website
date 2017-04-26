@@ -1,0 +1,19 @@
+dist: trusty
+language: node_js
+node_js:
+  - "6"
+script:
+    - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+install:
+    - sudo apt-get update && sudo apt-get install yarn
+    - yarn global add @angular/cli
+    - yarn global add typings
+    - yarn global add sw-precache
+    - yarn global add firebase-tools
+    - yarn install
+after_success:
+    - ng build -prod --aot
+    - firebase deploy --token "$FIREBASE_TOKEN"
+
+
+

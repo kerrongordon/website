@@ -1,11 +1,11 @@
 /*jshint esversion: 6 */ 
-const functions = require('firebase-functions');
-const admin = require('firebase-admin');
-const gcs = require('@google-cloud/storage')();
-const spawn = require('child-process-promise').spawn;
-const base64Img = require('base64-img');
+// const functions = require('firebase-functions');
+// const admin = require('firebase-admin');
+// const gcs = require('@google-cloud/storage')();
+// const spawn = require('child-process-promise').spawn;
+// const base64Img = require('base64-img');
 
-admin.initializeApp(functions.config().firebase);
+// admin.initializeApp(functions.config().firebase);
 
 // exports.resizeImage = functions.storage.object().onChange(event => {
 //   const object = event.data;

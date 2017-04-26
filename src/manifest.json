@@ -1,11 +1,11 @@
 {
  "name": "Kerron Gordon",
  "short_name": "kerrongordon",
- "theme_color": "#673ab7",
+ "theme_color": "#2798ee",
  "background_color": "#ecf0f1",
  "display": "standalone",
  "Scope": "/",
- "start_url": "/#home",
+ "start_url": "/",
  "icons": [
   {
    "src": "\/assets/icons/android-icon-36x36.png",
