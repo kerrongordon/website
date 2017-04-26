@@ -1,11 +1,10 @@
 dist: trusty
 language: node_js
 node_js:
-  - "6"
+  - "7"
 script:
-    - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+    - curl -o- -L https://yarnpkg.com/install.sh | bash
 install:
-    - sudo apt-get update && sudo apt-get install yarn
     - yarn global add @angular/cli
     - yarn global add typings
     - yarn global add firebase-tools
