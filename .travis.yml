@@ -6,8 +6,6 @@ script:
     - curl -o- -L https://yarnpkg.com/install.sh | bash
     - yarn --version
 install:
-    - yarn global add @angular/cli
-    - yarn global add typings
     - yarn global add firebase-tools
     - yarn install
 after_success:
