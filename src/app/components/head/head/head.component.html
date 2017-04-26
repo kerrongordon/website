@@ -7,7 +7,8 @@
   <kg-btn type="button" icon="more_vert" class="icon-only flat" (btnClick)="toggleMenu()"></kg-btn>
 </kg-header-bar>
 <kg-menubar [ngClass]="toggleMenuClass"></kg-menubar>
-<kg-ribban [ngClass]="inputFocusRibban" id="ribban">
+<kg-ribban [ngClass]="inputFocusRibban" id="ribban" [ngStyle]="{'background':'url(' + HeroImg + ') 50% 50% / cover'}">
+  <img class="hide" src="/assets/herobg.jpg" (load)="ImageLoadedd()" alt="hero">
   <kg-title>{{title}}</kg-title>
 </kg-ribban>
 <div class="page" [ngClass]="inputFocusPort">

@@ -33,9 +33,9 @@ body
 .container 
   margin: 0 auto
   max-width: 90.0rem
-  padding: 0 2.0rem
   position: relative
   width: 100%
+  transition: $transition
 
 
 .menubtn
@@ -147,3 +147,16 @@ img
 
     &:hover
       color: $accent-two
+
+
+@media (min-width: 0px) and (max-width: $rw-mobile)
+  .container 
+    padding: 0 0.8rem
+
+@media (min-width: $rw-mobile) and (max-width: $rw-tablet)
+  .container 
+    padding: 0 1.5rem
+
+@media only screen and (min-width: $rw-tablet)
+  .container 
+    padding: 0 2.0rem
