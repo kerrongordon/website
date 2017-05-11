@@ -1,12 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { DatabaseService } from '../../../services/database.service';
+
 import { AppService } from '../../../services/app.service';
+
+import { PortfoliosService } from '../../../services/firebase/portfolios/portfolios.service';
 
 @Component({
   selector: 'kg-portfolios',
   templateUrl: './portfolios.component.html',
   styleUrls: ['./portfolios.component.sass'],
-  providers: [DatabaseService, AppService]
+  providers: [AppService, PortfoliosService]
 })
 export class PortfoliosComponent implements OnInit, OnDestroy {
 
@@ -17,17 +19,20 @@ export class PortfoliosComponent implements OnInit, OnDestroy {
   public searchInfo: any[];
   public pageTitle = 'Portfolios';
 
-  constructor(private db: DatabaseService, private as: AppService) { }
+  constructor(
+    private as: AppService,
+    private _portfoliosService: PortfoliosService
+  ) { }
 
   ngOnInit() {
-    this.portfoliosData();
+    this.setPortfolios();
   }
 
-  portfoliosData() {
-    return this.db.getPortfolios().subscribe(data => this.portfolios = data.slice().reverse());
+  private setPortfolios() {
+    return this._portfoliosService.getListPortfolios().subscribe(data => this.portfolios = data.slice().reverse());
   }
 
-  openPortfolio(key): void {
+  openPortfolio(key) {
     return this.as.goToPortfolioPage(key);
   }
 
@@ -35,9 +40,10 @@ export class PortfoliosComponent implements OnInit, OnDestroy {
     if (event === '' || event === null || event === undefined) {
         this.resetSearch();
        } else {
-        this.searchTitle = this.portfolios.filter(sh => sh.title.toLowerCase().indexOf(event) > -1).filter((el, index) => index < 4);
-        this.searchMarkdown = this.portfolios.filter(sh => sh.markdown.toLowerCase().indexOf(event) > -1).filter((el, index) => index < 4);
-        this.searchInfo = this.portfolios.filter(sh => sh.info.toLowerCase().indexOf(event) > -1).filter((el, index) => index < 4);
+        const value = event.toLowerCase()
+        this.searchTitle = this.portfolios.filter(sh => sh.title.toLowerCase().indexOf(value) > -1).filter((el, index) => index < 4);
+        this.searchMarkdown = this.portfolios.filter(sh => sh.markdown.toLowerCase().indexOf(value) > -1).filter((el, index) => index < 4);
+        this.searchInfo = this.portfolios.filter(sh => sh.info.toLowerCase().indexOf(value) > -1).filter((el, index) => index < 4);
        }
   }
 
@@ -52,7 +58,7 @@ export class PortfoliosComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.portfoliosData().unsubscribe();
+    this.setPortfolios().unsubscribe();
   }
 
 }

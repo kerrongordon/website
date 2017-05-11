@@ -3,12 +3,13 @@ import { DatabaseService } from '../../../services/database.service';
 import { AuthService } from '../../../services/auth.service';
 
 import { MarkdownService } from '../../../services/markdown.service';
+import { ImageService } from '../../../services/image/image.service';
 
 @Component({
   selector: 'kg-addportfolio',
   templateUrl: './addportfolio.component.html',
   styleUrls: ['./addportfolio.component.sass'],
-  providers: [DatabaseService, MarkdownService, AuthService]
+  providers: [DatabaseService, MarkdownService, AuthService, ImageService]
 })
 export class AddportfolioComponent implements OnInit {
 
@@ -33,7 +34,8 @@ export class AddportfolioComponent implements OnInit {
   constructor(
     private db: DatabaseService,
     private md: MarkdownService,
-    private at: AuthService
+    private at: AuthService,
+    private _imageService: ImageService
   ) { }
 
   ngOnInit() {
@@ -52,17 +54,15 @@ export class AddportfolioComponent implements OnInit {
   }
 
   onThumbnail(event: EventTarget) {
-    const eventObj: MSInputMethodContext = <MSInputMethodContext> event;
-    const target: HTMLInputElement = <HTMLInputElement> eventObj.target;
-    const files: FileList = target.files;
+    const files = this._imageService.FileInputInfor(event);
     this.thumbnailfile = files[0];
+    this._imageService.ShowImageFromInput(files, 'thumbnailImg');
   }
 
   onDesktopImage(event: EventTarget) {
-    const eventObj: MSInputMethodContext = <MSInputMethodContext> event;
-    const target: HTMLInputElement = <HTMLInputElement> eventObj.target;
-    const files: FileList = target.files;
+    const files = this._imageService.FileInputInfor(event);
     this.desktopImagefile = files[0];
+    this._imageService.ShowImageFromInput(files, 'desktopImg');
   }
 
   addNewPortfolio(event): void {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
+import { AngularFire, FirebaseListObservable, FirebaseObjectObservable, AngularFireAuth } from 'angularfire2';
 import { Router } from '@angular/router';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
@@ -33,9 +33,24 @@ export class DatabaseService {
 
   public thumbnailProgress: number;
   public desktopImageProgress: number;
+  public userauth: any;
 
 
-  constructor(public af: AngularFire, private rt: Router, private http: Http) {}
+  constructor(public af: AngularFire, private rt: Router, private http: Http, private auth: AngularFireAuth) { 
+    // this.getUserId();
+  }
+
+  public Users() {
+    return this.af.database.list('users') as FirebaseListObservable<any>;
+  }
+
+  public getUserId() {
+    return this.auth.subscribe(data => this.userauth = data.uid);
+  }
+
+  public UserObject(key) {
+    return this.af.database.object('users/' + key) as FirebaseObjectObservable<any>;
+  }
 
   public getNameAndDescription() {
     return this.nameAndDescription = this.af.database.object('siteInfor') as FirebaseObjectObservable<NameAndDescription>;
@@ -50,7 +65,13 @@ export class DatabaseService {
   }
 
   public getPortfolios() {
-    return this.portfolios = this.af.database.list('portfolios') as FirebaseListObservable<Portfolio[]>;
+    if (this.userauth !== null) {
+      console.log('i am not null');
+      return this.portfolios = this.af.database.list('portfolios/' + this.userauth) as FirebaseListObservable<Portfolio[]>;
+    } else {
+      console.log('i am null');
+      return this.portfolios = this.af.database.list('portfolios') as FirebaseListObservable<Portfolio[]>;
+    }
   }
 
   public getPortfolioDetails(id) {

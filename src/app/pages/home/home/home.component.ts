@@ -1,25 +1,44 @@
-import { Component, OnInit, HostBinding, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { AppService } from '../../../services/app.service';
-import { DatabaseService } from '../../../services/database.service';
+import { DescriptionService } from '../../../services/firebase/description/description.service';
+import { SkillsService } from '../../../services/firebase/skills/skills.service';
+import { PortfoliosService } from '../../../services/firebase/portfolios/portfolios.service';
+import { TitleService } from '../../../services/firebase/title/title.service';
+import { EmailService } from '../../../services/email/email.service';
 
 @Component({
   selector: 'kg-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.sass'],
-  providers: [DatabaseService, AppService]
+  providers: [AppService,
+              DescriptionService,
+              SkillsService,
+              PortfoliosService,
+              TitleService,
+              EmailService]
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
-  public title: any;
-  public description: any;
+  public title: string;
+  public email: any;
+  public description: string;
   public skills: any;
   public portfolios: any;
 
-  complexForm: FormGroup;
+  public complexForm: FormGroup;
 
-  constructor(private data: DatabaseService, private as: AppService, private fb: FormBuilder) {
-    this.complexForm = fb.group({
+  constructor(
+    private _appService: AppService,
+    private _formBuilder: FormBuilder,
+    private _descriptionService: DescriptionService,
+    private _skillsService: SkillsService,
+    private _portfoliosService: PortfoliosService,
+    private _titleService: TitleService,
+    private _emailService: EmailService
+  ) {
+    this.complexForm = _formBuilder.group({
       'name': [null, Validators.compose([Validators.required, Validators.minLength(3)])],
       'email': [null, Validators.compose([Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')])],
       'message': [null, Validators.compose([Validators.required, Validators.minLength(20)])]
@@ -27,50 +46,51 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.getTitleAndDescription();
-    this.getSkills();
-    this.getPortfolios();
+    this.setTitle();
+    this.setDescription();
+    this.setSkills();
+    this.setPortfolios();
   }
 
-  private getTitleAndDescription() {
-    return this.data.getNameAndDescription().subscribe(infor => {
-      this.description = infor.description;
-      this.title = infor.name;
-    });
+  private setTitle() {
+    return this._titleService.getTitle().subscribe(data => this.title = data.$value);
   }
 
-  private getSkills() {
-    return this.data.getSkills().subscribe(skills => this.skills = skills);
+  private setDescription() {
+    return this._descriptionService.getDescription().subscribe(data => this.description = data.$value);
   }
 
-  private getPortfolios() {
-    return this.data.getPortfolios().subscribe(data => {
-      this.portfolios = data.slice().reverse().filter((el, index) => index < 4);
-    });
+  private setSkills() {
+    return this._skillsService.getListOfSkills().subscribe(data => this.skills = data);
   }
 
-  public openPortfolios(): void {
-    return this.as.goToPortfoliosPage();
+  private setPortfolios() {
+    return this._portfoliosService.getListPortfolios()
+      .subscribe(data => this.portfolios = data.slice().reverse().filter((el, index) => index < 4) );
   }
 
-  public openPortfolio(key): void {
-    return this.as.goToPortfolioPage(key);
+  public openPortfolios() {
+    return this._appService.goToPortfoliosPage();
   }
 
-  submitForm(value): void {
+  public openPortfolio(key) {
+    return this._appService.goToPortfolioPage(key);
+  }
+
+  submitForm(value) {
     if (!value.name || !value.email || !value.message) { return; }
     if (this.complexForm.status === 'VALID') {
-        this.data.postEmail(value).subscribe();
-        this.complexForm.reset();
-        return;
+        return this.email = this._emailService.postEmail(value)
+          .subscribe(() => this.complexForm.reset());
     }
     return;
   }
 
   ngOnDestroy() {
-    this.getTitleAndDescription().unsubscribe();
-    this.getSkills().unsubscribe();
-    this.getPortfolios().unsubscribe();
+    this.setTitle().unsubscribe();
+    this.setDescription().unsubscribe();
+    this.setSkills().unsubscribe();
+    this.setPortfolios().unsubscribe();
   }
 
 }
