@@ -36,7 +36,7 @@ export class DatabaseService {
   public userauth: any;
 
 
-  constructor(public af: AngularFire, private rt: Router, private http: Http, private auth: AngularFireAuth) { 
+  constructor(public af: AngularFire, private rt: Router, private http: Http, private auth: AngularFireAuth) {
     // this.getUserId();
   }
 

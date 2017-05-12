@@ -7,19 +7,19 @@ export class ImageService {
 
   constructor() { }
 
-  // public ImageToBase64(img, resize) {
-  //   const imgWidth = img.width * resize;
-  //   const imgHeight = img.height * resize;
+  public ImageToBase64(img, resize) {
+    const imgWidth = img.width * resize;
+    const imgHeight = img.height * resize;
 
-  //   const canvas = document.createElement('canvas');
-  //         canvas.width = imgWidth;
-  //         canvas.height = imgHeight;
+    const canvas = document.createElement('canvas');
+          canvas.width = imgWidth;
+          canvas.height = imgHeight;
 
-  //   const ctx = canvas.getContext('2d');
-  //         ctx.drawImage(img, 0, 0, imgWidth, imgHeight);
+    const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, imgWidth, imgHeight);
 
-  //   return this.ImageBase64 = canvas.toDataURL('image/png');
-  // }
+    return this.ImageBase64 = canvas.toDataURL('image/png');
+  }
 
   public FileInputInfor(event: EventTarget) {
     const eventObj: MSInputMethodContext = <MSInputMethodContext> event;
@@ -35,6 +35,7 @@ export class ImageService {
       return reader.onload = function (e: any) {
         const image = document.getElementById(id);
         image.setAttribute('src', e.target.result);
+        image.setAttribute('class', 'upimage upthumb');
       }
     }
   }

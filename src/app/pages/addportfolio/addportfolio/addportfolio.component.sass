@@ -12,14 +12,15 @@ textarea
   resize: vertical
 
 .input-contain
-  margin: 16px auto
-  max-width: 600px
+  border-radius: 0
+  box-shadow: none
+  margin: 10px 0
 
-.fileupload
-  display: flex
-  justify-content: space-around
-  align-items: center
-  flex-wrap: wrap
+// .fileupload
+//   display: flex
+//   justify-content: space-around
+//   align-items: center
+//   flex-wrap: wrap
 
 .submitdata
   background: rgba(#000, 0.8)
@@ -51,3 +52,61 @@ textarea
   display: flex
   justify-content: space-around
   padding: 16px
+
+
+
+kg-card
+  padding: 16px
+
+.uploadImageBtn
+  color: #fff
+  border: dashed 3px #ddd
+  margin-bottom: -20px
+  height: 200px
+
+  label
+    width: 100%
+    height: 100%
+    display: block
+
+  input
+    display: none
+
+.upimage
+  width: 100%
+
+.imgtitle
+  font-size: 1.2rem
+  margin-bottom: 1rem
+
+
+.fileupload
+  align-items: baseline
+
+// .thumbnail-image,
+// .desktopImage-image
+
+.upthumb
+  margin-top: -180px
+
+
+// @media (min-width: 0px) and (max-width: $rw-mobile)
+
+
+// @media (min-width: $rw-mobile) and (max-width: $rw-tablet)
+
+@media only screen and (min-width: $rw-mobile)
+  .titleandtype,
+  .markdown-contain
+    display: flex
+
+    .input-contain
+      flex: 1
+      
+  .fileupload
+    display: flex
+
+    kg-card
+      flex: 1
+
+// @media only screen and (min-width: $rw-tablet)

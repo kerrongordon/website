@@ -1,57 +1,69 @@
 <kg-head title="Add Portfolio">
-  <form (ngSubmit)="addNewPortfolio($event)">
-    <div class="input-contain">
-      <span class="material-icons icon">account_circle</span>
-      <input class="input" type="text" [(ngModel)]="title" name="title" placeholder="Title">
-    </div>
-    <div class="input-contain">
-      <span class="material-icons icon">account_circle</span>
-      <input class="input" type="text" [(ngModel)]="type" name="type" placeholder="Project Type">
-    </div>
 
-    <div class="input-contain">
-      <span class="material-icons icon">account_circle</span>
-      <textarea class="input" [(ngModel)]="info" name="info" placeholder="Add Small Content Here"></textarea>
-    </div>
+  <form [formGroup]="fGroup" (ngSubmit)="addNewPortfolio(fGroup.value, fGroup.valid)">
 
-    <div class="input-contain">
-      <span class="material-icons icon">account_circle</span>
-      <textarea class="input" [(ngModel)]="markdown" name="markdown" (keyup)="updateOutput($event.target.value)" placeholder="Add Markdown Here"></textarea>
-    </div>
+    <kg-card>
+      <div class="titleandtype">
 
-    <div class="input-contain">
-      <span class="material-icons icon">account_circle</span>
-      <div class="input" [innerHTML]="mdOutput"></div>
-    </div>
+        <div class="input-contain">
+          <span class="material-icons icon">account_circle</span>
+          <input class="input" type="text" [formControl]="fGroup.controls['title']" placeholder="Title">
+        </div>
 
-    <div class="input-contain">
-      <span class="material-icons icon">account_circle</span>
-      <input class="input" type="text" [(ngModel)]="thumbnailBase64" name="thumbnailBase64" placeholder="Base64 Thumbnail">
-    </div>
-    <div class="input-contain">
-      <span class="material-icons icon">account_circle</span>
-      <input class="input" type="text" [(ngModel)]="desktopBase64" name="desktopBase64" placeholder="Base64 Desktop Image">
-    </div>
+        <div class="input-contain">
+          <span class="material-icons icon">account_circle</span>
+          <input class="input" type="text" [formControl]="fGroup.controls['type']" placeholder="Project Type">
+        </div>
+
+      </div>
+
+      <div class="input-contain">
+        <textarea class="input" [formControl]="fGroup.controls['description']" placeholder="Add Description Content Here"></textarea>
+      </div>
+
+      <div class="markdown-contain">
+        <div class="input-contain">
+          <textarea class="input" [formControl]="fGroup.controls['markdown']" (keyup)="updateOutput($event.target.value)" placeholder="Add Markdown Here"></textarea>
+        </div>
+        <div class="input-contain">
+          <div class="input" [innerHTML]="mdOutput"></div>
+        </div>
+      </div>
+
+    </kg-card>
 
     <div class="fileupload">
-      <div class="thumbnail">
-        <label for="thumbnail" class="uplabel">Thumbnail</label>
-        <input (change)="onThumbnail($event)" class="upbtn" id="thumbnail" type="file" name="thumbnail">
-      </div>
 
-      <div class="desktopImage">
-        <label for="desktopImage" class="uplabel">full Site Image</label>
-        <input (change)="onDesktopImage($event)" class="upbtn" id="desktopImage" type="file" name="desktopImage">
-      </div>
+      <kg-card>
+        <h5 class="imgtitle">Thumbnail</h5>
+        <div class="thumbnail uploadImageBtn">
+          <label for="thumbnail" class="uplabel">Thumbnail</label>
+          <input (change)="onThumbnail($event)" class="upbtn" id="thumbnail" type="file" name="thumbnail">
+        </div>
+        <div class="thumbnail-image">
+          <img id="thumbnailImg" class="upimage">
+        </div>
+      </kg-card>
+
+      <kg-card>
+        <h5 class="imgtitle">Desktop Image</h5>
+        <div class="desktopImage uploadImageBtn">
+          <label for="desktopImage" class="uplabel">full Site Image</label>
+          <input (change)="onDesktopImage($event)" class="upbtn" id="desktopImage" type="file" name="desktopImage">
+        </div>
+        <div class="desktopImage-image">
+          <img id="desktopImg" class="upimage">
+        </div>
+      </kg-card>
+
     </div>
-
-    <img id="thumbnailImg">
-     <img id="desktopImg">
 
     <div class="center">
       <kg-btn type="submit" icon="send" class="icon-right">Submit</kg-btn>
     </div>
+
   </form>
+
 </kg-head>
 <kg-footer></kg-footer>
 
