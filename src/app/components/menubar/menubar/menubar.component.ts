@@ -15,11 +15,11 @@ export class MenubarComponent implements OnInit {
   constructor(private auth: AuthService) { }
 
   ngOnInit() {
-  	return this.auth.isAuth().subscribe(as => this.isAuth = as);
+    return this.auth.isAuth().authState.subscribe(as => this.isAuth = as);
   }
 
-  logout(): void {
-  	this.auth.logOut();
+  logout() {
+    return this.auth.isAuth().auth.signOut();
   }
 
 }

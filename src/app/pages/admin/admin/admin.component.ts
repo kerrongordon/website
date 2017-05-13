@@ -48,11 +48,11 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   public userInfor() {
-  	return this.user.isAuth().subscribe(data => this.auth = data.google);
+    return this.user.isAuth().authState.subscribe(data => this.auth = data);
   }
 
   public getPortfolios() {
-  	return this.db.getPortfolios().subscribe(data => this.portfolios = data);
+    return this.db.getPortfolios().subscribe(data => this.portfolios = data);
   }
 
   public getSkills() {
@@ -72,7 +72,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   public removePortfolio(key?) {
     this.selectitem = key
     return this.db.getPortfolioDetails(key).subscribe(data => {
-      this.itemToBeRemoveTitle = data.title; 
+      this.itemToBeRemoveTitle = data.title;
       this.toggledialog = 'show';
     });
   }
@@ -92,7 +92,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   public updateSkill() {
-    let skill = {
+    const skill = {
       title: this.newSkillTitle,
       level: this.newSkillLevel
     }
@@ -119,7 +119,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   public editDescriptionInfo(data) {
-    let description = { description: data }
+    const description = { description: data }
     return this.db.getNameAndDescription().update(description);
   }
 

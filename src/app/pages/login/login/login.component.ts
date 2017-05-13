@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
+import { AngularFireAuth, AngularFireAuthProvider } from 'angularfire2/auth';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { AppService } from '../../../services/app.service';
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   private getID: boolean;
 
   constructor(
-    private _angularFire: AngularFire,
+    private _angularFire: AngularFireAuth,
     private _router: Router,
     private _databaseService: DatabaseService,
     private _authService: AuthService,
@@ -33,13 +33,13 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   public login(event) {
     event.preventDefault();
-    return this._angularFire.auth.login({provider: AuthProviders.Google, method: AuthMethods.Popup})
+    return this._angularFire.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider)
       .then(success => this.getuserInfor())
       .catch(err => console.log(err));
   }
 
   private amILogIn() {
-    return this._angularFire.auth.subscribe(auth => {
+    return this._angularFire.authState.subscribe(auth => {
       if (auth) { this.goToAdminPage() }
     });
   }
@@ -61,9 +61,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   private getuserInfor() {
-    return this._authService.isAuth().subscribe(data => {
-      const uids = data.google.uid;
-      const userData = { google: data.google }
+    return this._authService.isAuth().authState.subscribe(data => {
+      const uids = data.uid;
+      const userData = { google: data }
       this.doUserExist(uids);
       if (this.getID === true || this.getID !== undefined) {
         this.goToAdminPage();

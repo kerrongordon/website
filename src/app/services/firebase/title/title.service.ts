@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
+import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 
 @Injectable()
 export class TitleService {
@@ -7,11 +7,11 @@ export class TitleService {
   public title: FirebaseObjectObservable<any>;
 
   constructor(
-    private _angularFire: AngularFire
+    private _angularFireDatabase: AngularFireDatabase
   ) { }
 
   public getTitle() {
-    return this.title = this._angularFire.database.object('title') as FirebaseObjectObservable<any>;
+    return this.title = this._angularFireDatabase.object('title') as FirebaseObjectObservable<any>;
   }
 
 }

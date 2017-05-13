@@ -1,5 +1,6 @@
 {
   "rules": {
+    ".read": true,
     "portfolios": {
       ".read": true,
       ".write": "root.child('users/' + auth.uid + '/isAdmin').val() === true"

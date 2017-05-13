@@ -55,12 +55,12 @@ export class AddportfolioComponent implements OnInit {
   ngOnInit() {
     this.db.getPortfolios();
     this.db.loadFirebaseStorage();
-    this.at.isAuth().subscribe(data => {
+    this.at.isAuth().authState.subscribe(data => {
       this.auth = data;
-      this.userName = data.google.displayName;
-      this.photoURL = data.google.photoURL;
+      // this.userName = data.google.displayName;
+      // this.photoURL = data.google.photoURL;
+      console.log(data);
     });
-
 
   }
 

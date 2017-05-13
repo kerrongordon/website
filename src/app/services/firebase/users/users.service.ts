@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFire, FirebaseListObservable, FirebaseObjectObservable, AngularFireAuth } from 'angularfire2';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 @Injectable()
 export class UsersService {
@@ -7,12 +7,11 @@ export class UsersService {
   public userList: FirebaseListObservable<any>;
 
   constructor(
-    private _angularFire: AngularFire,
-    private _angularFireAuth: AngularFireAuth
+    private _angularFireDatabase: AngularFireDatabase
   ) { }
 
   public getUsersList() {
-    return this.userList = this._angularFire.database.list('/users/') as FirebaseListObservable<any>;
+    return this.userList = this._angularFireDatabase.list('/users/') as FirebaseListObservable<any>;
   }
 
 }

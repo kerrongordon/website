@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 
 @Injectable()
 export class PortfoliosService {
@@ -8,15 +8,15 @@ export class PortfoliosService {
   public portfolioObject: FirebaseObjectObservable<Portfolio>
 
   constructor(
-    private _angularFire: AngularFire
+    private _angularFireDatabase: AngularFireDatabase
   ) { }
 
   public getListPortfolios() {
-    return this.listPortfolios = this._angularFire.database.list('portfolios') as FirebaseListObservable<any>;
+    return this.listPortfolios = this._angularFireDatabase.list('portfolios') as FirebaseListObservable<any>;
   }
 
   public getPortfolioObject(key) {
-    return this.portfolioObject = this._angularFire.database.object('portfolios/' + key) as FirebaseObjectObservable<Portfolio>;
+    return this.portfolioObject = this._angularFireDatabase.object('portfolios/' + key) as FirebaseObjectObservable<Portfolio>;
   }
 
 }

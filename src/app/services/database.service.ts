@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AngularFire, FirebaseListObservable, FirebaseObjectObservable, AngularFireAuth } from 'angularfire2';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { Router } from '@angular/router';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
@@ -36,46 +37,46 @@ export class DatabaseService {
   public userauth: any;
 
 
-  constructor(public af: AngularFire, private rt: Router, private http: Http, private auth: AngularFireAuth) {
+  constructor(public af: AngularFireDatabase, private rt: Router, private http: Http, private auth: AngularFireAuth) {
     // this.getUserId();
   }
 
   public Users() {
-    return this.af.database.list('users') as FirebaseListObservable<any>;
+    return this.af.list('users') as FirebaseListObservable<any>;
   }
 
   public getUserId() {
-    return this.auth.subscribe(data => this.userauth = data.uid);
+    return this.auth.authState.subscribe(data => this.userauth = data.uid);
   }
 
   public UserObject(key) {
-    return this.af.database.object('users/' + key) as FirebaseObjectObservable<any>;
+    return this.af.object('users/' + key) as FirebaseObjectObservable<any>;
   }
 
   public getNameAndDescription() {
-    return this.nameAndDescription = this.af.database.object('siteInfor') as FirebaseObjectObservable<NameAndDescription>;
+    return this.nameAndDescription = this.af.object('siteInfor') as FirebaseObjectObservable<NameAndDescription>;
   }
 
   public getSkills() {
-    return this.Skills = this.af.database.list('skills') as FirebaseListObservable<Skill[]>;
+    return this.Skills = this.af.list('skills') as FirebaseListObservable<Skill[]>;
   }
 
   public getSkill(key) {
-    return this.af.database.object('skills/' + key) as FirebaseObjectObservable<any>;
+    return this.af.object('skills/' + key) as FirebaseObjectObservable<any>;
   }
 
   public getPortfolios() {
     if (this.userauth !== null) {
       console.log('i am not null');
-      return this.portfolios = this.af.database.list('portfolios/' + this.userauth) as FirebaseListObservable<Portfolio[]>;
+      return this.portfolios = this.af.list('portfolios/' + this.userauth) as FirebaseListObservable<Portfolio[]>;
     } else {
       console.log('i am null');
-      return this.portfolios = this.af.database.list('portfolios') as FirebaseListObservable<Portfolio[]>;
+      return this.portfolios = this.af.list('portfolios') as FirebaseListObservable<Portfolio[]>;
     }
   }
 
   public getPortfolioDetails(id) {
-    return this.portfolio = this.af.database.object('portfolios/' + id) as FirebaseObjectObservable<any>;
+    return this.portfolio = this.af.object('portfolios/' + id) as FirebaseObjectObservable<any>;
   }
 
   public loadFirebaseStorage() {

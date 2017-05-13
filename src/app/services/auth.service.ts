@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { AngularFireAuth } from 'angularfire2/angularfire2';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
@@ -11,10 +11,10 @@ export class AuthService {
 
   public isLogin: any;
 
-  constructor(private auth: AngularFireAuth, private router: Router) { }
+  constructor(private afAuth: AngularFireAuth, private router: Router) { }
 
   canActivate(): Observable<boolean> {
-      return Observable.from(this.auth)
+      return Observable.from(this.afAuth.authState)
         .take(1)
         .map(state => !!state)
         .do(authenticated => {
@@ -24,11 +24,11 @@ export class AuthService {
     }
 
   public isAuth() {
-    return this.isLogin = this.auth;
+    return this.isLogin = this.afAuth;
   }
 
   public logOut() {
-    return this.auth.logout();
+    return this.afAuth.auth.signOut();
   }
 
 }
