@@ -36,6 +36,7 @@ export class ImageService {
         const image = document.getElementById(id);
         image.setAttribute('src', e.target.result);
         image.setAttribute('class', 'upimage upthumb');
+        image.setAttribute('alt', value[0].name);
       }
     }
   }

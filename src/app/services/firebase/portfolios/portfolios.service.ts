@@ -8,7 +8,7 @@ export class PortfoliosService {
   public portfolioObject: FirebaseObjectObservable<Portfolio>
 
   constructor(
-    private _angularFireDatabase: AngularFireDatabase
+    private _angularFireDatabase: AngularFireDatabase,
   ) { }
 
   public getListPortfolios() {

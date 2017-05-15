@@ -2,17 +2,16 @@
 
 \:host
   display: block
-  position: absolute
+  position: fixed
   padding: 16px 0
   z-index: 9999
   top: 0px
   width: 100%
+  transition: $transition
+  background-color: rgba($accent-one, 0.95)
 
 \:host.amScrolling
-  position: fixed
-  background-color: rgba($accent-one, 0.95)
   box-shadow: $card-shadow-hover
-  animation: fadeInMenuBarDown 0.3s ease-in-out
 
 
 .flex
@@ -20,12 +19,5 @@
   flex-direction: row
   align-items: center
   justify-content: space-between
-
-
-@keyframes fadeInMenuBarDown
-  0%
-    top: -75px
-  100%
-    top: 0px
 
 

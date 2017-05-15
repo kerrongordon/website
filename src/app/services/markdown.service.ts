@@ -8,6 +8,13 @@ export class MarkdownService {
 
   constructor() {
     this.md = marked;
+    this.md.setOptions({
+      gfm: true,
+      tables: true,
+      smartypants: true,
+      breaks: true,
+      sanitize: true
+    });
   }
 
   convert(markdown: string) {

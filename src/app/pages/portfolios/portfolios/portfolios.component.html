@@ -3,7 +3,7 @@
 
   <div class="card-container" *ngIf="searchTitle?.length === null || searchInfo?.length === null || searchMarkdown?.length === null">
     <kg-card *ngFor="let portfolio of portfolios" (click)="openPortfolio(portfolio.$key)">
-      <kg-card-image [image]="portfolio.thumbnailPath" [base64]="portfolio.thumbnailBase64"></kg-card-image>
+      <kg-card-image [image]="portfolio.thumbnail.url" [base64]="portfolio.thumbnail.base64"></kg-card-image>
       <kg-card-content [title]="portfolio.title" [info]="portfolio.info"></kg-card-content>
       <kg-card-infor [postDate]="portfolio.timestamp"></kg-card-infor>
     </kg-card>
