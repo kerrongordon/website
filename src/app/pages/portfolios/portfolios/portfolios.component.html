@@ -4,7 +4,7 @@
   <div class="card-container" *ngIf="searchTitle?.length === null || searchInfo?.length === null || searchMarkdown?.length === null">
     <kg-card *ngFor="let portfolio of portfolios" (click)="openPortfolio(portfolio.$key)">
       <kg-card-image [image]="portfolio.thumbnail.url" [base64]="portfolio.thumbnail.base64"></kg-card-image>
-      <kg-card-content [title]="portfolio.title" [info]="portfolio.info"></kg-card-content>
+      <kg-card-content [title]="portfolio.title" [info]="portfolio.description"></kg-card-content>
       <kg-card-infor [postDate]="portfolio.timestamp"></kg-card-infor>
     </kg-card>
   </div>
@@ -15,7 +15,7 @@
       <h6 class="seach-title">By Title</h6>
       <div class="card-container search">
         <kg-card *ngFor="let title of searchTitle" (click)="openPortfolio(title.$key)">
-          <kg-card-content [title]="title.title" [info]="title.info"></kg-card-content>
+          <kg-card-content [title]="title.title" [info]="title.description"></kg-card-content>
           <kg-card-infor [postDate]="title.timestamp"></kg-card-infor>
         </kg-card>
       </div>
@@ -25,7 +25,7 @@
       <h6 class="seach-title">By Summary</h6>
       <div class="card-container search">
         <kg-card *ngFor="let info of searchInfo" (click)="openPortfolio(info.$key)">
-          <kg-card-content [title]="info.title" [info]="info.info"></kg-card-content>
+          <kg-card-content [title]="info.title" [info]="info.description"></kg-card-content>
           <kg-card-infor [postDate]="info.timestamp"></kg-card-infor>
         </kg-card>
       </div>
@@ -35,7 +35,7 @@
       <h6 class="seach-title">By Content</h6>
       <div class="card-container search">
         <kg-card *ngFor="let markdown of searchMarkdown" (click)="openPortfolio(markdown.$key)">
-          <kg-card-content [title]="markdown.title" [info]="markdown.info"></kg-card-content>
+          <kg-card-content [title]="markdown.title" [info]="markdown.description"></kg-card-content>
           <kg-card-infor [postDate]="markdown.timestamp"></kg-card-infor>
         </kg-card>
       </div>

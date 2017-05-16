@@ -41,7 +41,7 @@ export class PortfoliosComponent implements OnInit, OnDestroy {
         const value = event.toLowerCase();
         this.searchTitle = this.portfolios.filter(sh => sh.title.toLowerCase().indexOf(value) > -1).filter((el, index) => index < 4);
         this.searchMarkdown = this.portfolios.filter(sh => sh.markdown.toLowerCase().indexOf(value) > -1).filter((el, index) => index < 4);
-        this.searchInfo = this.portfolios.filter(sh => sh.info.toLowerCase().indexOf(value) > -1).filter((el, index) => index < 4);
+        this.searchInfo = this.portfolios.filter(sh => sh.description.toLowerCase().indexOf(value) > -1).filter((el, index) => index < 4);
         return;
        }
   }

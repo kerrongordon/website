@@ -24,73 +24,65 @@ export class HeadComponent implements OnInit, AfterContentInit {
   public wait: any;
   public inputFoucs = '';
   public toggleheaderbar: string;
-  public moveUpScrolling: string;
 
+  private scrollToTop = 0;
 
   public ribbanHeight: number;
   @HostListener('window:scroll', ['$event'])
     onWindowScroll(event) {
-      this.ribbanHeight = document.getElementById('ribban').offsetHeight;
-      this.getScrollInfor();
+      return this.getScrollInfor();
     }
 
   constructor(private router: Router, private as: AppService) { }
 
-  ngOnInit() {
+  ngOnInit() { }
 
-  }
 
   private getScrollInfor() {
-    if (document.body.scrollTop >= this.ribbanHeight) {
+    if (window.pageYOffset > this.scrollToTop) {
       this.toggleheaderbar = 'amScrolling';
     } else {
-      if (this.router.url !== '/portfolios#search') {
-        this.toggleheaderbar = '';
-      }
+      this.toggleheaderbar = '';
     }
-
+    return this.scrollToTop = document.body.scrollTop;
   }
 
   ngAfterContentInit() {
      if (this.router.url === '/portfolios#search') {
-       document.getElementById('searchInput').focus();
-       return this.toggleheaderbar = 'amScrolling';
+       return document.getElementById('searchInput').focus();
      }
   }
 
-  seachFocus(): void {
+  seachFocus() {
     if (this.router.url !== '/portofolios') {
       this.inputFocusRibban = 'hzero';
       this.inputFocusPort = 'hport';
       this.inputFoucs = 'inputFoucs';
-      this.toggleheaderbar = '';
       this.searchPortfolios(this.searchInfo);
       this.router.navigate(['/portfolios'], {fragment: 'search'});
     }
-    clearTimeout(this.wait);
+    return clearTimeout(this.wait);
   }
 
-  seachBlur(): void {
+  seachBlur() {
     this.wait = setTimeout(() => {
       this.inputFocusRibban = '';
       this.inputFocusPort = '';
       this.inputFoucs = '';
-      this.toggleheaderbar = '';
       this.clearSearch.emit();
     }, 300);
-    this.router.navigate(['/portfolios']);
+    return this.router.navigate(['/portfolios']);
   }
 
-  toggleMenu(): void {
-    this.toggleMenuClass = !this.toggleMenuClass ? 'toggleMenu' : '';
+  toggleMenu() {
+    return this.toggleMenuClass = !this.toggleMenuClass ? 'toggleMenu' : '';
   }
 
-  searchPortfolios(value): void {
-    this.searchInfo = value;
+  searchPortfolios(value) {
     return this.searchValue.emit(value);
   }
 
-  goBack(): void {
+  goBack() {
     return this.as.goBackToPreviousPage();
   }
 
