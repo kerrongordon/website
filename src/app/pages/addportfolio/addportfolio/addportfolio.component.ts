@@ -44,7 +44,6 @@ export class AddportfolioComponent implements OnInit {
 
   ngOnInit() {
     this._addPortfolioService.ListPortfoliosItems();
-    this._addPortfolioService.loadFirebaseStorage();
   }
 
   updateOutput(mdText: string) {

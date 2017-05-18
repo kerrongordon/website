@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireAuth, AngularFireAuthProvider, FirebaseAuthStateObservable } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
@@ -13,13 +14,13 @@ export class AuthService {
 
   constructor(private afAuth: AngularFireAuth, private router: Router) { }
 
-  canActivate(): Observable<boolean> {
+  public canActivate(): Observable<boolean> {
       return Observable.from(this.afAuth.authState)
         .take(1)
         .map(state => !!state)
         .do(authenticated => {
       if
-      (!authenticated) { this.router.navigate([ '/login' ]); }
+      (!authenticated) { this.router.navigate([ '' ]); }
       });
     }
 
@@ -29,6 +30,10 @@ export class AuthService {
 
   public logOut() {
     return this.afAuth.auth.signOut();
+  }
+
+  public login() {
+    return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
 
 }

@@ -1,13 +1,16 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { DatabaseService } from '../../../services/database.service';
 import { AuthService } from '../../../services/auth.service';
 import { AppService } from '../../../services/app.service';
+
+import { PortfoliosService } from '../../../services/firebase/portfolios/portfolios.service';
+import { SkillsService } from '../../../services/firebase/skills/skills.service';
+import { DescriptionService } from '../../../services/firebase/description/description.service';
 
 @Component({
   selector: 'kg-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.sass'],
-  providers: [DatabaseService, AuthService, AppService]
+  providers: [AuthService, AppService, PortfoliosService, SkillsService, DescriptionService]
 })
 export class AdminComponent implements OnInit, OnDestroy {
 
@@ -35,9 +38,11 @@ export class AdminComponent implements OnInit, OnDestroy {
   public newSkillLevel: string;
 
   constructor(
-    private db: DatabaseService,
     private user: AuthService,
-    private app: AppService
+    private app: AppService,
+    private _portfoliosService: PortfoliosService,
+    private _skillsService: SkillsService,
+    private _descriptionService: DescriptionService
   ) { }
 
   ngOnInit() {
@@ -48,20 +53,20 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   public userInfor() {
-    return this.user.isAuth().authState.subscribe(data => this.auth = data);
+    return this.user.isAuth().authState.subscribe(data => this.auth = data.providerData[0]);
   }
 
   public getPortfolios() {
-    return this.db.getPortfolios().subscribe(data => this.portfolios = data);
+    return this._portfoliosService.getListPortfolios().subscribe(data => this.portfolios = data);
   }
 
   public getSkills() {
-    return this.db.getSkills().subscribe(data => this.skills = data);
+    return this._skillsService.getListOfSkills().subscribe(data => this.skills = data);
   }
 
   public openASkill(key?) {
     this.skillId = key;
-    return this.db.getSkill(key).subscribe(data => {
+    return this._skillsService.getSkillObject(key).subscribe(data => {
       this.getskillId = data;
       this.newSkillTitle = data.title;
       this.newSkillLevel = data.level;
@@ -71,14 +76,14 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   public removePortfolio(key?) {
     this.selectitem = key
-    return this.db.getPortfolioDetails(key).subscribe(data => {
+    return this._portfoliosService.getPortfolioObject(key).subscribe(data => {
       this.itemToBeRemoveTitle = data.title;
       this.toggledialog = 'show';
     });
   }
 
   public deletePortfolio() {
-    return this.db.getPortfolioDetails(this.selectitem).remove()
+    return this._portfoliosService.getPortfolioObject(this.selectitem).remove()
       .then(() => this.toggledialog = '')
       .catch(error => console.log(error));
   }
@@ -96,7 +101,7 @@ export class AdminComponent implements OnInit, OnDestroy {
       title: this.newSkillTitle,
       level: this.newSkillLevel
     }
-    return this.db.getSkill(this.skillId).update(skill)
+    return this._skillsService.getSkillObject(this.skillId).update(skill)
       .then(() => this.toggledialogSkill = 'hide');
   }
 
@@ -105,7 +110,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   public userDescription() {
-    return this.db.getNameAndDescription().subscribe(data => this.description = data);
+    return this._descriptionService.getDescription().subscribe(data => this.description = data);
   }
 
   public editDescription(): void {
@@ -120,7 +125,7 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   public editDescriptionInfo(data) {
     const description = { description: data }
-    return this.db.getNameAndDescription().update(description);
+    return this._descriptionService.getDescription().update(description);
   }
 
   ngOnDestroy() {

@@ -26,8 +26,8 @@
         <kg-card *ngIf="skills">
           <div class="skills">
             <div *ngFor="let skill of skills" class="skill-item" (click)="openASkill(skill.$key, $event)">
-              <p>{{skill.title}}</p>
-              <p>{{skill.level}}</p>
+              <span>{{skill.title}}</span>
+              <span>{{skill.level}}</span>
             </div>
           </div>
         </kg-card>

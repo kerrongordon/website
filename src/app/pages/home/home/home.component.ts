@@ -53,11 +53,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private setTitle() {
-    return this._titleService.getTitle().subscribe(data => this.title = data.$value);
+    return this._titleService.getTitle().subscribe(data => this.title = data.title);
   }
 
   private setDescription() {
-    return this._descriptionService.getDescription().subscribe(data => this.description = data.$value);
+    return this._descriptionService.getDescription().subscribe(data => this.description = data.description);
   }
 
   private setSkills() {
