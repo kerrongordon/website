@@ -4,12 +4,13 @@ import { FormBuilder, FormGroup, Validators, FormControlName, FormControl } from
 import { MarkdownService } from '../../../services/markdown.service';
 import { ImageService } from '../../../services/image/image.service';
 import { AddPortfolioService } from '../../../services/firebase/addportfolio/add-portfolio.service';
+import { NotificationService } from '../../../services/notification/notification.service';
 
 @Component({
   selector: 'kg-addportfolio',
   templateUrl: './addportfolio.component.html',
   styleUrls: ['./addportfolio.component.sass'],
-  providers: [MarkdownService, ImageService, AddPortfolioService]
+  providers: [MarkdownService, ImageService, AddPortfolioService, NotificationService]
 })
 export class AddportfolioComponent implements OnInit {
 
@@ -32,7 +33,8 @@ export class AddportfolioComponent implements OnInit {
     private _markdownService: MarkdownService,
     private _formBuilder: FormBuilder,
     private _imageService: ImageService,
-    private _addPortfolioService: AddPortfolioService
+    private _addPortfolioService: AddPortfolioService,
+    private _notificationService: NotificationService
   ) {
     this.fGroup = _formBuilder.group({
       'title': [null, Validators.compose([Validators.required, Validators.minLength(3)])],
@@ -44,6 +46,7 @@ export class AddportfolioComponent implements OnInit {
 
   ngOnInit() {
     this._addPortfolioService.ListPortfoliosItems();
+    // this._notificationService.notifitem('sms', 'title', 'content');
   }
 
   updateOutput(mdText: string) {
@@ -96,7 +99,10 @@ export class AddportfolioComponent implements OnInit {
     ]).then(e => {
       this.uploading = 'block';
       this._addPortfolioService.addPortfolio(portfolio);
-    }).catch(error => console.log(error));
+    }).catch(error => {
+      this._notificationService.notifitem('storage', error.name, error.message, true);
+      this.uploading = 'none';
+    });
 
   }
 

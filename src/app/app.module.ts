@@ -7,6 +7,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { Firebaseconfig } from './config/class/firebaseconfig';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NotificationModule } from './components/notification/notification.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     HttpModule,
     AppRoutingModule,
+    NotificationModule,
     AngularFireModule.initializeApp(Firebaseconfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule

@@ -7,6 +7,7 @@ import { SkillsService } from '../../../services/firebase/skills/skills.service'
 import { PortfoliosService } from '../../../services/firebase/portfolios/portfolios.service';
 import { TitleService } from '../../../services/firebase/title/title.service';
 import { EmailService } from '../../../services/email/email.service';
+import { NotificationService } from '../../../services/notification/notification.service';
 
 @Component({
   selector: 'kg-home',
@@ -17,7 +18,8 @@ import { EmailService } from '../../../services/email/email.service';
               SkillsService,
               PortfoliosService,
               TitleService,
-              EmailService]
+              EmailService,
+              NotificationService]
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
@@ -36,7 +38,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     private _skillsService: SkillsService,
     private _portfoliosService: PortfoliosService,
     private _titleService: TitleService,
-    private _emailService: EmailService
+    private _emailService: EmailService,
+    private _notificationService: NotificationService
   ) {
     this.complexForm = _formBuilder.group({
       'name': [null, Validators.compose([Validators.required, Validators.minLength(3)])],
@@ -81,7 +84,13 @@ export class HomeComponent implements OnInit, OnDestroy {
     if (!value.name || !value.email || !value.message) { return; }
     if (this.complexForm.status === 'VALID') {
         return this.email = this._emailService.postEmail(value)
-          .subscribe(() => this.complexForm.reset());
+          .subscribe(data => {
+            const string = value.message;
+            const length = 60;
+            const trimmedString = string.substring(0, length);
+            this._notificationService.notifitem('email', `${value.name} Your Email Was Sent`, trimmedString, true);
+            this.complexForm.reset()
+          });
     }
     return;
   }
