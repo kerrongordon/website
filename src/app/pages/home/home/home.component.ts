@@ -77,7 +77,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     return this._appService.goToPortfolioPage(key);
   }
 
-  submitForm(value) {
+  public submitForm(value) {
     if (!value.name || !value.email || !value.message) { return; }
     if (this.complexForm.status === 'VALID') {
         return this.email = this._emailService.postEmail(value)

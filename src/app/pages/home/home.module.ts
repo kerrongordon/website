@@ -11,6 +11,8 @@ import { CardModule } from '../../components/card/card.module';
 import { BtnModule } from '../../components/btn/btn.module';
 import { FooterModule } from '../../components/footer/footer.module';
 import { HeadModule } from '../../components/head/head.module';
+import { SocialIconsModule } from '../../components/social-icons/social-icons.module';
+
 
 @NgModule({
   imports: [
@@ -24,6 +26,7 @@ import { HeadModule } from '../../components/head/head.module';
     FooterModule,
     HeadModule,
     ReactiveFormsModule,
+    SocialIconsModule,
     RouterModule.forChild([
       { path: '', component: HomeComponent }
     ])

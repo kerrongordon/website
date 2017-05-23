@@ -155,6 +155,36 @@ textarea
       color: $accent-two
 
 
+.notification
+  width: auto
+  height: auto
+  position: fixed
+  z-index: 99999
+  bottom: 0
+
+  .notifitem
+    background: $card-bg
+    padding: 16px
+    margin: 15px
+    display: flex
+    max-width: 500px
+    box-shadow: $card-shadow
+
+  .icon
+    padding: 0 10px 0 0
+
+  .material-icons
+    font-size: 50px
+    color: $accent-one
+
+  .content
+    flex: 1
+
+  .title
+    font-size: 16px
+    font-weight: 600
+
+
 @media (min-width: 0px) and (max-width: $rw-mobile)
   .container 
     padding: 0 0.8rem
