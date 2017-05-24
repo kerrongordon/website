@@ -31,7 +31,7 @@ export class NotificationService {
       const node = items.item(0);
             notify.removeChild(node);
             if (items.length === 0) { return this.restTimer(); }
-    }, 5000);
+    }, 8000);
   }
 
   private restTimer() {

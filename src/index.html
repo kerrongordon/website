@@ -65,6 +65,7 @@
         .cp-flip:before {
             width: 48px;
             height: 48px;
+            border-radius: 4px;
             display: inline-block;
             box-sizing: border-box;
             background: #2798ee;
@@ -73,6 +74,10 @@
             top: 0;
             left: 0;
             animation: cp-flip-animate-before 2s linear infinite
+        }
+
+        .loadingText {
+            padding: 20px;
         }
         
         @keyframes cp-flip-animate-before {
@@ -99,7 +104,7 @@
     <kg-root>
         <div class="load">
             <div class="cp-spinner cp-flip"></div>
-            <p>Loading..</p>
+            <p class="loadingText">Loading...</p>
         </div>
     </kg-root>
 </body>

@@ -9,6 +9,7 @@ export class AddPortfolioService {
   private folder = 'portfolios';
   private uploadImage: any;
   private image: any;
+  private fStorage: any;
 
   public listPortfolios: FirebaseListObservable<any>
 
@@ -21,13 +22,15 @@ export class AddPortfolioService {
     return this.listPortfolios = this._angularFireDatabase.list('portfolios') as FirebaseListObservable<any>;
   }
 
+  public initFirebaseStorage() {
+    return this.fStorage = firebase.storage();
+  }
+
   public addPortfolio(portfolio) {
 
-    this.addImage(portfolio, 'thumb' , 'thumbnail');
-    this.addImage(portfolio, 'larg' , 'largImage');
-
     Promise.all([
-      this.uploadImage
+      this.addImage(portfolio, 'thumb' , 'thumbnail'),
+      this.addImage(portfolio, 'larg' , 'largImage')
     ]).then(value => {
       this.listPortfolios.push(portfolio);
     }).then(value => {
@@ -46,7 +49,7 @@ export class AddPortfolioService {
     }
 
     const path = `/${this.folder}/${portfolio.title}/${dir}/${this.image.name}`;
-    const iRef = firebase.storage().ref().child(path).put(this.image);
+    const iRef = this.fStorage.ref().child(path).put(this.image);
     return this.uploadImage = iRef.then(snapshot => {
 
       if (type === 'thumbnail') {

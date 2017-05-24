@@ -169,6 +169,7 @@ textarea
     display: flex
     max-width: 500px
     box-shadow: $card-shadow
+    animation: openNotification 0.7s ease-in-out
 
   .icon
     padding: 0 10px 0 0
@@ -184,6 +185,15 @@ textarea
     font-size: 16px
     font-weight: 600
     text-transform: capitalize
+
+
+@keyframes openNotification
+	0%
+		margin-left: -300px
+		opacity: 0
+	100%
+		margin-left: 15px
+		opacity: 1
 
 
 @media (min-width: 0px) and (max-width: $rw-mobile)

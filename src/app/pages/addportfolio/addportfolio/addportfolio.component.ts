@@ -38,7 +38,7 @@ export class AddportfolioComponent implements OnInit {
   ) {
     this.fGroup = _formBuilder.group({
       'title': [null, Validators.compose([Validators.required, Validators.minLength(3)])],
-      'type': [null, Validators.compose([Validators.required, Validators.minLength(3)])],
+      'type': [null, Validators.compose([Validators.required, Validators.pattern('https?://.+')])],
       'description': [null, Validators.compose([Validators.required, Validators.minLength(30)])],
       'markdown': [null, Validators.compose([Validators.required, Validators.minLength(30)])]
     });
@@ -46,7 +46,7 @@ export class AddportfolioComponent implements OnInit {
 
   ngOnInit() {
     this._addPortfolioService.ListPortfoliosItems();
-    // this._notificationService.notifitem('sms', 'title', 'content');
+    this._addPortfolioService.initFirebaseStorage();
   }
 
   updateOutput(mdText: string) {
@@ -66,7 +66,8 @@ export class AddportfolioComponent implements OnInit {
   }
 
   addNewPortfolio(event: any, isValid: Boolean) {
-    if (!isValid) { return };
+    if (!isValid) { return }
+    else { this._notificationService.notifitem('report_problem', 'Form is Not Valid', 'Please Fill Out This Form Completely', true); } ;
     if (this.thumbnailfile === undefined) { return };
     if (this.desktopImagefile === undefined) { return };
 
