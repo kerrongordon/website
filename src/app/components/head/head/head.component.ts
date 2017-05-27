@@ -40,14 +40,17 @@ export class HeadComponent implements OnInit, AfterContentInit {
   ngOnInit() { }
 
   private getScrollInfor() {
+
     if (this.toggleMenuClass !== '') {
       this.toggleMenuClass = '';
     }
+
     if (window.pageYOffset > this.scrollToTop) {
       this.toggleheaderbar = 'amScrolling';
     } else {
       this.toggleheaderbar = '';
     }
+
     return this.scrollToTop = window.pageYOffset;
   }
 

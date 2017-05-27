@@ -10,7 +10,7 @@ import { PortfoliosService } from '../../../services/firebase/portfolios/portfol
 })
 export class PortfoliosComponent implements OnInit, OnDestroy {
 
-  public title: string;
+  public title: String;
   public portfolios: any[];
   public searchTitle: any[];
   public searchMarkdown: any[];

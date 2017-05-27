@@ -11,7 +11,7 @@ export class UsersService {
   ) { }
 
   public getUsersList() {
-    return this.userList = this._angularFireDatabase.list('/users/') as FirebaseListObservable<any>;
+    return this.userList = this._angularFireDatabase.list('users') as FirebaseListObservable<any>;
   }
 
 }

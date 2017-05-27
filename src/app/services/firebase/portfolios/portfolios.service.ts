@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
+import { Portfolio } from '../../../config/interface/portfolio';
 
 @Injectable()
 export class PortfoliosService {
 
-  public listPortfolios: FirebaseListObservable<any>
+  public listPortfolios: FirebaseListObservable<Portfolio[]>
   public portfolioObject: FirebaseObjectObservable<Portfolio>
 
   constructor(
@@ -12,18 +13,11 @@ export class PortfoliosService {
   ) { }
 
   public getListPortfolios() {
-    return this.listPortfolios = this._angularFireDatabase.list('portfolios') as FirebaseListObservable<any>;
+    return this.listPortfolios = this._angularFireDatabase.list('portfolios') as FirebaseListObservable<Portfolio[]>;
   }
 
   public getPortfolioObject(key) {
     return this.portfolioObject = this._angularFireDatabase.object('portfolios/' + key) as FirebaseObjectObservable<Portfolio>;
   }
 
-}
-
-interface Portfolio {
-  title: string;
-  type: string;
-  info: string;
-  markdown: string;
 }

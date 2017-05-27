@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { AppService } from '../../../services/app.service';
 import { NotificationService } from '../../../services/notification/notification.service';
@@ -9,9 +9,13 @@ import { NotificationService } from '../../../services/notification/notification
   styleUrls: ['./menubar.component.sass'],
   providers: [AuthService, AppService, NotificationService]
 })
-export class MenubarComponent implements OnInit {
+export class MenubarComponent implements OnInit, OnDestroy {
 
   public isAuth: any;
+  private userList: any;
+
+  public email = 'kgpsounds.com@gmail.com';
+  public authEmail = false;
 
   constructor(
     private _authService: AuthService,
@@ -24,7 +28,15 @@ export class MenubarComponent implements OnInit {
   }
 
   private amILogIn() {
-    return this._authService.isAuth().authState.subscribe(data => this.isAuth = data);
+    return this._authService.isAuth().authState.subscribe(data => {
+      this.isAuth = data;
+      if (data === null) { return }
+      if (data.providerData[0].email === this.email) {
+        this.authEmail = true;
+      } else {
+        this.authEmail = false;
+      }
+    });
   }
 
   public logIn() {
@@ -40,9 +52,14 @@ export class MenubarComponent implements OnInit {
     return this._authService.logOut()
       .then(success => {
         this._appService.goToHomePage();
+        this.authEmail = false;
         this._notificationService.notifitem('exit_to_app', 'You Have Just Sing sign out', 'You can Sign back in at anytime', true);
       })
       .catch(err => this._notificationService.notifitem('error', err.name, err.message, true));
+  }
+
+  ngOnDestroy() {
+    this.amILogIn().unsubscribe();
   }
 
 }

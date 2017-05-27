@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import * as firebase from 'firebase';
 
 @Injectable()
@@ -11,28 +10,17 @@ export class AddPortfolioService {
   private image: any;
   private fStorage: any;
 
-  public listPortfolios: FirebaseListObservable<any>
-
   constructor(
-    private router: Router,
-    private _angularFireDatabase: AngularFireDatabase
+    private router: Router
   ) { }
 
-  public ListPortfoliosItems() {
-    return this.listPortfolios = this._angularFireDatabase.list('portfolios') as FirebaseListObservable<any>;
-  }
-
-  public initFirebaseStorage() {
-    return this.fStorage = firebase.storage();
-  }
-
-  public addPortfolio(portfolio) {
+  public addPortfolio(portfolio, portfolioList) {
 
     Promise.all([
       this.addImage(portfolio, 'thumb' , 'thumbnail'),
       this.addImage(portfolio, 'larg' , 'largImage')
     ]).then(value => {
-      this.listPortfolios.push(portfolio);
+      portfolioList.push(portfolio);
     }).then(value => {
       this.router.navigateByUrl('/portfolios');
     }).catch(error => console.log(error));
@@ -40,6 +28,7 @@ export class AddPortfolioService {
   }
 
   private addImage(portfolio, dir, type) {
+
     if (type === 'thumbnail') {
       this.image = portfolio.thumbnail.image;
     }
@@ -48,8 +37,9 @@ export class AddPortfolioService {
       this.image = portfolio.largImage.image;
     }
 
+    const storageRef = firebase.storage().ref();
     const path = `/${this.folder}/${portfolio.title}/${dir}/${this.image.name}`;
-    const iRef = this.fStorage.ref().child(path).put(this.image);
+    const iRef = storageRef.child(path).put(this.image);
     return this.uploadImage = iRef.then(snapshot => {
 
       if (type === 'thumbnail') {

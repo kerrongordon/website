@@ -1,7 +1,7 @@
 @import ../../../config/sass/var
 
 form
-  padding: 20px
+  padding: 0px
 
 input[type="file"]
   background: transparent
@@ -17,7 +17,7 @@ textarea
   margin: 10px 0
 
 .contain
-  width: 1000px
+  max-width: 1000px
   margin: 0 auto
 
 .submitdata
@@ -106,4 +106,6 @@ kg-card
     kg-card
       flex: 1
 
-// @media only screen and (min-width: $rw-tablet)
+@media only screen and (min-width: $rw-tablet)
+  form
+    padding: 20px

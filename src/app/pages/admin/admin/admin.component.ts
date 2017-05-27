@@ -19,7 +19,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   public portfolios: any;
   public description: any;
   public skills: any;
-  public itemToBeRemoveTitle: string;
+  public itemToBeRemoveTitle: any;
 
   public title: string;
   public level: string;
@@ -37,6 +37,9 @@ export class AdminComponent implements OnInit, OnDestroy {
   public newSkillTitle: string;
   public newSkillLevel: string;
 
+  public email = 'kgpsounds.com@gmail.com';
+  public authEmail = false;
+
   constructor(
     private user: AuthService,
     private app: AppService,
@@ -53,7 +56,13 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   public userInfor() {
-    return this.user.isAuth().authState.subscribe(data => this.auth = data.providerData[0]);
+    return this.user.isAuth().authState.subscribe(data => {
+      this.auth = data;
+      if (data === null) { return }
+      if (data.providerData[0].email === this.email) {
+        this.authEmail = true;
+      }
+    });
   }
 
   public getPortfolios() {

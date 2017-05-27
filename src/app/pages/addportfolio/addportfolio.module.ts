@@ -7,6 +7,8 @@ import { HeadModule } from '../../components/head/head.module';
 import { FooterModule } from '../../components/footer/footer.module';
 import { BtnModule } from '../../components/btn/btn.module';
 import { CardModule } from '../../components/card/card.module';
+import { AngularFireModule } from "angularfire2";
+import { Firebaseconfig } from '../../config/class/firebaseconfig';
 
 
 @NgModule({
@@ -17,6 +19,7 @@ import { CardModule } from '../../components/card/card.module';
     FooterModule,
     BtnModule,
     CardModule,
+    AngularFireModule.initializeApp(Firebaseconfig),
     ReactiveFormsModule,
     RouterModule.forChild([
       { path: '', component: AddportfolioComponent }

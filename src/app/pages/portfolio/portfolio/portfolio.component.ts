@@ -31,9 +31,9 @@ export class PortfolioComponent implements OnInit, OnDestroy {
 
   updateMe() {
     this.id = this.route.snapshot.params['id'];
-    return this._portfoliosService.getPortfolioObject(this.id).subscribe(portfolio => {
-      this.portfolio = portfolio;
-      this.mdOutput = this.md.convert(portfolio.markdown);
+    return this._portfoliosService.getPortfolioObject(this.id).subscribe(data => {
+      this.portfolio = data;
+      this.mdOutput = this.md.convert(data.markdown);
     });
   }
 
@@ -42,8 +42,8 @@ export class PortfolioComponent implements OnInit, OnDestroy {
     this.tpggleThum = !this.tpggleThum ? 'hideImage' : 'hideImage';
   }
 
-  LoadDefault(): void {
-    this.portfolio.imagePath = this.portfolio.desktopBase64;
+  LoadDefault() {
+    return this.portfolio.imagePath = this.portfolio.desktopBase64;
   }
 
   ngOnDestroy() {

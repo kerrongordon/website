@@ -1,13 +1,15 @@
 export interface Portfolio {
-  image: string;
-  imagePath: string;
-  info: string;
-  markdown: string;
-  thumbnail: string;
-  thumbnailPath: string;
-  timestamp: number;
-  title: string;
-  type: string;
-  userPhoto: string;
-  username: string;
+  title: String,
+  url: URL,
+  description: String,
+  markdown: String,
+  thumbnail: PortfolioImage,
+  largImage: PortfolioImage,
+  timestamp: Number
+}
+
+export interface PortfolioImage {
+  url: String,
+  image: File,
+  base64: String
 }

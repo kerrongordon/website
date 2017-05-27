@@ -1,19 +1,9 @@
 {
   "rules": {
-    ".read": true,
-    "portfolios": {
-      ".read": true,
-      ".write": "root.child('users/' + auth.uid + '/isAdmin').val() === true"
-    },
-    "skills": {
-      ".read": true,
-      ".write": "root.child('users/' + auth.uid + '/isAdmin').val() === true"
-    },
-    "users": {
+    ".read": "true",
       "$uid": {
-        ".read": true,
-        ".write": "auth.uid !== null"
+        ".write": "auth.token.email_verified == true && auth.token.email.matches(/kgpsounds.com@gmail.com/)"
       }
-    }
   }
 }
+
