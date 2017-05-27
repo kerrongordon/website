@@ -17,6 +17,13 @@
   box-shadow: none
   cursor: progress
 
+\:host.nohover
+  cursor: default
+
+  &:hover, &:focus
+    box-shadow: $card-shadow
+
+
 @media (min-width: 0px) and (max-width: $rw-mobile)
   \:host
     margin: 5px 0

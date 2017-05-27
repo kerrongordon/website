@@ -2,17 +2,17 @@
 
   <form class="contain" [formGroup]="fGroup" (ngSubmit)="addNewPortfolio(fGroup.value, fGroup.valid)">
 
-    <kg-card>
+    <kg-card class="nohover">
       <div class="titleandtype">
 
         <div class="input-contain">
           <span class="material-icons icon">account_circle</span>
-          <input class="input" type="text" [formControl]="fGroup.controls['title']" placeholder="Title">
+          <input class="input markdown-output" type="text" [formControl]="fGroup.controls['title']" placeholder="Title">
         </div>
 
         <div class="input-contain">
           <span class="material-icons icon">account_circle</span>
-          <input class="input" type="url" [formControl]="fGroup.controls['url']" placeholder="Project Url">
+          <input class="input markdown-output" type="url" [formControl]="fGroup.controls['url']" placeholder="Project Url">
         </div>
 
       </div>
@@ -23,10 +23,10 @@
 
       <div class="markdown-contain">
         <div class="input-contain">
-          <textarea class="input" [formControl]="fGroup.controls['markdown']" (keyup)="updateOutput($event.target.value)" placeholder="Add Markdown Here"></textarea>
+          <textarea class="input markdown-output" [formControl]="fGroup.controls['markdown']" (keyup)="updateOutput($event.target.value)" placeholder="Add Markdown Here"></textarea>
         </div>
         <div class="input-contain">
-          <div class="input" [innerHTML]="mdOutput"></div>
+          <div class="input markdown-output" [innerHTML]="mdOutput"></div>
         </div>
       </div>
 
@@ -34,25 +34,25 @@
 
     <div class="fileupload">
 
-      <kg-card>
+      <kg-card class="nohover" title="Add Thumbnail Image">
         <h5 class="imgtitle">Thumbnail</h5>
-        <div class="thumbnail uploadImageBtn">
-          <label for="thumbnail" class="uplabel">Thumbnail</label>
+        <div class="thumbnail uploadImageBtn" [style.height]="thumbsize + 'px'">
+          <label for="thumbnail" class="uplabel"></label>
           <input (change)="onThumbnail($event)" class="upbtn" id="thumbnail" type="file" name="thumbnail">
         </div>
-        <div class="thumbnail-image">
-          <img id="thumbnailImg" class="upimage">
+        <div class="thumbnail-image" [style.margin-top]="'-' + thumbsize + 'px'">
+          <img id="thumbnailImg" class="upimage" (load)="thumbSize()">
         </div>
       </kg-card>
 
-      <kg-card>
+      <kg-card class="nohover" title="Add Desktop Image">
         <h5 class="imgtitle">Desktop Image</h5>
-        <div class="desktopImage uploadImageBtn">
-          <label for="desktopImage" class="uplabel">full Site Image</label>
+        <div class="desktopImage uploadImageBtn" [style.height]="desktopsize + 'px'">
+          <label for="desktopImage" class="uplabel"></label>
           <input (change)="onDesktopImage($event)" class="upbtn" id="desktopImage" type="file" name="desktopImage">
         </div>
-        <div class="desktopImage-image">
-          <img id="desktopImg" class="upimage">
+        <div class="desktopImage-image" [style.margin-top]="'-' + desktopsize + 'px'">
+          <img id="desktopImg" class="upimage" (load)="desktopSize()">
         </div>
       </kg-card>
 

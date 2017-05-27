@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControlName, FormControl } from '@angular/forms';
 
 import { MarkdownService } from '../../../services/markdown.service';
@@ -29,7 +29,16 @@ export class AddportfolioComponent implements OnInit {
   public desktopImagefile: any;
   public portfolioList: any;
 
+  public thumbsize: number;
+  public desktopsize: number;
+
   public uploading = 'none';
+
+  @HostListener('window:resize', ['$event'])
+    onResize(event) {
+      this.thumbSize();
+      this.desktopSize();
+    }
 
   constructor(
     private _markdownService: MarkdownService,
@@ -69,6 +78,18 @@ export class AddportfolioComponent implements OnInit {
     const files = this._imageService.FileInputInfor(event);
     this._imageService.ShowImageFromInput(files, 'desktopImg');
     return this.desktopImagefile = files[0];
+  }
+
+  public thumbSize() {
+    const thumbnailImg = document.getElementById('thumbnailImg').clientHeight;
+    if (thumbnailImg === 0) { return; }
+    return this.thumbsize = thumbnailImg;
+  }
+
+  public desktopSize() {
+    const desktopImg = document.getElementById('desktopImg').clientHeight;
+    if (desktopImg === 0) { return; }
+    return this.desktopsize = desktopImg;
   }
 
   public addNewPortfolio(event: any, isValid: Boolean) {

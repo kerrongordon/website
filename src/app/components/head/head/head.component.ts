@@ -29,7 +29,9 @@ export class HeadComponent implements OnInit, AfterContentInit {
 
   @HostListener('window:scroll', ['$event'])
     onWindowScroll(event) {
-      return this.getScrollInfor();
+      console.log(window.pageYOffset);
+      if (window.pageYOffset < 74 ) {  return this.toggleheaderbar = ''; }
+      this.getScrollInfor();
     }
 
   constructor(

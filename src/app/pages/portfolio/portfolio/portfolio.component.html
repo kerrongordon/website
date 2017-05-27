@@ -1,7 +1,7 @@
 <div *ngIf="portfolio; else noPortfolio">
   <kg-head title="{{portfolio.title}}">
     <div class="maxw">
-      <kg-card class="markdown-output">
+      <kg-card class="markdown-output nohover">
         <div class="portcontent">
           <div class="features">
             <p>{{portfolio.description}}</p>
@@ -10,10 +10,10 @@
         </div>
         <kg-card-infor [postDate]="portfolio.timestamp"></kg-card-infor>
       </kg-card>
-      <kg-card class="desktop-image" [ngClass]="tpggleThum">
+      <kg-card class="desktop-image nohover" [ngClass]="tpggleThum">
         <img class="img" src="{{portfolio.largImage.base64}}" alt="{{portfolio.largImage.name}}">
       </kg-card>
-      <kg-card class="desktop-image" [ngClass]="tpggleImge">
+      <kg-card class="desktop-image nohover" [ngClass]="tpggleImge">
         <img class="img" src="{{portfolio.largImage.url}}" alt="{{portfolio.largImage.name}}" (load)="ImageLoadedd()" (error)="LoadDefault()">
       </kg-card>
     </div>
@@ -24,7 +24,7 @@
 <ng-template #noPortfolio>
   <kg-head class="loading-head" loading="true" title="Loading">
     <div class="maxw">
-      <kg-card class="markdown-output">
+      <kg-card class="markdown-output nohover">
         <div class="portcontent">
           <div class="features">
             <div class="loading-content loading-text"></div>
@@ -41,7 +41,7 @@
         </div>
         <kg-card-infor></kg-card-infor>
       </kg-card>
-      <kg-card class="desktop-image">
+      <kg-card class="desktop-image nohover">
         <div class="imgcon loading-content"></div>
       </kg-card>
     </div>
