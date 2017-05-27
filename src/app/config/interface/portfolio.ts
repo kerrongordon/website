@@ -2,7 +2,7 @@ export interface Portfolio {
   title: String,
   url: URL,
   description: String,
-  markdown: String,
+  markdown: any,
   thumbnail: PortfolioImage,
   largImage: PortfolioImage,
   timestamp: Number
