@@ -62,7 +62,7 @@
       <p *ngIf="itemToBeRemoveTitle">Are You Sure you What To Permanently Delete <strong>{{itemToBeRemoveTitle}}</strong></p>
       <div class="button-group">
         <kg-btn typr="botton" icon="done" class="btn delete" (btnClick)="deletePortfolio()">Yes</kg-btn>
-        <kg-btn type="botton" icon="cancel" class="btn" (btnClick)="toggledialog = ''">Cancel</kg-btn>
+        <kg-btn type="botton" icon="cancel" class="btn" (btnClick)="toggledialog = ''; show()">Cancel</kg-btn>
       </div>
     </kg-card>
   </div>
@@ -78,7 +78,7 @@
       </div>
       <div class="button-group">
         <kg-btn typr="submit" icon="save" class="btn accent-one" (btnClick)="updateSkill()">save</kg-btn>
-        <kg-btn type="botton" icon="cancel" class="btn" (btnClick)="toggledialogSkill = ''">Cancel</kg-btn>
+        <kg-btn type="botton" icon="cancel" class="btn" (btnClick)="toggledialogSkill = ''; show()">Cancel</kg-btn>
       </div>
     </kg-card>
   </div>

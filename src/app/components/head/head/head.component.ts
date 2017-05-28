@@ -16,6 +16,7 @@ export class HeadComponent implements OnInit, AfterContentInit {
 
   @Output() searchValue = new EventEmitter;
   @Output() clearSearch = new EventEmitter;
+  @Output() closemenu  = new EventEmitter;
 
   public inputFocusRibban: string;
   public inputFocusPort: string;
@@ -29,7 +30,6 @@ export class HeadComponent implements OnInit, AfterContentInit {
 
   @HostListener('window:scroll', ['$event'])
     onWindowScroll(event) {
-      console.log(window.pageYOffset);
       if (window.pageYOffset < 74 ) {  return this.toggleheaderbar = ''; }
       this.getScrollInfor();
     }

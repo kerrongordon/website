@@ -7,9 +7,9 @@ import { HeadModule } from '../../components/head/head.module';
 import { FooterModule } from '../../components/footer/footer.module';
 import { BtnModule } from '../../components/btn/btn.module';
 import { CardModule } from '../../components/card/card.module';
-import { AngularFireModule } from "angularfire2";
-import { Firebaseconfig } from '../../config/class/firebaseconfig';
-
+import 'firebase/storage'; // only import firebase storage
+import { AngularFireModule } from 'angularfire2';
+import { ProgressbarModule } from '../../components/progressbar/progressbar.module';
 
 @NgModule({
   imports: [
@@ -19,7 +19,8 @@ import { Firebaseconfig } from '../../config/class/firebaseconfig';
     FooterModule,
     BtnModule,
     CardModule,
-    AngularFireModule.initializeApp(Firebaseconfig),
+    ProgressbarModule,
+    AngularFireModule,
     ReactiveFormsModule,
     RouterModule.forChild([
       { path: '', component: AddportfolioComponent }

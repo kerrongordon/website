@@ -40,6 +40,8 @@ export class AdminComponent implements OnInit, OnDestroy {
   public email = 'kgpsounds.com@gmail.com';
   public authEmail = false;
 
+  private body = document.getElementsByTagName('body');
+
   constructor(
     private user: AuthService,
     private app: AppService,
@@ -53,6 +55,14 @@ export class AdminComponent implements OnInit, OnDestroy {
     this.getSkills();
     this.getPortfolios();
     this.userDescription();
+  }
+
+  public hide() {
+    return this.body[0].style.overflow = 'hidden';
+  }
+
+  public show() {
+    return this.body[0].style.overflow = '';
   }
 
   public userInfor() {
@@ -80,6 +90,7 @@ export class AdminComponent implements OnInit, OnDestroy {
       this.newSkillTitle = data.title;
       this.newSkillLevel = data.level;
       this.toggledialogSkill = 'show';
+      this.hide();
     });
   }
 
@@ -88,12 +99,13 @@ export class AdminComponent implements OnInit, OnDestroy {
     return this._portfoliosService.getPortfolioObject(key).subscribe(data => {
       this.itemToBeRemoveTitle = data.title;
       this.toggledialog = 'show';
+      this.hide();
     });
   }
 
   public deletePortfolio() {
     return this._portfoliosService.getPortfolioObject(this.selectitem).remove()
-      .then(() => this.toggledialog = '')
+      .then(() => {this.toggledialog = ''; this.show();})
       .catch(error => console.log(error));
   }
 
@@ -111,7 +123,7 @@ export class AdminComponent implements OnInit, OnDestroy {
       level: this.newSkillLevel
     }
     return this._skillsService.getSkillObject(this.skillId).update(skill)
-      .then(() => this.toggledialogSkill = 'hide');
+      .then(() => {this.toggledialogSkill = 'hide'; this.show();});
   }
 
   public goToPortfolio(key) {

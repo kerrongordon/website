@@ -8,6 +8,7 @@ import { Firebaseconfig } from './config/class/firebaseconfig';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NotificationModule } from './components/notification/notification.module';
+import { AddPortfolioService } from './services/firebase/addportfolio/add-portfolio.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { NotificationModule } from './components/notification/notification.modul
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
-  providers: [],
+  providers: [AddPortfolioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

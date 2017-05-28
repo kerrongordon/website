@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app'; // for typings
+import { FirebaseApp } from 'angularfire2'; // for methods
+import 'firebase/storage'; // only import firebase storage
 
 @Injectable()
 export class AddPortfolioService {
@@ -9,10 +11,20 @@ export class AddPortfolioService {
   private uploadImage: any;
   private image: any;
   private fStorage: any;
+  private storageRef: any;
+
+  private body = document.getElementsByTagName('body');
 
   constructor(
-    private router: Router
-  ) { }
+    private router: Router,
+    private _firebaseApp: FirebaseApp
+  ) { 
+    this.storageRef = _firebaseApp.storage().ref();
+   }
+
+  public show() {
+    return this.body[0].style.overflow = '';
+  }
 
   public addPortfolio(portfolio, portfolioList) {
 
@@ -23,6 +35,7 @@ export class AddPortfolioService {
       portfolioList.push(portfolio);
     }).then(value => {
       this.router.navigateByUrl('/portfolios');
+      this.show();
     }).catch(error => console.log(error));
 
   }
@@ -37,9 +50,8 @@ export class AddPortfolioService {
       this.image = portfolio.largImage.image;
     }
 
-    const storageRef = firebase.storage().ref();
     const path = `/${this.folder}/${portfolio.title}/${dir}/${this.image.name}`;
-    const iRef = storageRef.child(path).put(this.image);
+    const iRef = this.storageRef.child(path).put(this.image);
     return this.uploadImage = iRef.then(snapshot => {
 
       if (type === 'thumbnail') {
