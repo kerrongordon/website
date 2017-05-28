@@ -167,9 +167,6 @@ h6
 	width: 40%
 	margin: 0 0 0 60px
 
-.userInfoBar
-	width: 100%
-
 
 // @media (min-width: 0px) and (max-width: $rw-mobile)
 	
@@ -199,16 +196,26 @@ h6
 	.post
 		flex: 2
 		display: flex
-		justify-content: flex-start
+		justify-content: space-around
 		flex-wrap: wrap
 
 	.post-item
 		position: relative
 		width: 45%
 
+	.userInfoBar
+		kg-card
+			width: 250px
+
+
 @media only screen and (min-width: $rw-desktop)
 	.post
 		flex: 3
+        justify-content: space-around
 
 	.post-item
 		width: 30%
+
+	.userInfoBar
+		kg-card
+			width: 300px
