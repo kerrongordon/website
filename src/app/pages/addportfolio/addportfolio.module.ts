@@ -10,6 +10,7 @@ import { CardModule } from '../../components/card/card.module';
 import 'firebase/storage'; // only import firebase storage
 import { AngularFireModule } from 'angularfire2';
 import { ProgressbarModule } from '../../components/progressbar/progressbar.module';
+import { DialogModule } from '../../components/dialog/dialog.module';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { ProgressbarModule } from '../../components/progressbar/progressbar.modu
     ProgressbarModule,
     AngularFireModule,
     ReactiveFormsModule,
+    DialogModule,
     RouterModule.forChild([
       { path: '', component: AddportfolioComponent }
     ])

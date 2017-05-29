@@ -32,9 +32,7 @@ export class AddportfolioComponent implements OnInit {
   public thumbsize: number;
   public desktopsize: number;
 
-  public uploading = 'none';
-
-  private body = document.getElementsByTagName('body');
+  public uploading: boolean = false;
 
   @HostListener('window:resize', ['$event'])
     onResize(event) {
@@ -60,14 +58,6 @@ export class AddportfolioComponent implements OnInit {
 
   ngOnInit() {
     this.loadPortfolios();
-  }
-
-  public hide() {
-    return this.body[0].style.overflow = 'hidden';
-  }
-
-  public show() {
-    return this.body[0].style.overflow = '';
   }
 
   private loadPortfolios() {
@@ -136,13 +126,12 @@ export class AddportfolioComponent implements OnInit {
       this.thumbnailBase64,
       this.desktopBase64,
     ]).then(e => {
-      this.uploading = 'block';
-      this.hide();
+      this.uploading = true;
       this._addPortfolioService.addPortfolio(portfolio, this.portfolioList);
       console.log(this.portfolioList);
     }).catch(error => {
       this._notificationService.notifitem('storage', error.name, error.message, true);
-      this.uploading = 'none';
+      this.uploading = false;
     });
 
   }

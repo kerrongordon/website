@@ -58,11 +58,11 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   public hide() {
-    return this.body[0].style.overflow = 'hidden';
+    // return this.body[0].style.overflow = 'hidden';
   }
 
   public show() {
-    return this.body[0].style.overflow = '';
+    // return this.body[0].style.overflow = '';
   }
 
   public userInfor() {

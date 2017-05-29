@@ -1,0 +1,12 @@
+<div *ngIf="visibility == 'shown'">
+  <div class="dialogbackdrop">
+    <kg-card>
+      <h3 class="title" *ngIf="title">{{ title }}</h3>
+      <p><ng-content></ng-content></p>
+      <div class="button-group">
+        <kg-btn *ngIf="btn1text" typr="botton" icon="{{btn1icon}}" class="btn {{color}}" (btnClick)="action1()">{{btn1text}}</kg-btn>
+        <kg-btn *ngIf="btn2text" type="botton" icon="{{btn2icon}}" class="btn" (btnClick)="action2()">{{btn2text}}</kg-btn>
+      </div>
+    </kg-card>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+@import ../../../config/sass/var
+
+.dialogbackdrop
+	position: fixed
+	display: flex
+	justify-content: center
+	background: rgba(0, 22, 37, 0.8)
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0
+	z-index: 99998
+	animation: fadeIn 0.3s ease-in-out
+
+kg-card
+	margin: auto 20px
+	opacity: 0
+	animation: moveDown 0.5s ease-in-out 0.4s forwards
+
+.title
+	font-size: 17px
+	letter-spacing: 0px
+	text-transform: capitalize
+	padding: 16px
+	margin: 0
+	text-align: center
+	border-bottom: solid 1px #ddd
+
+.button-group
+	display: flex
+	justify-content: space-around
+	max-width: 200px
+	margin: 16px auto
+
+p
+	margin-bottom: 10px
+	text-align: center
+	font-size: 14px
+	padding: 16px 0 0
+
+
+@keyframes fadeIn
+	0%
+		opacity: 0
+	100%
+		opacity: 1
+
+@keyframes moveDown
+	0%
+		transform: translateY(-800px)
+		opacity: 0
+	100%
+		transform: translateY(0px)
+		opacity: 1

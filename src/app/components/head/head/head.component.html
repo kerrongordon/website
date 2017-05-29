@@ -7,7 +7,7 @@
   <kg-btn type="button" icon="more_vert" class="icon-only flat" (btnClick)="toggleMenu()"></kg-btn>
 </kg-header-bar>
 <kg-menubar [ngClass]="toggleMenuClass"></kg-menubar>
-<div class="contentBody" (click)="closeMenu()">
+<div id="contentBody" class="contentBody" (click)="closeMenu()">
   <kg-ribban [ngClass]="inputFocusRibban" id="ribban">
     <kg-title>{{title}}</kg-title>
   </kg-ribban>

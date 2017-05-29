@@ -67,9 +67,17 @@
 </kg-head>
 <kg-footer></kg-footer>
 
-<div class="submitdata" [ngStyle]="{'display': uploading}">
+<kg-dialog title="Saveing To Database..."  [isVisible]="uploading">
+  <div class="uploading">
+    <div class="cp-spinner cp-flip"></div>
+  </div>
+</kg-dialog>
+
+<!--<div class="submitdata" [ngStyle]="{'display': 'block'}">
   <div class="uploading">
     <div class="cp-spinner cp-flip"></div>
     <div>UpLoading...</div>
   </div>
-</div>
+</div>-->
+
+<!--uploading-->

@@ -6,6 +6,7 @@ import { HeadModule } from '../../components/head/head.module';
 import { CardModule } from '../../components/card/card.module';
 import { FooterModule } from '../../components/footer/footer.module';
 import { BtnModule } from '../../components/btn/btn.module';
+import { DialogModule } from '../../components/dialog/dialog.module';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { BtnModule } from '../../components/btn/btn.module';
     CardModule,
     BtnModule,
     FooterModule,
+    DialogModule,
     RouterModule.forChild([
       { path: '', component: AdminComponent }
     ])
