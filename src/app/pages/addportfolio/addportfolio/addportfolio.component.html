@@ -38,7 +38,7 @@
         <h5 class="imgtitle">Thumbnail</h5>
         <div class="thumbnail uploadImageBtn" [style.height]="thumbsize + 'px'">
           <label for="thumbnail" class="uplabel"></label>
-          <input (change)="onThumbnail($event)" class="upbtn" id="thumbnail" type="file" name="thumbnail">
+          <input (change)="onThumbnail($event)" class="upbtn" accept="image/*" id="thumbnail" type="file" name="thumbnail">
         </div>
         <div class="thumbnail-image" [style.margin-top]="'-' + thumbsize + 'px'">
           <img id="thumbnailImg" class="upimage" (load)="thumbSize()">
@@ -49,7 +49,7 @@
         <h5 class="imgtitle">Desktop Image</h5>
         <div class="desktopImage uploadImageBtn" [style.height]="desktopsize + 'px'">
           <label for="desktopImage" class="uplabel"></label>
-          <input (change)="onDesktopImage($event)" class="upbtn" id="desktopImage" type="file" name="desktopImage">
+          <input (change)="onDesktopImage($event)" class="upbtn" accept="image/*" id="desktopImage" type="file" name="desktopImage">
         </div>
         <div class="desktopImage-image" [style.margin-top]="'-' + desktopsize + 'px'">
           <img id="desktopImg" class="upimage" (load)="desktopSize()">
