@@ -6,7 +6,7 @@ import { MenubarComponent } from './menubar/menubar.component';
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
   ],
   declarations: [MenubarComponent],
   exports: [MenubarComponent]

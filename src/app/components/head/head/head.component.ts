@@ -1,13 +1,15 @@
 import { Component, OnInit, Output, Input, EventEmitter, ChangeDetectionStrategy, AfterContentInit, HostListener } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppService } from '../../../services/app.service';
-
+import { AuthService } from '../../../services/auth.service';
+import { NotificationService } from '../../../services/notification/notification.service';
 
 @Component({
   selector: 'kg-head',
   templateUrl: './head.component.html',
   styleUrls: ['./head.component.sass'],
-  providers: [AppService],
+  providers: [AppService, AuthService, NotificationService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeadComponent implements OnInit, AfterContentInit {
@@ -26,7 +28,11 @@ export class HeadComponent implements OnInit, AfterContentInit {
   public inputFoucs = '';
   public toggleheaderbar: string;
 
+  public toggleLogin: boolean = false;
+
   private scrollToTop = 75;
+
+  public complexForm: FormGroup;
 
   @HostListener('window:scroll', ['$event'])
     onWindowScroll(event) {
@@ -36,10 +42,30 @@ export class HeadComponent implements OnInit, AfterContentInit {
 
   constructor(
     private _router: Router,
-    private _appService: AppService
-  ) { }
+    private _appService: AppService,
+    private _authService: AuthService,
+    private _formBuilder: FormBuilder,
+    private _notificationService: NotificationService
+  ) { 
+    this.complexForm = _formBuilder.group({
+      'email': [null, Validators.compose([Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')])],
+      'pass': [null, Validators.compose([Validators.required, Validators.minLength(8)])]
+    });
+  }
 
   ngOnInit() { }
+
+  public toggleLoginDialog() {
+    return this.toggleLogin = true;
+  }
+
+  public login(event: any, isValid: Boolean) {
+    if (!isValid) { return }
+     this.toggleLogin = false;
+    return this._authService.loginWithEmail(event.email, event.pass)
+      .then(success => {this._router.navigate(['/admin']); console.log('loging in')})
+      .catch(err => this._notificationService.notifitem('error', err.name, err.message, true));
+  }
 
   private getScrollInfor() {
 

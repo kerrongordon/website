@@ -15,7 +15,7 @@
         </div>
       </kg-card>
 
-      <div class="deskill" *ngIf="authEmail">
+      <div class="deskill">
         <kg-card *ngIf="description">
           <div class="description">
             <p (click)="editDescription()" [ngClass]="toggleDesp">{{description.description}}</p>
@@ -36,7 +36,7 @@
 
     </div>
 
-    <div *ngIf="authEmail">
+
       <div class="post" *ngIf="portfolios">
         <kg-card *ngFor="let portfolio of portfolios" class="post-item">
           <div (click)="goToPortfolio(portfolio.$key)">
@@ -49,7 +49,7 @@
           </div>
         </kg-card>
       </div>
-    </div>
+ 
 
   </div>
 </kg-head>

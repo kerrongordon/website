@@ -36,5 +36,9 @@ export class AuthService {
     return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
 
+  public loginWithEmail(email, pass) {
+    return this.afAuth.auth.signInWithEmailAndPassword(email, pass);
+  }
+
 }
 

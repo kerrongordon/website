@@ -37,11 +37,6 @@ export class AdminComponent implements OnInit, OnDestroy {
   public newSkillTitle: string;
   public newSkillLevel: string;
 
-  public email = 'kgpsounds.com@gmail.com';
-  public authEmail = false;
-
-  private body = document.getElementsByTagName('body');
-
   constructor(
     private user: AuthService,
     private app: AppService,
@@ -57,22 +52,8 @@ export class AdminComponent implements OnInit, OnDestroy {
     this.userDescription();
   }
 
-  public hide() {
-    // return this.body[0].style.overflow = 'hidden';
-  }
-
-  public show() {
-    // return this.body[0].style.overflow = '';
-  }
-
   public userInfor() {
-    return this.user.isAuth().authState.subscribe(data => {
-      this.auth = data;
-      if (data === null) { return }
-      if (data.providerData[0].email === this.email) {
-        this.authEmail = true;
-      }
-    });
+    return this.user.isAuth().authState.subscribe(data => this.auth = data);
   }
 
   public getPortfolios() {
@@ -90,7 +71,6 @@ export class AdminComponent implements OnInit, OnDestroy {
       this.newSkillTitle = data.title;
       this.newSkillLevel = data.level;
       this.toggledialogSkill = 'show';
-      this.hide();
     });
   }
 
@@ -99,13 +79,12 @@ export class AdminComponent implements OnInit, OnDestroy {
     return this._portfoliosService.getPortfolioObject(key).subscribe(data => {
       this.itemToBeRemoveTitle = data.title;
       this.toggledialog = 'show';
-      this.hide();
     });
   }
 
   public deletePortfolio() {
     return this._portfoliosService.getPortfolioObject(this.selectitem).remove()
-      .then(() => {this.toggledialog = ''; this.show();})
+      .then(() => this.toggledialog = '')
       .catch(error => console.log(error));
   }
 
@@ -123,7 +102,7 @@ export class AdminComponent implements OnInit, OnDestroy {
       level: this.newSkillLevel
     }
     return this._skillsService.getSkillObject(this.skillId).update(skill)
-      .then(() => {this.toggledialogSkill = 'hide'; this.show();});
+      .then(() => this.toggledialogSkill = 'hide');
   }
 
   public goToPortfolio(key) {

@@ -21,7 +21,7 @@ import { AddPortfolioService } from './services/firebase/addportfolio/add-portfo
     NotificationModule,
     AngularFireModule.initializeApp(Firebaseconfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
   ],
   providers: [AddPortfolioService],
   bootstrap: [AppComponent]

@@ -4,13 +4,11 @@
       <ul>
         <li class="menu-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['']"><i class="material-icons icon">home</i>Home</a></li>
         <li class="menu-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/portfolios']"><i class="material-icons icon">view_module</i>Portfolios</a></li>
-        <li class="menu-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngIf="authEmail"><a [routerLink]="['/addportfolio']"><i class="material-icons icon">add</i>Add Portfolio</a></li>
-        <li class="menu-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngIf="authEmail"><a [routerLink]="['/admin']"><i class="material-icons icon">settings</i>Admin</a></li>
-        <li class="menu-item" *ngIf="isAuth === null"><a (click)="logIn()"><i class="material-icons icon">account_circle</i>Login</a></li>   
+        <li class="menu-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngIf="isAuth !== null"><a [routerLink]="['/addportfolio']"><i class="material-icons icon">add</i>Add Portfolio</a></li>
+        <li class="menu-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngIf="isAuth !== null"><a [routerLink]="['/admin']"><i class="material-icons icon">settings</i>Admin</a></li>
+        <li class="menu-item" *ngIf="isAuth === null"><a (click)="loginBtn()"><i class="material-icons icon">account_circle</i>Login</a></li>   
         <li class="menu-item" *ngIf="isAuth !== null"><a (click)="logout()"><i class="material-icons icon">account_circle</i>Logout</a></li>   
       </ul>
     </div>
   </div>
 </div>
-
-
