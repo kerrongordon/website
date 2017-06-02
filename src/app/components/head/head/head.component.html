@@ -19,18 +19,20 @@
 </div>
 
 
-<form class="contain" [formGroup]="complexForm">
+
   <kg-dialog class="image" [isVisible]="toggleLogin" btn1text="Login" btn2text="Cancel" btn1icon="send" btn2icon="cancel" color="accent-one" (btn1action)="login(complexForm.value, complexForm.valid)" (btn2action)="toggleLogin = false">
-    <!--<kg-card-image [image]="'assets/userbg.jpg'"></kg-card-image>-->
-    <div class="skpopup">
-      <div class="input-contain">
-        <span class="material-icons icon">account_circle</span>
-        <input class="input" type="email" name="title" [formControl]="complexForm.controls['email']" placeholder="example@email.com">
+    <kg-card-image [image]="'assets/userbg.jpg'"></kg-card-image>
+    <form class="contain" [formGroup]="complexForm">
+      <div class="skpopup">
+        <div class="input-contain">
+          <span class="material-icons icon">account_circle</span>
+          <input class="input" type="email" name="title" [formControl]="complexForm.controls['email']" placeholder="example@email.com">
+        </div>
+        <div class="input-contain">
+          <span class="material-icons icon">vpn_key</span>
+          <input class="input" type="password" name="level" [formControl]="complexForm.controls['pass']" placeholder="Password">
+        </div>
       </div>
-      <div class="input-contain">
-        <span class="material-icons icon">vpn_key</span>
-        <input class="input" type="password" name="level" [formControl]="complexForm.controls['pass']" placeholder="Password">
-      </div>
-    </div>
+    </form>
   </kg-dialog>
-</form>
+

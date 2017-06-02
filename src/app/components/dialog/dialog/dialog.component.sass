@@ -4,17 +4,20 @@
 	position: fixed
 	display: flex
 	justify-content: center
+	align-items: center
 	background: rgba(0, 22, 37, 0.8)
 	top: 0
 	left: 0
 	right: 0
 	bottom: 0
-	z-index: 99998
+	z-index: 99999
 	animation: fadeIn 0.3s ease-in-out
 
 kg-card
-	margin: auto 20px
-	opacity: 0
+	margin: auto 20px auto 20px
+	// opacity: 1
+	// transition: $transition
+	transform: scale(0)
 	animation: moveDown 0.5s ease-in-out 0.4s forwards
 
 .title
@@ -51,8 +54,10 @@ p
 
 @keyframes moveDown
 	0%
-		transform: translateY(-800px)
-		opacity: 0
+		// transform: translateY(-800px)
+		// margin: -800px 20px 0 20px
+		transform: scale(0)
 	100%
-		transform: translateY(0px)
-		opacity: 1
+		// transform: translateY(0px)
+		// margin: auto 20px auto 20px
+		transform: scale(1)
