@@ -7,7 +7,7 @@ export class NotificationService {
 
   constructor() {  }
 
-  public notifitem(iconName: string, notifTitle: string, notifContent: string, init: boolean) {
+  public notifitem(iconName: String, notifTitle: String, notifContent: String, init: Boolean) {
     if (!init) { return; }
     const notifitem = document.createElement('div');
           notifitem.setAttribute('class', 'notifitem');

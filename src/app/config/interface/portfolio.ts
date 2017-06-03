@@ -5,11 +5,14 @@ export interface Portfolio {
   markdown: any,
   thumbnail: PortfolioImage,
   largImage: PortfolioImage,
+  imagePath: String,
+  desktopBase64: String,
   timestamp: Number
 }
 
-export interface PortfolioImage {
+interface PortfolioImage {
   url: String,
   image: File,
-  base64: String
+  base64: String,
+  name: String
 }

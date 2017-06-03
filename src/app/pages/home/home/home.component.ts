@@ -8,6 +8,10 @@ import { PortfoliosService } from '../../../services/firebase/portfolios/portfol
 import { TitleService } from '../../../services/firebase/title/title.service';
 import { EmailService } from '../../../services/email/email.service';
 import { NotificationService } from '../../../services/notification/notification.service';
+import { Portfolio } from '../../../config/interface/portfolio';
+import { Skill } from '../../../config/interface/skill';
+import { Subscription } from "rxjs/Subscription";
+import { LocalforageService } from '../../../services/localforage.service';
 
 @Component({
   selector: 'kg-home',
@@ -19,15 +23,16 @@ import { NotificationService } from '../../../services/notification/notification
               PortfoliosService,
               TitleService,
               EmailService,
-              NotificationService]
+              NotificationService,
+              LocalforageService]
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
-  public title: string;
-  public email: any;
-  public description: string;
-  public skills: any;
-  public portfolios: any;
+  public title: String = 'Kerron Gordon';
+  public email: Subscription;
+  public description: String;
+  public skills: Skill[];
+  public portfolios: Portfolio[];
 
   public complexForm: FormGroup;
 
@@ -39,7 +44,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     private _portfoliosService: PortfoliosService,
     private _titleService: TitleService,
     private _emailService: EmailService,
-    private _notificationService: NotificationService
+    private _notificationService: NotificationService,
+    private _localforageService: LocalforageService
   ) {
     this.complexForm = _formBuilder.group({
       'name': [null, Validators.compose([Validators.required, Validators.minLength(3)])],
@@ -48,36 +54,51 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnInit() {
-    this.setTitle();
+  ngOnInit(): void {
+    // this.setTitle();
     this.setDescription();
     this.setSkills();
     this.setPortfolios();
   }
 
   private setTitle() {
-    return this._titleService.getTitle().subscribe(data => this.title = data.title);
+    return this._titleService.getTitle()
+      .subscribe(data => this.title = data.title) as Subscription;
   }
 
   private setDescription() {
-    return this._descriptionService.getDescription().subscribe(data => this.description = data.description);
+    return this._descriptionService.getDescription()
+      .subscribe(data => {
+        this.description = data.description;
+        this._localforageService.localforageSave('description', data.description);
+        this._localforageService.localforageGet('description');
+      }) as Subscription;
   }
 
   private setSkills() {
-    return this._skillsService.getListOfSkills().subscribe(data => this.skills = data);
+    return this._skillsService.getListOfSkills()
+      .subscribe(data => {
+        this.skills = data;
+        this._localforageService.localforageSave('skills', data);
+        this._localforageService.localforageGet('skills');
+      }) as Subscription;
   }
 
   private setPortfolios() {
     return this._portfoliosService.getListPortfolios()
-      .subscribe(data => this.portfolios = data.slice().reverse().filter((el, index) => index < 4) );
+      .subscribe(data => {
+        this.portfolios = data.reverse().slice(0,4);
+        this._localforageService.localforageSave('portfolios', data);
+        this._localforageService.localforageGet('portfolios');
+      }) as Subscription;
   }
 
   public openPortfolios() {
-    return this._appService.goToPortfoliosPage();
+    return this._appService.goToPortfoliosPage() as Promise<boolean>;
   }
 
   public openPortfolio(key) {
-    return this._appService.goToPortfolioPage(key);
+    return this._appService.goToPortfolioPage(key) as Promise<boolean>;
   }
 
   public submitForm(value) {
@@ -90,12 +111,12 @@ export class HomeComponent implements OnInit, OnDestroy {
             const trimmedString = string.substring(0, length);
             this._notificationService.notifitem('email', `${value.name} Your Email Was Sent`, trimmedString, true);
             this.complexForm.reset()
-          });
+          }) as Subscription;
     }
     return;
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.setTitle().unsubscribe();
     this.setDescription().unsubscribe();
     this.setSkills().unsubscribe();

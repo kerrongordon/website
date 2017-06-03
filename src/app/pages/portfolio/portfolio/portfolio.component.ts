@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { PortfoliosService } from '../../../services/firebase/portfolios/portfolios.service';
 import { MarkdownService } from '../../../services/markdown.service';
+import { Portfolio } from '../../../config/interface/portfolio';
+import { Subscription } from "rxjs/Subscription";
 
 @Component({
   selector: 'kg-portfolio',
@@ -11,9 +13,9 @@ import { MarkdownService } from '../../../services/markdown.service';
 })
 export class PortfolioComponent implements OnInit, OnDestroy {
 
-  private id: any;
+  private id: String;
   public portfolio: any;
-  public mdOutput: string;
+  public mdOutput: String;
   public tpggleImge = 'hideImage';
   public tpggleThum = '';
 
@@ -24,12 +26,12 @@ export class PortfolioComponent implements OnInit, OnDestroy {
     private md: MarkdownService
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.updateMe();
     this.router.events.subscribe(() => this.updateMe());
   }
 
-  updateMe() {
+  updateMe(): Subscription {
     this.id = this.route.snapshot.params['id'];
     return this._portfoliosService.getPortfolioObject(this.id).subscribe(data => {
       this.portfolio = data;
@@ -42,11 +44,11 @@ export class PortfolioComponent implements OnInit, OnDestroy {
     this.tpggleThum = !this.tpggleThum ? 'hideImage' : 'hideImage';
   }
 
-  LoadDefault() {
+  LoadDefault(): String {
     return this.portfolio.imagePath = this.portfolio.desktopBase64;
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.updateMe().unsubscribe();
   }
 

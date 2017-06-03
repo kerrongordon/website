@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AppService } from '../../../services/app.service';
 import { PortfoliosService } from '../../../services/firebase/portfolios/portfolios.service';
+import { Portfolio } from '../../../config/interface/portfolio';
 
 @Component({
   selector: 'kg-portfolios',
@@ -11,10 +12,10 @@ import { PortfoliosService } from '../../../services/firebase/portfolios/portfol
 export class PortfoliosComponent implements OnInit, OnDestroy {
 
   public title: String;
-  public portfolios: any[];
-  public searchTitle: any[];
-  public searchMarkdown: any[];
-  public searchInfo: any[];
+  public portfolios: Portfolio[];
+  public searchTitle: Portfolio[];
+  public searchMarkdown: Portfolio[];
+  public searchInfo: Portfolio[];
   public pageTitle = 'Portfolios';
 
   constructor(
@@ -27,7 +28,7 @@ export class PortfoliosComponent implements OnInit, OnDestroy {
   }
 
   private setPortfolios() {
-    return this._portfoliosService.getListPortfolios().subscribe(data => this.portfolios = data.slice().reverse());
+    return this._portfoliosService.getListPortfolios().subscribe(data => this.portfolios = data);
   }
 
   openPortfolio(key) {

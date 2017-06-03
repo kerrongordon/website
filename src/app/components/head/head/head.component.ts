@@ -63,7 +63,7 @@ export class HeadComponent implements OnInit, AfterContentInit {
     if (!isValid) { return }
      this.toggleLogin = false;
     return this._authService.loginWithEmail(event.email, event.pass)
-      .then(success => {this._router.navigate(['/admin']); console.log('loging in')})
+      .then(success => this._router.navigate(['/admin']))
       .catch(err => this._notificationService.notifitem('error', err.name, err.message, true));
   }
 

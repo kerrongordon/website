@@ -6,6 +6,8 @@ import { ImageService } from '../../../services/image/image.service';
 import { AddPortfolioService } from '../../../services/firebase/addportfolio/add-portfolio.service';
 import { NotificationService } from '../../../services/notification/notification.service';
 import { PortfoliosService } from '../../../services/firebase/portfolios/portfolios.service';
+import { FirebaseListObservable } from "angularfire2/database";
+import { Portfolio } from "app/config/interface/portfolio";
 
 @Component({
   selector: 'kg-addportfolio',
@@ -16,21 +18,21 @@ import { PortfoliosService } from '../../../services/firebase/portfolios/portfol
 export class AddportfolioComponent implements OnInit {
 
   public fGroup: FormGroup;
-  public title: string;
-  public url: string;
-  public markdown: string;
+  public title: String;
+  public url: String;
+  public markdown: String;
 
-  public thumbnailBase64: string;
-  public desktopBase64: string;
+  public thumbnailBase64: String;
+  public desktopBase64: String;
 
-  public mdOutput: string;
+  public mdOutput: String;
 
-  public thumbnailfile: any;
-  public desktopImagefile: any;
-  public portfolioList: any;
+  public thumbnailfile: File;
+  public desktopImagefile: File;
+  public portfolioList: FirebaseListObservable<Portfolio[]>;
 
-  public thumbsize: number;
-  public desktopsize: number;
+  public thumbsize: Number;
+  public desktopsize: Number;
 
   public uploading: boolean = false;
 
@@ -68,43 +70,43 @@ export class AddportfolioComponent implements OnInit {
     return this.mdOutput = this._markdownService.convert(mdText);
   }
 
-  public onThumbnail(event: EventTarget) {
+  public onThumbnail(event: EventTarget): File {
     const files = this._imageService.FileInputInfor(event);
     this._imageService.ShowImageFromInput(files, 'thumbnailImg');
     return this.thumbnailfile = files[0];
   }
 
-  public onDesktopImage(event: EventTarget) {
+  public onDesktopImage(event: EventTarget): File {
     const files = this._imageService.FileInputInfor(event);
     this._imageService.ShowImageFromInput(files, 'desktopImg');
     return this.desktopImagefile = files[0];
   }
 
-  public thumbSize() {
+  public thumbSize(): number {
     const thumbnailImg = document.getElementById('thumbnailImg').clientHeight;
     if (thumbnailImg === 0) { return; }
     return this.thumbsize = thumbnailImg;
   }
 
-  public desktopSize() {
+  public desktopSize(): number {
     const desktopImg = document.getElementById('desktopImg').clientHeight;
     if (desktopImg === 0) { return; }
     return this.desktopsize = desktopImg;
   }
 
-  public addNewPortfolio(event: any, isValid: Boolean) {
+  public addNewPortfolio(event: Portfolio, isValid: Boolean) {
 
     this.inputErrorNotification(event);
     if (!isValid) { return }
     if (this.thumbnailfile === undefined) { return };
     if (this.desktopImagefile === undefined) { return };
 
-    const date = new Date();
-    const thumb = document.getElementById('thumbnailImg');
-    const deskImage = document.getElementById('desktopImg');
+    const date: Date = new Date();
+    const thumb: HTMLElement = document.getElementById('thumbnailImg');
+    const deskImage: HTMLElement = document.getElementById('desktopImg');
 
-    this.thumbnailBase64 =  this._imageService.ImageToBase64(thumb, 0.05);
-    this.desktopBase64 = this._imageService.ImageToBase64(deskImage, 0.05);
+    this.thumbnailBase64 =  this._imageService.ImageToBase64(thumb, 0.01);
+    this.desktopBase64 = this._imageService.ImageToBase64(deskImage, 0.01);
 
     const portfolio = {
       title: event.title,
@@ -136,7 +138,7 @@ export class AddportfolioComponent implements OnInit {
 
   }
 
-  private inputErrorNotification(event) {
+  private inputErrorNotification(event): void {
 
     if ( event.title === null || event.title === '' || event.title.length < 3 ) {
       return this._notificationService.notifitem('report_problem', 'Title Error', 'Title Must be More Than 3 Characters', true);
