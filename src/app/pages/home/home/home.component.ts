@@ -11,7 +11,6 @@ import { NotificationService } from '../../../services/notification/notification
 import { Portfolio } from '../../../config/interface/portfolio';
 import { Skill } from '../../../config/interface/skill';
 import { Subscription } from "rxjs/Subscription";
-import { LocalforageService } from '../../../services/localforage.service';
 
 @Component({
   selector: 'kg-home',
@@ -23,8 +22,7 @@ import { LocalforageService } from '../../../services/localforage.service';
               PortfoliosService,
               TitleService,
               EmailService,
-              NotificationService,
-              LocalforageService]
+              NotificationService]
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
@@ -44,8 +42,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     private _portfoliosService: PortfoliosService,
     private _titleService: TitleService,
     private _emailService: EmailService,
-    private _notificationService: NotificationService,
-    private _localforageService: LocalforageService
+    private _notificationService: NotificationService
   ) {
     this.complexForm = _formBuilder.group({
       'name': [null, Validators.compose([Validators.required, Validators.minLength(3)])],
@@ -55,42 +52,24 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    // this.setTitle();
     this.setDescription();
     this.setSkills();
     this.setPortfolios();
   }
 
-  private setTitle() {
-    return this._titleService.getTitle()
-      .subscribe(data => this.title = data.title) as Subscription;
-  }
-
   private setDescription() {
     return this._descriptionService.getDescription()
-      .subscribe(data => {
-        this.description = data.description;
-        this._localforageService.localforageSave('description', data.description);
-        this._localforageService.localforageGet('description');
-      }) as Subscription;
+      .subscribe(data => this.description = data.description) as Subscription;
   }
 
   private setSkills() {
     return this._skillsService.getListOfSkills()
-      .subscribe(data => {
-        this.skills = data;
-        this._localforageService.localforageSave('skills', data);
-        this._localforageService.localforageGet('skills');
-      }) as Subscription;
+      .subscribe(data => this.skills = data) as Subscription;
   }
 
   private setPortfolios() {
     return this._portfoliosService.getListPortfolios()
-      .subscribe(data => {
-        this.portfolios = data.reverse().slice(0,4);
-        this._localforageService.localforageSave('portfolios', data);
-        this._localforageService.localforageGet('portfolios');
-      }) as Subscription;
+      .subscribe(data => this.portfolios = data.reverse().slice(0,4)) as Subscription;
   }
 
   public openPortfolios() {
@@ -117,7 +96,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.setTitle().unsubscribe();
     this.setDescription().unsubscribe();
     this.setSkills().unsubscribe();
     this.setPortfolios().unsubscribe();
