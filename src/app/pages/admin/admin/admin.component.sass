@@ -27,10 +27,11 @@ h6
 	text-align: center
 
 	img
-		width: 160px
-		height: 160px
-		padding: 16px
+		width: 130px
+		height: 130px
 		border-radius: 50%
+		background-color: rgba($accent-two, 0.4)
+		box-shadow: $eshadow
 
 .button-group
 	display: flex
@@ -39,19 +40,6 @@ h6
 	bottom: 10px
 	right: 16px
 	background-color: #fff
-
-	&.items
-		pointer-events: none
-		opacity: 0
-		animation: hide 0.5s ease-in-out
-
-.post-item
-	&:hover, &:focus
-		.button-group
-			&.items
-				opacity: 1
-				pointer-events: all
-				animation: fade 0.5s ease-in-out
 
 .btn
 	margin: 0 5px
@@ -84,7 +72,7 @@ h6
 	&:hover
 		background-color: $accent-one
 		color: $font-coac
-		box-shadow: $card-shadow-hover
+		box-shadow: $card-shadow-hover-aone
 		border-color: $accent-one
 		border-radius: 2px
 
@@ -131,6 +119,9 @@ h6
 		opacity: 1
 		animation: moveDown 0.7s ease-in-out
 
+.paditem
+	padding: 0 16px
+
 
 @keyframes fade
 	0%
@@ -165,9 +156,11 @@ h6
 
 	.title
 		margin: 0 5px 0 0
+		box-shadow: none
 
 	.level
 		margin: 0 0 0 5px
+		box-shadow: none
 
 
 // @media (min-width: 0px) and (max-width: $rw-mobile)

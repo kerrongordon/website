@@ -7,9 +7,11 @@
       <div class="skill" *ngFor="let skill of skills">
         <div class="skilltitle">
           <span class="title__title">{{skill.title}}</span>
-          <span class="title__level">{{skill.level}}</span>
         </div>
-        <kg-progressbar [level]="skill.level"></kg-progressbar>
+        <div class="progressItem">
+          <span class="title__level" [style.left]="skill.level + '%'">{{skill.level}}</span>
+          <kg-progressbar [level]="skill.level"></kg-progressbar>
+        </div>
       </div>
     </div>
     <h2 class="header">Portfolio</h2>

@@ -30,31 +30,45 @@ button
   cursor: pointer
   background-color: $accent-two
   color: $btn-color
-  box-shadow: $card-shadow
+  box-shadow: $card-shadow-atwo
   transition: $transition
   
 
   &:hover, &:focus 
-    box-shadow: $card-shadow-hover
+    box-shadow: $card-shadow-hover-atwo
     
 
   &:active
-    box-shadow: $card-shadow
+    box-shadow: $card-shadow-atwo
 
 \:host.accent-one
   button
     background-color: $accent-one
+    box-shadow: $card-shadow-aone
+
+    &:hover, &:focus 
+      box-shadow: $card-shadow-hover-aone
+
+    &:active
+      box-shadow: $card-shadow-aone
 
 \:host.delete
   button
-    background-color: #F44336
+    background-color: $accent-red
+    box-shadow: $card-shadow-ared
+
+    &:hover, &:focus 
+      box-shadow: $card-shadow-hover-ared
+
+    &:active
+      box-shadow: $card-shadow-ared
 
 button[disabled]
   // background-color: $disabled
   // color: $disabled-font
 
   &:hover, &:focus
-    box-shadow: $card-shadow
+    box-shadow: $card-shadow-atwo
 
 .icon,
 .content

@@ -6,7 +6,7 @@
       <kg-card *ngIf="auth">
         <div class="user">
           <div class="user-img">
-            <img src="{{auth.providerData[0].photoURL}}" alt="{{auth.providerData[0].providerId}}">
+            <img src="./assets/svg/avatar.svg" alt="{{auth.providerData[0].providerId}}">
           </div>
           <div class="user-infor">
             <h4>{{auth.providerData[0].displayName}}</h4>
@@ -55,22 +55,10 @@
 </kg-head>
 <kg-footer></kg-footer>
 
-<kg-dialog [isVisible]="toggledialog" title="Are You Sure you What To Permanently Delete" btn1text="Yes" btn2text="Cancel" btn1icon="done" btn2icon="cancel" color="delete" (btn1action)="deletePortfolio()" (btn2action)="toggledialog = ''">
-  <strong>{{itemToBeRemoveTitle}}</strong>
+<kg-dialog [isVisible]="toggledialog" title="Are You Sure you What To Permanently Delete" btn1text="Yes" btn2text="Cancel" btn1icon="delete" btn2icon="cancel" color="delete" (btn1action)="deletePortfolio()" (btn2action)="toggledialog = ''">
+  <strong class="paditem">{{itemToBeRemoveTitle}}</strong>
 </kg-dialog>
 
-
-<!--<div class="dialogbox hide" [ngClass]="toggledialog">
-  <div class="removieItem">
-    <kg-card class="dialog">
-      <p *ngIf="itemToBeRemoveTitle">Are You Sure you What To Permanently Delete <strong>{{itemToBeRemoveTitle}}</strong></p>
-      <div class="button-group">
-        <kg-btn typr="botton" icon="done" class="btn delete" (btnClick)="deletePortfolio()">Yes</kg-btn>
-        <kg-btn type="botton" icon="cancel" class="btn" (btnClick)="toggledialog = ''; show()">Cancel</kg-btn>
-      </div>
-    </kg-card>
-  </div>
-</div>-->
 
 <kg-dialog [isVisible]="toggledialogSkill" title="Edit Skill" btn1text="save" btn2text="Cancel" btn1icon="save" btn2icon="cancel" color="accent-one" (btn1action)="updateSkill()" (btn2action)="toggledialogSkill = ''">
   <div class="skpopup" *ngIf="getskillId">
@@ -85,22 +73,3 @@
   </div>
 </kg-dialog>
 
-
-
-
-
-
-<!--<div class="hide" [ngClass]="toggledialogSkill">
-  <div class="removieItem">
-    <kg-card class="dialog">
-      <div class="skpopup" *ngIf="getskillId">
-        <input type="text" name="title" (keyup)="updateSkillTitle($event.target.value)" value="{{getskillId.title}}" class="inpsk input-skill" placeholder="Skill">
-        <input type="text" name="level" (keyup)="updateSkillLevel($event.target.value)" value="{{getskillId.level}}" class="inpsk input-level" placeholder="Level">
-      </div>
-      <div class="button-group">
-        <kg-btn typr="submit" icon="save" class="btn accent-one" (btnClick)="updateSkill()">save</kg-btn>
-        <kg-btn type="botton" icon="cancel" class="btn" (btnClick)="toggledialogSkill = ''; show()">Cancel</kg-btn>
-      </div>
-    </kg-card>
-  </div>
-</div>-->
