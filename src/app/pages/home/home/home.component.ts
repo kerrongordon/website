@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, AfterContentChecked, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AppService } from '../../../services/app.service';
@@ -24,7 +24,10 @@ import { Subscription } from "rxjs/Subscription";
               EmailService,
               NotificationService]
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit, AfterContentChecked, OnDestroy {
+
+  private probar2: any;
+  private probar1: any;
 
   public title: String = 'Kerron Gordon';
   public email: Subscription;
@@ -93,6 +96,34 @@ export class HomeComponent implements OnInit, OnDestroy {
           }) as Subscription;
     }
     return;
+  }
+
+  ngAfterContentChecked() {
+    const progressItem = document.querySelectorAll('.progressItem');
+    const settozero = document.querySelectorAll('.settozero');
+    const skilllevel = document.querySelectorAll('.skill__level');
+    const kgprogressbar = document.querySelectorAll('kg-progressbar');
+
+    if (settozero.length === 0 && skilllevel.length === 0) { 
+      clearTimeout(this.probar1);
+      clearTimeout(this.probar2);
+      return;
+    }
+
+    this.probar1 = setTimeout( () => {
+      for (let index = 0; index < kgprogressbar.length; index++) {
+        let element = kgprogressbar[index];
+        element.classList.remove('skill__level');
+      }
+    }, 1500)
+
+    this.probar2 = setTimeout( () => {
+      for (let index = 0; index < progressItem.length; index++) {
+        let element = progressItem[index];
+        element.classList.remove('settozero');
+      }
+    }, 1500)
+
   }
 
   ngOnDestroy(): void {
