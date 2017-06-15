@@ -2,7 +2,7 @@
 <kg-head (searchValue)="searchValue($event)" (clearSearch)="clearSearch()" title="{{pageTitle}}">
 
   <div class="card-container" *ngIf="searchTitle?.length === null || searchInfo?.length === null || searchMarkdown?.length === null">
-    <kg-card *ngFor="let portfolio of (portfolios ? portfolios.slice().reverse(): [])" (click)="openPortfolio(portfolio.$key)">
+    <kg-card *ngFor="let portfolio of portfolios" (click)="openPortfolio(portfolio.$key)">
       <kg-card-image [image]="portfolio.thumbnail.url" [base64]="portfolio.thumbnail.base64"></kg-card-image>
       <kg-card-content [title]="portfolio.title" [info]="portfolio.description"></kg-card-content>
       <kg-card-infor [postDate]="portfolio.timestamp"></kg-card-infor>

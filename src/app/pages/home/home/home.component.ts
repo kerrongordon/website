@@ -10,7 +10,6 @@ import { EmailService } from '../../../services/email/email.service';
 import { NotificationService } from '../../../services/notification/notification.service';
 import { Portfolio } from '../../../config/interface/portfolio';
 import { Skill } from '../../../config/interface/skill';
-import { Subscription } from "rxjs/Subscription";
 
 @Component({
   selector: 'kg-home',
@@ -30,7 +29,7 @@ export class HomeComponent implements OnInit, AfterContentChecked, OnDestroy {
   private probar1: any;
 
   public title: String = 'Kerron Gordon';
-  public email: Subscription;
+  public email: any;
   public description: String;
   public skills: Skill[];
   public portfolios: Portfolio[];
@@ -62,17 +61,17 @@ export class HomeComponent implements OnInit, AfterContentChecked, OnDestroy {
 
   private setDescription() {
     return this._descriptionService.getDescription()
-      .subscribe(data => this.description = data.description) as Subscription;
+      .subscribe(data => this.description = data.description);
   }
 
   private setSkills() {
     return this._skillsService.getListOfSkills()
-      .subscribe(data => this.skills = data) as Subscription;
+      .subscribe(data => this.skills = data);
   }
 
   private setPortfolios() {
-    return this._portfoliosService.getListPortfolios()
-      .subscribe(data => this.portfolios = data.reverse().slice(0,4)) as Subscription;
+    return this._portfoliosService.getListPortfoliosHome()
+      .subscribe(data => this.portfolios = data.reverse());
   }
 
   public openPortfolios() {
@@ -93,7 +92,7 @@ export class HomeComponent implements OnInit, AfterContentChecked, OnDestroy {
             const trimmedString = string.substring(0, length);
             this._notificationService.notifitem('email', `${value.name} Your Email Was Sent`, trimmedString, true);
             this.complexForm.reset()
-          }) as Subscription;
+          });
     }
     return;
   }

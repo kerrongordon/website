@@ -5,14 +5,17 @@ import { AppService } from '../../../services/app.service';
 import { PortfoliosService } from '../../../services/firebase/portfolios/portfolios.service';
 import { SkillsService } from '../../../services/firebase/skills/skills.service';
 import { DescriptionService } from '../../../services/firebase/description/description.service';
+import { NotificationService } from '../../../services/notification/notification.service'
 
 @Component({
   selector: 'kg-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.sass'],
-  providers: [AuthService, AppService, PortfoliosService, SkillsService, DescriptionService]
+  providers: [AuthService, AppService, PortfoliosService, SkillsService, DescriptionService, NotificationService]
 })
 export class AdminComponent implements OnInit, OnDestroy {
+  itemToBeRemoveLargImage: any;
+  itemToBeRemoveThumbnail: any;
 
   infor: any;
   public auth: any;
@@ -42,7 +45,8 @@ export class AdminComponent implements OnInit, OnDestroy {
     private app: AppService,
     private _portfoliosService: PortfoliosService,
     private _skillsService: SkillsService,
-    private _descriptionService: DescriptionService
+    private _descriptionService: DescriptionService,
+    private _notificationService: NotificationService
   ) { }
 
   ngOnInit() {
@@ -78,14 +82,22 @@ export class AdminComponent implements OnInit, OnDestroy {
     this.selectitem = key
     return this._portfoliosService.getPortfolioObject(key).subscribe(data => {
       this.itemToBeRemoveTitle = data.title;
+      this.itemToBeRemoveThumbnail = data.thumbnail;
+      this.itemToBeRemoveLargImage = data.largImage;
       this.toggledialog = 'show';
     });
   }
 
   public deletePortfolio() {
+    const title = this.itemToBeRemoveTitle;
+    const thumb = `portfolios/${this.itemToBeRemoveTitle}/thumb/${this.itemToBeRemoveThumbnail.name}`;
+    const larg = `portfolios/${this.itemToBeRemoveTitle}/larg/${this.itemToBeRemoveLargImage.name}`;
     return this._portfoliosService.getPortfolioObject(this.selectitem).remove()
       .then(() => this.toggledialog = '')
-      .catch(error => console.log(error));
+      .then(() => this._portfoliosService.removeFiles(thumb))
+      .then(() => this._portfoliosService.removeFiles(larg))
+      .then(data => this._notificationService.notifitem('remove_circle', `${title}`, `Was deleted successfully!`, true))
+      .catch(error => this._notificationService.notifitem('error', `Error Removing ${title}`, `Uh-oh, an error occurred! Could not remove ${title}`, true));
   }
 
   public updateSkillTitle(title) {

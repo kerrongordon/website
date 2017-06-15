@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
-
+import { Http } from '@angular/http';
+// import { Observable } from 'rxjs/Observable';
 // import 'rxjs/add/operator/map';
 // import 'rxjs/add/operator/catch';
 
@@ -13,11 +12,7 @@ export class EmailService {
   ) { }
 
   public postEmail(data) {
-    const headers = new Headers({ 'Content-Type': 'application/json' });
-    const options = new RequestOptions({ headers: headers });
-    return this._http.post('https://formspree.io/kgpsounds.com@gmail.com', data, headers)
-      .map((res: Response) => res.json())
-      .catch((error) => Observable.throw(error.json().error || 'Server error'));
+    return this._http.post('https://formspree.io/kgpsounds.com@gmail.com', data)
   }
 
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Location } from '@angular/common';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AppService {
@@ -9,9 +9,7 @@ export class AppService {
     private router: Router,
     private _location: Location
   ) {
-    this.router.events.filter(event => event instanceof NavigationEnd).subscribe(event => {
-        window.scroll(0, 0);
-    });
+    window.scroll(0, 0);
   }
 
   public goToHomePage() {

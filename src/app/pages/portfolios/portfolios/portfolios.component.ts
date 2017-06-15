@@ -28,7 +28,7 @@ export class PortfoliosComponent implements OnInit, OnDestroy {
   }
 
   private setPortfolios() {
-    return this._portfoliosService.getListPortfolios().subscribe(data => this.portfolios = data);
+    return this._portfoliosService.getListPortfolios().subscribe(data => this.portfolios = data.reverse());
   }
 
   openPortfolio(key) {

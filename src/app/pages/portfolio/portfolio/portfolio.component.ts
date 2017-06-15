@@ -3,7 +3,6 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { PortfoliosService } from '../../../services/firebase/portfolios/portfolios.service';
 import { MarkdownService } from '../../../services/markdown.service';
 import { Portfolio } from '../../../config/interface/portfolio';
-import { Subscription } from "rxjs/Subscription";
 
 @Component({
   selector: 'kg-portfolio',
@@ -31,7 +30,7 @@ export class PortfolioComponent implements OnInit, OnDestroy {
     this.router.events.subscribe(() => this.updateMe());
   }
 
-  updateMe(): Subscription {
+  updateMe() {
     this.id = this.route.snapshot.params['id'];
     return this._portfoliosService.getPortfolioObject(this.id).subscribe(data => {
       this.portfolio = data;
