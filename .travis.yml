@@ -20,10 +20,8 @@ install:
 script:
   - ng build --prod --aot
 
-after_success:
-  - firebase deploy --token $FIREBASE_TOKEN
-
 deploy:
   provider: firebase
+  skip_cleanup: true
   token:
     secure: $FIREBASE_TOKEN
