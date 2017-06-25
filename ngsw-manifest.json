@@ -1,6 +1,12 @@
 {
   "external": {
-    "urls": [ ]
+    "urls": [
+      {"url": "https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"},
+      {"url": "https://fonts.gstatic.com/s/materialicons/v22/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2"},
+      {"url": "https://fonts.gstatic.com/s/cinzeldecorative/v5/fmgK7oaJJIXAkhd9798yQl4jZHmtnl4mfN0ClpLnj0E.woff2"},
+      {"url": "https://fonts.googleapis.com/icon?family=Material+Icons"},
+      {"url": "https://fonts.googleapis.com/css?family=Cinzel+Decorative"}
+    ]
   },
   "routing": {
     "index": "/index.html",
