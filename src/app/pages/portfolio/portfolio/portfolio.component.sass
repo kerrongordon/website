@@ -1,61 +1,25 @@
 @import ../../../config/sass/var
 
-
 kg-card
   margin-bottom: 30px
   cursor: auto
 
-.desktop-image
-  img
-    width: 100%
-
 .maxw
   max-width: 1000px
   margin: 0 auto
-
-.img
-  width: 100%
-  height: 100%
-
-.hideImage
-  display: none
-  opacity: 0
 
 .features
   border-bottom: solid 1px #eeeeee
   margin-bottom: 20px
   padding-bottom: 16px
 
-.showImage
-  animation: fade 1s ease-in-out
-
-@keyframes fade
-  0%
-    opacity: 0
-  100%
-    opacity: 1
-
-.portcontent
-  transition: $transition
-
-  
-.type
-  padding: 0 0 16px
-  text-transform: capitalize
-
-.loading
-  background: #f6f7f8
-
 @media (min-width: 0px) and (max-width: $rw-mobile)
   .portcontent
     padding: 20px 16px 16px
 
-
-
 @media (min-width: $rw-mobile) and (max-width: $rw-tablet)
   .portcontent
     padding: 40px
-
 
 @media only screen and (min-width: $rw-tablet)
   .portcontent

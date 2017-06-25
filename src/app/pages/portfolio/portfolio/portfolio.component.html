@@ -1,5 +1,5 @@
 <div *ngIf="portfolio; else noPortfolio">
-  <kg-head title="{{portfolio.title}}">
+  {{ _title.setTitle(portfolio.title) }}
     <div class="maxw">
       <kg-card class="markdown-output nohover">
         <div class="portcontent">
@@ -10,43 +10,16 @@
         </div>
         <kg-card-infor [postDate]="portfolio.timestamp"></kg-card-infor>
       </kg-card>
-      <kg-card class="desktop-image nohover" [ngClass]="tpggleThum">
-        <img class="img" src="{{portfolio.largImage.base64}}" alt="{{portfolio.largImage.name}}">
-      </kg-card>
-      <kg-card class="desktop-image nohover" [ngClass]="tpggleImge">
-        <img class="img" src="{{portfolio.largImage.url}}" alt="{{portfolio.largImage.name}}" (load)="ImageLoadedd()" (error)="LoadDefault()">
+      <kg-card class="nohover">
+        <kg-card-image class="fullIamge" [base64]="portfolio.largImage.base64" [image]="portfolio.largImage.url"></kg-card-image>
       </kg-card>
     </div>
-  </kg-head>
-  <kg-footer></kg-footer>
 </div>
 
 <ng-template #noPortfolio>
-  <kg-head class="loading-head" loading="true" title="Loading">
-    <div class="maxw">
-      <kg-card class="markdown-output nohover">
-        <div class="portcontent">
-          <div class="features">
-            <div class="loading-content loading-text"></div>
-            <div class="loading-content loading-text"></div>
-          </div>
-          <div class="markdown-output">
-            <div class="loading-content loading-text"></div>
-            <div class="loading-content loading-text"></div>
-            <div class="loading-content loading-text"></div>
-            <div class="loading-content loading-text"></div>
-            <div class="loading-content loading-text"></div>
-            <div class="loading-content loading-text"></div>
-          </div>
-        </div>
-        <kg-card-infor></kg-card-infor>
-      </kg-card>
-      <kg-card class="desktop-image nohover">
-        <div class="imgcon loading-content"></div>
-      </kg-card>
-    </div>
-  </kg-head>
-<kg-footer></kg-footer>
+  <div class="load">
+    <div class="cp-spinner cp-flip"></div>
+  </div>
 </ng-template> 
 
 

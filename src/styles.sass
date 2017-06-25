@@ -107,8 +107,32 @@ textarea
 // .contentBody
 //   transition: $transition
 
+.header
+  text-align: center
+  font-weight: 300
+  font-family: Cinzel Decorative,cursive
+  font-size: 2rem
+  color: $font-cobg
+  margin-bottom: 70px
+  margin-top: 60px
+  position: relative
+
+.header:before
+  content: ''
+  display: block
+  width: 80%
+  position: absolute
+  bottom: -25px
+  left: 50%
+  margin-left: -40%
+  height: 1px
+  background: -webkit-radial-gradient(center, ellipse, rgba(0, 0, 0, 0.2) 0, rgba(255, 255, 255, 0) 75%)
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.2) 0, rgba(255, 255, 255, 0) 75%)
+
+
 .blur
-  filter: blur(2px)
+  filter: blur(10px)
+  transform: translate3d(0, 0, 0)
 
 .loading-content
   animation-duration: 1s

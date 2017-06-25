@@ -1,4 +1,4 @@
-<kg-head title="Add Portfolio">
+
 
   <form class="contain" [formGroup]="fGroup" (ngSubmit)="addNewPortfolio(fGroup.value, fGroup.valid)">
 
@@ -64,8 +64,6 @@
 
   </form>
 
-</kg-head>
-<kg-footer></kg-footer>
 
 <kg-dialog title="Saveing To Database..."  [isVisible]="uploading">
   <div class="uploading">
@@ -73,11 +71,3 @@
   </div>
 </kg-dialog>
 
-<!--<div class="submitdata" [ngStyle]="{'display': 'block'}">
-  <div class="uploading">
-    <div class="cp-spinner cp-flip"></div>
-    <div>UpLoading...</div>
-  </div>
-</div>-->
-
-<!--uploading-->

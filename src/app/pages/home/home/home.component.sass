@@ -1,70 +1,10 @@
 @import ../../../config/sass/var
 
-.home
-  transition: all 1s ease-in-out
-p
-  color: $accent-one
 
 .skills 
   display: flex
   justify-content: space-between
   flex-wrap: wrap
-
-.skill 
-  transition: $transition
-  margin: 10px
-
-.skilltitle
-  position: relative
-  //font-family: Cinzel Decorative,cursive
-
-.title__level 
-  position: absolute
-  background: $accent-one
-  color: $font-coac
-  right: 0
-  top: -10px
-  padding: 5px 0
-  width: 23px
-  height: 23px
-  font-size: 10px
-  opacity: 1
-  text-align: center
-  border-radius: 50%
-  box-shadow: $eshadow
-  transition: $transition
-
-.progressItem
-  position: relative
-
-.settozero
-  .title__level
-    opacity: 0
-    left: 0 !important
-    
-
-.header
-  text-align: center
-  font-weight: 300
-  font-family: Cinzel Decorative,cursive
-  font-size: 2rem
-  color: $font-cobg
-  margin-bottom: 70px
-  margin-top: 60px
-  position: relative
-
-.header:before
-  content: ''
-  display: block
-  width: 80%
-  position: absolute
-  bottom: -25px
-  left: 50%
-  margin-left: -40%
-  height: 1px
-  background: -webkit-radial-gradient(center, ellipse, rgba(0, 0, 0, 0.2) 0, rgba(255, 255, 255, 0) 75%)
-  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.2) 0, rgba(255, 255, 255, 0) 75%)
-
 
 .portfolios
   display: flex
@@ -111,16 +51,10 @@ textarea
   color: #f6f7f8
 
 @media (min-width: 0px) and (max-width: $rw-mobile)
-  .skill 
-    width: 100%
-
   kg-card
     width: 100%
 
 @media (min-width: $rw-mobile) and (max-width: $rw-tablet)
-  .skill 
-    width: 43%
-
   kg-card
     width: 230px
 
@@ -128,9 +62,6 @@ textarea
   .skills
     margin: 0 auto
     max-width: 800px
-
-  .skill 
-    width: 45%
 
   kg-card
     width: 230px

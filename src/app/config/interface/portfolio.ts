@@ -1,4 +1,5 @@
 export interface Portfolio {
+  $key: String,
   title: String,
   url: URL,
   description: String,

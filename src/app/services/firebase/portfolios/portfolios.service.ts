@@ -8,9 +8,7 @@ import 'firebase/storage'; // only import firebase storage
 @Injectable()
 export class PortfoliosService {
 
-  public listPortfolios: FirebaseListObservable<Portfolio[]>
-  public portfolioObject: FirebaseObjectObservable<Portfolio>
-  private storageRef: any;
+  private storageRef: firebase.storage.Reference;
 
   constructor(
     private _firebaseApp: FirebaseApp,
@@ -19,21 +17,12 @@ export class PortfoliosService {
     this.storageRef = _firebaseApp.storage().ref();
   }
 
-  public getListPortfoliosHome() {
-    return this.listPortfolios = this._angularFireDatabase.list('portfolios', {
-      query: {
-        limitToLast: 4,
-        orderByKey: true,
-      }
-    }) as FirebaseListObservable<Portfolio[]>;
-  }
-
   public getListPortfolios() {
-    return this.listPortfolios = this._angularFireDatabase.list('portfolios') as FirebaseListObservable<Portfolio[]>;
+    return this._angularFireDatabase.list('portfolios') as FirebaseListObservable<Portfolio[]>;
   }
 
   public getPortfolioObject(key) {
-    return this.portfolioObject = this._angularFireDatabase.object('portfolios/' + key) as FirebaseObjectObservable<Portfolio>;
+    return this._angularFireDatabase.object('portfolios/' + key) as FirebaseObjectObservable<Portfolio>;
   }
 
   public removeFiles(dir) {

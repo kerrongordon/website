@@ -1,10 +1,14 @@
 @import ../../../config/sass/var
 
+\:host
+  overflow: hidden
+  // margin: 5px 5px 0
+
 .imgcon
   width: 100%
   height: 152px
   position: relative
-  transition: opacify 1s ease-in-out
+  transition: opacify 0.3s ease-in-out
   background-color: #f6f7f8
 
 .img
@@ -17,8 +21,29 @@
   bottom: 0
   transition: $transition
 
-.hideImg
-  opacity: 0
+\:host.fullIamge
+  margin: 0
+
+  .imgcon
+    height: 100%
+    
+  .img
+    position: relative
+    display: block
+
+.imgload
+  filter: blur(0px)
+  transform: scale(1)
+  animation: fadeblur 1s ease
+
+@keyframes fadeblur
+  0%
+    filter: blur(5px)
+    transform: scale(2)
+  100%
+    filter: blur(0px)
+    transform: scale(1)
+
 
 @media (min-width: 0px) and (max-width: $rw-mobile)
   \:host
@@ -26,6 +51,12 @@
 
     .img
       display: none
+
+  \:host.fullIamge
+    display: block
+    
+    .img
+      display: block
 
 @media (min-width: $rw-mobile) and (max-width: $rw-tablet)
   \:host

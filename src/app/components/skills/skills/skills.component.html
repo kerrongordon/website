@@ -1,0 +1,13 @@
+<div class="skilltitle">
+
+  <span class="title__title">{{skill.title}}</span>
+
+</div>
+
+<div id="skilllevel" class="progressItem ">
+
+  <span class="title__level" [style.left]="skill.level + '%'">{{skill.level}}</span>
+
+  <kg-progressbar [level]="skill.level"></kg-progressbar>
+
+</div>

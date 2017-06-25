@@ -8,6 +8,7 @@ import { NotificationService } from '../../../services/notification/notification
 import { PortfoliosService } from '../../../services/firebase/portfolios/portfolios.service';
 import { FirebaseListObservable } from "angularfire2/database";
 import { Portfolio } from "app/config/interface/portfolio";
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: 'kg-addportfolio',
@@ -43,6 +44,7 @@ export class AddportfolioComponent implements OnInit {
     }
 
   constructor(
+    private _title: Title,
     private _markdownService: MarkdownService,
     private _formBuilder: FormBuilder,
     private _imageService: ImageService,
@@ -60,6 +62,7 @@ export class AddportfolioComponent implements OnInit {
 
   ngOnInit() {
     this.loadPortfolios();
+    this._title.setTitle('Add Portfolio');
   }
 
   private loadPortfolios() {

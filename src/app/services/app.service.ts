@@ -6,34 +6,30 @@ import { Router } from '@angular/router';
 export class AppService {
 
   constructor(
-    private router: Router,
+    private _router: Router,
     private _location: Location
   ) {
-    window.scroll(0, 0);
+    this._router.events.subscribe(() => window.scroll(0, 0));
   }
 
   public goToHomePage() {
-    return this.router.navigateByUrl('');
-  }
-
-  public goToLoginPage() {
-    return this.router.navigateByUrl('/login');
+    return this._router.navigateByUrl('');
   }
 
   public goToAdminPage() {
-    return this.router.navigateByUrl('/admin');
+    return this._router.navigateByUrl('/admin');
   }
 
   public goToPortfoliosPage() {
-    return this.router.navigateByUrl('/portfolios');
+    return this._router.navigateByUrl('/portfolios');
   }
 
   public goToAddNewPortfolioPage() {
-    return this.router.navigateByUrl('/addportfolio');
+    return this._router.navigateByUrl('/addportfolio');
   }
 
   public goToPortfolioPage(key) {
-    return this.router.navigate(['/portfolio/', key]);
+    return this._router.navigate(['/portfolio/', key]);
   }
 
   public goBackToPreviousPage() {

@@ -6,6 +6,7 @@ import { PortfoliosService } from '../../../services/firebase/portfolios/portfol
 import { SkillsService } from '../../../services/firebase/skills/skills.service';
 import { DescriptionService } from '../../../services/firebase/description/description.service';
 import { NotificationService } from '../../../services/notification/notification.service'
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'kg-admin',
@@ -18,7 +19,6 @@ export class AdminComponent implements OnInit, OnDestroy {
   itemToBeRemoveThumbnail: any;
 
   infor: any;
-  public auth: any;
   public portfolios: any;
   public description: any;
   public skills: any;
@@ -41,23 +41,20 @@ export class AdminComponent implements OnInit, OnDestroy {
   public newSkillLevel: string;
 
   constructor(
-    private user: AuthService,
-    private app: AppService,
+    private _title: Title,
+    private _authService: AuthService,
+    private _appService: AppService,
     private _portfoliosService: PortfoliosService,
     private _skillsService: SkillsService,
     private _descriptionService: DescriptionService,
     private _notificationService: NotificationService
-  ) { }
+  ) {  }
 
   ngOnInit() {
-    this.userInfor();
     this.getSkills();
     this.getPortfolios();
     this.userDescription();
-  }
-
-  public userInfor() {
-    return this.user.isAuth().authState.subscribe(data => this.auth = data);
+    this._title.setTitle('Admin');
   }
 
   public getPortfolios() {
@@ -118,7 +115,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   public goToPortfolio(key) {
-    return this.app.goToPortfolioPage(key);
+    return this._appService.goToPortfolioPage(key);
   }
 
   public userDescription() {
@@ -141,7 +138,6 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.userInfor().unsubscribe();
     this.getSkills().unsubscribe();
     this.getPortfolios().unsubscribe();
     this.userDescription().unsubscribe();

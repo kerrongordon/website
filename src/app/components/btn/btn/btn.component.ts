@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'kg-btn',
@@ -6,16 +6,12 @@ import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy
   styleUrls: ['./btn.component.sass'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BtnComponent implements OnInit {
+export class BtnComponent {
 
   @Input() type: string;
   @Input() icon: string;
   @Input() disabled: boolean;
 
   @Output() btnClick = new EventEmitter;
-
-  constructor() { }
-
-  ngOnInit() { }
 
 }

@@ -2,19 +2,19 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
-import { HeadModule } from '../../components/head/head.module';
 import { CardModule } from '../../components/card/card.module';
-import { FooterModule } from '../../components/footer/footer.module';
 import { BtnModule } from '../../components/btn/btn.module';
 import { DialogModule } from '../../components/dialog/dialog.module';
+import { CardContentModule } from '../../components/card/card-content.module';
+import { CardInforModule } from '../../components/card/card-infor.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    HeadModule,
     CardModule,
+    CardContentModule,
+    CardInforModule,
     BtnModule,
-    FooterModule,
     DialogModule,
     RouterModule.forChild([
       { path: '', component: AdminComponent }

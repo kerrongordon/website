@@ -9,9 +9,12 @@ import { DescriptionModule } from '../../components/description/description.modu
 import { ProgressbarModule } from '../../components/progressbar/progressbar.module';
 import { CardModule } from '../../components/card/card.module';
 import { BtnModule } from '../../components/btn/btn.module';
-import { FooterModule } from '../../components/footer/footer.module';
-import { HeadModule } from '../../components/head/head.module';
 import { SocialIconsModule } from '../../components/social-icons/social-icons.module';
+
+import { SkillsModule } from '../../components/skills/skills.module';
+import { CardImageModule } from '../../components/card/card-image.module';
+import { CardContentModule } from '../../components/card/card-content.module';
+import { CardInforModule } from '../../components/card/card-infor.module';
 
 
 @NgModule({
@@ -22,11 +25,13 @@ import { SocialIconsModule } from '../../components/social-icons/social-icons.mo
     DescriptionModule,
     ProgressbarModule,
     CardModule,
+    CardImageModule,
+    CardContentModule,
+    CardInforModule,
     BtnModule,
-    FooterModule,
-    HeadModule,
     ReactiveFormsModule,
     SocialIconsModule,
+    SkillsModule,
     RouterModule.forChild([
       { path: '', component: HomeComponent }
     ])

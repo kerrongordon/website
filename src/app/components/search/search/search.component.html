@@ -1,0 +1,28 @@
+<div class="searchBox">
+
+  <div class="input-contain" [ngClass]="inputFoucs">
+    <span class="material-icons icon">search</span>
+    <input #searchInput id="searchInput" class="input" type="search" name="search" autocomplete="off" placeholder="Seach Portfolios" (keyup)="searchPortfolios($event.target.value)" (focus)="toggleSearchBarClass()" (blur)="toggleSearchBarClass(); searchInput.value=''">
+  </div>
+
+  <div class="boxover">
+    <kg-card class="">
+      <div class="seacrhView">
+        <div class="titlesearch seacrhOutput" *ngIf="searchTitle?.length > 0">
+          <h6 class="seach-title">By Title</h6>
+          <ul>
+            <li *ngFor="let title of searchTitle" (click)="openPortfolio(title.$key)"><a class="hideOText">{{title.title}}</a></li>
+          </ul>
+        </div>
+        
+        <div class="infoSearch seacrhOutput" *ngIf="searchInfo?.length > 0">
+          <h6 class="seach-title">By Summary</h6>
+          <ul>
+            <li *ngFor="let info of searchInfo" (click)="openPortfolio(info.$key)"><a class="hideOText">{{info.description.slice(0, 80) + '...'}}</a></li>
+          </ul>
+        </div>
+      </div>
+    </kg-card>
+  </div>
+
+</div>

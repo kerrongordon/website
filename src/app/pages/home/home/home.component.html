@@ -1,98 +1,43 @@
-<div *ngIf="portfolios; else noPortfolios">
-  <kg-head title="{{title}}">
-  <kg-avatar image="./assets/svg/avatar.svg" name="avatar"></kg-avatar>
-  <kg-description [description]="description"></kg-description>
-  <kg-social-icons></kg-social-icons>
-    <div class="skills">
-      <div class="skill" *ngFor="let skill of skills">
-        <div class="skilltitle">
-          <span class="title__title">{{skill.title}}</span>
-        </div>
-        <div id="skilllevel" class="progressItem settozero">
-          <span class="title__level" [style.left]="skill.level + '%'">{{skill.level}}</span>
-          <kg-progressbar class="skill__level" [level]="skill.level"></kg-progressbar>
-        </div>
-      </div>
-    </div>
-    <h2 class="header">Portfolio</h2>
-    <div class="portfolios">
-      <kg-card *ngFor="let portfolio of portfolios" (click)="openPortfolio(portfolio.$key)">
-        <kg-card-image [image]="portfolio.thumbnail.url" [base64]="portfolio.thumbnail.base64"></kg-card-image>
-        <kg-card-content [title]="portfolio.title" [info]="portfolio.description"></kg-card-content>
-        <kg-card-infor [postDate]="portfolio.timestamp"></kg-card-infor>
-      </kg-card>
-    </div>
-    <div class="allportfolios">
-      <kg-btn type="button" icon="view_module" (btnClick)="openPortfolios()">View More</kg-btn>
-    </div>
-    <h2 class="header">Get in touch</h2>
-    <div class="contact">
-      <form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)">
-        <div class="input-contain">
-          <span class="material-icons icon">account_circle</span>
-          <input class="input" type="text" name="name" placeholder="Your Name" [formControl]="complexForm.controls['name']" required>
-        </div>
-        <div class="input-contain">
-          <span class="material-icons icon">email</span>
-          <input class="input" type="email" name="email" placeholder="Your Email" [formControl]="complexForm.controls['email']" required>
-        </div>
-        <div class="input-contain">
-          <span class="material-icons icon">message</span>
-          <textarea class="input" name="message" placeholder="Your Message" [formControl]="complexForm.controls['message']" required></textarea>
-        </div>
-        <div class="submit">
-          <kg-btn type="submit" icon="send" class="icon-right" [disabled]="!complexForm.valid">Send Message</kg-btn>
-        </div>
-      </form>
-    </div>
-  </kg-head>
-  <kg-footer></kg-footer>
+<kg-avatar image="./assets/svg/avatar.svg" name="avatar"></kg-avatar>
+<kg-description [description]="description"></kg-description>
+<kg-social-icons></kg-social-icons>
+
+<div class="skills">
+  <kg-skills *ngFor="let skill of skills" [skill]="skill"></kg-skills>
 </div>
 
-<ng-template #noPortfolios>
-  <kg-head class="loading-head" title="Loading...">
-  <kg-avatar class="loading-avatar" name="avatar"></kg-avatar>
-  <kg-description></kg-description>
-    <div class="skills">
-      <div class="skill" *ngFor="let loading of [1,2,3,4,5,6,7,8]">
-        <div class="skilltitle">
-          <span class="title__title loading-content loading-text"></span>
-          <span class="title__level hide"></span>
-        </div>
-        <kg-progressbar></kg-progressbar>
-      </div>
+<h2 class="header" *ngIf="portfolios !== null">Portfolio</h2>
+
+<div class="portfolios">
+  <kg-card *ngFor="let portfolio of (portfolios ? portfolios.slice(0,4): [])" (click)="openPortfolio(portfolio.$key)">
+    <kg-card-image [image]="portfolio.thumbnail.url" [base64]="portfolio.thumbnail.base64"></kg-card-image>
+    <kg-card-content [title]="portfolio.title" [info]="portfolio.description"></kg-card-content>
+    <kg-card-infor [postDate]="portfolio.timestamp"></kg-card-infor>
+  </kg-card>
+</div>
+
+<div class="allportfolios" *ngIf="portfolios !== null">
+  <kg-btn type="button" icon="view_module" (btnClick)="openPortfolios()">View More</kg-btn>
+</div>
+
+<h2 class="header">Get in touch</h2>
+
+<div class="contact">
+  <form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)">
+    <div class="input-contain">
+      <span class="material-icons icon">account_circle</span>
+      <input class="input" type="text" name="name" placeholder="Your Name" [formControl]="complexForm.controls['name']" required>
     </div>
-    <h2 class="header icon-loading">Portfolio</h2>
-    <div class="portfolios">
-      <kg-card class="loading" *ngFor="let loading of [1,2,3,4]">
-        <kg-card-image></kg-card-image>
-        <kg-card-content></kg-card-content>
-        <kg-card-infor></kg-card-infor>
-      </kg-card>
+    <div class="input-contain">
+      <span class="material-icons icon">email</span>
+      <input class="input" type="email" name="email" placeholder="Your Email" [formControl]="complexForm.controls['email']" required>
     </div>
-    <div class="allportfolios">
-      <kg-btn class="disabled" type="button" icon="view_module">View More</kg-btn>
+    <div class="input-contain">
+      <span class="material-icons icon">message</span>
+      <textarea class="input" name="message" placeholder="Your Message" [formControl]="complexForm.controls['message']" required></textarea>
     </div>
-    <h2 class="header icon-loading">Get in touch</h2>
-    <div class="contact">
-      <form>
-        <div class="input-contain disabled-input">
-          <span class="material-icons icon icon-loading">account_circle</span>
-          <input class="input" type="text" name="name" placeholder="Your Name">
-        </div>
-        <div class="input-contain disabled-input">
-          <span class="material-icons icon icon-loading">email</span>
-          <input class="input" type="email" name="email" placeholder="Your Email">
-        </div>
-        <div class="input-contain disabled-input">
-          <span class="material-icons icon icon-loading">message</span>
-          <textarea class="input" name="message" placeholder="Your Message"></textarea>
-        </div>
-        <div class="submit">
-          <kg-btn type="submit" icon="send" class="icon-right disabled">Send Message</kg-btn>
-        </div>
-      </form>
+    <div class="submit">
+      <kg-btn type="submit" icon="send" class="icon-right" [disabled]="!complexForm.valid">Send Message</kg-btn>
     </div>
-  </kg-head>
-  <kg-footer></kg-footer>
-</ng-template>
+  </form>
+</div>

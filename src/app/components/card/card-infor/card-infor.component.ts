@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 
 @Component({
   selector: 'kg-card-infor',
@@ -6,20 +6,8 @@ import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core
   styleUrls: ['./card-infor.component.sass'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CardInforComponent implements OnInit {
+export class CardInforComponent {
 
   @Input() postDate: number;
-  public date: string;
-
-  constructor() { }
-
-  ngOnInit() {
-  	this.dateToString();
-  }
-
-  private dateToString() {
-  	const d = new Date(this.postDate);
-  	return this.date = `Posted On ${d.getUTCMonth()}/${d.getUTCDate()}/${d.getUTCFullYear()}`;
-  }
 
 }

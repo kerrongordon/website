@@ -1,0 +1,42 @@
+@import ../../../config/sass/var
+
+\:host
+  transition: $transition
+  margin: 10px
+  display: block
+  position: relative
+
+.skilltitle
+  position: relative
+
+.title__level 
+  position: absolute
+  background: $accent-one
+  color: $font-coac
+  right: 0
+  top: 10px
+  padding: 5px 0
+  width: 23px
+  height: 23px
+  font-size: 10px
+  opacity: 1
+  text-align: center
+  border-radius: 50%
+  box-shadow: $eshadow
+  transition: $transition
+
+@media (min-width: 0px) and (max-width: $rw-mobile)
+  \:host 
+    width: 100%
+
+@media (min-width: $rw-mobile) and (max-width: $rw-tablet)
+  \:host 
+    width: 43%
+
+@media only screen and (min-width: $rw-tablet)
+  .skills
+    margin: 0 auto
+    max-width: 800px
+
+  \:host 
+    width: 45%

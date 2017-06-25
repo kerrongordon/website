@@ -10,7 +10,7 @@ install:
     - yarn global add firebase-tools
     - yarn install
 after_success:
-    - ng build -prod --aot
+    - ng build --prod
     - firebase deploy --token "$FIREBASE_TOKEN"
 
 

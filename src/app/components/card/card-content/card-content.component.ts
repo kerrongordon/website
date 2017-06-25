@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'kg-card-content',
@@ -6,14 +6,9 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core
   styleUrls: ['./card-content.component.sass'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CardContentComponent implements OnInit {
+export class CardContentComponent {
 
   @Input() title: string;
   @Input() info: string;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
 }

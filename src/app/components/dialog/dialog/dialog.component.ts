@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, AfterViewInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, OnChanges, AfterViewInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'kg-dialog',
@@ -27,6 +27,8 @@ export class DialogComponent implements OnInit, OnChanges, AfterViewInit {
   @Output() btn1action = new EventEmitter();
   @Output() btn2action = new EventEmitter();
 
+  @ViewChild('pageId') pageId;
+
   constructor() { }
 
   ngOnInit() {  }
@@ -41,6 +43,7 @@ export class DialogComponent implements OnInit, OnChanges, AfterViewInit {
     this.getSearchId();
     this.getContentBody();
     this.getFooterId();
+    // console.log(this.pageId.nativeElement.value);
   }
 
   private getBodyId() {
@@ -78,16 +81,19 @@ export class DialogComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   private addBlur() {
-    this.searchId.classList.add('blur');
-    this.contentBody.classList.add('blur');
-    this.footerId.classList.add('blur');
+    // this.searchId.classList.add('blur');
+    // this.contentBody.classList.add('blur');
+    // this.footerId.classList.add('blur');
+    // this.pageId.nativeElement.classList.add('blur');
     return;
   }
 
   private removeBlur() {
-    this.searchId.classList.remove('blur');
-    this.contentBody.classList.remove('blur');
-    this.footerId.classList.remove('blur');
+    // this.searchId.classList.remove('blur');
+    // this.contentBody.classList.remove('blur');
+    // this.footerId.classList.remove('blur');
+    // this.pageId.nativeElement.classList.remove('blur');
+    // console.log(this.pageId);
     return;
   }
 

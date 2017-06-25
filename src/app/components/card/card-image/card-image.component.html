@@ -1,6 +1,5 @@
 <div class="imgcon" *ngIf="image; else noImage">
-	<img class="img" src="{{base64}}" alt="Portfolios Images">
-	<img class="img" [ngClass]="fadeInImage" src="{{image}}" alt="Portfolios Images" (load)="ImageLoadedd()" (error)="LoadDefault()">
+	<img #imageId class="img" src="{{base64}}" alt="Portfolios Images" (error)="ImageError()">
 </div>
 
 <ng-template #noImage>

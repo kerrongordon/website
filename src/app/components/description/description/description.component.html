@@ -1,16 +1,5 @@
-<div *ngIf="description; else noDescription">
+<div *ngIf="description">
   <p class="description">
     {{description}}
   </p>
 </div>
-
-<ng-template #noDescription>
-  <div>
-    <div class="description">
-      <div class="loading-content loading-text"></div>
-      <div class="loading-content loading-text"></div>
-      <div class="loading-content loading-text"></div>
-      <div class="loading-content loading-text"></div>
-    </div>
-  </div>
-</ng-template>
