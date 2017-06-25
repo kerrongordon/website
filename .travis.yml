@@ -1,17 +1,29 @@
+sudo: false
 dist: trusty
 language: node_js
 node_js:
   - "7"
-script:
-    - curl -o- -L https://yarnpkg.com/install.sh | bash
+
+branches:
+  only:
+    - master
+
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+
 install:
-    - yarn global add @angular/cli
-    - yarn global add typings
-    - yarn global add firebase-tools
-    - yarn install
+  - yarn global add @angular/cli
+  - yarn global add typings
+  - yarn global add firebase-tools
+  - yarn install
+
+script:
+  - ng build --prod --aot
+
 after_success:
-    - ng build --prod
-    - firebase deploy --token "$FIREBASE_TOKEN"
+  - firebase deploy --token $FIREBASE_TOKEN
 
-
-
+deploy:
+  provider: firebase
+  token:
+    secure: $FIREBASE_TOKEN
