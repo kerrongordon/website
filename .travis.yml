@@ -10,6 +10,7 @@ branches:
     - /^greenkeeper/.*$/
 
 before_install:
+  - sudo apt install -y gzip
   - curl -o- -L https://yarnpkg.com/install.sh | bash
 
 install:
@@ -20,6 +21,7 @@ install:
 
 script:
   - ng build --prod --aot
+  - cd dist gzip -k -r * && cd ..
 
 deploy:
   provider: firebase
