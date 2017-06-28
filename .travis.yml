@@ -33,5 +33,6 @@ deploy:
     local_dir: dist
     repo: kerrongordon/kerrongordon.github.io
     github_token: $GITHUB_TOKEN
+    target_branch: master
     on:
       branch: master
