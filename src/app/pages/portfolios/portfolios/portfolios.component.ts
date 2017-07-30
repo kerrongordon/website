@@ -48,9 +48,16 @@ export class PortfoliosComponent implements OnInit, AfterContentChecked, OnDestr
   }
 
   ngAfterContentChecked() {
-    if (document.body.scrollHeight === window.innerHeight - 17) {
-      return this.loadmoreitem();
+    let body = document.getElementById('body');
+
+    if (window.innerHeight === body.scrollHeight) {
+      this.loadmoreitem();
     }
+
+    if (document.body.scrollHeight === window.innerHeight - 17) {
+      this.loadmoreitem();
+    }
+
   }
 
   ngOnDestroy() {
