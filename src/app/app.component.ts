@@ -41,8 +41,9 @@ export class AppComponent implements OnInit{
   ngOnInit() {  }
 
   private toggleMenuBar() {
-    if (this.toggleMenuClass !== '') {
-      this.toggleMenuClass = '';
+
+    if (window.pageYOffset === 0 || window.pageYOffset === 1) {
+      return this.toggleheaderbar = '';
     }
     
     if (window.pageYOffset > this.menuScrollToTop) {
@@ -50,6 +51,7 @@ export class AppComponent implements OnInit{
     } else {
       this.toggleheaderbar = '';
     }
+    
     return this.menuScrollToTop = window.pageYOffset
   }
 
