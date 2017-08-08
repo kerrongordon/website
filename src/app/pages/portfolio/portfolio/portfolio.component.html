@@ -14,6 +14,8 @@
         <kg-card-image class="fullIamge" [base64]="portfolio.largImage.base64" [image]="portfolio.largImage.url"></kg-card-image>
       </kg-card>
     </div>
+
+    <kg-share [link]="portfolio.url" [title]="portfolio.title"></kg-share>
 </div>
 
 <ng-template #noPortfolio>
