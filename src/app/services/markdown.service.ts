@@ -3,8 +3,8 @@ import * as marked from 'marked';
 
 @Injectable()
 export class MarkdownService {
-
-  private md: MarkedStatic;
+  
+  md: typeof marked;
 
   constructor() {
     this.md = marked;
