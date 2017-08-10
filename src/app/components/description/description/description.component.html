@@ -1,5 +1,11 @@
-<div *ngIf="description">
+<div *ngIf="description; else nodescription">
   <p class="description">
-    {{description}}
+    {{ description.description }}
   </p>
 </div>
+
+<ng-template #nodescription>
+  <p class="description">
+    <span class="loading-content" *ngFor="let l of [1,2,3,4]"></span>
+  </p>
+</ng-template>

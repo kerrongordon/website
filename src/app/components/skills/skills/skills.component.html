@@ -1,13 +1,37 @@
-<div class="skilltitle">
+<div *ngIf="skill; else noskill">
+  <div class="skilltitle">
 
-  <span class="title__title">{{skill.title}}</span>
+    <span class="title__title">{{skill.title}}</span>
 
+  </div>
+
+  <div id="skilllevel" class="progressItem ">
+
+    <span class="title__level" [style.left]="skill.level + '%'">{{skill.level}}</span>
+
+    <kg-progressbar [level]="skill.level"></kg-progressbar>
+
+  </div>
 </div>
 
-<div id="skilllevel" class="progressItem ">
 
-  <span class="title__level" [style.left]="skill.level + '%'">{{skill.level}}</span>
+<ng-template #noskill>
 
-  <kg-progressbar [level]="skill.level"></kg-progressbar>
+  <div class="loading" *ngFor="let l of [1,2,3,4]">
 
-</div>
+    <div class="skilltitle">
+
+      <span class="loading-content span"></span>
+
+    </div>
+
+    <div id="skilllevel" class="progressItem ">
+
+      <span class="loading-content span"></span>
+
+    </div>
+
+  </div>
+
+</ng-template>
+
