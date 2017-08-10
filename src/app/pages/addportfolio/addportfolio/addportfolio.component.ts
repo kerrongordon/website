@@ -10,6 +10,7 @@ import { FirebaseListObservable } from "angularfire2/database";
 import { Portfolio } from "app/config/interface/portfolio";
 import { Title } from "@angular/platform-browser";
 
+
 @Component({
   selector: 'kg-addportfolio',
   templateUrl: './addportfolio.component.html',
@@ -41,6 +42,16 @@ export class AddportfolioComponent implements OnInit {
     onResize(event) {
       this.thumbSize();
       this.desktopSize();
+    }
+    
+  @HostListener('window:dragover', ['$event'])
+    dragover(event) {
+      event.preventDefault()
+    }
+
+  @HostListener('window:drop', ['$event'])
+    drop(event) {
+      event.preventDefault()
     }
 
   constructor(

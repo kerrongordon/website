@@ -5,7 +5,7 @@ import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable }
 export class SkillsService {
 
   public listOfSkills: FirebaseListObservable<Skills[]>;
-  public skillObject: FirebaseObjectObservable<any>;
+  public skillObject: FirebaseObjectObservable<Skills>;
 
   constructor(private _angularFireDatabase: AngularFireDatabase) { }
 
@@ -14,7 +14,7 @@ export class SkillsService {
   }
 
   public getSkillObject(key) {
-    return this.skillObject = this._angularFireDatabase.object('skills/' + key) as FirebaseObjectObservable<any>;
+    return this.skillObject = this._angularFireDatabase.object('skills/' + key) as FirebaseObjectObservable<Skills>;
   }
 
 }

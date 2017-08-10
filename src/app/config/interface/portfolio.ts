@@ -8,7 +8,7 @@ export interface Portfolio {
   largImage: PortfolioImage,
   imagePath: String,
   desktopBase64: String,
-  timestamp: Number
+  timestamp: Number,
 }
 
 interface PortfolioImage {

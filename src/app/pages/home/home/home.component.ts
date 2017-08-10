@@ -10,6 +10,8 @@ import { NotificationService } from '../../../services/notification/notification
 import { Portfolio } from '../../../config/interface/portfolio';
 import { Skill } from '../../../config/interface/skill';
 import { Title } from '@angular/platform-browser';
+import { FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
+import { Description } from '../../../config/interface/description';
 
 @Component({
   selector: 'kg-home',
@@ -26,10 +28,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   public title: String = 'Kerron Gordon';
   public email: any;
-  public description: String;
-  public skills: Skill[];
+  public skills: FirebaseListObservable<Skill[]>;
   public portfolios: Portfolio[];
-
+  public description: FirebaseObjectObservable<Description>;
   public complexForm: FormGroup;
 
   constructor(
@@ -57,26 +58,24 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private setDescription() {
-    return this._descriptionService.getDescription()
-      .subscribe(data => this.description = data.description);
+    return this.description = this._descriptionService.getDescription()
   }
 
   private setSkills() {
-    return this._skillsService.getListOfSkills()
-      .subscribe(data => this.skills = data);
+    return this.skills = this._skillsService.getListOfSkills()
   }
 
   private setPortfolios() {
-    return this._portfoliosService.getListPortfolios()
-      .subscribe(data => this.portfolios = data.reverse());
+    return this._portfoliosService.getTheLastFour()
+      .subscribe(data => this.portfolios = data.reverse())
   }
 
   public openPortfolios() {
-    return this._appService.goToPortfoliosPage() as Promise<boolean>;
+    return this._appService.goToPortfoliosPage() as Promise<boolean>
   }
 
   public openPortfolio(key) {
-    return this._appService.goToPortfolioPage(key) as Promise<boolean>;
+    return this._appService.goToPortfolioPage(key) as Promise<boolean>
   }
 
   public submitForm(value) {
@@ -95,9 +94,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.setDescription().unsubscribe();
-    this.setSkills().unsubscribe();
-    this.setPortfolios().unsubscribe();
+    this.setPortfolios().unsubscribe()
   }
 
 }

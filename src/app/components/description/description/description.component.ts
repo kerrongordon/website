@@ -1,4 +1,5 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Description } from "app/config/interface/description";
 
 @Component({
   selector: 'kg-description',
@@ -7,5 +8,5 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DescriptionComponent {
-  @Input() description: string;
+  @Input() description: Description;
 }

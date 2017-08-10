@@ -1,15 +1,17 @@
 <kg-avatar image="/assets/svg/avatar.svg" name="avatar"></kg-avatar>
-<kg-description [description]="description"></kg-description>
+
+<kg-description [description]="description | async"></kg-description>
+
 <kg-social-icons></kg-social-icons>
 
 <div class="skills">
-  <kg-skills *ngFor="let skill of skills" [skill]="skill"></kg-skills>
+   <kg-skills *ngFor="let skill of skills | async" [skill]="skill"></kg-skills> 
 </div>
 
 <h2 class="header" *ngIf="portfolios !== null">Portfolio</h2>
 
 <div class="portfolios">
-  <kg-card *ngFor="let portfolio of (portfolios ? portfolios.slice(0,4): [])" (click)="openPortfolio(portfolio.$key)">
+  <kg-card *ngFor="let portfolio of portfolios" (click)="openPortfolio(portfolio.$key)">
     <kg-card-image [image]="portfolio.thumbnail.url" [base64]="portfolio.thumbnail.base64"></kg-card-image>
     <kg-card-content [title]="portfolio.title" [info]="portfolio.description"></kg-card-content>
     <kg-card-infor [postDate]="portfolio.timestamp"></kg-card-infor>

@@ -25,6 +25,15 @@ export class PortfoliosService {
     return this._angularFireDatabase.object('portfolios/' + key) as FirebaseObjectObservable<Portfolio>;
   }
 
+  public getTheLastFour() {    
+    return this._angularFireDatabase.list('portfolios', { 
+      query: {
+        limitToLast: 4,
+        orderByChild: 'timestamp'
+      }
+     }) as FirebaseListObservable<Portfolio[]>;
+  }
+
   public removeFiles(dir) {
     const desertRef = this.storageRef.child(dir);
     return desertRef.delete()
