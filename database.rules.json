@@ -1,5 +1,8 @@
 {
   "rules": {
+    "portfolios": {
+      ".indexOn": ["timestamp"]
+    },
     ".read": "true",
     ".write": "auth != null"
   }

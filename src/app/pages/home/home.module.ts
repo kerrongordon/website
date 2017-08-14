@@ -15,6 +15,7 @@ import { SkillsModule } from '../../components/skills/skills.module';
 import { CardImageModule } from '../../components/card/card-image.module';
 import { CardContentModule } from '../../components/card/card-content.module';
 import { CardInforModule } from '../../components/card/card-infor.module';
+import { ReversePipe } from '../../pipe/reverse.pipe';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { CardInforModule } from '../../components/card/card-infor.module';
     ])
   ],
   declarations: [
-    HomeComponent
+    HomeComponent,
+    ReversePipe
   ]
 })
 export class HomeModule { }

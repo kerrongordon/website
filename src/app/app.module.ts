@@ -21,7 +21,7 @@ import { CardImageModule } from './components/card/card-image.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,

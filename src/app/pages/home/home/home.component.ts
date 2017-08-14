@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AppService } from '../../../services/app.service';
@@ -24,12 +24,13 @@ import { Description } from '../../../config/interface/description';
               EmailService,
               NotificationService]
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit {
+ 
 
   public title: String = 'Kerron Gordon';
   public email: any;
   public skills: FirebaseListObservable<Skill[]>;
-  public portfolios: Portfolio[];
+  public portfolios: FirebaseListObservable<Portfolio[]>;
   public description: FirebaseObjectObservable<Description>;
   public complexForm: FormGroup;
 
@@ -50,7 +51,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.setDescription();
     this.setSkills();
     this.setPortfolios();
@@ -66,8 +67,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private setPortfolios() {
-    return this._portfoliosService.getTheLastFour()
-      .subscribe(data => this.portfolios = data.reverse())
+    return this.portfolios = this._portfoliosService.getTheLastFour()
   }
 
   public openPortfolios() {
@@ -91,10 +91,6 @@ export class HomeComponent implements OnInit, OnDestroy {
           });
     }
     return;
-  }
-
-  ngOnDestroy(): void {
-    this.setPortfolios().unsubscribe()
   }
 
 }
