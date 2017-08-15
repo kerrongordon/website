@@ -26,13 +26,17 @@ import { Description } from '../../../config/interface/description';
 })
 export class HomeComponent implements OnInit {
  
-
+  public inputClass = '';
   public title: String = 'Kerron Gordon';
   public email: any;
   public skills: FirebaseListObservable<Skill[]>;
   public portfolios: FirebaseListObservable<Portfolio[]>;
   public description: FirebaseObjectObservable<Description>;
   public complexForm: FormGroup;
+
+  public inputClass1: string = '';
+  public inputClass2: string = '';
+  public inputClass3: string = '';
 
   constructor(
     private _title: Title,
@@ -92,5 +96,4 @@ export class HomeComponent implements OnInit {
     }
     return;
   }
-
 }

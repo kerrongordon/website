@@ -16,7 +16,7 @@
   <div #pageId class="page">
     <div class="container">
 
-      <router-outlet></router-outlet>
+      <router-outlet (activate)="changeOfRoutes()"></router-outlet>
 
     </div>
   </div>

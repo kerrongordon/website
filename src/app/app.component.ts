@@ -75,4 +75,8 @@ export class AppComponent implements OnInit{
       .catch(err => this._notificationService.notifitem('error', err.name, err.message, true));
   }
 
+  public changeOfRoutes() {
+    return window.scroll(0, 0);
+  }
+
 }

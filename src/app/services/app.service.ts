@@ -9,7 +9,7 @@ export class AppService {
     private _router: Router,
     private _location: Location
   ) {
-    this._router.events.subscribe(() => window.scroll(0, 0));
+    // this._router.events.subscribe(() => window.scroll(0, 0));
   }
 
   public goToHomePage() {

@@ -26,20 +26,21 @@
 
 <div class="contact">
   <form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)">
-    <div class="input-contain">
+    <div class="input-contain" [ngClass]="inputClass1">
       <span class="material-icons icon">account_circle</span>
-      <input class="input" type="text" name="name" placeholder="Your Name" [formControl]="complexForm.controls['name']" required>
+      <input class="input" type="text" name="name" placeholder="Your Name" [formControl]="complexForm.controls['name']" required (focus)="inputClass1 = 'inputActive'" (blur)="inputClass1 = ''">
     </div>
-    <div class="input-contain">
+    <div class="input-contain" [ngClass]="inputClass2">
       <span class="material-icons icon">email</span>
-      <input class="input" type="email" name="email" placeholder="Your Email" [formControl]="complexForm.controls['email']" required>
+      <input class="input" type="email" name="email" placeholder="Your Email" [formControl]="complexForm.controls['email']" required (focus)="inputClass2 = 'inputActive'" (blur)="inputClass2 = ''">
     </div>
-    <div class="input-contain">
+    <div class="input-contain" [ngClass]="inputClass3">
       <span class="material-icons icon">message</span>
-      <textarea class="input" name="message" placeholder="Your Message" [formControl]="complexForm.controls['message']" required></textarea>
+      <textarea class="input" name="message" placeholder="Your Message" [formControl]="complexForm.controls['message']" required (focus)="inputClass3 = 'inputActive'" (blur)="inputClass3 = ''"></textarea>
     </div>
     <div class="submit">
       <kg-btn type="submit" icon="send" class="icon-right" [disabled]="!complexForm.valid">Send Message</kg-btn>
     </div>
   </form>
 </div>
+

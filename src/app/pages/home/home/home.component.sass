@@ -20,6 +20,7 @@
 
 .input-contain
   margin: 16px 0
+  transition: $transition 
 
 textarea
   min-height: 250px
@@ -50,6 +51,11 @@ textarea
 
 .icon-loading
   color: #f6f7f8
+
+
+.inputActive, .inputActiveEmail, .inputActiveMess
+  transform: scale(1.03)
+
 
 @media (min-width: 0px) and (max-width: $rw-mobile)
   kg-card
