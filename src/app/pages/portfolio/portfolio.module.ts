@@ -7,6 +7,7 @@ import { CardModule } from '../../components/card/card.module';
 import { CardImageModule } from '../../components/card/card-image.module';
 import { CardInforModule } from '../../components/card/card-infor.module';
 import { ShareModule } from '../../components/share/share.module';
+import { BtnModule } from '../../components/btn/btn.module';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { ShareModule } from '../../components/share/share.module';
     CardImageModule,
     CardInforModule,
     ShareModule,
+    BtnModule,
     RouterModule.forChild([
       { path: '', component: PortfolioComponent }
     ])

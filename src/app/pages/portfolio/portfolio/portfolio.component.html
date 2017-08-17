@@ -9,6 +9,7 @@
           <div class="markdown-output" [innerHTML]="mdOutput"></div>
         </div>
         <kg-card-infor [postDate]="portfolio.timestamp"></kg-card-infor>
+        <kg-btn *ngIf="isAuth" type="botton" icon="edit" class="btn hidetext" (btnClick)="editPortfolio(portfolio.$key)">Edit</kg-btn>
       </kg-card>
       <kg-card class="nohover">
         <kg-card-image class="fullIamge" [base64]="portfolio.largImage.base64" [image]="portfolio.largImage.url"></kg-card-image>

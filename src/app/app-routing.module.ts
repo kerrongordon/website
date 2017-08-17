@@ -4,10 +4,11 @@ import { AuthService } from './services/auth.service';
 import { AppCustomPreloader } from './config/class/app-custom-preloader';
 
 const routes: Routes = [
-  { path: '', loadChildren: './pages/home/home.module#HomeModule' },
+  { path: '', loadChildren: './pages/home/home.module#HomeModule', data: { preload: true } },
   { path: 'admin', loadChildren: './pages/admin/admin.module#AdminModule', canActivate: [AuthService] },
-  { path: 'portfolio/:id', loadChildren: './pages/portfolio/portfolio.module#PortfolioModule' },
+  { path: 'portfolio/:id', loadChildren: './pages/portfolio/portfolio.module#PortfolioModule', data: { preload: true } },
   { path: 'addportfolio', loadChildren: './pages/addportfolio/addportfolio.module#AddportfolioModule', canActivate: [AuthService]},
+  { path: 'editportfolio/:id', loadChildren: './pages/edit-portfolio/edit-portfolio.module#EditPortfolioModule', canActivate: [AuthService]},
   { path: 'portfolios', loadChildren: './pages/portfolios/portfolios.module#PortfoliosModule', data: { preload: true } },
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

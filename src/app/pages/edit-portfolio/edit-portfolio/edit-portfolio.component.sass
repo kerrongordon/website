@@ -1,0 +1,112 @@
+@import ../../../config/sass/var
+
+form
+  padding: 0px
+
+input[type="file"]
+  background: transparent
+  box-shadow: none
+
+textarea
+  min-height: 200px
+  resize: vertical
+
+.input-contain
+  border-radius: 0
+  box-shadow: none
+  margin: 10px 0
+
+.contain
+  max-width: 1000px
+  margin: 0 auto
+
+.submitdata
+  background: rgba(#000, 0.8)
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  z-index: 99999
+  overflow: hidden
+  display: flex
+  justify-content: center
+  align-items: center
+  display: none
+
+.uploading
+  width: 100%
+  max-width: 200px
+  background: #fff
+  // margin: 40vh auto
+  padding: 20px
+  // box-shadow: $card-shadow
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-direction: column
+
+.centerbtn
+  display: flex
+  justify-content: space-around
+  padding: 16px
+
+kg-card
+  padding: 16px
+
+.uploadImageBtn
+  color: #fff
+  border: dashed 3px #ddd
+  margin-bottom: -20px
+  height: 200px
+  position: relative
+
+  label
+    width: 100%
+    height: 100%
+    display: block
+    cursor: pointer
+
+  input
+    display: none
+
+.upimage
+  width: 100%
+
+.imgtitle
+  font-size: 1.2rem
+  margin-bottom: 1rem
+
+
+.fileupload
+  align-items: baseline
+
+// .thumbnail-image,
+// .desktopImage-image
+
+// .upthumb
+  // margin-top: -180px
+
+
+// @media (min-width: 0px) and (max-width: $rw-mobile)
+
+
+// @media (min-width: $rw-mobile) and (max-width: $rw-tablet)
+
+@media only screen and (min-width: $rw-mobile)
+  .titleandtype,
+  .markdown-contain
+    display: flex
+
+    .input-contain
+      flex: 1
+      
+  .fileupload
+    display: flex
+
+    kg-card
+      flex: 1
+
+@media only screen and (min-width: $rw-tablet)
+  form
+    padding: 20px

@@ -43,7 +43,7 @@
         <kg-card-infor [postDate]="portfolio.timestamp"></kg-card-infor>
       </div>
       <div class="button-group items">
-        <kg-btn type="botton" icon="edit" class="btn hidetext">Edit</kg-btn>
+        <kg-btn type="botton" icon="edit" class="btn hidetext" (btnClick)="editPortfolio(portfolio.$key)">Edit</kg-btn>
         <kg-btn typr="botton" icon="delete" class="btn delete hidetext" (btnClick)="removePortfolio(portfolio.$key)">Remove</kg-btn>
       </div>
     </kg-card>

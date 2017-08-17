@@ -137,6 +137,10 @@ export class AdminComponent implements OnInit, OnDestroy {
     return this._descriptionService.getDescription().update(description);
   }
 
+  public editPortfolio(key) {
+    return this._appService.goToPortfolioEditPage(key);
+  }
+
   ngOnDestroy() {
     this.getSkills().unsubscribe();
     this.getPortfolios().unsubscribe();

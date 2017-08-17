@@ -8,9 +8,7 @@ export class AppService {
   constructor(
     private _router: Router,
     private _location: Location
-  ) {
-    // this._router.events.subscribe(() => window.scroll(0, 0));
-  }
+  ) { }
 
   public goToHomePage() {
     return this._router.navigateByUrl('');
@@ -30,6 +28,10 @@ export class AppService {
 
   public goToPortfolioPage(key) {
     return this._router.navigate(['/portfolio/', key]);
+  }
+
+  public goToPortfolioEditPage(key) {
+    return this._router.navigate(['/editportfolio/', key]);
   }
 
   public goBackToPreviousPage() {

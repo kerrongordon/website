@@ -1,0 +1,39 @@
+<div *ngIf="portfolio">
+<form class="contain" (keyup)="editForm()">
+  
+      <kg-card class="nohover">
+        <div class="titleandtype">
+  
+          <div class="input-contain">
+            <span class="material-icons icon">account_circle</span>
+            <input class="input markdown-output" type="text" [(ngModel)]="portfolio.title" name="title" placeholder="Title">
+          </div>
+  
+          <div class="input-contain">
+            <span class="material-icons icon">account_circle</span>
+            <input class="input markdown-output" type="url" [(ngModel)]="portfolio.url" name="url" placeholder="Project Url">
+          </div>
+  
+        </div>
+  
+        <div class="input-contain">
+          <textarea class="input" [(ngModel)]="portfolio.description" name="description" placeholder="Add Description Content Here"></textarea>
+        </div>
+  
+        <div class="markdown-contain">
+          <div class="input-contain">
+            <textarea class="input markdown-output" [(ngModel)]="portfolio.markdown" name="markdown" placeholder="Add Markdown Here"></textarea>
+          </div>
+          <div class="input-contain">
+            <div class="input markdown-output" [innerHTML]="mdOutput"></div>
+          </div>
+        </div>
+  
+      </kg-card>
+
+      <div class="centerbtn">
+        <kg-btn icon="view_agenda" class="icon-right" (btnClick)="previewPage(portfolio.$key)">Preview</kg-btn>
+      </div>
+  
+    </form>
+</div>
