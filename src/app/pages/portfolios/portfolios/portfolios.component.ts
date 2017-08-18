@@ -38,6 +38,7 @@ export class PortfoliosComponent implements OnInit, AfterContentChecked, OnDestr
   ngOnInit() {
     this.setPortfolios();
     this._title.setTitle('My Portfolios');
+    this.initWidth();
   }
 
   private setPortfolios() {
