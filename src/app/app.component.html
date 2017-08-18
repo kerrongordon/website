@@ -13,11 +13,11 @@
     <kg-title>{{ _title.getTitle() }}</kg-title>
   </kg-ribban>
 
-  <div #pageId class="page">
+  <div #pageId id="pageoutlet" class="page routeContainer" [@routeAnimation]="getDepth(myOutlet)">
     <div class="container">
 
-      <router-outlet (activate)="changeOfRoutes()"></router-outlet>
-
+      <router-outlet #myOutlet="outlet" (activate)="changeOfRoutes()"></router-outlet>
+      
     </div>
   </div>
 

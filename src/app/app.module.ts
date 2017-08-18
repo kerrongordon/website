@@ -18,6 +18,7 @@ import { MenubarModule } from './components/menubar/menubar.module';
 import { DialogModule } from './components/dialog/dialog.module';
 import { SearchModule } from './components/search/search.module';
 import { CardImageModule } from './components/card/card-image.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { CardImageModule } from './components/card/card-image.module';
     CardImageModule,
     SearchModule,
     FooterModule,
+    BrowserAnimationsModule,
   ],
   bootstrap: [AppComponent]
 })
