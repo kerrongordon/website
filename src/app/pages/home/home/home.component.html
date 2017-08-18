@@ -8,11 +8,13 @@
    <kg-skills *ngFor="let skill of skills | async" [skill]="skill"></kg-skills> 
 </div>
 
-<h2 class="header" *ngIf="portfolios | async">Portfolio</h2>
+<h2 class="header" *ngIf="portfolios | async">Portfolio {{ showImage }} </h2>
 
 <div class="portfolios" *ngIf="portfolios | async">
   <kg-card *ngFor="let portfolio of portfolios | async | reverse" (click)="openPortfolio(portfolio.$key)">
+    <ng-template [ngIf]="showImage">
     <kg-card-image [image]="portfolio.thumbnail.url" [base64]="portfolio.thumbnail.base64"></kg-card-image>
+    </ng-template>
     <kg-card-content [title]="portfolio.title" [info]="portfolio.description"></kg-card-content>
     <kg-card-infor [postDate]="portfolio.timestamp"></kg-card-infor>
   </kg-card>

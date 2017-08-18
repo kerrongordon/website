@@ -12,6 +12,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class PortfoliosComponent implements OnInit, AfterContentChecked, OnDestroy {
 
+  public showImage: boolean = false;
   public loadmore: number = 5;
   public portfolios: Portfolio[];
 
@@ -21,6 +22,11 @@ export class PortfoliosComponent implements OnInit, AfterContentChecked, OnDestr
      if (window.pageYOffset > clientHeight) {
        return this.loadmoreitem();
      }
+    }
+
+  @HostListener('window:resize', ['$event'])
+    dragover(event) {
+      this.getWindowWidth(event)
     }
 
   constructor(
@@ -58,6 +64,22 @@ export class PortfoliosComponent implements OnInit, AfterContentChecked, OnDestr
       this.loadmoreitem();
     }
 
+  }
+
+  private getWindowWidth(e) {
+    if (e.target.innerWidth >= 559) {
+      this.showImage = true
+    } else {
+      this.showImage = false
+    }
+  }
+
+  private initWidth() {
+    if (window.innerWidth >= 559) {
+      this.showImage = true
+    } else {
+      this.showImage = false
+    }
   }
 
   ngOnDestroy() {

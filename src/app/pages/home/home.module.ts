@@ -16,6 +16,7 @@ import { CardImageModule } from '../../components/card/card-image.module';
 import { CardContentModule } from '../../components/card/card-content.module';
 import { CardInforModule } from '../../components/card/card-infor.module';
 import { ReversePipe } from '../../pipe/reverse.pipe';
+import { HideimageDirective } from '../../directives/hideimage/hideimage.directive';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { ReversePipe } from '../../pipe/reverse.pipe';
   ],
   declarations: [
     HomeComponent,
-    ReversePipe
+    ReversePipe,
+    HideimageDirective
   ]
 })
 export class HomeModule { }

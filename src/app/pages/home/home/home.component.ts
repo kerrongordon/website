@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AppService } from '../../../services/app.service';
@@ -25,7 +25,8 @@ import { Description } from '../../../config/interface/description';
               NotificationService]
 })
 export class HomeComponent implements OnInit {
- 
+  
+  public showImage: boolean = false;
   public inputClass = '';
   public title: String = 'Kerron Gordon';
   public email: any;
@@ -37,6 +38,11 @@ export class HomeComponent implements OnInit {
   public inputClass1: string = '';
   public inputClass2: string = '';
   public inputClass3: string = '';
+
+  @HostListener('window:resize', ['$event'])
+    dragover(event) {
+      this.getWindowWidth(event)
+    }
 
   constructor(
     private _title: Title,
@@ -60,6 +66,7 @@ export class HomeComponent implements OnInit {
     this.setSkills();
     this.setPortfolios();
     this._title.setTitle('Kerron Gordon');
+    this.initWidth();
   }
 
   private setDescription() {
@@ -96,4 +103,21 @@ export class HomeComponent implements OnInit {
     }
     return;
   }
+
+  private getWindowWidth(e) {
+    if (e.target.innerWidth >= 559) {
+      this.showImage = true
+    } else {
+      this.showImage = false
+    }
+  }
+
+  private initWidth() {
+    if (window.innerWidth >= 559) {
+      this.showImage = true
+    } else {
+      this.showImage = false
+    }
+  }
+
 }

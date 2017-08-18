@@ -1,7 +1,9 @@
 <div *ngIf="portfolios; else noPortfolios">
   <div class="card-container">
     <kg-card *ngFor="let portfolio of (portfolios ? portfolios.slice(0,loadmore): [])" (click)="openPortfolio(portfolio.$key)">
+      <ng-template [ngIf]="showImage">
       <kg-card-image [image]="portfolio.thumbnail.url" [base64]="portfolio.thumbnail.base64"></kg-card-image>
+      </ng-template>
       <kg-card-content [title]="portfolio.title" [info]="portfolio.description.slice(0, 50) + '...'"></kg-card-content>
       <kg-card-infor [postDate]="portfolio.timestamp"></kg-card-infor>
     </kg-card>
