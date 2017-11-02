@@ -33,7 +33,6 @@ export class PortfolioComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.updateMe();
     this.amilogin();
-    window.scroll(0, 0);
     this._router.events.subscribe(() => this.updateMe());
   }
 

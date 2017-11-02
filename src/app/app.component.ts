@@ -4,69 +4,12 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from './services/auth.service';
 import { NotificationService } from './services/notification/notification.service';
 import { Title } from '@angular/platform-browser';
-import { trigger, transition, group, query, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'kg-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass'],
-  providers: [AppService, AuthService, NotificationService],
-  animations: [
-    trigger('routeAnimation', [
-        transition('1 => 2, 2 => 3', [
-            style({ height: '!' }),
-            query(':enter', style({ transform: 'translateX(100%)' })),
-            query(':enter, :leave', style({ position: 'absolute', top: 0, left: 0, right: 0 })),
-            // animate the leave page away
-            group([
-                query(':leave', [
-                    animate('0.3s cubic-bezier(.35,0,.25,1)', style({ transform: 'translateX(-100%)' })),
-                ]),
-                // and now reveal the enter
-                query(':enter', animate('0.3s cubic-bezier(.35,0,.25,1)', style({ transform: 'translateX(0)' }))),
-            ]),
-        ]),
-        transition('3 => 2, 2 => 1', [
-            style({ height: '!' }),
-            query(':enter', style({ transform: 'translateX(-100%)' })),
-            query(':enter, :leave', style({ position: 'absolute', top: 0, left: 0, right: 0 })),
-            // animate the leave page away
-            group([
-                query(':leave', [
-                    animate('0.3s cubic-bezier(.35,0,.25,1)', style({ transform: 'translateX(100%)' })),
-                ]),
-                // and now reveal the enter
-                query(':enter', animate('0.3s cubic-bezier(.35,0,.25,1)', style({ transform: 'translateX(0)' }))),
-            ]),
-        ]),
-        transition('1 => 3, 1 => 3', [
-          style({ height: '!' }),
-          query(':enter', style({ transform: 'translateX(100%)' })),
-          query(':enter, :leave', style({ position: 'absolute', top: 0, left: 0, right: 0 })),
-          // animate the leave page away
-          group([
-              query(':leave', [
-                  animate('0.3s cubic-bezier(.35,0,.25,1)', style({ transform: 'translateX(-100%)' })),
-              ]),
-              // and now reveal the enter
-              query(':enter', animate('0.3s cubic-bezier(.35,0,.25,1)', style({ transform: 'translateX(0)' }))),
-          ]),
-      ]),
-      transition('3 => 1, 3 => 1', [
-        style({ height: '!' }),
-        query(':enter', style({ transform: 'translateX(-100%)' })),
-        query(':enter, :leave', style({ position: 'absolute', top: 0, left: 0, right: 0 })),
-        // animate the leave page away
-        group([
-            query(':leave', [
-                animate('0.3s cubic-bezier(.35,0,.25,1)', style({ transform: 'translateX(100%)' })),
-            ]),
-            // and now reveal the enter
-            query(':enter', animate('0.3s cubic-bezier(.35,0,.25,1)', style({ transform: 'translateX(0)' }))),
-        ]),
-      ]),
-    ])
-]
+  providers: [AppService, AuthService, NotificationService]
 })
 export class AppComponent implements OnInit{
   toggleheaderbar: string;
@@ -133,11 +76,7 @@ export class AppComponent implements OnInit{
   }
 
   public changeOfRoutes() {
-    // return window.scroll(0, 0);
-  }
-
-  public getDepth(outlet) {
-    return outlet.activatedRouteData['depth'];
+    return window.scroll(0, 0);
   }
 
 }
