@@ -1,15 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'kgp-hero',
   templateUrl: './hero.component.html',
   styleUrls: ['./hero.component.sass']
 })
-export class HeroComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+export class HeroComponent {
+  @Input() title: string
 }
