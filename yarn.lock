@@ -96,9 +96,9 @@
   dependencies:
     tslib "^1.7.1"
 
-"@angular/core@^4.3.3":
-  version "4.3.3"
-  resolved "https://registry.yarnpkg.com/@angular/core/-/core-4.3.3.tgz#8e6a76914661db407fa2d88dd2441c4c016ff625"
+"@angular/core@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@angular/core/-/core-5.0.0.tgz#4f976a225f7dddf34992f2cad824c9543a46f4c8"
   dependencies:
     tslib "^1.7.1"
 
