@@ -1,3 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import ../node_modules/normalize.css/normalize.css
+@import ../node_modules/typeface-cinzel-decorative/index.css
+
+body
+    font: 400 1rem/1.8em Helvetica Neue, arial, sans-serif
+    background-color: #ecf0f1
+    color: #6b7c93
+
+
+.line
+    text-align: center
+    font-size: 2rem
+    margin-bottom: 70px
+    margin-top: 60px
+    position: relative
+
+.line:before
+    content: ""
+    display: block
+    width: 80%
+    position: absolute
+    bottom: -25px
+    left: 50%
+    margin-left: -40%
+    height: 1px
+    background: radial-gradient(ellipse at center,rgba(0,0,0,.2) 0,hsla(0,0%,100%,0) 75%)
