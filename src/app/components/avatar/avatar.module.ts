@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { AvatarComponent } from './avatar/avatar.component'
 import { SecondaryModule } from '../../directives/secondary/secondary.module'
+import { EshadowModule } from '../../directives/eshadow/eshadow.module'
 
 @NgModule({
   imports: [
     CommonModule,
-    SecondaryModule
+    SecondaryModule,
+    EshadowModule
   ],
   declarations: [AvatarComponent],
   exports: [AvatarComponent]
