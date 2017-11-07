@@ -1,4 +1,4 @@
-import { Directive, ElementRef } from '@angular/core';
+import { Directive, ElementRef } from '@angular/core'
 
 @Directive({
   selector: '[Center]'
@@ -10,7 +10,7 @@ export class CenterDirective {
   ) { 
     _ElementRef.nativeElement.style.display = 'flex'
     _ElementRef.nativeElement.style.alignItems = 'center'
-    _ElementRef.nativeElement.style.justifyContent = 'center'
+    _ElementRef.nativeElement.style.justifyContent = 'space-around'
    }
 
 }
