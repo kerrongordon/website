@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ContainerDirective } from './container.directive';
+import { NgModule } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { ContainerDirective } from './container.directive'
 
 @NgModule({
   imports: [

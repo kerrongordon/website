@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DescriptionComponent } from './description/description.component';
+import { NgModule } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { DescriptionComponent } from './description/description.component'
 
 @NgModule({
   imports: [

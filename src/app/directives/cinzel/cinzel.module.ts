@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { CinzelDirective } from './cinzel.directive';
+import { NgModule } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { CinzelDirective } from './cinzel.directive'
 
 @NgModule({
   imports: [
