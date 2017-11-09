@@ -4,7 +4,7 @@ import { ProgressbarComponent } from './progressbar.component'
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
   ],
   declarations: [ProgressbarComponent],
   exports: [ProgressbarComponent]
