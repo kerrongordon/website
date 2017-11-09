@@ -1,12 +1,21 @@
-<kgp-hero Primary Center title="Kerron Gordon"></kgp-hero>
+<kgp-hero 
+    Primary 
+    Center 
+    title="Kerron Gordon">
+</kgp-hero>
 
 <div Container>
 
-    <kgp-avatar Center img="assets/avatar.svg"></kgp-avatar>
+    <kgp-avatar 
+        Center 
+        img="assets/avatar.svg">
+    </kgp-avatar>
 
-    <kgp-description content="Kerron specializes in making exceptional websites. He enjoys tasks that would challenge his natural gifted abilities and
-    eagerly persuades him to learn something new and different. he puts tremendous amount of effort and dedication into crafting
-    what is to be the next generation of websites."></kgp-description>
+    <kgp-description 
+        content="Kerron specializes in making exceptional websites. He enjoys tasks that would challenge his natural gifted abilities and
+        eagerly persuades him to learn something new and different. he puts tremendous amount of effort and dedication into crafting 
+        what is to be the next generation of websites.">
+    </kgp-description>
 
     <kgp-social-icon 
         Center
@@ -15,6 +24,12 @@
         Google="https://plus.google.com/+kerrongordon"
         Github="https://github.com/kerrongordon">
     </kgp-social-icon>
+
+    <kgp-skill-item 
+        *ngFor="let skill of skills" 
+        [content]="skill.title" 
+        [level]="skill.level">
+    </kgp-skill-item>
 
     <h2 Cinzel class="line">Portfolio</h2>
     <h2 Cinzel class="line">Get in touch</h2>

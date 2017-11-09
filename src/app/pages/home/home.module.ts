@@ -13,6 +13,7 @@ import { HeroModule } from '../../components/hero/hero.module'
 import { AvatarModule } from '../../components/avatar/avatar.module'
 import { DescriptionModule } from '../../components/description/description.module'
 import { SocialIconModule } from '../../components/social-icon/social-icon.module'
+import { SkillItemModule } from '../../components/skill-item/skill-item.module'
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import { SocialIconModule } from '../../components/social-icon/social-icon.modul
     AvatarModule,
     DescriptionModule,
     SocialIconModule,
+    SkillItemModule,
     RouterModule.forChild([
       { path: '', component: HomeComponent }
     ])
