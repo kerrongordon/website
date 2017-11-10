@@ -1,0 +1,38 @@
+dist: trusty
+language: node_js
+node_js:
+  - "8"
+
+branches:
+  only:
+    - master
+    - /^greenkeeper/.*$/
+
+before_install:
+  - sudo apt install -y gzip
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+
+install:
+  - yarn global add @angular/cli
+  - yarn global add typings
+  - yarn global add firebase-tools
+  - yarn install
+
+script:
+  - ng build --prod --build-optimizer
+  - cd dist gzip -k -r * && cd ..
+
+deploy:
+  - provider: firebase
+    skip_cleanup: true
+    token:
+      secure: $FIREBASE_TOKEN
+
+  - provider: pages
+    skip_cleanup: true
+    local_dir: dist
+    repo: kerrongordon/kerrongordon.github.io
+    github_token: $GITHUB_TOKEN
+    target_branch: master
+    on:
+      branch: master
