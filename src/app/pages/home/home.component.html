@@ -1,14 +1,18 @@
 <kgp-hero 
     Primary 
     Center 
-    title="Kerron Gordon">
+    title="Kerron Gordon"
+    [ngStyle.sm]="{'height': '400px', 'font-size': '2rem'}"
+    [ngStyle.gt-sm]="{'height': '600px', 'font-size': '2.5rem'}">
 </kgp-hero>
 
 <div Container>
 
     <kgp-avatar 
         Center 
-        img="assets/avatar.svg">
+        img="assets/avatar.svg"
+        [ngStyle.sm]="{'margin-top': '-100px'}"
+        [ngStyle.gt-sm]="{'margin-top': '-125px'}">
     </kgp-avatar>
 
     <kgp-description 
@@ -25,13 +29,23 @@
         Github="https://github.com/kerrongordon">
     </kgp-social-icon>
 
-    <kgp-skill-item 
-        *ngFor="let skill of skills" 
-        [content]="skill.title" 
-        [level]="skill.level">
-    </kgp-skill-item>
+
+    <div 
+        fxLayout="row"
+        fxLayout.xs="column"
+        fxLayoutWrap
+        class="skillwrap">
+
+        <kgp-skill-item 
+            *ngFor="let skill of skills" 
+            [content]="skill.title" 
+            [level]="skill.level"
+            fxFlex="45">
+        </kgp-skill-item>
+
+    </div>
 
     <h2 Cinzel class="line">Portfolio</h2>
-    <h2 Cinzel class="line">Get in touch</h2>
+    <h2 Cinzel class="line" fxHide="true">Get in touch</h2>
 
 </div>

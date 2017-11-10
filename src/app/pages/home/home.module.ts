@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { RouterModule } from '@angular/router'
+import { FlexLayoutModule } from '@angular/flex-layout'
 import { HomeComponent } from './home.component'
 
 import { PrimaryModule } from '../../directives/primary/primary.module'
@@ -18,6 +19,7 @@ import { SkillItemModule } from '../../components/skill-item/skill-item.module'
 @NgModule({
   imports: [
     CommonModule,
+    FlexLayoutModule,
     PrimaryModule,
     CenterModule,
     ContainerModule,
