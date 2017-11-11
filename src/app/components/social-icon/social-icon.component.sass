@@ -11,14 +11,15 @@ svg
     will-change: fill
     transition: fill .5s ease-in-out
 
-div
+.item
     padding: 10px
     margin: 0 10px
     line-height: 0
     border-radius: 50%
     cursor: pointer
-    will-change: background, transform
+    position: relative
     background: transparent
+    z-index: 2
     transform: translateY(0) scale(1) translateZ(0)
     transition: background .3s ease-in-out, transform .3s ease-in-out
     box-shadow: 0 2px 4px rgba(33,37,41,.1), 0 7px 14px rgba(33,37,41,.1)
@@ -29,3 +30,24 @@ div
 
         svg
             fill: #fff
+
+        .title
+            opacity: 1
+            font-size: 1rem
+
+
+.title
+    position: absolute
+    overflow: hidden
+    top: 50%
+    padding: 0 20px
+    z-index: -1
+    left: 50%
+    font-size: 0
+    background: #fff
+    text-align: center
+    transform: translate(-50%, -195%)
+    border-radius: 3px
+    opacity: 0
+    transition: opacity .3s ease-in-out, font-size .3s ease-in-out
+    box-shadow: 0 2px 4px rgba(33, 37, 41, 0.1), 0 7px 14px rgba(33, 37, 41, 0.1)

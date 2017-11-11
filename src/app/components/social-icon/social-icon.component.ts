@@ -9,5 +9,6 @@ export class SocialIconComponent {
   @Input() Facebook: string
   @Input() Twitter: string
   @Input() Google: string
+  @Input() Linkedin: string
   @Input() Github: string
 }
