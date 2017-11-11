@@ -15,6 +15,9 @@ import { AvatarModule } from '../../components/avatar/avatar.module'
 import { DescriptionModule } from '../../components/description/description.module'
 import { SocialIconModule } from '../../components/social-icon/social-icon.module'
 import { SkillItemModule } from '../../components/skill-item/skill-item.module'
+import { CardModule } from '../../components/card/card.module'
+import { CardImageModule } from '../../components/card-image/card-image.module'
+import { CardContentModule } from '../../components/card-content/card-content.module'
 
 @NgModule({
   imports: [
@@ -30,6 +33,9 @@ import { SkillItemModule } from '../../components/skill-item/skill-item.module'
     DescriptionModule,
     SocialIconModule,
     SkillItemModule,
+    CardModule,
+    CardImageModule,
+    CardContentModule,
     RouterModule.forChild([
       { path: '', component: HomeComponent }
     ])

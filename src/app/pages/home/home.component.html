@@ -15,7 +15,8 @@
         [ngStyle.gt-sm]="{'margin-top': '-125px'}">
     </kgp-avatar>
 
-    <kgp-description 
+    <kgp-description
+        [ngStyle.xs]="{'max-width': '400px', 'display': 'block', 'margin': '0 auto'}"
         content="Kerron specializes in making exceptional websites. He enjoys tasks that would challenge his natural gifted abilities and
         eagerly persuades him to learn something new and different. he puts tremendous amount of effort and dedication into crafting 
         what is to be the next generation of websites.">
@@ -35,6 +36,7 @@
         fxLayout="row"
         fxLayout.xs="column"
         fxLayoutWrap
+        [ngStyle.xs]="{'max-width': '350px'}"
         class="skillwrap">
 
         <kgp-skill-item 
@@ -51,6 +53,39 @@
 <div Container class="landingline landingbg">
 
     <h2 Cinzel class="line">Portfolio</h2>
-    <h2 Cinzel class="line">Get in touch</h2>
+
+    <div
+        fxLayout="row"
+        fxLayout.xs="column"
+        fxLayoutAlign="space-between center"
+        fxLayoutWrap
+        [ngStyle.xs]="{'max-width': '350px', 'margin': '0 auto'}"
+        [ngStyle.sm]="{'max-width': '550px', 'margin': '0 auto'}"
+        [ngStyle.gt-sm]="{'max-width': '1100px', 'margin': '0 auto'}">
+
+    <kgp-card [ngStyle.sm]="{'max-width': '46%'}" [ngStyle.gt-sm]="{'max-width': '22%'}">
+        <kgp-card-image imge="https://images.unsplash.com/photo-1508233620467-f79f1e317a05?auto=format&fit=crop&w=668&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D"></kgp-card-image>
+        <kgp-card-content ctitle="this is a card title" content="this is just some content for testing out the card component" month="Aug" day="11" year="2017"></kgp-card-content>
+    </kgp-card>
+
+    <kgp-card [ngStyle.sm]="{'max-width': '46%'}" [ngStyle.gt-sm]="{'max-width': '22%'}">
+        <kgp-card-image imge="https://images.unsplash.com/photo-1507097489474-c9212a8f8597?auto=format&fit=crop&w=1502&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D"></kgp-card-image>
+        <kgp-card-content ctitle="this is a card title" content="this is just some content for testing out the card component" month="Aug" day="11" year="2017"></kgp-card-content>
+    </kgp-card>
+
+    <kgp-card [ngStyle.sm]="{'max-width': '46%'}" [ngStyle.gt-sm]="{'max-width': '22%'}">
+        <kgp-card-image imge="https://images.unsplash.com/photo-1504814532849-cff240bbc503?auto=format&fit=crop&w=668&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D"></kgp-card-image>
+        <kgp-card-content ctitle="this is a card title" content="this is just some content for testing out the card component" month="Aug" day="11" year="2017"></kgp-card-content>
+    </kgp-card>
+
+    <kgp-card [ngStyle.sm]="{'max-width': '46%'}" [ngStyle.gt-sm]="{'max-width': '22%'}">
+        <kgp-card-image imge="https://images.unsplash.com/photo-1499615767948-e6a89ef6060f?auto=format&fit=crop&w=750&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D"></kgp-card-image>
+        <kgp-card-content ctitle="this is a card title" content="this is just some content for testing out the card component" month="Aug" day="11" year="2017"></kgp-card-content>
+    </kgp-card>
+
+    </div>
+
+    
 </div>
 
+<h2 Cinzel class="line">Get in touch</h2>
