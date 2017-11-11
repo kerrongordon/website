@@ -5558,6 +5558,10 @@ typeface-cinzel-decorative@^0.0.43:
   version "0.0.43"
   resolved "https://registry.yarnpkg.com/typeface-cinzel-decorative/-/typeface-cinzel-decorative-0.0.43.tgz#e92715169139b2cbbc6e2de60f63f788f3e8f916"
 
+typeface-open-sans@^0.0.43:
+  version "0.0.43"
+  resolved "https://registry.yarnpkg.com/typeface-open-sans/-/typeface-open-sans-0.0.43.tgz#5fba6d9fca204b5699c4a8e52eaa4363c249e2d2"
+
 typescript@^2.3.3:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.6.1.tgz#ef39cdea27abac0b500242d6726ab90e0c846631"

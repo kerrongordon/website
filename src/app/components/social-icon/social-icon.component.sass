@@ -8,11 +8,24 @@ svg
     width: 24px
     height: 24px
     fill: #6b7c93
+    will-change: fill
+    transition: fill .5s ease-in-out
+
+div
+    padding: 10px
+    margin: 0 10px
+    line-height: 0
+    border-radius: 50%
     cursor: pointer
-    will-change: transform, fill
-    transform: scale(1)
-    transition: transform .3s ease-in-out, fill .5s ease-in-out
+    will-change: background, transform
+    background: transparent
+    transform: translateY(0) scale(1) translateZ(0)
+    transition: background .3s ease-in-out, transform .3s ease-in-out
+    box-shadow: 0 2px 4px rgba(33,37,41,.1), 0 7px 14px rgba(33,37,41,.1)
 
     &:hover
-        transform: scale(2)
-        fill: $primary
+        background: $primary
+        transform: translateY(-3px) scale(1.2)
+
+        svg
+            fill: #fff

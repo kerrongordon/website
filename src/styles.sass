@@ -2,11 +2,17 @@
 
 @import ../node_modules/normalize.css/normalize.css
 @import ../node_modules/typeface-cinzel-decorative/index.css
+@import ../node_modules/typeface-open-sans/index.css
+@import ./app/var.sass
 
 body
-    font: 400 1rem/1.8em Helvetica Neue, arial, sans-serif
-    background-color: #ecf0f1
-    color: #6b7c93
+    // font: 300 1rem/1.8em Helvetica Neue, arial, sans-serif
+    font-family: 'Open Sans', sans-serif
+    font-weight: 400
+    font-size: 1rem
+    line-height: 1.8em
+    background-color: $background
+    color: $fontPrimary
 
 
 .line
@@ -17,12 +23,17 @@ body
     position: relative
 
 .line:before
-    content: ""
-    display: block
-    width: 80%
+    content: ''
+    width: 30px
+    height: 2px
+    background: $primary
     position: absolute
-    bottom: -25px
     left: 50%
-    margin-left: -40%
-    height: 1px
-    background: radial-gradient(ellipse at center,rgba(0,0,0,.2) 0,hsla(0,0%,100%,0) 75%)
+    margin-left: -15px
+    bottom: -20px
+
+.landingline
+    border-bottom: 1px solid #eaebed
+
+.landingbg
+    background: $background2
