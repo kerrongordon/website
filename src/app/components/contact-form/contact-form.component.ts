@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
+import { NotificationService } from '../../services/notification/notification.service'
 
 @Component({
   selector: 'kgp-contact-form',
   templateUrl: './contact-form.component.html',
-  styleUrls: ['./contact-form.component.sass']
+  styleUrls: ['./contact-form.component.sass'],
+  providers: [NotificationService]
 })
 export class ContactFormComponent implements OnInit {
 
@@ -14,7 +16,11 @@ export class ContactFormComponent implements OnInit {
 
   emailForm: FormGroup
 
-  constructor( ) {  }
+  constructor(
+    private _NotificationService: NotificationService
+  ) { 
+
+   }
 
   ngOnInit() {
     this.emailForm = new FormGroup({
@@ -34,7 +40,16 @@ export class ContactFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('emailForm', this.emailForm)
+    if (!this.emailForm.valid) {
+      return
+    }
+
+    const name = this.emailForm.value.userName
+    const email = this.emailForm.value.userEmail
+    const message = this.emailForm.value.userMessage
+
+    this._NotificationService.notifitem(name, 'Your Message was send', true)
+    console.log('emailForm', this.emailForm.value)
   }
 
 }

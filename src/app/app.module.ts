@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core'
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { FooterModule } from './components/footer/footer.module'
+import { NotificationModule } from './components/notification/notification.module'
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { FooterModule } from './components/footer/footer.module'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FooterModule
+    FooterModule,
+    NotificationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

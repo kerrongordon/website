@@ -87,3 +87,45 @@ img
     .btnicon
         margin-top: 4px
         padding-right: 6px
+
+
+.notification
+    width: auto
+    height: auto
+    position: fixed
+    z-index: 99999
+    bottom: 0
+    transition: all .3s ease-in-out
+
+    .notifitem
+        background: $primary
+        padding: 16px
+        margin: 15px
+        display: flex
+        max-width: 500px
+        color: #ffffff
+        border-radius: 5px
+        box-shadow: 0 0 25px rgba(40, 47, 60, 0.27), 0 20px 25px rgba(40, 47, 60, 0.23), 0 3px 4px rgba(40, 47, 60, 0.31)
+        animation: openNotification 0.7s ease-in-out
+
+    svg
+        width: 45px
+        padding: 10px
+        fill: #ffffff
+
+    .content
+        flex: 1
+
+    .title
+        font-size: 16px
+        font-weight: 600
+        text-transform: capitalize
+
+
+    @keyframes openNotification
+        0%
+            margin-left: -300px
+            opacity: 0
+        100%
+            margin-left: 15px
+            opacity: 1
