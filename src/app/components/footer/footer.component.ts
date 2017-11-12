@@ -1,0 +1,21 @@
+import { Component, OnInit } from '@angular/core'
+
+@Component({
+  selector: 'kgp-footer',
+  templateUrl: './footer.component.html',
+  styleUrls: ['./footer.component.sass']
+})
+export class FooterComponent implements OnInit {
+
+  getyear: string
+  copyRight: string
+
+  constructor() {
+    this.getyear = new Date().getFullYear().toString()
+  }
+
+  ngOnInit() {
+    return this.copyRight = `Copyright © ${this.getyear} By Kerron Gordon`
+  }
+
+}
