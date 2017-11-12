@@ -8,7 +8,6 @@ import { PrimaryModule } from '../../directives/primary/primary.module'
 import { CenterModule } from '../../directives/center/center.module'
 import { ContainerModule } from '../../directives/container/container.module'
 import { CinzelModule } from '../../directives/cinzel/cinzel.module'
-import { EshadowModule } from '../../directives/eshadow/eshadow.module'
 
 import { HeroModule } from '../../components/hero/hero.module'
 import { AvatarModule } from '../../components/avatar/avatar.module'
@@ -27,7 +26,6 @@ import { CardContentModule } from '../../components/card-content/card-content.mo
     CenterModule,
     ContainerModule,
     CinzelModule,
-    EshadowModule,
     HeroModule,
     AvatarModule,
     DescriptionModule,
