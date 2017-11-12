@@ -17,6 +17,7 @@ import { SkillItemModule } from '../../components/skill-item/skill-item.module'
 import { CardModule } from '../../components/card/card.module'
 import { CardImageModule } from '../../components/card-image/card-image.module'
 import { CardContentModule } from '../../components/card-content/card-content.module'
+import { ContactFormModule } from '../../components/contact-form/contact-form.module'
 
 @NgModule({
   imports: [
@@ -34,6 +35,7 @@ import { CardContentModule } from '../../components/card-content/card-content.mo
     CardModule,
     CardImageModule,
     CardContentModule,
+    ContactFormModule,
     RouterModule.forChild([
       { path: '', component: HomeComponent }
     ])
