@@ -9,10 +9,10 @@ import { NotificationService } from '../../services/notification/notification.se
 })
 export class NotificationComponent implements OnInit {
 
-  constructor(private _notificationService: NotificationService) { }
+  constructor(private _NotificationService: NotificationService) { }
 
   ngOnInit() { 
-    this._notificationService.notifitem('init', 'init', false);
+    this._NotificationService.notifitem('init', 'init', false)
   }
 
 }

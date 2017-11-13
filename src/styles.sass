@@ -98,28 +98,40 @@ img
     transition: all .3s ease-in-out
 
     .notifitem
-        background: $primary
+        background: rgba(255, 255, 255, 0.95)
         padding: 16px
         margin: 15px
         display: flex
         max-width: 500px
-        color: #ffffff
+        color: $fontPrimary
         border-radius: 5px
-        box-shadow: 0 0 25px rgba(40, 47, 60, 0.27), 0 20px 25px rgba(40, 47, 60, 0.23), 0 3px 4px rgba(40, 47, 60, 0.31)
+        justify-content: space-between
+        align-items: center
+        border: 1px solid #c1c1c1
+        box-shadow: rgba(33, 37, 41, 0.21) 0px 20px 45px 18px
         animation: openNotification 0.7s ease-in-out
 
     svg
         width: 45px
-        padding: 10px
-        fill: #ffffff
+        padding: 8px 8px 0 0px
+        fill: $fontPrimary
 
     .content
         flex: 1
+        border-left: 1px solid #ccc
+        padding-left: 10px
 
     .title
         font-size: 16px
-        font-weight: 600
+        font-weight: 700
         text-transform: capitalize
+
+    .message
+        flex: 1
+        font-size: 0.8rem
+    
+    .icon
+        padding-right: 12px
 
 
     @keyframes openNotification
