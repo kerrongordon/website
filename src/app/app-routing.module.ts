@@ -3,7 +3,13 @@ import { Routes, RouterModule } from '@angular/router'
 
 const routes: Routes = [
   { path: '', loadChildren: './pages/home/home.module#HomeModule' },
-  { path: 'kgp', loadChildren: './pages/home/home.module#HomeModule' }
+  { path: 'admin',
+    children: [
+      { path: '', loadChildren: './pages/admin/admin.module#AdminModule' },
+      { path: 'dashboard', loadChildren: './pages/dashboard/dashboard.module#DashboardModule' },
+      { path: 'email', loadChildren: './pages/email/email.module#EmailModule' }
+    ] 
+  }
 ];
 
 @NgModule({
