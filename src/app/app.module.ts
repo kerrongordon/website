@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { AngularFireModule } from 'angularfire2'
 import { environment } from '../environments/environment'
-import { FooterModule } from './components/footer/footer.module'
 import { NotificationModule } from './components/notification/notification.module'
 
 @NgModule({
@@ -16,7 +15,6 @@ import { NotificationModule } from './components/notification/notification.modul
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    FooterModule,
     NotificationModule
   ],
   providers: [],
