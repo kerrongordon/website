@@ -18,6 +18,7 @@ import { CardModule } from '../../components/card/card.module'
 import { CardImageModule } from '../../components/card-image/card-image.module'
 import { CardContentModule } from '../../components/card-content/card-content.module'
 import { ContactFormModule } from '../../components/contact-form/contact-form.module'
+import { FooterModule } from '../../components/footer/footer.module'
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { ContactFormModule } from '../../components/contact-form/contact-form.mo
     CardImageModule,
     CardContentModule,
     ContactFormModule,
+    FooterModule,
     RouterModule.forChild([
       { path: '', component: HomeComponent }
     ])

@@ -11,16 +11,20 @@ import { EmailService } from '../../services/email/email.service'
 })
 export class ContactFormComponent implements OnInit {
 
-  inputClass1: string = ''
-  inputClass2: string = ''
-  inputClass3: string = ''
+  public inputClass1: string = ''
+  public inputClass2: string = ''
+  public inputClass3: string = ''
 
-  emailForm: FormGroup
+  public emailForm: FormGroup
 
   constructor(private _NotificationService: NotificationService, private _EmailService: EmailService ) { }
 
   ngOnInit() {
-    this.emailForm = new FormGroup({
+    this.formInit()
+  }
+
+  private formInit() {
+    return this.emailForm = new FormGroup({
       userName: new FormControl('', {
         validators: Validators.compose([Validators.required, Validators.minLength(3)]),
         updateOn: 'change'
@@ -36,26 +40,26 @@ export class ContactFormComponent implements OnInit {
     })
   }
 
-  messageWasSend(name) {
+  private messageWasSend(name) {
     return this._NotificationService.notifitem(
       'Message has Been Sent',
       `Hi ${name} your message was sent thank you`,
       true)
   }
 
-  resetEmailForm() {
+  private resetEmailForm() {
     return this.emailForm.reset()
   }
 
-  onSubmit() {
+  public onSubmit() {
     if (!this.emailForm.valid) { return }
 
     const { userName } = this.emailForm.value
 
-    this._EmailService.emailCollection
-      .add(this.emailForm.value)
-      .then(() => this.messageWasSend(userName))
-      .then(() => this.resetEmailForm())
+    return this._EmailService.emailCollection
+            .add(this.emailForm.value)
+            .then(() => this.messageWasSend(userName))
+            .then(() => this.resetEmailForm())
   }
 
 }
