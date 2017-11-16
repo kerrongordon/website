@@ -277,9 +277,9 @@
   version "6.0.73"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.73.tgz#85dc4bb6f125377c75ddd2519a1eeb63f0a4ed70"
 
-"@types/node@^8.0.20":
-  version "8.0.20"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.20.tgz#65c7375255c24b184c215a5d0b63247c32f01c91"
+"@types/node@^8.0.53":
+  version "8.0.53"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.53.tgz#396b35af826fa66aad472c8cb7b8d5e277f4e6d8"
 
 "@types/q@^0.0.32":
   version "0.0.32"
