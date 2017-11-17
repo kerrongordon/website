@@ -3,10 +3,9 @@ import { Routes, RouterModule } from '@angular/router'
 
 const routes: Routes = [
   { path: '', loadChildren: './pages/home/home.module#HomeModule' },
-  { path: 'admin',
+  { path: 'dashboard',
     children: [
-      { path: '', loadChildren: './pages/admin/admin.module#AdminModule' },
-      { path: 'dashboard', loadChildren: './pages/dashboard/dashboard.module#DashboardModule' },
+      { path: '', loadChildren: './pages/dashboard/dashboard.module#DashboardModule' },
       { path: 'email', loadChildren: './pages/email/email.module#EmailModule' }
     ] 
   }

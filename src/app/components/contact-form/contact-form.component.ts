@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { NotificationService } from '../../services/notification/notification.service'
 import { EmailService } from '../../services/email/email.service'
+import { TimestampService } from '../../services/timestamp/timestamp.service'
 
 @Component({
   selector: 'kgp-contact-form',
   templateUrl: './contact-form.component.html',
   styleUrls: ['./contact-form.component.sass'],
-  providers: [NotificationService, EmailService]
+  providers: [NotificationService, EmailService, TimestampService]
 })
 export class ContactFormComponent implements OnInit {
 
@@ -17,7 +18,10 @@ export class ContactFormComponent implements OnInit {
 
   public emailForm: FormGroup
 
-  constructor(private _NotificationService: NotificationService, private _EmailService: EmailService ) { }
+  constructor(
+    private _NotificationService: NotificationService, 
+    private _EmailService: EmailService,
+    private _TimestampService: TimestampService ) { }
 
   ngOnInit() {
     this.formInit()
@@ -54,10 +58,27 @@ export class ContactFormComponent implements OnInit {
   public onSubmit() {
     if (!this.emailForm.valid) { return }
 
-    const { userName } = this.emailForm.value
+    const { userName, userEmail, userMessage } = this.emailForm.value
+
+    const emailPush = {
+      name: userName,
+      email: userEmail,
+      message: userMessage,
+      open: false,
+      timestamp: {
+        timestamp: this._TimestampService.getTimestamp(),
+        month: this._TimestampService.getTheMonth(),
+        weekday: this._TimestampService.getTheWeekday(),
+        year: this._TimestampService.getTheYear(),
+        date: this._TimestampService.getTheDateNum(),
+        time: this._TimestampService.getTheTime()
+      },
+    }
+
+
 
     return this._EmailService.emailCollection
-            .add(this.emailForm.value)
+            .add(emailPush)
             .then(() => this.messageWasSend(userName))
             .then(() => this.resetEmailForm())
   }
