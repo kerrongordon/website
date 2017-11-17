@@ -1,16 +1,22 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core'
+import { EmailService } from '../../services/email/email.service'
 
 @Component({
   selector: 'kgp-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.sass'],
-  encapsulation: ViewEncapsulation.None
+  providers: [EmailService]
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  constructor(public _EmailService: EmailService) { }
 
   ngOnInit() {
+    this._EmailService.getNumberOfNewEmail()
   }
 
+  ngOnDestroy() {
+    this._EmailService.getNumberOfNewEmail().unsubscribe()
+  }
+  
 }
