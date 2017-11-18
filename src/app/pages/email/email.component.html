@@ -27,20 +27,10 @@
     </ul>
   </div>
 
-  <div class="emailList" fxFlex="25">
 
-    <div *ngFor="let email of _EmailService.emails | async" id="">
-      <h4>{{ email.name }}
-        <span>{{ email.timestamp.time.hours }}:{{ email.timestamp.time.seconds }}</span>
-      </h4>
-      <div class="subject">{{ email.subject }}</div>
-      <p>
-        {{ email.message | truncate: 60 }}
-      </p>
-    </div>
-
-
-  </div>
+  <kgp-email-list fxFlex="25">
+    <kgp-email-list-item *ngFor="let email of _EmailService.emails | async" id="{{ email.id }}" [data]="email"></kgp-email-list-item>
+  </kgp-email-list>
 
   <div class="emailopen">
 

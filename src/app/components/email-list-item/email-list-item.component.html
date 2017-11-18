@@ -1,0 +1,15 @@
+<h4>{{ data.name }}
+  <span class="time">
+    <div class="icon">
+      <svg class="close" [ngClass]="{'isActive': !data.open }" viewBox="0 0 24 24">
+        <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
+      </svg>
+      <svg class="open" [ngClass]="{'isActive': data.open }" viewBox="0 0 24 24">
+        <path d="M4,8L12,13L20,8V8L12,3L4,8V8M22,8V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V8C2,7.27 2.39,6.64 2.97,6.29L12,0.64L21.03,6.29C21.61,6.64 22,7.27 22,8Z"/>
+      </svg>
+    </div>
+    <div>{{ data.timestamp.time.hours }}:{{ data.timestamp.time.seconds }}</div>
+  </span>
+</h4>
+<h5>{{ data.subject }}</h5>
+<p>{{ data.message | truncate: 70 }}</p>
