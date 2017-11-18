@@ -66,6 +66,7 @@ export class ContactFormComponent implements OnInit {
     const { userName, userSubject, userEmail, userMessage } = this.emailForm.value
 
     const emailPush = {
+      id: this._TimestampService.getTheId(),
       name: userName,
       subject: userSubject,
       email: userEmail,

@@ -5,6 +5,8 @@ import { FlexLayoutModule } from '@angular/flex-layout'
 import { EmailComponent } from './email.component'
 import { AngularFirestoreModule } from 'angularfire2/firestore'
 import { TruncateModule } from '../../pipe/truncate/truncate.module'
+import { EmailListModule } from '../../components/email-list/email-list.module'
+import { EmailListItemModule } from '../../components/email-list-item/email-list-item.module'
 
 
 @NgModule({
@@ -13,6 +15,8 @@ import { TruncateModule } from '../../pipe/truncate/truncate.module'
     FlexLayoutModule,
     AngularFirestoreModule,
     TruncateModule,
+    EmailListModule,
+    EmailListItemModule,
     RouterModule.forChild([
       { path: '', component: EmailComponent }
     ])

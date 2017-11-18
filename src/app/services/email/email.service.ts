@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs/Observable'
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore'
 
-export interface email { 
+export interface email {
+  id: string,
   name: string,
   subject: string,
   email: string,

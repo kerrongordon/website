@@ -53,4 +53,9 @@ export class TimestampService {
     return time
   }
 
+  getTheId() {
+    this.getTheDate()
+    return Math.floor(Math.random() * this.theDate.getTime()).toString()
+  }
+
 }
