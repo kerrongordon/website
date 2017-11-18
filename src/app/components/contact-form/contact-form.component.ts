@@ -15,6 +15,7 @@ export class ContactFormComponent implements OnInit {
   public inputClass1: string = ''
   public inputClass2: string = ''
   public inputClass3: string = ''
+  public inputClass4: string = ''
 
   public emailForm: FormGroup
 
@@ -31,6 +32,10 @@ export class ContactFormComponent implements OnInit {
     return this.emailForm = new FormGroup({
       userName: new FormControl('', {
         validators: Validators.compose([Validators.required, Validators.minLength(3)]),
+        updateOn: 'change'
+      }),
+      userSubject: new FormControl('', {
+        validators: Validators.compose([Validators.required, Validators.minLength(5)]),
         updateOn: 'change'
       }),
       userEmail: new FormControl('', {
@@ -58,10 +63,11 @@ export class ContactFormComponent implements OnInit {
   public onSubmit() {
     if (!this.emailForm.valid) { return }
 
-    const { userName, userEmail, userMessage } = this.emailForm.value
+    const { userName, userSubject, userEmail, userMessage } = this.emailForm.value
 
     const emailPush = {
       name: userName,
+      subject: userSubject,
       email: userEmail,
       message: userMessage,
       open: false,

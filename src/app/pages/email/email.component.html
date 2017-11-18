@@ -1,3 +1,69 @@
-<p>
-  email works!
-</p>
+<div class="emailPage" fxLayout="row" fxLayoutAlign="start">
+  <div class="sidebar" fxFlex="15">
+    <ul>
+      <li>Inbox
+        <span>2</span>
+      </li>
+    </ul>
+    <ul>
+      <li>Inbox
+        <span>2</span>
+      </li>
+    </ul>
+    <ul>
+      <li>Inbox
+        <span>2</span>
+      </li>
+    </ul>
+    <ul>
+      <li>Inbox
+        <span>2</span>
+      </li>
+    </ul>
+    <ul>
+      <li>Inbox
+        <span>2</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="emailList" fxFlex="25">
+
+    <div *ngFor="let email of _EmailService.emails | async" id="">
+      <h4>{{ email.name }}
+        <span>{{ email.timestamp.time.hours }}:{{ email.timestamp.time.seconds }}</span>
+      </h4>
+      <div class="subject">{{ email.subject }}</div>
+      <p>
+        {{ email.message | truncate: 60 }}
+      </p>
+    </div>
+
+
+  </div>
+
+  <div class="emailopen">
+
+    <div class="subject">Subject: the latest rendering</div>
+
+    <div class="senderinfor">
+      <div>Sender:
+        <span>design_wzy@123.com</span>
+      </div>
+      <div>Name:
+        <span>design_wzy</span>
+      </div>
+      <div>Time:
+        <span>13:00 March 7, 2016</span>
+      </div>
+    </div>
+
+    <div class="meassage">
+      Hi, luking, I was looking at your dribble profie. the designs looks impressive Hi, luking, I was looking at your dribble
+      profie. the designs looks impressive Hi, luking, I was looking at your dribble profie. the designs looks impressive
+      Hi, luking, I was looking at your dribble profie. the designs looks impressive
+    </div>
+
+
+  </div>
+</div>

@@ -4,6 +4,7 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 
 export interface email { 
   name: string,
+  subject: string,
   email: string,
   message: string,
   open: boolean,
@@ -45,5 +46,7 @@ export class EmailService {
         this.newEmailsamount = email.filter(e => e.open === false).length
      })
    }
+
+ 
 
 }
