@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, Input } from '@angular/core'
+import { MailLength } from '../../pages/email/email.component'
 
 @Component({
   selector: 'kgp-email-list',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./email-list.component.sass']
 })
 export class EmailListComponent implements OnInit {
+
+  @Input() mailnum: MailLength
 
   constructor() { }
 

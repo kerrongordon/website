@@ -3,9 +3,9 @@
   fxLayout="row" 
   fxLayoutAlign="start">
 
-  <kgp-email-list fxFlex="25">
+  <kgp-email-list fxFlex="25" fxFlex.sm="40" fxFlex.xs="100" [mailnum]="mailLength">
     <kgp-email-list-item 
-      *ngFor="let email of _EmailService.emails | async" 
+      *ngFor="let email of mailList"
       id="{{ email.id }}" 
       [data]="email"
       [ngClass]="{'isActive': activeItem === email.id }"
@@ -13,19 +13,13 @@
     </kgp-email-list-item>
   </kgp-email-list>
 
-  <div *ngIf="_EmailService.openMail; else loading">
-  <kgp-email-body  
-    *ngFor="let email of _EmailService.openMail | async"
-    [data]="email">
-  </kgp-email-body>
-  </div>
 
-  <ng-template #loading>
-    <div class="load">
-      <svg class="openMail" viewBox="0 0 24 24">
-        <path fill="currentColor" d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
-      </svg>
-    </div>
-  </ng-template>
+  <kgp-email-body
+    fxFlex="75" fxFlex.sm="60" fxFlex.xs="100"
+    [data]="openMail">
+    <button type="button">X</button>
+  </kgp-email-body>
 
 </div>
+
+

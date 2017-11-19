@@ -1,7 +1,7 @@
-<div class="bar">
-    <span>Total (2)</span>
-    <span>New (4)</span>
-    <span>Read (6)</span>
+<div class="bar" *ngIf="mailnum">
+    <span>Total ({{ mailnum.totalMail }})</span>
+    <span>New ({{ mailnum.newMail }})</span>
+    <span>Read ({{ mailnum.readMail }})</span>
 </div>
 
 <div class="list">

@@ -9,7 +9,7 @@ import { email } from '../../services/email/email.service'
 export class EmailListItemComponent implements OnInit {
 
   @Input() data: email
-
+ 
   constructor() { }
 
   ngOnInit() {
