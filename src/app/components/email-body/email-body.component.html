@@ -1,0 +1,18 @@
+  <h4 class="subject">{{ data.subject }}</h4>
+
+  <div class="senderinfor">
+    <h5>Sender:
+      <span>{{ data.email }}</span>
+    </h5>
+    <h5>Name:
+      <span>{{ data.name }}</span>
+    </h5>
+    <h5>Time:
+      <span>{{ data.timestamp.time.hours }}:{{ data.timestamp.time.seconds }} {{ data.timestamp.month }} {{ data.timestamp.date }}, {{ data.timestamp.year }}</span>
+    </h5>
+  </div>
+
+  <div class="meassage">
+    {{ data.message }}
+  </div>
+
