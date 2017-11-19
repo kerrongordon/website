@@ -1,59 +1,31 @@
-<div class="emailPage" fxLayout="row" fxLayoutAlign="start">
-  <div class="sidebar" fxFlex="15">
-    <ul>
-      <li>Inbox
-        <span>2</span>
-      </li>
-    </ul>
-    <ul>
-      <li>Inbox
-        <span>2</span>
-      </li>
-    </ul>
-    <ul>
-      <li>Inbox
-        <span>2</span>
-      </li>
-    </ul>
-    <ul>
-      <li>Inbox
-        <span>2</span>
-      </li>
-    </ul>
-    <ul>
-      <li>Inbox
-        <span>2</span>
-      </li>
-    </ul>
-  </div>
-
+<div 
+  class="emailPage" 
+  fxLayout="row" 
+  fxLayoutAlign="start">
 
   <kgp-email-list fxFlex="25">
-    <kgp-email-list-item *ngFor="let email of _EmailService.emails | async" id="{{ email.id }}" [data]="email"></kgp-email-list-item>
+    <kgp-email-list-item 
+      *ngFor="let email of _EmailService.emails | async" 
+      id="{{ email.id }}" 
+      [data]="email"
+      [ngClass]="{'isActive': activeItem === email.id }"
+      (click)="openEmail( email.id )">
+    </kgp-email-list-item>
   </kgp-email-list>
 
-  <div class="emailopen">
-
-    <div class="subject">Subject: the latest rendering</div>
-
-    <div class="senderinfor">
-      <div>Sender:
-        <span>design_wzy@123.com</span>
-      </div>
-      <div>Name:
-        <span>design_wzy</span>
-      </div>
-      <div>Time:
-        <span>13:00 March 7, 2016</span>
-      </div>
-    </div>
-
-    <div class="meassage">
-      Hi, luking, I was looking at your dribble profie. the designs looks impressive Hi, luking, I was looking at your dribble
-      profie. the designs looks impressive Hi, luking, I was looking at your dribble profie. the designs looks impressive
-      Hi, luking, I was looking at your dribble profie. the designs looks impressive
-    </div>
-
-
+  <div *ngIf="_EmailService.openMail; else loading">
+  <kgp-email-body  
+    *ngFor="let email of _EmailService.openMail | async"
+    [data]="email">
+  </kgp-email-body>
   </div>
+
+  <ng-template #loading>
+    <div class="load">
+      <svg class="openMail" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
+      </svg>
+    </div>
+  </ng-template>
+
 </div>

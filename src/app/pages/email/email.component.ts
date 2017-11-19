@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { EmailService } from '../../services/email/email.service'
+import { EmailService, email } from '../../services/email/email.service'
 
 @Component({
   selector: 'kgp-email',
@@ -9,10 +9,18 @@ import { EmailService } from '../../services/email/email.service'
 })
 export class EmailComponent implements OnInit {
 
+  public activeItem: string = ''
+
   constructor(public _EmailService: EmailService) { }
 
   ngOnInit() {
-    
+    this._EmailService.getNumberOfNewEmail()
+  }
+
+  openEmail(id) {
+    if (!id) return 
+    this.activeItem = id
+    return this._EmailService.openEmail(id)
   }
 
 }

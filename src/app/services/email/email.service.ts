@@ -35,6 +35,11 @@ export class EmailService {
   public emails: Observable<email[]>
 
   public newEmailsamount: number = 0 
+  public totalEmail: number = 0
+  public totalArchiveEmail: number = 0
+
+  public emailOb: AngularFirestoreCollection<email>
+  public openMail: Observable<email[]>
 
   constructor(private _AngularFirestore: AngularFirestore) { 
     this.emailCollection = _AngularFirestore.collection<email>('emails')
@@ -45,9 +50,18 @@ export class EmailService {
    getNumberOfNewEmail() {
    	return this.emails.subscribe( email => {
         this.newEmailsamount = email.filter(e => e.open === false).length
+        this.totalArchiveEmail = email.filter(e => e.open === true).length
+        this.totalEmail = email.length
      })
    }
 
+  openEmail(id) {
+    if (!id) return
+    this.emailOb = this._AngularFirestore.collection<email>('emails', ref => {
+      return ref.where('id', '==', id)
+    })
+    return this.openMail = this.emailOb.valueChanges()
+  }
  
 
 }
