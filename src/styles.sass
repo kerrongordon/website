@@ -56,6 +56,12 @@ img
     background: #ccc
     border-radius: 5px
     font-size: 14px
+    flex-direction: row
+    box-sizing: border-box
+    display: flex
+    max-height: 100%
+    place-content: center space-between
+    align-items: center
     transform: translateY(0px)
     transition: box-shadow .3s ease-in-out, transform .3s ease-in-out
     box-shadow: 0 0 25px rgba(40,47,60,.05), 0 20px 25px rgba(40,47,60,.05), 0 3px 4px rgba(40,47,60,.05)
@@ -141,3 +147,34 @@ img
         100%
             margin-left: 15px
             opacity: 1
+
+
+.zoomIn
+    animation-duration: .3s
+    animation-fill-mode: both
+    animation-name: zoomIn
+
+@keyframes zoomIn
+  from
+    opacity: 0
+    transform: scale3d(0.3, 0.3, 0.3)
+
+  50%
+    opacity: 1
+
+
+.fadeInLeft
+
+    &:first-child
+        animation-duration: .3s
+        animation-fill-mode: both
+        animation-name: fadeInLeft
+
+@keyframes fadeInLeft
+  from
+    opacity: 0
+    transform: translate3d(-100%, 0, 0)
+
+  to
+    opacity: 1
+    transform: none
