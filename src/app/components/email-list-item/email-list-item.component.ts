@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core'
-import { email } from '../../services/email/email.service'
+import { Email } from '../../services/email/email.service'
 
 @Component({
   selector: 'kgp-email-list-item',
@@ -8,8 +8,8 @@ import { email } from '../../services/email/email.service'
 })
 export class EmailListItemComponent implements OnInit {
 
-  @Input() data: email
- 
+  @Input() data: Email
+
   constructor() { }
 
   ngOnInit() {

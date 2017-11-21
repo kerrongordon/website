@@ -7,9 +7,9 @@ const routes: Routes = [
     children: [
       { path: '', loadChildren: './pages/dashboard/dashboard.module#DashboardModule' },
       { path: 'email', loadChildren: './pages/email/email.module#EmailModule' }
-    ] 
+    ]
   }
-];
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -12,11 +12,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
   constructor(public _EmailService: EmailService) { }
 
   ngOnInit() {
-    
+
   }
 
   ngOnDestroy() {
-   
+
   }
-  
+
 }

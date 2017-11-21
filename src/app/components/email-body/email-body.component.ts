@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core'
-import { email } from '../../services/email/email.service'
+import { Email } from '../../services/email/email.service'
 
 @Component({
   selector: 'kgp-email-body',
@@ -8,7 +8,7 @@ import { email } from '../../services/email/email.service'
 })
 export class EmailBodyComponent implements OnInit {
 
-  @Input() data: email
+  @Input() data: Email
   @Output() delete = new EventEmitter()
 
   constructor() { }

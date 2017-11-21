@@ -1,6 +1,6 @@
-<kgp-hero 
-    Primary 
-    Center 
+<kgp-hero
+    kgpPrimary
+    kgpCenter
     title="Kerron Gordon"
     [ngStyle.sm]="{'height': '400px', 'font-size': '2rem'}"
     [ngStyle.gt-sm]="{'height': '600px', 'font-size': '3rem'}">
@@ -8,8 +8,8 @@
 
 <div Container class="landingline">
 
-    <kgp-avatar 
-        Center 
+    <kgp-avatar
+        kgpCenter
         img="assets/avatar.svg"
         [ngStyle.xs]="{'margin-top': '-75px', 'height': '150px', 'width': '150px'}"
         [ngStyle.sm]="{'margin-top': '-100px', 'height': '200px', 'width': '200px'}"
@@ -19,12 +19,12 @@
     <kgp-description
         [ngStyle.xs]="{'max-width': '400px', 'display': 'block', 'margin': '0 auto'}"
         content="Kerron specializes in making exceptional websites. He enjoys tasks that would challenge his natural gifted abilities and
-        eagerly persuades him to learn something new and different. he puts tremendous amount of effort and dedication into crafting 
+        eagerly persuades him to learn something new and different. he puts tremendous amount of effort and dedication into crafting
         what is to be the next generation of websites.">
     </kgp-description>
 
-    <kgp-social-icon 
-        Center
+    <kgp-social-icon
+        kgpCenter
         Facebook="https://www.facebook.com/kerron.gordon"
         Twitter="https://twitter.com/kerrongordon"
         Google="https://plus.google.com/+kerrongordon"
@@ -33,16 +33,16 @@
     </kgp-social-icon>
 
 
-    <div 
+    <div
         fxLayout="row"
         fxLayout.xs="column"
         fxLayoutWrap
         [ngStyle.xs]="{'max-width': '350px'}"
         class="skillwrap">
 
-        <kgp-skill-item 
-            *ngFor="let skill of skills" 
-            [content]="skill.title" 
+        <kgp-skill-item
+            *ngFor="let skill of skills"
+            [content]="skill.title"
             [level]="skill.level"
             fxFlex="45">
         </kgp-skill-item>
@@ -51,9 +51,9 @@
 
 </div>
 
-<div Container class="landingline landingbg">
+<div kgpContainer class="landingline landingbg">
 
-    <h2 Cinzel class="line">Projects</h2>
+    <h2 kgpCinzel class="line">Projects</h2>
 
     <div
         fxLayout="row"
@@ -86,13 +86,13 @@
 
     </div>
 
-    
+
 </div>
 
 
-<div Container class="contact">
+<div kgpContainer class="contact">
 
-    <h2 Cinzel class="line">Get in touch</h2>
+    <h2 kgpCinzel class="line">Get in touch</h2>
 
     <kgp-contact-form></kgp-contact-form>
 

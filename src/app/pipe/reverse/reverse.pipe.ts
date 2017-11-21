@@ -7,7 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core'
 export class ReversePipe implements PipeTransform {
 
   transform(value: any): any {
-    if (value === null) return
+    if (value === null) {return}
     return value.reverse()
   }
 

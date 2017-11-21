@@ -73,7 +73,7 @@ img
         &:hover
             transform: translateY(-3px)
             box-shadow: 0 15px 35px rgba($primary,.3), 0 5px 15px rgba($primary,.4)
- 
+
     &.secondary
         background: $secondary
         box-shadow: 0 2px 4px rgba($secondary, 0.3), 0 7px 14px rgba($secondary, 0.4)
@@ -135,7 +135,7 @@ img
     .message
         flex: 1
         font-size: 0.8rem
-    
+
     .icon
         padding-right: 12px
 
@@ -178,3 +178,26 @@ img
   to
     opacity: 1
     transform: none
+
+
+.tada
+  animation-duration: 1s
+  animation-fill-mode: both
+  animation-name: tada
+
+
+@keyframes tada
+  from
+    transform: scale3d(1, 1, 1)
+
+  10%, 20%
+    transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg)
+
+  30%, 50%, 70%, 90%
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg)
+
+  40%, 60%, 80%
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg)
+
+  to
+    transform: scale3d(1, 1, 1)
