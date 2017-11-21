@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core'
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core'
 import { email } from '../../services/email/email.service'
 
 @Component({
@@ -9,10 +9,15 @@ import { email } from '../../services/email/email.service'
 export class EmailBodyComponent implements OnInit {
 
   @Input() data: email
+  @Output() delete = new EventEmitter()
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  deleteItem(id) {
+    return this.delete.emit(id)
   }
 
 }

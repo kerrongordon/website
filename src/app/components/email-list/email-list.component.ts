@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core'
-import { MailLength } from '../../pages/email/email.component'
 
 @Component({
   selector: 'kgp-email-list',
@@ -8,7 +7,9 @@ import { MailLength } from '../../pages/email/email.component'
 })
 export class EmailListComponent implements OnInit {
 
-  @Input() mailnum: MailLength
+  @Input() totalMail: number
+  @Input() newMail: number
+  @Input() readMail: number
 
   constructor() { }
 

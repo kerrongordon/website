@@ -1,9 +1,13 @@
-<div class="bar" *ngIf="mailnum">
-    <span>Total ({{ mailnum.totalMail }})</span>
-    <span>New ({{ mailnum.newMail }})</span>
-    <span>Read ({{ mailnum.readMail }})</span>
+<div class="bar" *ngIf="totalMail">
+    <span>Total ({{ totalMail }})</span>
+    <span>New ({{ newMail }})</span>
+    <span>Read ({{ readMail }})</span>
 </div>
 
-<div class="list">
+<div class="list" *ngIf="totalMail != 0; else loading">
     <ng-content></ng-content>
 </div>
+
+<ng-template #loading>
+    <h3 class="nomail">No Mail</h3>
+</ng-template>

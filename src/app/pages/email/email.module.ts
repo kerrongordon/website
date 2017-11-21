@@ -8,6 +8,7 @@ import { TruncateModule } from '../../pipe/truncate/truncate.module'
 import { EmailListModule } from '../../components/email-list/email-list.module'
 import { EmailListItemModule } from '../../components/email-list-item/email-list-item.module'
 import { EmailBodyModule } from '../../components/email-body/email-body.module'
+import { ReversePipe } from '../../pipe/reverse/reverse.pipe'
 
 
 @NgModule({
@@ -23,6 +24,6 @@ import { EmailBodyModule } from '../../components/email-body/email-body.module'
       { path: '', component: EmailComponent }
     ])
   ],
-  declarations: [EmailComponent]
+  declarations: [EmailComponent, ReversePipe]
 })
 export class EmailModule { }
