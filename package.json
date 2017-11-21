@@ -25,6 +25,7 @@
     "angularfire2": "^5.0.0-rc.3",
     "core-js": "^2.4.1",
     "firebase": "^4.6.2",
+    "marked": "^0.3.6",
     "normalize.css": "^7.0.0",
     "rxjs": "^5.5.2",
     "typeface-cinzel-decorative": "^0.0.43",

@@ -61,7 +61,7 @@
     </div>
   
     <div fxFlex="95">
-      <textarea class="item" placeholder="Your Massage" formControlName="userMessage" (focus)="inputClass3 = 'isfocus'" (blur)="inputClass3 = ''"></textarea>
+      <textarea class="item" placeholder="Your Massage" (keyup)="textToMarkDown($event.target.value)" formControlName="userMessage" (focus)="inputClass3 = 'isfocus'" (blur)="inputClass3 = ''"></textarea>
     </div>
   
   </div>
@@ -69,7 +69,7 @@
 
   <div>
    
-    <button class="btn secondary" type="submit" fxLayout="row" fxLayoutAlign="space-between center" [disabled]="!emailForm.valid">
+    <button class="btn secondary" type="submit" [disabled]="!emailForm.valid">
       <div class="btnicon">
         <svg viewBox="0 0 24 24">
           <path fill="currentColor" d="M2,21L23,12L2,3V10L17,12L2,14V21Z" />
