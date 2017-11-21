@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs/Observable'
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore'
 
-export interface email {
+export interface Email {
   id: string,
   name: string,
   subject: string,
@@ -10,19 +10,19 @@ export interface email {
   message: string,
   markdown: string,
   open: boolean,
-  timestamp: timestamp
+  timestamp: Timestamp
  }
 
-export interface timestamp {
+export interface Timestamp {
   timestamp: number,
   month: string,
   weekday: string,
   year: number,
   date: number,
-  time: time
+  time: Time
 }
 
-export interface time {
+export interface Time {
   hours: number,
   minutes: number,
   seconds: number,
@@ -31,43 +31,46 @@ export interface time {
 
 @Injectable()
 export class EmailService {
+  public emailCollection: AngularFirestoreCollection<Email>
+  public emails: Observable<Email[]>
 
-  public emailCollection: AngularFirestoreCollection<email>
-  public emails: Observable<email[]>
+  public emailOb: AngularFirestoreCollection<Email>
+  public openMail: Observable<Email[]>
 
-  public emailOb: AngularFirestoreCollection<email>
-  public openMail: Observable<email[]>
+  public totalMail = 0
+  public newMail = 0
+  public readMail = 0
 
-  public totalMail: number = 0
-  public newMail: number = 0
-  public readMail: number = 0
-
-  constructor(private _AngularFirestore: AngularFirestore) { 
-    this.emailCollection = _AngularFirestore
-      .collection<email>('emails', ref => ref.orderBy('timestamp.timestamp') )
+  constructor(private _AngularFirestore: AngularFirestore) {
+    this.emailCollection = _AngularFirestore.collection<Email>('emails',
+      ref => ref.orderBy('timestamp.timestamp')
+    )
     this.emails = this.emailCollection.valueChanges()
 
     this.emails.subscribe(email => {
-        this.totalMail = email.length,
-        this.newMail = email.filter(e => e.open === false).length,
-        this.readMail = email.filter(e => e.open === true).length
+      (this.totalMail = email.length),
+        (this.newMail = email.filter(e => e.open === false).length),
+        (this.readMail = email.filter(e => e.open === true).length)
     })
   }
 
-  addEmail(id: string, data: object) {
-    return this._AngularFirestore.collection<email>('emails').doc(id).set(data)
+  public addEmail(id: string, data: Email) {
+    return this._AngularFirestore
+      .collection<Email>('emails')
+      .doc(id)
+      .set(data)
   }
 
-  openEmail(id) {
-    this.emailOb = this._AngularFirestore
-      .collection<email>('emails', ref => ref.where('id', '==', id) )
+  public openEmail(id) {
+    this.emailOb = this._AngularFirestore.collection<Email>('emails', ref =>
+      ref.where('id', '==', id)
+    )
     const item = { open: true }
     this.emailOb.doc(id).update(item)
-    return this.openMail = this.emailOb.valueChanges()
+    return (this.openMail = this.emailOb.valueChanges())
   }
 
-  deleteEmail(id) {
+  public deleteEmail(id) {
     return this.emailOb.doc(id).delete()
   }
-
 }

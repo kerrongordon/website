@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { NotificationService } from '../../services/notification/notification.service'
-import { EmailService } from '../../services/email/email.service'
+import { EmailService, Email } from '../../services/email/email.service'
 import { TimestampService } from '../../services/timestamp/timestamp.service'
 import { MarkdownService } from '../../services/markdown/markdown.service'
 
@@ -13,16 +13,16 @@ import { MarkdownService } from '../../services/markdown/markdown.service'
 })
 export class ContactFormComponent implements OnInit {
 
-  public inputClass1: string = ''
-  public inputClass2: string = ''
-  public inputClass3: string = ''
-  public inputClass4: string = ''
+  public inputClass1 = ''
+  public inputClass2 = ''
+  public inputClass3 = ''
+  public inputClass4 = ''
 
   public emailForm: FormGroup
   public markdown: string
 
   constructor(
-    private _NotificationService: NotificationService, 
+    private _NotificationService: NotificationService,
     private _EmailService: EmailService,
     private _TimestampService: TimestampService,
     private _MarkdownService: MarkdownService ) { }
@@ -73,7 +73,7 @@ export class ContactFormComponent implements OnInit {
     const { userName, userSubject, userEmail, userMessage } = this.emailForm.value
     const getId = this._TimestampService.getTheId()
 
-    const emailPush = {
+    const emailPush: Email = {
       id: getId,
       name: userName,
       subject: userSubject,
@@ -90,7 +90,6 @@ export class ContactFormComponent implements OnInit {
         time: this._TimestampService.getTheTime()
       },
     }
-
 
     return this._EmailService.addEmail(getId, emailPush)
             .then(() => this.messageWasSend(userName))

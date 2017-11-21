@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
-import { EmailService, email } from '../../services/email/email.service'
+import { EmailService, Email } from '../../services/email/email.service'
 import { Observable } from 'rxjs/Observable'
 import { Subscription } from 'rxjs/Subscription'
 
@@ -10,22 +10,22 @@ import { Subscription } from 'rxjs/Subscription'
   providers: [EmailService]
 })
 export class EmailComponent implements OnInit, OnDestroy {
-  
-  public activeItem: string = ''
-  public openMail: email
-  public mailList: email[]
-  
-  public toggleMobile: boolean = false
+
+  public activeItem = ''
+  public openMail: Email
+  public mailList: Email[]
+
+  public toggleMobile = false
   private openmailSub: Subscription
-  
+
   constructor(public _EmailService: EmailService) { }
 
   ngOnInit() {
-   
+
   }
 
   openEmail(id) {
-    if (!id) return 
+    if (!id) {return}
     this.activeItem = id
     this.toggleMobileBtn()
     return this.openmailSub = this._EmailService.openEmail(id)
@@ -47,6 +47,5 @@ export class EmailComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.openmailSub.unsubscribe()
   }
-
 
 }
