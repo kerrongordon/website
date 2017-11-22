@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>Kerron Gordon</title>
@@ -7,8 +8,97 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <meta name="description" content="Kerron specializes in making exceptional websites." />
+  <meta property="og:title" content="Kerron Gordon" />
+  <meta property="og:description" content="Kerron specializes in making exceptional websites." />
+  <meta property="og:image" content="/assets/userbg.jpg" />
+
+  <meta name="msapplication-TileColor" content="#2798ee">
+  <meta name="theme-color" content="#2798ee">
+
+  <style>
+    body {
+      margin: 0;
+    }
+    .loadingPage {
+      position: absolute;
+      height: 100vh;
+      width: 100%;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      background-color: #fafafa;
+      color: #2798ee;
+      overflow: hidden;
+    }
+
+    .spinner {
+      width: 100px;
+      height: 100px;
+
+      position: relative;
+    }
+
+    .double-bounce1,
+    .double-bounce2 {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: #2798ee;
+      opacity: 0.6;
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      -webkit-animation: sk-bounce 1.5s infinite ease-in-out;
+      animation: sk-bounce 1.5s infinite ease-in-out;
+    }
+
+    .double-bounce2 {
+      -webkit-animation-delay: -0.75s;
+      animation-delay: -0.75s;
+    }
+
+    @-webkit-keyframes sk-bounce {
+      0%,
+      100% {
+        -webkit-transform: scale(0.0)
+      }
+      50% {
+        -webkit-transform: scale(1.0)
+      }
+    }
+
+    @keyframes sk-bounce {
+      0%,
+      100% {
+        transform: scale(0.0);
+        -webkit-transform: scale(0.0);
+      }
+      50% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <kgp-root></kgp-root>
+  <kgp-root>
+    <div class="loadingPage">
+    <div class="spinner">
+      <div class="double-bounce1"></div>
+      <div class="double-bounce2"></div>
+    </div>
+    </div>
+  </kgp-root>
 </body>
+
 </html>

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { RouterModule } from '@angular/router'
 import { FlexLayoutModule } from '@angular/flex-layout'
+import { AngularFirestoreModule } from 'angularfire2/firestore'
 import { HomeComponent } from './home.component'
 
 import { PrimaryModule } from '../../directives/primary/primary.module'
@@ -38,6 +39,7 @@ import { FooterModule } from '../../components/footer/footer.module'
     CardContentModule,
     ContactFormModule,
     FooterModule,
+    AngularFirestoreModule,
     RouterModule.forChild([
       { path: '', component: HomeComponent }
     ])

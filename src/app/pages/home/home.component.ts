@@ -1,41 +1,23 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, OnDestroy } from '@angular/core'
+import { DescriptionService } from '../../services/description/description.service'
+import { SkillsService } from '../../services/skills/skills.service'
 
 @Component({
   selector: 'kgp-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.sass']
+  styleUrls: ['./home.component.sass'],
+  providers: [DescriptionService, SkillsService]
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
-  skills = [{
-    'level': '69',
-    'title': 'Communication'
-  }, {
-    'level': '75',
-    'title': 'Organization'
-  }, {
-    'level': '74',
-    'title': 'Learning'
-  }, {
-    'level': '65',
-    'title': 'Teaching'
-  }, {
-    'level': '75',
-    'title': 'Planning'
-  }, {
-    'level': '84',
-    'title': 'Visual Design'
-  }, {
-    'level': '64',
-    'title': 'UX Design'
-  }, {
-    'level': '67',
-    'title': 'Programming'
-  }]
-
-  constructor() { }
+  constructor(public docOb: DescriptionService, public skillOb: SkillsService) { }
 
   ngOnInit() {
+
+  }
+
+  ngOnDestroy() {
+    this.docOb.docsSub.unsubscribe()
   }
 
 }

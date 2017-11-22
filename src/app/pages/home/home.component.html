@@ -18,9 +18,7 @@
 
     <kgp-description
         [ngStyle.xs]="{'max-width': '400px', 'display': 'block', 'margin': '0 auto'}"
-        content="Kerron specializes in making exceptional websites. He enjoys tasks that would challenge his natural gifted abilities and
-        eagerly persuades him to learn something new and different. he puts tremendous amount of effort and dedication into crafting
-        what is to be the next generation of websites.">
+        [content]="docOb.docsOb">
     </kgp-description>
 
     <kgp-social-icon
@@ -32,7 +30,6 @@
         Github="https://github.com/kerrongordon">
     </kgp-social-icon>
 
-
     <div
         fxLayout="row"
         fxLayout.xs="column"
@@ -41,7 +38,7 @@
         class="skillwrap">
 
         <kgp-skill-item
-            *ngFor="let skill of skills"
+            *ngFor="let skill of skillOb.skills | async"
             [content]="skill.title"
             [level]="skill.level"
             fxFlex="45">
