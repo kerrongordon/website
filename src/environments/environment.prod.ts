@@ -8,4 +8,4 @@ export const environment = {
     storageBucket: 'kerron-gordon.appspot.com',
     messagingSenderId: '878349723717'
   }
-};
+}

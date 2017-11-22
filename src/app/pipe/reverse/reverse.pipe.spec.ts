@@ -1,8 +1,8 @@
-import { ReversePipe } from './reverse.pipe';
+import { ReversePipe } from './reverse.pipe'
 
 describe('ReversePipe', () => {
   it('create an instance', () => {
-    const pipe = new ReversePipe();
-    expect(pipe).toBeTruthy();
-  });
-});
+    const pipe = new ReversePipe()
+    expect(pipe).toBeTruthy()
+  })
+})
