@@ -1,1 +1,2 @@
-<img src="{{ imge }}" alt="thum">
+<img [@fadeInOut]="fadeInState" class="base" src="{{ base64 }}" alt="thum" >
+<img [@fadeInOut]="fadeOutState" src="{{ imge }}" (load)="isImgeLoad($event)" alt="thum" >
