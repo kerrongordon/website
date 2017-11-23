@@ -139,9 +139,9 @@
   dependencies:
     tslib "^1.7.1"
 
-"@angular/platform-browser@^4.3.3":
-  version "4.3.3"
-  resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-4.3.3.tgz#623b659794f079096d4f7685b4bebcb49e3b9a71"
+"@angular/platform-browser@^5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-5.0.3.tgz#4ac872404a2a8162dd28a5b164238b76bf5e1261"
   dependencies:
     tslib "^1.7.1"
 
