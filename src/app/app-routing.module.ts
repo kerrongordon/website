@@ -5,6 +5,7 @@ const routes: Routes = [
   { path: '', loadChildren: './pages/home/home.module#HomeModule' },
   { path: 'dashboard', loadChildren: './pages/dashboard/dashboard.module#DashboardModule' },
   { path: 'email', loadChildren: './pages/email/email.module#EmailModule' },
+  { path: 'addproject', loadChildren: './pages/add-project/add-project.module#AddProjectModule' },
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ]
 

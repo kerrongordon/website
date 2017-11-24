@@ -1,0 +1,10 @@
+<form [formGroup]="AddProjectForm" novalidate (ngSubmit)="onSubmit()">
+  <input type="text" name="title" id="" formControlName="projectTitle">
+  <textarea type="text" name="markdown" id="" formControlName="projectMarkdown"></textarea>
+  <div>makedown view</div>
+
+  <input type="file" name="thumnail" id="">
+  <input type="file" name="fullsize" id="">
+
+  <button type="submit">Submit</button>
+</form>
