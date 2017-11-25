@@ -10,7 +10,11 @@ import { SkillsService } from '../../services/skills/skills.service'
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
-  constructor(public docOb: DescriptionService, public skillOb: SkillsService) { }
+  skillsInit: any = [1, 2, 3, 4, 5, 6, 7, 8]
+
+  constructor(public docOb: DescriptionService, public skillOb: SkillsService) {
+    this.skillOb.skills.subscribe(data => this.skillsInit = data)
+  }
 
   ngOnInit() {
 

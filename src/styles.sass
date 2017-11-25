@@ -201,3 +201,35 @@ img
 
   to
     transform: scale3d(1, 1, 1)
+
+
+@keyframes placeHolderShimmer
+    0%
+        background-position: -468px 0
+    
+    100%
+        background-position: 468px 0
+
+.facebookloading 
+    animation-duration: 1s
+    animation-fill-mode: forwards
+    animation-iteration-count: infinite
+    animation-name: placeHolderShimmer
+    animation-timing-function: linear
+    background: #f6f7f8
+    background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%)
+    background-size: 1000px 104px
+    height: 16px
+    margin: 7px 0
+    position: relative
+
+    &.w40
+        width: 40%
+
+    &.w90
+        width: 90%
+        margin: 7px auto
+
+    &.w95
+        width: 95%
+        margin: 7px auto

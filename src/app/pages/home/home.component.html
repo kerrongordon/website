@@ -38,7 +38,7 @@
         class="skillwrap">
 
         <kgp-skill-item
-            *ngFor="let skill of skillOb.skills | async"
+            *ngFor="let skill of skillsInit ? skillsInit : (skillOb.skills | async )"
             [content]="skill.title"
             [level]="skill.level"
             fxFlex="45">

@@ -1,5 +1,12 @@
-<h4>{{ content }}</h4>
-<div>
-  <span [ngStyle]="{'left': level+'%'}">{{ level }}</span>
-  <kgp-progressbar [level]="level"></kgp-progressbar>
+<div *ngIf="content; else load">
+  <h4>{{ content }}</h4>
+  <div>
+    <span [ngStyle]="{'left': level+'%'}">{{ level }}</span>
+    <kgp-progressbar [level]="level"></kgp-progressbar>
+  </div>
 </div>
+
+<ng-template #load>
+  <div class="facebookloading w40"></div>
+  <div class="facebookloading"></div>
+</ng-template>
