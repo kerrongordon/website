@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
 import { DescriptionService } from '../../services/description/description.service'
-import { SkillsService } from '../../services/skills/skills.service'
+import { SkillsService, Skills } from '../../services/skills/skills.service'
+import { Subscription } from 'rxjs/Subscription'
 
 @Component({
   selector: 'kgp-home',
@@ -10,10 +11,22 @@ import { SkillsService } from '../../services/skills/skills.service'
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
-  skillsInit: any = [1, 2, 3, 4, 5, 6, 7, 8]
+  private skillplaceh: Skills = { title: null, level: null }
+  public skillsInit: Skills[] = [
+    this.skillplaceh,
+    this.skillplaceh,
+    this.skillplaceh,
+    this.skillplaceh,
+    this.skillplaceh,
+    this.skillplaceh,
+    this.skillplaceh,
+    this.skillplaceh
+  ]
+
+  private skillSub: Subscription
 
   constructor(public docOb: DescriptionService, public skillOb: SkillsService) {
-    this.skillOb.skills.subscribe(data => this.skillsInit = data)
+    this.skillSub = this.skillOb.skills.subscribe(data => this.skillsInit = data)
   }
 
   ngOnInit() {
@@ -22,6 +35,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.docOb.docsSub.unsubscribe()
+    this.skillSub.unsubscribe()
   }
 
 }

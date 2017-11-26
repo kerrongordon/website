@@ -6,7 +6,7 @@
     [ngStyle.gt-sm]="{'height': '600px', 'font-size': '3rem'}">
 </kgp-hero>
 
-<div Container class="landingline">
+<div kgpContainer class="landingline">
 
     <kgp-avatar
         kgpCenter
@@ -38,7 +38,7 @@
         class="skillwrap">
 
         <kgp-skill-item
-            *ngFor="let skill of skillsInit ? skillsInit : (skillOb.skills | async )"
+            *ngFor="let skill of skillsInit "
             [content]="skill.title"
             [level]="skill.level"
             fxFlex="45">
@@ -47,6 +47,8 @@
     </div>
 
 </div>
+
+<!-- *ngFor="let skill of skillsInit ? skillsInit : (skillOb.skills | async )" -->
 
 <div kgpContainer class="landingline landingbg">
 

@@ -1,10 +1,63 @@
+
 <form [formGroup]="AddProjectForm" novalidate (ngSubmit)="onSubmit()">
-  <input type="text" name="title" id="" formControlName="projectTitle">
-  <textarea type="text" name="markdown" id="" formControlName="projectMarkdown"></textarea>
-  <div>makedown view</div>
 
-  <input type="file" name="thumnail" id="">
-  <input type="file" name="fullsize" id="">
+  <div kgpContainer>
 
-  <button type="submit">Submit</button>
+    <div class="inforBox">
+
+      <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap>
+      
+        <div fxFlex="50">
+          <input class="inputItem" type="text" name="title" id="" formControlName="projectTitle" placeholder="Title">
+        </div>
+
+        <div fxFlex="50">
+          <input class="inputItem" type="text" name="title" id="" formControlName="projectUrl" placeholder="Projects URL">
+        </div>
+
+      </div>
+
+      <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap>
+
+        <div fxFlex="50">
+          <textarea class="markDownInput" type="text" name="markdown" (keyup)="textToMarkDown($event.target.value)" id="" formControlName="projectMarkdown" placeholder="Add Markdown Here"></textarea>
+        </div>
+
+        <div fxFlex="50">
+          <div class="markdownOutput" [innerHTML]="markdown"></div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap class="imagebox" >
+
+    <div class="imageSmail" fxFlex="45" fxFlex.xs="100">
+      <div class="smailBtn" [ngStyle.xs]="{'width': '250px'}">
+        <label for="smailImage">
+          <img #smailImage id="thum" src="" alt="">
+        </label>
+        <input type="file" name="thumnail" id="smailImage" (change)="smailImg($event)">
+      </div>
+    </div>
+
+    <div class="imageBig" fxFlex="45" fxFlex.xs="100">
+      <div class="bigBtn" [ngStyle.xs]="{'width': '250px'}">
+        <label for="bigImage">
+          <img #bigImage id="bigthun" src="" alt="">
+        </label>
+        <input type="file" name="fullsize" id="bigImage" (change)="bigImg($event)">
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="centerBtn">
+    <button type="submit" class="btn secondary">Submit</button>
+  </div>
+
 </form>

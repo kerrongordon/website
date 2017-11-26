@@ -1,11 +1,16 @@
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs/Observable'
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore'
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, } from 'angularfire2/firestore'
+import * as firebase from 'firebase/app'
+import 'firebase/storage'
 
 export interface Project {
   id: string,
   title: string,
+  content: string,
   markdown: string,
+  url: string,
+  image: Images
   timestamp: Timestamp
 }
 
@@ -25,8 +30,31 @@ export interface Time {
   Milliseconds: number
 }
 
+export interface Images {
+  small: Imagen,
+  big: Imagen
+}
+
+export interface Imagen {
+  base64: string,
+  name: string,
+  size: number,
+  type: string,
+  url: any
+}
+
+export interface Upload {
+  progress: number,
+  url: string
+}
+
 @Injectable()
 export class ProjectService {
+  storageRef: firebase.storage.Reference
+
+  private basePath = '/projects/'
+  private uploadTask: firebase.storage.UploadTask
+  public upload
 
   public projectCollection: AngularFirestoreCollection<Project>
   public projects: Observable<Project[]>
@@ -34,6 +62,7 @@ export class ProjectService {
   constructor(private _AngularFirestore: AngularFirestore) {
     this.projectCollection = this._AngularFirestore.collection<Project>('projects')
     this.projects = this.projectCollection.valueChanges()
+    this.storageRef = firebase.storage().ref()
   }
 
   public addProject(id: string, data: Project) {
@@ -41,6 +70,20 @@ export class ProjectService {
       .collection<Project>('projects')
       .doc(id)
       .set(data)
+  }
+
+  public pushImage(file, title, type) {
+
+    const metadata = {
+      contentType: file.type
+    }
+
+    this.uploadTask = this.storageRef.child(`/projects/${title}/${type}/${file.name}/`).put(file, metadata)
+
+    return this.uploadTask.then(snapshot => {
+      return this.upload = snapshot.downloadURL
+    })
+
   }
 
 }
