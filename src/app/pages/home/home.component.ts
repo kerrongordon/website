@@ -3,6 +3,7 @@ import { DescriptionService } from '../../services/description/description.servi
 import { SkillsService, Skills } from '../../services/skills/skills.service'
 import { Subscription } from 'rxjs/Subscription'
 import { ProjectService, Project } from '../../services/project/project.service'
+import { skillplaceh, projectplaceh } from './../../exports/placeholder'
 
 @Component({
   selector: 'kgp-home',
@@ -12,29 +13,35 @@ import { ProjectService, Project } from '../../services/project/project.service'
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
-  private skillplaceh: Skills = { title: null, level: null }
   public skillsInit: Skills[] = [
-    this.skillplaceh,
-    this.skillplaceh,
-    this.skillplaceh,
-    this.skillplaceh,
-    this.skillplaceh,
-    this.skillplaceh,
-    this.skillplaceh,
-    this.skillplaceh
+    skillplaceh,
+    skillplaceh,
+    skillplaceh,
+    skillplaceh,
+    skillplaceh,
+    skillplaceh,
+    skillplaceh,
+    skillplaceh
   ]
 
   private skillSub: Subscription
   private projectSub: Subscription
 
   public projects: Project[]
+  public projectsInit: Project[] = [
+    projectplaceh,
+    projectplaceh,
+    projectplaceh,
+    projectplaceh
+  ]
 
   constructor(public docOb: DescriptionService, public skillOb: SkillsService, public projectOb: ProjectService) {
-    this.skillSub = this.skillOb.skills.subscribe(data => this.skillsInit = data)
+
   }
 
   ngOnInit() {
-    this.projectSub = this.projectOb.homePage().subscribe(data => this.projects = data.reverse())
+    this.skillSub = this.skillOb.skills.subscribe(data => this.skillsInit = data)
+    this.projectSub = this.projectOb.homePage().subscribe(data => this.projectsInit = data.reverse().slice(0, 4))
   }
 
   ngOnDestroy() {

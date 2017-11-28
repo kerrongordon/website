@@ -57,13 +57,12 @@
         fxLayout.xs="column"
         fxLayoutAlign="space-between start"
         fxLayoutWrap
-        *ngIf="projects"
         [ngStyle.xs]="{'max-width': '350px', 'margin': '0 auto'}"
         [ngStyle.sm]="{'max-width': '550px', 'margin': '0 auto'}"
         [ngStyle.gt-sm]="{'max-width': '1100px', 'margin': '0 auto'}">
 
     <kgp-card [ngStyle.sm]="{'max-width': '46%'}" [ngStyle.gt-sm]="{'max-width': '22%'}" Link="dashboard"
-            *ngFor="let project of ( projects ? projects.slice(0,4): [] ) ">
+            *ngFor="let project of projectsInit ">
         <kgp-card-image
             [imge]="project.image.small.url"
             [base64]="project.image.small.base64"></kgp-card-image>
