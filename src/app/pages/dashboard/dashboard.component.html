@@ -1,3 +1,35 @@
-<p>
-  dashboard work!
-</p>
+<div fxLayout="row" fxLayout.xs="column" fxLayoutWrap>
+
+  <div fxFlex="15">
+    <div class="sideBar">
+      <div class="sbiner">
+
+        <div class="item">
+          <div class="icon">icon</div>
+          <div class="conter">5</div>
+          <h5 class="title"><a [routerLink]="['dashboard']">Dashboard</a></h5>
+        </div>
+
+        <div class="item">
+          <div class="icon">icon</div>
+          <div class="conter">5</div>
+          <h5 class="title">Messages</h5>
+        </div>
+
+        <div class="item">
+          <div class="icon">icon</div>
+          <div class="conter">5</div>
+          <h5 class="title">Add Project</h5>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div fxFlex="85">
+    
+  </div>
+
+</div>
+
+<kgp-footer></kgp-footer>

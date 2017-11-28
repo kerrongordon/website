@@ -1,16 +1,22 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { RouterModule } from '@angular/router'
+import { RouterModule, Routes } from '@angular/router'
+import { FlexLayoutModule } from '@angular/flex-layout'
 import { AngularFirestoreModule } from 'angularfire2/firestore'
 import { DashboardComponent } from './dashboard.component'
+import { FooterModule } from '../../components/footer/footer.module'
+
+const routes: Routes = [
+  { path: '', component: DashboardComponent }
+]
 
 @NgModule({
   imports: [
     CommonModule,
     AngularFirestoreModule,
-    RouterModule.forChild([
-      { path: '', component: DashboardComponent }
-    ])
+    FlexLayoutModule,
+    FooterModule,
+    RouterModule.forChild(routes)
   ],
   declarations: [DashboardComponent]
 })

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { RouterModule } from '@angular/router'
+import { RouterModule, Routes } from '@angular/router'
 import { FlexLayoutModule } from '@angular/flex-layout'
 import { EmailComponent } from './email.component'
 import { AngularFirestoreModule } from 'angularfire2/firestore'
@@ -10,6 +10,9 @@ import { EmailListItemModule } from '../../components/email-list-item/email-list
 import { EmailBodyModule } from '../../components/email-body/email-body.module'
 import { ReversePipe } from '../../pipe/reverse/reverse.pipe'
 
+const routes: Routes = [
+  { path: '', component: EmailComponent }
+]
 
 @NgModule({
   imports: [
@@ -20,9 +23,7 @@ import { ReversePipe } from '../../pipe/reverse/reverse.pipe'
     EmailListModule,
     EmailListItemModule,
     EmailBodyModule,
-    RouterModule.forChild([
-      { path: '', component: EmailComponent }
-    ])
+    RouterModule.forChild(routes)
   ],
   declarations: [EmailComponent, ReversePipe]
 })

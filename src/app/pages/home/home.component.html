@@ -48,8 +48,6 @@
 
 </div>
 
-<!-- *ngFor="let skill of skillsInit ? skillsInit : (skillOb.skills | async )" -->
-
 <div kgpContainer class="landingline landingbg">
 
     <h2 kgpCinzel class="line">Projects</h2>
@@ -59,36 +57,17 @@
         fxLayout.xs="column"
         fxLayoutAlign="space-between start"
         fxLayoutWrap
+        *ngIf="projects"
         [ngStyle.xs]="{'max-width': '350px', 'margin': '0 auto'}"
         [ngStyle.sm]="{'max-width': '550px', 'margin': '0 auto'}"
         [ngStyle.gt-sm]="{'max-width': '1100px', 'margin': '0 auto'}">
 
-    <kgp-card [ngStyle.sm]="{'max-width': '46%'}" [ngStyle.gt-sm]="{'max-width': '22%'}" Link="dashboard">
+    <kgp-card [ngStyle.sm]="{'max-width': '46%'}" [ngStyle.gt-sm]="{'max-width': '22%'}" Link="dashboard"
+            *ngFor="let project of ( projects ? projects.slice(0,4): [] ) ">
         <kgp-card-image
-            imge="https://firebasestorage.googleapis.com/v0/b/kgordon-7c77f.appspot.com/o/portfolios%2FArchitecto%2Fthumb%2F10644_result.jpg?alt=media&token=a9fa0fa6-4d46-4359-8a86-7e8aa6215f6d"
-            base64="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAYAAAB/qH1jAAAAK0lEQVQYV2MU4uP9n5aVy8DFxcWgc/ABAyMXK9P/5y+/MKxKKmdYsGEyAwCpeAuRNM8FyQAAAABJRU5ErkJggg=="></kgp-card-image>
-        <kgp-card-content ctitle="this is a card title sdlkm ksd kerron gordon jmgo" content="this is just some content for testing out the card component" month="Aug" day="11" year="2017"></kgp-card-content>
-    </kgp-card>
-
-    <kgp-card [ngStyle.sm]="{'max-width': '46%'}" [ngStyle.gt-sm]="{'max-width': '22%'}" Link="dashboard/email">
-        <kgp-card-image 
-            imge="https://firebasestorage.googleapis.com/v0/b/kgordon-7c77f.appspot.com/o/portfolios%2FUllamcorper%2Fthumb%2Fleaf_result.jpg?alt=media&token=fcb9c222-5991-4757-9b8a-d89c69e51fe2"
-            base64="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAYAAAB/qH1jAAAAK0lEQVQYV2PMa+P7z876n0FUgo3hwaO/DIxxlTz/ZaWYGCS4mBiO3f7NAAC8igrcCxSNpQAAAABJRU5ErkJggg=="></kgp-card-image>
-        <kgp-card-content ctitle="this is a card title" content="this is just some content for testing out the card component" month="Aug" day="11" year="2017"></kgp-card-content>
-    </kgp-card>
-
-    <kgp-card [ngStyle.sm]="{'max-width': '46%'}" [ngStyle.gt-sm]="{'max-width': '22%'}">
-        <kgp-card-image 
-            imge="https://firebasestorage.googleapis.com/v0/b/kgordon-7c77f.appspot.com/o/portfolios%2Fmolestiae%2Fthumb%2Fheader-bg-2_result.jpg?alt=media&token=6e681d77-26ec-4e07-b34d-de475c262f25"
-            base64="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAYAAAB/qH1jAAAALUlEQVQYVwEiAN3/AcjBt/89Q00AtaygAAH//QAB08+//01TZwC+vb0A//zoACfaEY+ENk6VAAAAAElFTkSuQmCC"></kgp-card-image>
-        <kgp-card-content ctitle="this is a card title" content="this is just some content for testing out the card component" month="Aug" day="11" year="2017"></kgp-card-content>
-    </kgp-card>
-
-    <kgp-card [ngStyle.sm]="{'max-width': '46%'}" [ngStyle.gt-sm]="{'max-width': '22%'}">
-        <kgp-card-image 
-            imge="https://firebasestorage.googleapis.com/v0/b/kgordon-7c77f.appspot.com/o/portfolios%2Fassumenda%2Fthumb%2F11212_result.jpg?alt=media&token=db6b2e5e-0119-4d81-9625-1798908ce025"
-            base64="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAYAAAB/qH1jAAAAK0lEQVQYV2PcqyD7f+rD5wycDP8ZeOp4GBgfuDH8f3iOhYH1IwvDSY4fDADiEQySwqePGQAAAABJRU5ErkJggg=="></kgp-card-image>
-        <kgp-card-content ctitle="this is a card title" content="this is just some content for testing out the card component" month="Aug" day="11" year="2017"></kgp-card-content>
+            [imge]="project.image.small.url"
+            [base64]="project.image.small.base64"></kgp-card-image>
+        <kgp-card-content [ctitle]="project.title" [content]="project.content" [month]="project.timestamp.month" [day]="project.timestamp.date" [year]="project.timestamp.year"></kgp-card-content>
     </kgp-card>
 
     </div>

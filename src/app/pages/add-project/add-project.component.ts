@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2, ViewChild, ElementRef } from '@angular/core'
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { ProjectService, Project } from '../../services/project/project.service'
 import { TimestampService } from '../../services/timestamp/timestamp.service'
@@ -32,12 +32,12 @@ export class AddProjectComponent implements OnInit {
   constructor(
     public _ProjectService: ProjectService,
     private _TimestampService: TimestampService,
-    private _MarkdownService: MarkdownService,
-    private _Renderer2: Renderer2
+    private _MarkdownService: MarkdownService
   ) { }
 
   ngOnInit() {
     this.forminit()
+    this._ProjectService.loadFirebaseStorage()
   }
 
   private forminit() {
@@ -72,6 +72,11 @@ export class AddProjectComponent implements OnInit {
   }
 
   private resetEmailForm() {
+    this.markdown = ''
+    this.smailImage.nativeElement.removeAttribute('src')
+    this.smailImage.nativeElement.removeAttribute('alt')
+    this.bigImage.nativeElement.removeAttribute('src')
+    this.bigImage.nativeElement.removeAttribute('alt')
     return this.AddProjectForm.reset()
   }
 
@@ -80,7 +85,9 @@ export class AddProjectComponent implements OnInit {
   }
 
   public onSubmit() {
-    // if (!this.AddProjectForm.valid) { return }
+    if (!this.AddProjectForm.valid) { return }
+    if (!this.smailImageToFirebase) { return }
+    if (!this.bigImageToFirebase) { return }
 
     const { projectTitle, projectMarkdown, projectUrl } = this.AddProjectForm.value
     const getId = this._TimestampService.getTheId()
@@ -132,16 +139,15 @@ export class AddProjectComponent implements OnInit {
         },
       }
 
-      console.log('projectPush ', projectPush)
-      console.log('simg ', this.simg.__zone_symbol__value)
-      console.log('bimg ', this.bimg.__zone_symbol__value)
-    }).catch(error => {
+      this._ProjectService.addProject(getId, projectPush)
+      console.log(projectPush)
+    }).then(e => {
+      this.resetEmailForm()
+    })
+    .catch(error => {
       console.log('error ', error)
     })
 
-    // return this._ProjectService.addProject(getId, projectPush)
-    //   .then(() => console.log(projectPush) )
-    //   .then(() => this.resetEmailForm())
   }
 
 }
