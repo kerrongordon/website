@@ -5,8 +5,6 @@ import { FlexLayoutModule } from '@angular/flex-layout'
 import { AngularFirestoreModule } from 'angularfire2/firestore'
 import { HomeComponent } from './home.component'
 
-import { ReversePipe } from '../../pipe/reverse/reverse.pipe'
-
 import { PrimaryModule } from '../../directives/primary/primary.module'
 import { CenterModule } from '../../directives/center/center.module'
 import { ContainerModule } from '../../directives/container/container.module'
@@ -46,6 +44,6 @@ import { FooterModule } from '../../components/footer/footer.module'
       { path: '', component: HomeComponent }
     ])
   ],
-  declarations: [HomeComponent, ReversePipe]
+  declarations: [HomeComponent]
 })
 export class HomeModule { }
