@@ -20,6 +20,7 @@ import { CardImageModule } from '../../components/card-image/card-image.module'
 import { CardContentModule } from '../../components/card-content/card-content.module'
 import { ContactFormModule } from '../../components/contact-form/contact-form.module'
 import { FooterModule } from '../../components/footer/footer.module'
+import { HeaderBarModule } from '../../components/header-bar/header-bar.module'
 
 @NgModule({
   imports: [
@@ -40,6 +41,7 @@ import { FooterModule } from '../../components/footer/footer.module'
     ContactFormModule,
     FooterModule,
     AngularFirestoreModule,
+    HeaderBarModule,
     RouterModule.forChild([
       { path: '', component: HomeComponent }
     ])

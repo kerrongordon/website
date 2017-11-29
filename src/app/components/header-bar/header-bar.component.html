@@ -1,0 +1,41 @@
+<header fxLayout="row" class="headerBar">
+
+  <div fxFlex="5" class="homeLink">
+    <a routerLink="/" >
+      <svg viewBox="0 0 24 24">
+        <path fill="currentColor" d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z" />
+      </svg>
+    </a>
+  </div>
+
+  <div fxFlex="85" class="searchBarCon">
+    <div fxLayout="row" class="searchBar" [ngClass]="{'isActive': toggleSearchClass}">
+      <div fxFlex="5">
+        <svg class="seaicon" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z"/>
+        </svg>
+      </div>
+      <div fxFlex="95"><input class="search" type="search" placeholder="Search Projects" (focus)="toggleSearch()" (blur)="toggleSearch()"></div>
+    </div>
+    <div class="searchOutPut">
+    
+    </div>
+  </div>
+
+  <div fxFlex="10" fxLayout="row">
+    <div fxFlex="50">
+      <svg viewBox="0 0 24 24">
+        <path fill="currentColor" d="M4,2C2.89,2 2,2.89 2,4V14H4V4H14V2H4M8,6C6.89,6 6,6.89 6,8V18H8V8H18V6H8M12,10C10.89,10 10,10.89 10,12V20C10,21.11 10.89,22 12,22H20C21.11,22 22,21.11 22,20V12C22,10.89 21.11,10 20,10H12Z"/>
+      </svg>
+    </div>
+
+    <div fxFlex="50">
+      <svg viewBox="0 0 24 24">
+        <path fill="currentColor" d="M19,3H5C3.89,3 3,3.89 3,5V9H5V5H19V19H5V15H3V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M10.08,15.58L11.5,17L16.5,12L11.5,7L10.08,8.41L12.67,11H3V13H12.67L10.08,15.58Z"/>
+      </svg>
+    </div>
+  </div>
+
+</header>
+
+
