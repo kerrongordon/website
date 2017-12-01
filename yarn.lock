@@ -101,13 +101,14 @@
   dependencies:
     tslib "^1.7.1"
 
-"@angular/compiler-cli@^4.3.3":
-  version "4.3.3"
-  resolved "https://registry.yarnpkg.com/@angular/compiler-cli/-/compiler-cli-4.3.3.tgz#b3e39991d1a2ac1445a4a7a122e29dce5492c637"
+"@angular/compiler-cli@^5.0.4":
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/@angular/compiler-cli/-/compiler-cli-5.0.4.tgz#054ea67b438c52cc73aa62978b852d0938758ba1"
   dependencies:
-    "@angular/tsc-wrapped" "4.3.3"
+    chokidar "^1.4.2"
     minimist "^1.2.0"
     reflect-metadata "^0.1.2"
+    tsickle "^0.24.0"
 
 "@angular/compiler@^4.3.3":
   version "4.3.3"
@@ -165,12 +166,6 @@
   dependencies:
     base64-js "^1.1.2"
     jshashes "^1.0.5"
-
-"@angular/tsc-wrapped@4.3.3":
-  version "4.3.3"
-  resolved "https://registry.yarnpkg.com/@angular/tsc-wrapped/-/tsc-wrapped-4.3.3.tgz#c5890f743664be64b79c200ae6e9da5d2a801f5b"
-  dependencies:
-    tsickle "^0.21.0"
 
 "@google-cloud/common@^0.13.0":
   version "0.13.3"
@@ -1135,7 +1130,7 @@ charenc@~0.0.1:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/charenc/-/charenc-0.0.2.tgz#c0a1d2f3a7092e03774bfa83f14c0fc5790a8667"
 
-chokidar@^1.4.1, chokidar@^1.6.0, chokidar@^1.7.0:
+chokidar@^1.4.1, chokidar@^1.4.2, chokidar@^1.6.0, chokidar@^1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-1.7.0.tgz#798e689778151c8076b4b360e5edd28cda2bb468"
   dependencies:
@@ -7213,9 +7208,9 @@ tsconfig@^6.0.0:
     strip-bom "^3.0.0"
     strip-json-comments "^2.0.0"
 
-tsickle@^0.21.0:
-  version "0.21.6"
-  resolved "https://registry.yarnpkg.com/tsickle/-/tsickle-0.21.6.tgz#53b01b979c5c13fdb13afb3fb958177e5991588d"
+tsickle@^0.24.0:
+  version "0.24.1"
+  resolved "https://registry.yarnpkg.com/tsickle/-/tsickle-0.24.1.tgz#039343b205bf517a333b0703978892f80a7d848e"
   dependencies:
     minimist "^1.2.0"
     mkdirp "^0.5.1"
