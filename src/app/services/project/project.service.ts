@@ -52,7 +52,7 @@ export interface Upload {
 export class ProjectService {
   storageRef: firebase.storage.Reference
 
-  private basePath = '/projects/'
+  public basePath = 'projects'
   private uploadTask: firebase.storage.UploadTask
   public upload
 
@@ -62,7 +62,7 @@ export class ProjectService {
   private homeCollection: AngularFirestoreCollection<Project>
   public homeProjects: Observable<Project[]>
 
-  constructor(private _AngularFirestore: AngularFirestore) {
+  constructor(public _AngularFirestore: AngularFirestore) {
     this.projectCollection = this._AngularFirestore.collection<Project>('projects')
     this.projects = this.projectCollection.valueChanges()
   }

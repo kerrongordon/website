@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core'
+import { Subscription } from 'rxjs/Subscription'
+import { ProjectService, Project } from '../../services/project/project.service'
 
 @Component({
   selector: 'kgp-header-bar',
@@ -6,16 +8,56 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./header-bar.component.sass']
 })
 export class HeaderBarComponent implements OnInit {
+  delay: any
+
+  public searchContent: Project[]
+  public searchTitle: Project[]
+  lData: void | Subscription
 
   public toggleSearchClass = false
+  searchSub: Subscription
 
-  constructor() { }
+  projects: Project[]
+
+  constructor(private _ProjectService: ProjectService ) { }
 
   ngOnInit() {
   }
 
   toggleSearch() {
-    return this.toggleSearchClass = !this.toggleSearchClass
+    this.toggleSearchClass = !this.toggleSearchClass
+
+    this.delay = setTimeout(() => {
+      if (this.toggleSearchClass === false) {
+        this.clearOut()
+      }
+      clearTimeout(this.delay)
+    }, 200)
   }
+
+  toggleSearchSub() {
+    return this.lData = !this.lData ? this.loadProjects() : this.loadProjects().unsubscribe()
+  }
+
+  loadProjects() {
+    return this.searchSub = this._ProjectService.projects.subscribe(data => this.projects = data)
+  }
+
+  search(val: string) {
+    const value = val.toLocaleLowerCase()
+    Promise.all([
+      this.projects
+    ]).then(() => {
+      this.searchTitle = this.projects.filter(sh => sh.title.toLocaleLowerCase().indexOf(value) > -1 ).filter((el, index) => index < 6 )
+      this.searchContent = this.projects.filter(sh => sh.content.toLocaleLowerCase().indexOf(value) > -1 ).filter((el, index) => index < 6 )
+    }).catch((error) => console.log(error) )
+  }
+
+  clearOut() {
+    this.searchTitle = null
+    this.searchContent = null
+    this.loadProjects().unsubscribe()
+  }
+
 
 }
