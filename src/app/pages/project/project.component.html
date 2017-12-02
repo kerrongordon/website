@@ -1,0 +1,36 @@
+<div *ngIf="project">
+  <kgp-header-bar
+     [ngStyle.xs]="{'bottom': '0', 'top': '93vh'}">
+  </kgp-header-bar>
+
+  <kgp-hero
+    kgpPrimary 
+    kgpCenter 
+    [title]="project.title" 
+    [ngStyle.sm]="{'height': '400px', 'font-size': '2rem'}" 
+    [ngStyle.gt-sm]="{'height': '600px', 'font-size': '3rem'}"
+    [ngStyle]="{'background': 'url(' + project.image.small.base64 + ') 50% 50% / cover'}">
+  </kgp-hero>
+
+  <div kgpContainer>
+    <div
+      [ngStyle.xs]="{'max-width': '350px', 'margin': '0 auto'}" 
+      [ngStyle.sm]="{'max-width': '550px', 'margin': '0 auto'}" 
+      [ngStyle.gt-sm]="{'max-width': '1100px', 'margin': '0 auto'}">
+
+        <div class="content" [ngStyle.xs]="{'margin': '0', 'padding': '20px 0'}" [ngStyle.sm]="{'margin': '20px'}">
+          <div [innerHTML]="project.markdown"></div>
+        </div>
+
+        <div class="imgCon">
+
+          <img [@fadeInOut]="fadeInState" class="img base" [src]="project.image.small.base64" [alt]="project.title">
+          <img [@fadeInOut]="fadeOutState" class="img" [src]="project.image.small.url" (load)="isImgeLoad($event)" [alt]="project.title">
+
+        </div>
+  
+    </div>
+  </div>
+  
+  <kgp-footer></kgp-footer>
+</div>

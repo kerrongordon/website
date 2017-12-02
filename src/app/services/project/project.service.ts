@@ -50,18 +50,20 @@ export interface Upload {
 
 @Injectable()
 export class ProjectService {
-  storageRef: firebase.storage.Reference
-
+  
+  private storageRef: firebase.storage.Reference
   private uploadTask: firebase.storage.UploadTask
   public upload: string
-
   private projectCollection: AngularFirestoreCollection<Project>
-  public projects: Observable<Project[]>
+  private projects: Observable<Project[]>
+  private doc: AngularFirestoreDocument<Project>
+  private projectOb: Observable<Project>
 
-  constructor(private _AngularFirestore: AngularFirestore) { }
+
+  constructor(private _afs: AngularFirestore) { }
 
   public loadListOfProjects() {
-    this.projectCollection = this._AngularFirestore
+    this.projectCollection = this._afs
       .collection<Project>('projects', ref => ref.orderBy('timestamp.timestamp'))
     return this.projects = this.projectCollection.valueChanges()
   }
@@ -71,10 +73,15 @@ export class ProjectService {
   }
 
   public addProject(id: string, data: Project) {
-    return this._AngularFirestore
+    return this._afs
       .collection<Project>('projects')
       .doc(id)
       .set(data)
+  }
+
+  public getProjectById(id: string) {
+    this.doc = this._afs.doc<Project>('projects/' + id)
+    return this.projectOb = this.doc.valueChanges()
   }
 
   public pushImage(file, title, type) {

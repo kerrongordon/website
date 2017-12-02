@@ -9,7 +9,7 @@ export class PrimaryDirective {
   constructor(
     private _ElementRef: ElementRef
   ) {
-    _ElementRef.nativeElement.style.background = Colors.primary
+    _ElementRef.nativeElement.style.backgroundColor = Colors.primary
    }
 
 }

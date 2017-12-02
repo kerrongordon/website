@@ -1,4 +1,6 @@
-<kgp-header-bar></kgp-header-bar>
+<kgp-header-bar
+    [ngStyle.xs]="{'bottom': '0', 'top': '93vh'}">
+</kgp-header-bar>
 
 <kgp-hero
     kgpPrimary
@@ -24,8 +26,8 @@
     <kgp-card 
         [ngStyle.sm]="{'max-width': '46%'}"
         [ngStyle.gt-sm]="{'max-width': '22%'}"
-        routerLink="/dashboard"
-        *ngFor="let project of projectsInit">
+        *ngFor="let project of projectsInit"
+        routerLink="/project/{{ project.id }}">
 
         <kgp-card-image
             [imge]="project.image.small.url"

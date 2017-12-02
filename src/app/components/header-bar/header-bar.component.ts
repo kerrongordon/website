@@ -19,7 +19,7 @@ export class HeaderBarComponent implements OnInit {
 
   projects: Project[]
 
-  constructor(private _ProjectService: ProjectService ) { }
+  constructor(private _ps: ProjectService ) { }
 
   ngOnInit() {
   }
@@ -40,10 +40,11 @@ export class HeaderBarComponent implements OnInit {
   }
 
   loadProjects() {
-    return this.searchSub = this._ProjectService.projects.subscribe(data => this.projects = data)
+    return this.searchSub = this._ps.loadListOfProjects().subscribe(data => this.projects = data)
   }
 
   search(val: string) {
+    if (val === '') { return }
     const value = val.toLocaleLowerCase()
     Promise.all([
       this.projects
