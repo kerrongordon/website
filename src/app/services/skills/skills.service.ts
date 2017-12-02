@@ -13,9 +13,11 @@ export class SkillsService {
   private skillsCollection: AngularFirestoreCollection<Skills>
   public skills: Observable<Skills[]>
 
-  constructor(private _AngularFirestore: AngularFirestore) {
-    this.skillsCollection = _AngularFirestore.collection<Skills>('skills')
-    this.skills = this.skillsCollection.valueChanges()
+  constructor(private _afs: AngularFirestore) { }
+
+  loadListOfSkills() {
+    this.skillsCollection = this._afs.collection<Skills>('skills')
+    return this.skills = this.skillsCollection.valueChanges()
   }
 
 }

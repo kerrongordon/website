@@ -1,9 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core'
 
 @Component({
   selector: 'kgp-card-content',
   templateUrl: './card-content.component.html',
-  styleUrls: ['./card-content.component.sass']
+  styleUrls: ['./card-content.component.sass'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CardContentComponent implements OnInit {
 
@@ -14,9 +15,6 @@ export class CardContentComponent implements OnInit {
   @Input() year: number
 
   public monthS: string
-
-  constructor() {
-  }
 
   ngOnInit() {
     this.constr()

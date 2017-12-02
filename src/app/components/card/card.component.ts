@@ -3,8 +3,6 @@ import { Component, Input } from '@angular/core'
 @Component({
   selector: 'kgp-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.sass'],
+  styleUrls: ['./card.component.sass']
 })
-export class CardComponent {
-  @Input() Link: string
-}
+export class CardComponent {}

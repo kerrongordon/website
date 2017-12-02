@@ -1,20 +1,16 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core'
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core'
 import { Email } from '../../services/email/email.service'
 
 @Component({
   selector: 'kgp-email-body',
   templateUrl: './email-body.component.html',
-  styleUrls: ['./email-body.component.sass']
+  styleUrls: ['./email-body.component.sass'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class EmailBodyComponent implements OnInit {
+export class EmailBodyComponent {
 
   @Input() data: Email
   @Output() delete = new EventEmitter()
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
   deleteItem(id) {
     return this.delete.emit(id)

@@ -1,10 +1,12 @@
-import { Component, Input } from '@angular/core'
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core'
+import { Description } from '../../services/description/description.service'
 
 @Component({
   selector: 'kgp-description',
   templateUrl: './description.component.html',
-  styleUrls: ['./description.component.sass']
+  styleUrls: ['./description.component.sass'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DescriptionComponent {
-  @Input() content: string
+  @Input() content: Description
 }

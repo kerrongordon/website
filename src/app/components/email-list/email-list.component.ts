@@ -1,19 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core'
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core'
 
 @Component({
   selector: 'kgp-email-list',
   templateUrl: './email-list.component.html',
-  styleUrls: ['./email-list.component.sass']
+  styleUrls: ['./email-list.component.sass'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class EmailListComponent implements OnInit {
-
+export class EmailListComponent {
   @Input() totalMail: number
   @Input() newMail: number
   @Input() readMail: number
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 }

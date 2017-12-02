@@ -1,8 +1,8 @@
 import { Project } from './../services/project/project.service'
 import { Skills } from './../services/skills/skills.service'
 
-export const skillplaceh: Skills = { title: null, level: null }
-export const projectplaceh: Project = {
+const skillplaceh: Skills = { title: null, level: null }
+const projectplaceh: Project = {
     id: null,
     title: null,
     content: null,
@@ -33,3 +33,21 @@ export const projectplaceh: Project = {
         time: null
     },
 }
+
+export const projectplaceholder = [
+    projectplaceh,
+    projectplaceh,
+    projectplaceh,
+    projectplaceh,
+]
+
+export const skillsPlaceholder = [
+    skillplaceh,
+    skillplaceh,
+    skillplaceh,
+    skillplaceh,
+    skillplaceh,
+    skillplaceh,
+    skillplaceh,
+    skillplaceh
+]
