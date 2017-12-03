@@ -19,7 +19,7 @@
       [ngStyle.gt-sm]="{'max-width': '1100px', 'margin': '0 auto'}">
 
         <div class="content" [ngStyle.xs]="{'margin': '0', 'padding': '20px 0'}" [ngStyle.sm]="{'margin': '20px'}">
-          <div [innerHTML]="project.markdown"></div>
+          <div [innerHTML]="project.markdown | urlsan"></div>
         </div>
 
         <div class="imgCon">

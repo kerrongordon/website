@@ -14,6 +14,8 @@ import { HeroModule } from '../../components/hero/hero.module'
 import { HeaderBarModule } from '../../components/header-bar/header-bar.module'
 import { CardImageModule } from '../../components/card-image/card-image.module'
 
+import { UrlsanModule } from '../../pipe/urlsan/urlsan.module'
+
 const routes: Routes = [
   { path: '', component: ProjectComponent }
 ]
@@ -30,6 +32,7 @@ const routes: Routes = [
     CenterModule,
     ContainerModule,
     CardImageModule,
+    UrlsanModule,
     RouterModule.forChild(routes)
   ],
   declarations: [ProjectComponent]

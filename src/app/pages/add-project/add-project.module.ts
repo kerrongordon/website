@@ -6,6 +6,7 @@ import { FlexLayoutModule } from '@angular/flex-layout'
 import { AddProjectComponent } from './add-project.component'
 import { AngularFirestoreModule } from 'angularfire2/firestore'
 import { ContainerModule } from '../../directives/container/container.module'
+import { UrlsanModule } from '../../pipe/urlsan/urlsan.module'
 
 const routes: Routes = [
   { path: '', component: AddProjectComponent }
@@ -18,6 +19,7 @@ const routes: Routes = [
     ContainerModule,
     ReactiveFormsModule,
     AngularFirestoreModule,
+    UrlsanModule,
     RouterModule.forChild(routes)
   ],
   declarations: [AddProjectComponent]
