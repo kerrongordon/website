@@ -33,15 +33,18 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   loadProjects() {
-    return this.projectSub = this._ps.loadListOfProjects().subscribe(data => this.projectsInit = data.reverse().slice(0, 4))
+    return this.projectSub = this._ps.loadListOfProjects()
+      .subscribe(data => this.projectsInit = data.reverse().slice(0, 4))
   }
 
   loadSkills() {
-    return this.skillSub = this._ss.loadListOfSkills().subscribe(data => this.skillsInit = data)
+    return this.skillSub = this._ss.loadListOfSkills()
+      .subscribe(data => this.skillsInit = data)
   }
 
   loadDes() {
-    return this.desSub = this._ds.loadDes().subscribe(data => this.des = data)
+    return this.desSub = this._ds.loadDes()
+      .subscribe(data => this.des = data)
   }
 
   ngOnDestroy() {

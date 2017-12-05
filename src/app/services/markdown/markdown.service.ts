@@ -13,7 +13,7 @@ export class MarkdownService {
       tables: true,
       smartypants: true,
       breaks: true,
-      sanitize: true
+      sanitize: false
     })
   }
 
