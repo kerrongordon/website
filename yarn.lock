@@ -145,9 +145,9 @@
   dependencies:
     tslib "^1.7.1"
 
-"@angular/platform-server@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@angular/platform-server/-/platform-server-5.0.0.tgz#877d25ef814af92fffc7b0b523b971a6ff222018"
+"@angular/platform-server@^5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@angular/platform-server/-/platform-server-5.1.0.tgz#c28c0e05ce423ec99f299478496dd5066e1b41b6"
   dependencies:
     domino "^1.0.29"
     tslib "^1.7.1"
