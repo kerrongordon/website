@@ -28,7 +28,7 @@
     "@types/marked": "^0.3.0",
     "angularfire2": "^4.0.0-rc.1",
     "core-js": "^2.5.0",
-    "firebase": "^4.2.0",
+    "firebase": "^4.8.0",
     "firebase-tools": "^3.9.2",
     "hammerjs": "2.0.8",
     "localforage": "^1.5.0",
