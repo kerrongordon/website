@@ -1,8 +1,8 @@
 <div *ngIf="base64; else load">
-    <img [@fadeInOut]="fadeInState" class="base" src="{{ base64 }}" alt="{{ alt }}" >
-    <img [@fadeInOut]="fadeOutState" src="{{ imge }}" (load)="isImgeLoad($event)" alt="{{ alt }}" >
+    <img [@fadeInOut]="fadeInState" class="base" src="{{ base64 }}" alt="{{ alt }}" [ngStyle.xs]="{'height': '200px'}">
+    <img [@fadeInOut]="fadeOutState" src="{{ imge }}" (load)="isImgeLoad($event)" alt="{{ alt }}" [ngStyle.xs]="{'height': '200px'}">
 </div>
 
 <ng-template #load>
-    <div class="facebookloading lod"></div>
+    <div class="facebookloading lod" [ngStyle.xs]="{'height': '200px'}"></div>
 </ng-template>

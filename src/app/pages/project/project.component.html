@@ -1,4 +1,4 @@
-<div *ngIf="project">
+<div *ngIf="project; else loading">
   <kgp-header-bar
     [ngStyle.xs]="{'bottom': '0', 'top': 'auto', 'padding': '5px 0'}">
   </kgp-header-bar>
@@ -8,8 +8,7 @@
     kgpCenter 
     [title]="project.title" 
     [ngStyle.sm]="{'height': '400px', 'font-size': '2rem'}" 
-    [ngStyle.gt-sm]="{'height': '600px', 'font-size': '3rem'}"
-    [ngStyle]="{'background': 'url(' + project.image.small.base64 + ') 50% 50% / cover'}">
+    [ngStyle.gt-sm]="{'height': '600px', 'font-size': '3rem'}">
   </kgp-hero>
 
   <div kgpContainer>
@@ -34,3 +33,50 @@
   
   <kgp-footer></kgp-footer>
 </div>
+
+<ng-template #loading>
+  <kgp-hero
+    kgpPrimary 
+    kgpCenter 
+    title="loading..." 
+    [ngStyle.sm]="{'height': '400px', 'font-size': '2rem'}" 
+    [ngStyle.gt-sm]="{'height': '600px', 'font-size': '3rem'}">
+  </kgp-hero>
+
+  <div kgpContainer>
+    <div 
+      [ngStyle.xs]="{'max-width': '350px', 'margin': '0 auto'}" 
+      [ngStyle.sm]="{'max-width': '550px', 'margin': '0 auto'}"
+      [ngStyle.gt-sm]="{'max-width': '1100px', 'margin': '0 auto'}">
+  
+      <div 
+        class="content" 
+        [ngStyle.xs]="{'margin': '0', 'padding': '20px 0'}" 
+        [ngStyle.sm]="{'margin': '20px'}">
+
+        <div class="facebookloading w90" [ngStyle]="{'margin': '0'}"></div>
+        <div class="facebookloading"></div>
+        <div class="facebookloading w75"></div>
+        <div class="facebookloading w50"></div>
+
+        <div [ngStyle]="{'margin': '30px'}"></div>
+
+        <div class="facebookloading w90" [ngStyle]="{'margin': '0'}"></div>
+        <div class="facebookloading"></div>
+        <div class="facebookloading w75"></div>
+        <div class="facebookloading w50"></div>
+
+      </div>
+  
+      <div class="imgCon">
+  
+        <div class="facebookloading img" [ngStyle]="{'height': '500px'}"></div>
+  
+      </div>
+  
+    </div>
+  </div>
+
+  <kgp-footer></kgp-footer>
+
+</ng-template>

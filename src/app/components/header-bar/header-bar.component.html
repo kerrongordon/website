@@ -20,12 +20,12 @@
 
     <div class="searchOutPut" fxLayout="row">
     
-      <div fxFlex="50" *ngIf="searchTitle?.length > 0">
+      <div fxFlex="50" *ngIf="searchTitle?.length > 0" [ngStyle]="{'padding-bottom': '20px'}">
         <h4 class="stitle">By Title</h4>
         <div *ngFor="let title of searchTitle" class="searchItem hideOText" routerLink="/project/{{ title.id }}">{{ title.title }}</div>
       </div>
 
-      <div fxFlex="50" *ngIf="searchContent?.length > 0">
+      <div fxFlex="50" *ngIf="searchContent?.length > 0" [ngStyle]="{'padding-bottom': '20px'}">
         <h4 class="stitle">By Contnet</h4>
         <div *ngFor="let content of searchContent" class="searchItem hideOText" routerLink="/project/{{ content.id }}">{{ content.content }}</div>
       </div>

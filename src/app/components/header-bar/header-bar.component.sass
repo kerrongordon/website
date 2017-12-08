@@ -84,7 +84,15 @@ svg
 .searchItem
     margin: 0 15px
     padding: 5px
+    cursor: pointer
+    transition: all .3s ease-in-out
     box-shadow: 0px 1px 0px 0px rgba(#ccc, 0.2)
+
+    &:hover
+        background: $secondary 
+        color: #ffffff
+        border-radius: 3px
+        box-shadow: 0 2px 4px rgba($secondary, 0.3), 0 7px 14px rgba($secondary, 0.4)
 
 .stitle
     text-align: center

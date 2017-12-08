@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core'
 import { ProjectService, Project } from '../../services/project/project.service'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Subscription } from 'rxjs/Subscription'
-import { fadeInOutImgBig } from '../../exports/animations'
+import { fadeInOutImg } from '../../exports/animations'
 
 
 @Component({
@@ -10,7 +10,7 @@ import { fadeInOutImgBig } from '../../exports/animations'
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.sass'],
   providers: [ProjectService],
-  animations: [fadeInOutImgBig],
+  animations: [fadeInOutImg],
 })
 export class ProjectComponent implements OnInit, OnDestroy {
 
@@ -19,14 +19,17 @@ export class ProjectComponent implements OnInit, OnDestroy {
   private ids: string
   public project: Project
 
-  public fadeInState = 'in'
-  public fadeOutState = 'out'
+  public fadeInState: string
+  public fadeOutState: string
 
   constructor(
     private _avr: ActivatedRoute,
     private _ps: ProjectService,
     private _rt: Router
-  ) { }
+  ) {
+    this.fadeInState = 'in'
+    this.fadeOutState = 'out'
+  }
 
   ngOnInit() {
     this.getPageId()
