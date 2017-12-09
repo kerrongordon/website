@@ -7,19 +7,19 @@
         <div class="item">
           <div class="icon">icon</div>
           <div class="conter">5</div>
-          <h5 class="title"><a [routerLink]="['dashboard']">Dashboard</a></h5>
+          <h5 class="title"><a [routerLink]="['/admin/']">Dashboard</a></h5>
         </div>
 
         <div class="item">
           <div class="icon">icon</div>
           <div class="conter">5</div>
-          <h5 class="title">Messages</h5>
+          <h5 class="title"><a [routerLink]="[{ outlets: { admin: ['message'] } }]">Messages</a></h5>
         </div>
 
         <div class="item">
           <div class="icon">icon</div>
           <div class="conter">5</div>
-          <h5 class="title">Add Project</h5>
+          <h5 class="title"><a [routerLink]="[{ outlets: { admin: ['addproject'] } }]">Add Project</a></h5>
         </div>
 
       </div>
@@ -27,7 +27,7 @@
   </div>
 
   <div fxFlex="85">
-    
+    <router-outlet name="admin"></router-outlet>
   </div>
 
 </div>

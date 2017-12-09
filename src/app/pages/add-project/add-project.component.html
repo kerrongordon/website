@@ -1,63 +1,113 @@
 
-<form [formGroup]="AddProjectForm" novalidate (ngSubmit)="onSubmit()">
+<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start">
 
-  <div kgpContainer>
+  <kgp-admin-bar fxFlex="10" fxFlex.sm="10" fxFlex.xs="100"></kgp-admin-bar>
 
-    <div class="inforBox">
+  <div fxFlex="90" fxFlex.sm="90" fxFlex.xs="100" fxLayout="row" fxLayoutAlign="start">
 
-      <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap>
+    <form class="form" [formGroup]="AddProjectForm" novalidate (ngSubmit)="onSubmit()">
+
+      <div kgpContainer class="contain">
+
+        <div class="inforBox">
+
+          <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap>
+          
+            <div fxFlex="42.5">
+              <input class="inputItem" type="text" name="title" id="" formControlName="projectTitle" placeholder="Title">
+            </div>
+
+            <div fxFlex="42.5">
+              <input class="inputItem" type="text" name="title" id="" formControlName="projectUrl" placeholder="Projects URL">
+            </div>
+
+            <div fxFlex="15">
+
+              <button (click)="toggleView()" [fxHide]="htmlView" class="btn secondary">
+                <div class="btnicon">
+                  <svg viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M17,9H7V7H17M17,13H7V11H17M14,17H7V15H14M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z"/>
+                  </svg>
+                </div>
+                <div>View</div>
+              </button>
+
+              <button (click)="toggleView()" [fxHide]="!htmlView" class="btn secondary">
+                <div class="btnicon">
+                  <svg viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M2,16V8H4L7,11L10,8H12V16H10V10.83L7,13.83L4,10.83V16H2M16,8H19V12H21.5L17.5,16.5L13.5,12H16V8Z"/>
+                  </svg>
+                </div>
+                <div>Edit</div>
+              </button>
+
+            </div>
+
+          </div>
+
+          <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap>
+
+            <div fxFlex="100" [fxHide]="htmlView">
+              <textarea class="markDownInput" type="text" name="markdown" (keyup)="textToMarkDown($event.target.value)" id="" formControlName="projectMarkdown" placeholder="Add Markdown Here"></textarea>
+            </div>
+
+            <div fxFlex="100" [fxHide]="!htmlView">
+              <div class="markdownOutput" [innerHTML]="markdown | urlsan"></div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
       
-        <div fxFlex="50">
-          <input class="inputItem" type="text" name="title" id="" formControlName="projectTitle" placeholder="Title">
+      <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap class="imagebox" >
+
+        <div class="imageSmail" fxFlex="45" fxFlex.xs="100">
+          <div class="smailBtn" [ngStyle.xs]="{'width': '250px'}">
+            <label for="smailImage">
+              <img #smailImage id="thum" src="" alt="">
+            </label>
+            <input type="file" name="thumnail" id="smailImage" (change)="smailImg($event)">
+          </div>
         </div>
 
-        <div fxFlex="50">
-          <input class="inputItem" type="text" name="title" id="" formControlName="projectUrl" placeholder="Projects URL">
+        <div class="imageBig" fxFlex="45" fxFlex.xs="100">
+          <div class="bigBtn" [ngStyle.xs]="{'width': '250px'}">
+            <label for="bigImage">
+              <img #bigImage id="bigthun" src="" alt="">
+            </label>
+            <input type="file" name="fullsize" id="bigImage" (change)="bigImg($event)">
+          </div>
         </div>
 
       </div>
 
-      <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap>
 
-        <div fxFlex="50">
-          <textarea class="markDownInput" type="text" name="markdown" (keyup)="textToMarkDown($event.target.value)" id="" formControlName="projectMarkdown" placeholder="Add Markdown Here"></textarea>
-        </div>
+      <div class="centerBtn">
 
-        <div fxFlex="50">
-          <div class="markdownOutput" [innerHTML]="markdown | urlsan"></div>
-        </div>
+        <button type="submit" class="btn secondary padm">
+          <div class="btnicon">
+            <svg viewBox="0 0 24 24">
+              <path fill="currentColor" d="M15,9H5V5H15M12,19A3,3 0 0,1 9,16A3,3 0 0,1 12,13A3,3 0 0,1 15,16A3,3 0 0,1 12,19M17,3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V7L17,3Z"/>
+            </svg>
+          </div>
+          <div>Submit</div>
+        </button>
+
+        <button type="button" class="btn primary" (click)="resetEmailForm()">
+          <div class="btnicon">
+            <svg viewBox="0 0 24 24">
+              <path fill="currentColor" d="M12,2C17.53,2 22,6.47 22,12C22,17.53 17.53,22 12,22C6.47,22 2,17.53 2,12C2,6.47 6.47,2 12,2M15.59,7L12,10.59L8.41,7L7,8.41L10.59,12L7,15.59L8.41,17L12,13.41L15.59,17L17,15.59L13.41,12L17,8.41L15.59,7Z"/>
+            </svg>
+          </div>
+          <div>Cancel</div>
+        </button>
 
       </div>
 
-    </div>
+    </form>
 
   </div>
-  
-  <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap class="imagebox" >
 
-    <div class="imageSmail" fxFlex="45" fxFlex.xs="100">
-      <div class="smailBtn" [ngStyle.xs]="{'width': '250px'}">
-        <label for="smailImage">
-          <img #smailImage id="thum" src="" alt="">
-        </label>
-        <input type="file" name="thumnail" id="smailImage" (change)="smailImg($event)">
-      </div>
-    </div>
-
-    <div class="imageBig" fxFlex="45" fxFlex.xs="100">
-      <div class="bigBtn" [ngStyle.xs]="{'width': '250px'}">
-        <label for="bigImage">
-          <img #bigImage id="bigthun" src="" alt="">
-        </label>
-        <input type="file" name="fullsize" id="bigImage" (change)="bigImg($event)">
-      </div>
-    </div>
-
-  </div>
-
-
-  <div class="centerBtn">
-    <button type="submit" class="btn secondary">Submit</button>
-  </div>
-
-</form>
+</div>

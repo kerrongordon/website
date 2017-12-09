@@ -7,6 +7,7 @@ import { AddProjectComponent } from './add-project.component'
 import { AngularFirestoreModule } from 'angularfire2/firestore'
 import { ContainerModule } from '../../directives/container/container.module'
 import { UrlsanModule } from '../../pipe/urlsan/urlsan.module'
+import { AdminBarModule } from '../../components/admin-bar/admin-bar.module'
 
 const routes: Routes = [
   { path: '', component: AddProjectComponent }
@@ -20,6 +21,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     AngularFirestoreModule,
     UrlsanModule,
+    AdminBarModule,
     RouterModule.forChild(routes)
   ],
   declarations: [AddProjectComponent]

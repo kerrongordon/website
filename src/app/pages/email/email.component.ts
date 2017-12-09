@@ -45,7 +45,9 @@ export class EmailComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.openmailSub.unsubscribe()
+    if (this.openmailSub) {
+      this.openmailSub.unsubscribe()
+    }
   }
 
 }

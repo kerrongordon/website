@@ -20,6 +20,8 @@ export class AddProjectComponent implements OnInit {
 
   public ImageBase64
 
+  public htmlView = false
+
   @ViewChild('smailImage') smailImage: ElementRef
   @ViewChild('bigImage') bigImage: ElementRef
 
@@ -57,6 +59,10 @@ export class AddProjectComponent implements OnInit {
     })
   }
 
+  toggleView() {
+    return this.htmlView = !this.htmlView
+  }
+
   public smailImg(event) {
     this.smallImageLoad = FileInput(event)
     const { projectTitle } = this.AddProjectForm.value
@@ -71,7 +77,7 @@ export class AddProjectComponent implements OnInit {
     return ShowImageInHTML(this.bigImageLoad, 'bigthun')
   }
 
-  private resetEmailForm() {
+  public resetEmailForm() {
     this.markdown = ''
     this.smailImage.nativeElement.removeAttribute('src')
     this.smailImage.nativeElement.removeAttribute('alt')

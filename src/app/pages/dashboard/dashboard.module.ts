@@ -7,7 +7,10 @@ import { DashboardComponent } from './dashboard.component'
 import { FooterModule } from '../../components/footer/footer.module'
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent }
+  {
+    path: '',
+    component: DashboardComponent,
+  }
 ]
 
 @NgModule({
