@@ -1,0 +1,41 @@
+<div class="bar">
+  <div class="barin" fxLayout.xs="row" fxLayout="column">
+
+    <div class="item" routerLinkActive="isActive" routerLink="['']">
+      <div class="icon" [ngStyle.sm]="{'padding': '0 10px'}">
+        <svg viewBox="0 0 24 24">
+          <path fill="currentColor" d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z" />
+        </svg>
+      </div>
+      <h5 class="title" fxHide.xs fxHide.sm>Home</h5>
+    </div>
+
+    <div class="item" routerLinkActive="isActive" routerLink="/message">
+      <div class="icon" [ngStyle.sm]="{'padding': '0 10px'}">
+        <svg viewBox="0 0 24 24">
+          <path fill="currentColor" d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
+        </svg>
+      </div>
+      <h5 class="title" fxHide.xs fxHide.sm>Email</h5>
+    </div>
+
+    <div class="item" routerLinkActive="isActive" routerLink="/addproject">
+      <div class="icon" [ngStyle.sm]="{'padding': '0 10px'}">
+        <svg viewBox="0 0 24 24">
+          <path fill="currentColor" d="M19,11H15V15H13V11H9V9H13V5H15V9H19M20,2H8A2,2 0 0,0 6,4V16A2,2 0 0,0 8,18H20A2,2 0 0,0 22,16V4A2,2 0 0,0 20,2M4,6H2V20A2,2 0 0,0 4,22H18V20H4V6Z"/>
+        </svg>
+      </div>
+      <h5 class="title" fxHide.xs fxHide.sm>Add Project</h5>
+    </div>
+
+    <div class="item" routerLinkActive="isActive" routerLink="['']">
+      <div class="icon" [ngStyle.sm]="{'padding': '0 10px'}">
+        <svg viewBox="0 0 24 24">
+          <path fill="currentColor" d="M9,5V9H21V5M9,19H21V15H9M9,14H21V10H9M4,9H8V5H4M4,19H8V15H4M4,14H8V10H4V14Z" />
+        </svg>
+      </div>
+      <h5 class="title" fxHide.xs fxHide.sm>Projects</h5>
+    </div>
+
+  </div>
+</div>

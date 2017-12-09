@@ -1,0 +1,39 @@
+@import '../../var.sass'
+
+\:host
+    display: block
+    background: #e9edf5
+
+.item
+    padding: 10px
+    z-index: 1
+    position: relative
+    cursor: pointer
+    transition: all .3s ease-in-out
+    box-shadow: 0px 1px 0px 0px #dadada
+
+    &:hover
+        background: #f4f5fb
+        z-index: 2
+        color: $primary
+        box-shadow: -13px 0px 20px 3px rgba(210, 210, 210, 0.62)
+
+    &.isActive
+        background: #f4f5fb
+        z-index: 2
+        color: $primary
+        box-shadow: -13px 0px 20px 3px rgba(210, 210, 210, 0.62)
+
+.bar
+    text-align: center
+
+svg
+    width: 100%
+    min-width: 20px
+    max-width: 40px
+
+.icon
+    padding: 0 20px
+
+.title
+    margin: 0
