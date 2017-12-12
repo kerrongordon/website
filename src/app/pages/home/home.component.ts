@@ -20,6 +20,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   public projectsInit: Project[] = projectplaceholder
   public des: Description
 
+  contentLoaded = false
+
   constructor(
     private _ds: DescriptionService,
     private _ss: SkillsService,
@@ -34,7 +36,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   loadProjects() {
     return this.projectSub = this._ps.loadListOfProjects()
-      .subscribe(data => this.projectsInit = data.reverse().slice(0, 4))
+      .subscribe(data => {
+        this.projectsInit = data.reverse().slice(0, 4)
+        this.contentLoaded = true
+      })
   }
 
   loadSkills() {
@@ -51,6 +56,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.desSub.unsubscribe()
     this.skillSub.unsubscribe()
     this.projectSub.unsubscribe()
+    this.contentLoaded = false
   }
 
 }

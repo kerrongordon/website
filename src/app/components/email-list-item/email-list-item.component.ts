@@ -1,5 +1,5 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core'
-import { Email } from '../../services/email/email.service'
+import { Email } from '../../interface/email'
 
 @Component({
   selector: 'kgp-email-list-item',

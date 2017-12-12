@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core'
-import { Email } from '../../services/email/email.service'
+import { Email } from '../../interface/email'
 
 @Component({
   selector: 'kgp-email-body',

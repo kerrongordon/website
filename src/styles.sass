@@ -93,6 +93,11 @@ img
             transform: translateY(-3px)
             box-shadow: 0 15px 35px rgba($danger,.3), 0 5px 15px rgba($danger,.4)
 
+    &.disable
+        background: $loadingColor
+        color: $loadingColor
+        box-shadow: none
+
     .btnicon
         margin-top: 4px
         padding-right: 6px
@@ -217,6 +222,15 @@ img
     100%
         background-position: 468px 0
 
+.animate
+    transition: all .5s ease-in-out !important
+
+.hide
+    opacity: 0 !important
+
+.loadingbg
+    background-color: #eaeaea !important
+
 .facebookloading 
     animation-duration: 1s
     animation-fill-mode: forwards
@@ -256,3 +270,13 @@ img
     white-space: nowrap
     overflow: hidden
     text-overflow: ellipsis
+
+.kgpContainer
+    margin: 0 auto
+    position: relative
+    padding: 0.01em 20px
+
+.cinzel
+    font-family: Cinzel Decorative,cursive
+    color: inherit
+    font-weight: 400

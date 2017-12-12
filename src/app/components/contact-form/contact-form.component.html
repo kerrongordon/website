@@ -15,7 +15,7 @@
     </div>
 
     <div fxFlex="95">
-      <input class="item" type="text"  placeholder="Your Name" formControlName="userName" (focus)="inputClass1 = 'isfocus'" (blur)="inputClass1 = ''">
+      <input class="item" type="text"  placeholder="Your Name" formControlName="userName"  (focus)="inputClass1 = 'isfocus'" (blur)="inputClass1 = ''">
     </div>
 
   </div>
@@ -69,7 +69,7 @@
 
   <div>
    
-    <button class="btn secondary" type="submit" [disabled]="!emailForm.valid">
+    <button class="btn secondary" [ngClass]="{ 'disable':!loading }" type="submit" [disabled]="!emailForm.valid">
       <div class="btnicon">
         <svg viewBox="0 0 24 24">
           <path fill="currentColor" d="M2,21L23,12L2,3V10L17,12L2,14V21Z" />

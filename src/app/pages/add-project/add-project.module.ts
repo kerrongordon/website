@@ -5,7 +5,6 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { FlexLayoutModule } from '@angular/flex-layout'
 import { AddProjectComponent } from './add-project.component'
 import { AngularFirestoreModule } from 'angularfire2/firestore'
-import { ContainerModule } from '../../directives/container/container.module'
 import { UrlsanModule } from '../../pipe/urlsan/urlsan.module'
 import { AdminBarModule } from '../../components/admin-bar/admin-bar.module'
 
@@ -17,7 +16,6 @@ const routes: Routes = [
   imports: [
     CommonModule,
     FlexLayoutModule,
-    ContainerModule,
     ReactiveFormsModule,
     AngularFirestoreModule,
     UrlsanModule,

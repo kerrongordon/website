@@ -5,6 +5,18 @@
     max-width: 700px
     margin: 0 auto
 
+    &.loading
+        .formitem,
+        .item
+            background: $loadingColor
+            box-shadow: none
+
+            &::placeholder
+                color: $loadingColor
+
+        svg
+            fill: $loadingColor
+
 .item
     width: 97%
     font-size: 14px

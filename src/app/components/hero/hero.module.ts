@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { HeroComponent } from './hero.component'
-import { CinzelModule } from '../../directives/cinzel/cinzel.module'
 
 @NgModule({
   imports: [
-    CommonModule,
-    CinzelModule
+    CommonModule
   ],
   declarations: [HeroComponent],
   exports: [HeroComponent]

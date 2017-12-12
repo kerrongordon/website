@@ -1,23 +1,26 @@
 <kgp-header-bar
-    [ngStyle.xs]="{'bottom': '0', 'top': 'auto', 'padding': '5px 0'}">
+    class="animate"
+    [ngStyle.xs]="{'bottom': '0', 'top': 'auto', 'padding': '5px 0'}"
+    [ngClass]="{ 'hide':!contentLoaded }">
 </kgp-header-bar>
 
 <kgp-hero
-    kgpPrimary
     kgpCenter
     title="Kerron Gordon"
+    class="animate"
     [ngStyle.sm]="{'height': '400px', 'font-size': '2rem'}"
-    [ngStyle.gt-sm]="{'height': '600px', 'font-size': '3rem'}">
+    [ngStyle.gt-sm]="{'height': '600px', 'font-size': '3rem'}"
+    [ngClass]="{ 'loadingbg':!contentLoaded }">
 </kgp-hero>
 
-<div 
-    kgpContainer 
-    class="landingline">
+<div class="kgpContainer landingline">
 
     <kgp-avatar
         kgpCenter
         img="assets/avatar.svg"
         alt="Kerron Gordon"
+        class="animate"
+        [ngClass]="{ 'loadingbg':!contentLoaded }"
         [ngStyle.xs]="{'margin-top': '-75px', 'height': '150px', 'width': '150px'}"
         [ngStyle.sm]="{'margin-top': '-100px', 'height': '200px', 'width': '200px'}"
         [ngStyle.gt-sm]="{'margin-top': '-125px', 'height': '250px', 'width': '250px'}">
@@ -30,6 +33,7 @@
 
     <kgp-social-icon
         kgpCenter
+        [ngClass]="{ 'loading':!contentLoaded }"
         Facebook="https://www.facebook.com/kerron.gordon"
         Twitter="https://twitter.com/kerrongordon"
         Google="https://plus.google.com/+kerrongordon"
@@ -55,13 +59,11 @@
 
 </div>
 
-<div 
-    kgpContainer 
-    class="landingline landingbg">
+<div class="kgpContainer landingline landingbg">
 
     <h2 
-        kgpCinzel 
-        class="line">Projects
+        [ngClass]="{ 'hide':!contentLoaded }"
+        class="line cinzel">Projects
     </h2>
 
     <div
@@ -101,16 +103,14 @@
 </div>
 
 
-<div 
-    kgpContainer 
-    class="contact">
+<div class="kgpContainer contact">
 
     <h2 
-        kgpCinzel 
-        class="line">Get in touch
+        [ngClass]="{ 'hide':!contentLoaded }"
+        class="line cinzel">Get in touch
     </h2>
 
-    <kgp-contact-form></kgp-contact-form>
+    <kgp-contact-form [ngClass]="{ 'loading':!contentLoaded }" [loading]="contentLoaded"></kgp-contact-form>
 
 </div>
 

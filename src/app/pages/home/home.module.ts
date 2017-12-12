@@ -5,10 +5,7 @@ import { FlexLayoutModule } from '@angular/flex-layout'
 import { AngularFirestoreModule } from 'angularfire2/firestore'
 import { HomeComponent } from './home.component'
 
-import { PrimaryModule } from '../../directives/primary/primary.module'
 import { CenterModule } from '../../directives/center/center.module'
-import { ContainerModule } from '../../directives/container/container.module'
-import { CinzelModule } from '../../directives/cinzel/cinzel.module'
 
 import { HeroModule } from '../../components/hero/hero.module'
 import { AvatarModule } from '../../components/avatar/avatar.module'
@@ -26,10 +23,7 @@ import { HeaderBarModule } from '../../components/header-bar/header-bar.module'
   imports: [
     CommonModule,
     FlexLayoutModule,
-    PrimaryModule,
     CenterModule,
-    ContainerModule,
-    CinzelModule,
     HeroModule,
     AvatarModule,
     DescriptionModule,

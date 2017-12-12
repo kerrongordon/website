@@ -1,35 +1,58 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
-import { EmailService, Email } from '../../services/email/email.service'
+import { MessagesService } from '../../services/messages/messages.service'
 import { Observable } from 'rxjs/Observable'
 import { Subscription } from 'rxjs/Subscription'
+import { Email } from '../../interface/email'
 
 @Component({
   selector: 'kgp-email',
   templateUrl: './email.component.html',
   styleUrls: ['./email.component.sass'],
-  providers: [EmailService]
+  providers: [MessagesService]
 })
 export class EmailComponent implements OnInit, OnDestroy {
 
-  public activeItem = ''
-  public openMail: Email
-  public mailList: Email[]
+  private messagesSub: Subscription
+  private openMessageSub: Subscription
 
-  public toggleMobile = false
-  private openmailSub: Subscription
+  messages: Email[]
+  openMassageItem: Email
 
-  constructor(public _EmailService: EmailService) { }
+  readMessage: number
+  newMessage: number
+  totalMessage: number
+
+  activeItem = ''
+  toggleMobile = false
+
+  constructor(
+    private _sm: MessagesService
+  ) { }
 
   ngOnInit() {
-
+    this.loadMessages()
   }
 
-  openEmail(id) {
+  loadMessages() {
+    return this.messagesSub = this._sm.loadMessage()
+      .subscribe(data => {
+        this.messages = data
+        this.totalMessage = data.length
+        this.newMessage = data.filter(e => e.open === false).length
+        this.readMessage = data.filter(e => e.open === true).length
+      })
+  }
+
+  openMessage(id) {
     if (!id) {return}
     this.activeItem = id
     this.toggleMobileBtn()
-    return this.openmailSub = this._EmailService.openEmail(id)
-      .subscribe( email => this.openMail = email[0] )
+    return this.openMessageSub = this._sm.openMessage(id)
+      .subscribe(data => this.openMassageItem = data[0])
+  }
+
+  deleteMessage(id) {
+    return this._sm.deleteMessage(id)
   }
 
   toggleMobileBtn() {
@@ -40,14 +63,9 @@ export class EmailComponent implements OnInit, OnDestroy {
     return this.toggleMobileBtn()
   }
 
-  deleteItem(id) {
-    return this._EmailService.deleteEmail(id)
-  }
-
   ngOnDestroy() {
-    if (this.openmailSub) {
-      this.openmailSub.unsubscribe()
-    }
+    this.messagesSub.unsubscribe()
+    if (this.openMessageSub) { this.openMessageSub.unsubscribe() }
   }
 
 }

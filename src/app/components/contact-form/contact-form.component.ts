@@ -1,17 +1,20 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, Input } from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { NotificationService } from '../../services/notification/notification.service'
-import { EmailService, Email } from '../../services/email/email.service'
 import { TimestampService } from '../../services/timestamp/timestamp.service'
 import { MarkdownService } from '../../services/markdown/markdown.service'
+import { SendMessageService } from '../../services/send-message/send-message.service'
+import { Email } from '../../interface/email'
 
 @Component({
   selector: 'kgp-contact-form',
   templateUrl: './contact-form.component.html',
   styleUrls: ['./contact-form.component.sass'],
-  providers: [NotificationService, EmailService, TimestampService, MarkdownService]
+  providers: [NotificationService, SendMessageService, TimestampService, MarkdownService]
 })
 export class ContactFormComponent implements OnInit {
+
+  @Input() loading: boolean
 
   public inputClass1 = ''
   public inputClass2 = ''
@@ -23,7 +26,7 @@ export class ContactFormComponent implements OnInit {
 
   constructor(
     private _NotificationService: NotificationService,
-    private _EmailService: EmailService,
+    private _sms: SendMessageService,
     private _TimestampService: TimestampService,
     private _MarkdownService: MarkdownService ) { }
 
@@ -91,7 +94,7 @@ export class ContactFormComponent implements OnInit {
       },
     }
 
-    return this._EmailService.addEmail(getId, emailPush)
+    return this._sms.addEmail(getId, emailPush)
             .then(() => this.messageWasSend(userName))
             .then(() => this.resetEmailForm())
   }
