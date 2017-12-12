@@ -44,7 +44,7 @@
     "@angular/compiler-cli": "^4.2.5",
     "@types/jasmine": "^2.5.53",
     "@types/node": "^8.0.20",
-    "codelyzer": "^4.0.1",
+    "codelyzer": "^4.0.2",
     "jasmine-core": "^2.7.0",
     "jasmine-spec-reporter": "^4.2.0",
     "karma": "1.7.1",
