@@ -7,6 +7,7 @@ import { AppComponent } from './app.component'
 import { AngularFireModule } from 'angularfire2'
 import { environment } from '../environments/environment'
 import { NotificationModule } from './components/notification/notification.module'
+import { AngularFireAuthModule } from 'angularfire2/auth'
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { NotificationModule } from './components/notification/notification.modul
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
     NotificationModule,
     BrowserAnimationsModule
   ],
