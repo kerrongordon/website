@@ -1,35 +1,11 @@
-<div fxLayout="row" fxLayout.xs="column" fxLayoutWrap>
+<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start">
 
-  <div fxFlex="15">
-    <div class="sideBar">
-      <div class="sbiner">
+  <kgp-admin-bar fxFlex="8" fxFlex.sm="8" fxFlex.xs="100"></kgp-admin-bar>
 
-        <div class="item">
-          <div class="icon">icon</div>
-          <div class="conter">5</div>
-          <h5 class="title"><a [routerLink]="['/admin/']">Dashboard</a></h5>
-        </div>
+  <div fxFlex="92" fxFlex.sm="92" fxFlex.xs="100" class="emailPage" fxLayout="row" fxLayoutAlign="start">
 
-        <div class="item">
-          <div class="icon">icon</div>
-          <div class="conter">5</div>
-          <h5 class="title"><a [routerLink]="[{ outlets: { admin: ['message'] } }]">Messages</a></h5>
-        </div>
+   <h1>Dashboard</h1>
 
-        <div class="item">
-          <div class="icon">icon</div>
-          <div class="conter">5</div>
-          <h5 class="title"><a [routerLink]="[{ outlets: { admin: ['addproject'] } }]">Add Project</a></h5>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <div fxFlex="85">
-    <router-outlet name="admin"></router-outlet>
   </div>
 
 </div>
-
-<kgp-footer></kgp-footer>
