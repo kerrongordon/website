@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 import { AuthService } from '../../services/auth/auth.service'
 
 @Component({
@@ -7,7 +7,7 @@ import { AuthService } from '../../services/auth/auth.service'
   styleUrls: ['./admin-bar.component.sass'],
   providers: [AuthService]
 })
-export class AdminBarComponent implements OnInit {
+export class AdminBarComponent {
 
   constructor(
     private _as: AuthService
