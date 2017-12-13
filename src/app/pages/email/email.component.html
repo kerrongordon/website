@@ -13,10 +13,10 @@
 
     <kgp-email-list
       fxFlex="25" fxFlex.sm="40" fxFlex.xs="100"
-      [fxHide.xs]="toggleMobile" ngClass.xs="zoomIn" *ngIf="messages"
+      [fxHide.xs]="toggleMobile" ngClass.xs="zoomIn"
       [totalMail]="totalMessage" [newMail]="newMessage" [readMail]="readMessage">
       <kgp-email-list-item
-        *ngFor="let email of messages | reverse"
+        *ngFor="let email of messages"
         id="{{ email.id }}"
         [data]="email"
         [ngClass]="{'isActive': activeItem === email.id, 'fadeInLeft': email.open === false }"

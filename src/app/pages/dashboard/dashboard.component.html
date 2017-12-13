@@ -2,9 +2,66 @@
 
   <kgp-admin-bar fxFlex="8" fxFlex.sm="8" fxFlex.xs="100"></kgp-admin-bar>
 
-  <div fxFlex="92" fxFlex.sm="92" fxFlex.xs="100" class="emailPage" fxLayout="row" fxLayoutAlign="start">
+  <div fxFlex="92" fxFlex.sm="92" fxFlex.xs="100" class="dashboardPage" fxLayout="row" fxLayoutAlign="start">
 
-   <h1>Dashboard</h1>
+  <div class="dashboard" fxFlex="100">
+
+    <div class="header" fxLayout="row" fxLayoutWrap>
+
+      <div class="item projects" fxLayout="row" fxFlex="21.5" fxFlex.sm="26" fxFlex.xs="100">
+        <div class="icon">
+          <svg viewBox="0 0 24 24">
+            <path fill="currentColor" d="M17,11H15V9H17M13,11H11V9H13M9,11H7V9H9M20,2H4A2,2 0 0,0 2,4V22L6,18H20A2,2 0 0,0 22,16V4C22,2.89 21.1,2 20,2Z"/>
+          </svg>
+        </div>
+        <div>
+          <h3>Projects</h3>
+          <h1>{{ projectNum }}</h1>
+        </div>
+      </div>
+
+      <div class="item skills" fxLayout="row" fxFlex="21.5" fxFlex.sm="26" fxFlex.xs="100">
+        <div class="icon">
+          <svg viewBox="0 0 24 24">
+            <path fill="currentColor" d="M17.45,15.18L22,7.31V19L22,21H2V3H4V15.54L9.5,6L16,9.78L20.24,2.45L21.97,3.45L16.74,12.5L10.23,8.75L4.31,19H6.57L10.96,11.44L17.45,15.18Z"/>
+          </svg>
+        </div>
+        <div>
+          <h3>Skills</h3>
+          <h1>{{ skillsNum }}</h1>
+        </div>
+      </div>
+
+      <div class="item messages" fxLayout="row" fxFlex="21.5" fxFlex.sm="26" fxFlex.xs="100">
+        <div class="icon">
+          <svg viewBox="0 0 24 24">
+            <path fill="currentColor" d="M17,12V3A1,1 0 0,0 16,2H3A1,1 0 0,0 2,3V17L6,13H16A1,1 0 0,0 17,12M21,6H19V15H6V17A1,1 0 0,0 7,18H18L22,22V7A1,1 0 0,0 21,6Z"/>
+          </svg>
+        </div>
+        <div>
+          <h3>Messages</h3>
+          <h1>{{ messageNum }}</h1>
+        </div>
+      </div>
+
+    </div> 
+    <!-- header end -->
+
+    <div class="editbar">
+
+      <div class="card">
+        <ul fxLayout="row" fxLayoutWrap>
+          <li *ngFor="let item of projects" [id]="item.id" fxFlex.xs="100">
+            <h4>{{ item.title }}</h4>
+            <p>{{ item.content | truncate: 50 }}</p>
+            <div class="date">Posted On {{ item.timestamp.month }} {{ item.timestamp.date }}, {{ item.timestamp.year }}</div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
 
   </div>
 

@@ -22,6 +22,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   contentLoaded = false
 
+  pagetitle: string
+
   constructor(
     private _ds: DescriptionService,
     private _ss: SkillsService,
@@ -39,6 +41,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       .subscribe(data => {
         this.projectsInit = data.reverse().slice(0, 4)
         this.contentLoaded = true
+        this.pagetitle = 'Kerron Gordon'
       })
   }
 

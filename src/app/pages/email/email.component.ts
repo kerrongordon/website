@@ -36,7 +36,7 @@ export class EmailComponent implements OnInit, OnDestroy {
   loadMessages() {
     return this.messagesSub = this._sm.loadMessage()
       .subscribe(data => {
-        this.messages = data
+        this.messages = data.reverse()
         this.totalMessage = data.length
         this.newMessage = data.filter(e => e.open === false).length
         this.readMessage = data.filter(e => e.open === true).length
