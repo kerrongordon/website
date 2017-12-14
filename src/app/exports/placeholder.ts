@@ -1,5 +1,5 @@
-import { Project } from './../services/project/project.service'
 import { Skills } from './../services/skills/skills.service'
+import { Project } from '../interface/Project'
 
 const skillplaceh: Skills = { title: null, level: null }
 const projectplaceh: Project = {

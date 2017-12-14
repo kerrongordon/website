@@ -14,7 +14,7 @@ export class AdminBarComponent {
   ) { }
 
   logout() {
-    this._as.logout()
+    return this._as.logout()
   }
 
 }

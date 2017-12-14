@@ -14,8 +14,8 @@ export class CardImageComponent {
   @Input() base64: string
   @Input() alt: string
 
-  public fadeInState = 'in'
-  public fadeOutState = 'out'
+  fadeInState = 'in'
+  fadeOutState = 'out'
 
   isImgeLoad(e) {
     this.fadeInState = 'out'

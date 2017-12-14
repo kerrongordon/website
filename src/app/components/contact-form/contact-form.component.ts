@@ -16,13 +16,13 @@ export class ContactFormComponent implements OnInit {
 
   @Input() loading: boolean
 
-  public inputClass1 = ''
-  public inputClass2 = ''
-  public inputClass3 = ''
-  public inputClass4 = ''
+  inputClass1 = ''
+  inputClass2 = ''
+  inputClass3 = ''
+  inputClass4 = ''
 
-  public emailForm: FormGroup
-  public markdown: string
+  emailForm: FormGroup
+  markdown: string
 
   constructor(
     private _NotificationService: NotificationService,
@@ -66,11 +66,11 @@ export class ContactFormComponent implements OnInit {
     return this.emailForm.reset()
   }
 
-  public textToMarkDown(text) {
+  textToMarkDown(text) {
     return this.markdown = this._MarkdownService.convert(text)
   }
 
-  public onSubmit() {
+  onSubmit() {
     if (!this.emailForm.valid) { return }
 
     const { userName, userSubject, userEmail, userMessage } = this.emailForm.value

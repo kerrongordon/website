@@ -14,13 +14,13 @@ export class CardContentComponent implements OnInit {
   @Input() day: number
   @Input() year: number
 
-  public monthS: string
+  monthS: string
 
   ngOnInit() {
     this.constr()
   }
 
-  constr() {
+  private constr() {
     if (!this.month) { return }
     const mk = this.month.slice(0, 3)
     return this.monthS = mk

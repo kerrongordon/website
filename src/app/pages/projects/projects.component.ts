@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
-import { ProjectService, Project } from '../../services/project/project.service'
+import { ProjectService } from '../../services/project/project.service'
 import { projectplaceholder } from './../../exports/placeholder'
 import { Subscription } from 'rxjs/Subscription'
+import { Project } from '../../interface/Project'
 
 @Component({
   selector: 'kgp-projects',

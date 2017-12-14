@@ -2,8 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core'
 import { DescriptionService, Description } from '../../services/description/description.service'
 import { SkillsService, Skills } from '../../services/skills/skills.service'
 import { Subscription } from 'rxjs/Subscription'
-import { ProjectService, Project } from '../../services/project/project.service'
+import { ProjectService } from '../../services/project/project.service'
 import { skillsPlaceholder, projectplaceholder } from './../../exports/placeholder'
+import { Project } from '../../interface/Project'
 
 @Component({
   selector: 'kgp-home',

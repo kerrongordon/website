@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
-import { ProjectService, Project } from '../../services/project/project.service'
+import { ProjectService } from '../../services/project/project.service'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Subscription } from 'rxjs/Subscription'
 import { fadeInOutImg } from '../../exports/animations'
-
+import { Project } from '../../interface/Project'
 
 @Component({
   selector: 'kgp-project',

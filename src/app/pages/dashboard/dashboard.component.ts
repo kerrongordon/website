@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
-import { ProjectService, Project } from '../../services/project/project.service'
+import { ProjectService } from '../../services/project/project.service'
 import { SkillsService } from '../../services/skills/skills.service'
 import { Subscription } from 'rxjs/Subscription'
 import { MessagesService } from '../../services/messages/messages.service'
+import { Project } from '../../interface/Project'
 
 @Component({
   selector: 'kgp-dashboard',
