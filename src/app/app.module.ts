@@ -16,10 +16,10 @@ import { AngularFireAuthModule } from 'angularfire2/auth'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule,
     NotificationModule,
-    BrowserAnimationsModule
+    AngularFireAuthModule,
+    BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [],
   bootstrap: [AppComponent]

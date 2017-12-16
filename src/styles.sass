@@ -52,20 +52,21 @@ img
     vertical-align: bottom
 
 .btn
-    border: transparent
-    padding: 6px 20px
-    color: #fff
+    display: flex
+    outline: none
+    color: $light
     cursor: pointer
+    font-size: 14px
     background: #ccc
     border-radius: 5px
-    font-size: 14px
     flex-direction: row
-    box-sizing: border-box
-    display: flex
     max-height: 100%
-    place-content: center space-between
     align-items: center
+    padding: 6px 20px
+    border: transparent
+    box-sizing: border-box
     transform: translateY(0px)
+    place-content: center space-between
     transition: box-shadow .3s ease-in-out, transform .3s ease-in-out
     box-shadow: 0 0 25px rgba(40,47,60,.05), 0 20px 25px rgba(40,47,60,.05), 0 3px 4px rgba(40,47,60,.05)
 
@@ -77,6 +78,10 @@ img
             transform: translateY(-3px)
             box-shadow: 0 15px 35px rgba($primary,.3), 0 5px 15px rgba($primary,.4)
 
+        &:active
+            transform: translateY(0px)
+            box-shadow: 0 2px 4px rgba($primary, 0.3), 0 7px 14px rgba($primary, 0.4)
+
     &.secondary
         background: $secondary
         box-shadow: 0 2px 4px rgba($secondary, 0.3), 0 7px 14px rgba($secondary, 0.4)
@@ -84,6 +89,10 @@ img
         &:hover
             transform: translateY(-3px)
             box-shadow: 0 15px 35px rgba($secondary,.3), 0 5px 15px rgba($secondary,.4)
+
+        &:active
+            transform: translateY(0px)
+            box-shadow: 0 2px 4px rgba($secondary, 0.3), 0 7px 14px rgba($secondary, 0.4)
 
     &.danger
         background: $danger
@@ -93,18 +102,23 @@ img
             transform: translateY(-3px)
             box-shadow: 0 15px 35px rgba($danger,.3), 0 5px 15px rgba($danger,.4)
 
+        &:active
+            transform: translateY(0px)
+            box-shadow: 0 2px 4px rgba($danger, 0.3), 0 7px 14px rgba($danger, 0.4)
+
+    
+
     &.disable
         background: $loadingColor
         color: $loadingColor
         box-shadow: none
 
-    .btnicon
-        margin-top: 4px
-        padding-right: 6px
+    .material-icons
+        font-size: 18px
+        transform: translateY(2px)
 
-        svg
-            width: 20px
-            height: 20px
+    .btnicon
+        padding-right: 6px
 
 
 .notification

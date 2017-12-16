@@ -14,7 +14,7 @@
     max-width: 1200px
     padding: 10px 0
     margin: 0 auto
-    color: #fdfdfd
+    color: $light
 
 .search
     width: 100%
@@ -44,28 +44,6 @@
         .search
             &::placeholder
                 color: #8c8c8c
-
-svg
-    display: block
-    width: 20px
-    height: 20px
-    cursor: pointer
-    color: inherit
-    transform: scale(1)
-    transition: color .3s ease-in-out, transform .3s ease-in-out
-    margin: 10px auto 0
-
-    &:hover
-        transform: scale(1.2)
-        color: #6b7c93
-
-    &:active
-        transform: scale(1)
-
-.seaicon
-    &:hover
-        transform: scale(1)
-        color: inherit
 
 .searchBarCon
     position: relative
@@ -98,3 +76,28 @@ svg
     text-align: center
     font-weight: 400
     margin: 5px 0
+
+.material-icons
+    color: inherit
+    padding: 7px
+    display: block
+    cursor: pointer
+    position: relative
+    text-align: center
+    transform: scale(1)
+    transition: color .3s ease-in-out, transform .3s ease-in-out
+
+    &:hover
+        transform: scale(1.2)
+        color: $secondary
+
+    &:active
+        transform: scale(1)
+
+    &.seaicon
+        &:hover
+            transform: scale(1)
+            color: inherit
+
+.padbuttom
+    padding-bottom: 20px

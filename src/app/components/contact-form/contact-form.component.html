@@ -6,62 +6,85 @@
     novalidate
     (ngSubmit)="onSubmit()">
 
-  <div fxLayout="row" fxLayoutAlign="space-between center" class="formitem" [ngClass]="inputClass1">
+  <div 
+    fxLayout="row" 
+    fxLayoutAlign="space-between center" 
+    class="formitem" [ngClass]="inputClass1">
 
     <div class="icon">
-      <svg viewBox="0 0 24 24">
-        <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z"/>
-      </svg>
+      <i class="material-icons">person_pin</i>
     </div>
 
     <div fxFlex="95">
-      <input class="item" type="text"  placeholder="Your Name" formControlName="userName"  (focus)="inputClass1 = 'isfocus'" (blur)="inputClass1 = ''">
+      <input 
+        type="text"  
+        class="item" 
+        placeholder="Your Name" 
+        formControlName="userName"  
+        (focus)="inputClass1 = 'isfocus'" (blur)="inputClass1 = ''">
     </div>
 
   </div>
 
 
-  <div fxLayout="row" fxLayoutAlign="space-between center" class="formitem" [ngClass]="inputClass4">
+  <div 
+    fxLayout="row" 
+    fxLayoutAlign="space-between center" 
+    class="formitem" [ngClass]="inputClass4">
   
     <div class="icon">
-      <svg viewBox="0 0 24 24">
-        <path d="M13,9H18.5L13,3.5V9M6,2H14L20,8V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V4C4,2.89 4.89,2 6,2M15,18V16H6V18H15M18,14V12H6V14H18Z"
-        />
-      </svg>
+      <i class="material-icons">assignment</i>
     </div>
   
     <div fxFlex="95">
-      <input class="item" type="text" placeholder="Subject" formControlName="userSubject" (focus)="inputClass4 = 'isfocus'" (blur)="inputClass4 = ''">
+      <input 
+        type="text" 
+        class="item" 
+        placeholder="Subject" 
+        formControlName="userSubject" 
+        (focus)="inputClass4 = 'isfocus'" (blur)="inputClass4 = ''">
     </div>
   
   </div>
 
 
-  <div fxLayout="row" fxLayoutAlign="space-between center" class="formitem" [ngClass]="inputClass2">
+  <div 
+    fxLayout="row" 
+    fxLayoutAlign="space-between center" 
+    class="formitem" [ngClass]="inputClass2">
   
     <div class="icon">
-      <svg viewBox="0 0 24 24">
-        <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
-      </svg>
+      <i class="material-icons">email</i>
     </div>
   
     <div fxFlex="95">
-      <input class="item" type="email"  placeholder="Your Email" formControlName="userEmail" (focus)="inputClass2 = 'isfocus'" (blur)="inputClass2 = ''">
+      <input 
+        class="item" 
+        type="email"  
+        placeholder="Your Email" 
+        formControlName="userEmail" 
+        (focus)="inputClass2 = 'isfocus'" (blur)="inputClass2 = ''">
     </div>
   
   </div>
 
 
-  <div fxLayout="row" fxLayoutAlign="space-between center" class="formitem" [ngClass]="inputClass3">
+  <div 
+    fxLayout="row" 
+    fxLayoutAlign="space-between center" 
+    class="formitem" [ngClass]="inputClass3">
   
     <div class="icon">
-      <svg viewBox="0 0 24 24">
-        <path d="M20,2H4A2,2 0 0,0 2,4V22L6,18H20A2,2 0 0,0 22,16V4A2,2 0 0,0 20,2M6,9H18V11H6M14,14H6V12H14M18,8H6V6H18"/>
-      </svg>
+      <i class="material-icons">chat</i>
     </div>
   
     <div fxFlex="95">
-      <textarea class="item" placeholder="Your Massage" (keyup)="textToMarkDown($event.target.value)" formControlName="userMessage" (focus)="inputClass3 = 'isfocus'" (blur)="inputClass3 = ''"></textarea>
+      <textarea 
+        class="item" 
+        placeholder="Your Massage" 
+        formControlName="userMessage" 
+        (keyup)="textToMarkDown($event.target.value)" 
+        (focus)="inputClass3 = 'isfocus'" (blur)="inputClass3 = ''"></textarea>
     </div>
   
   </div>
@@ -69,15 +92,19 @@
 
   <div>
    
-    <button class="btn secondary" [ngClass]="{ 'disable':!loading }" type="submit" [disabled]="!emailForm.valid">
+    <button 
+      class="btn secondary" 
+      [ngClass]="{ 'disable':!loading }" 
+      type="submit" [disabled]="!emailForm.valid">
+
       <div class="btnicon">
-        <svg viewBox="0 0 24 24">
-          <path fill="currentColor" d="M2,21L23,12L2,3V10L17,12L2,14V21Z" />
-        </svg>
+        <i class="material-icons">send</i>
       </div>
+
       <div class="btntext">
          Send Message
       </div>
+      
     </button>
 
   </div>
