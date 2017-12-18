@@ -19,6 +19,7 @@
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "kgp",
+      "serviceWorker": true,
       "styles": [
         "styles.sass"
       ],
@@ -56,6 +57,7 @@
   },
   "defaults": {
     "styleExt": "sass",
-    "component": {}
+    "component": {
+    }
   }
 }

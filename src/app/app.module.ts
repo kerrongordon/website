@@ -2,12 +2,13 @@ import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
-import { AppRoutingModule } from './app-routing.module'
-import { AppComponent } from './app.component'
 import { AngularFireModule } from 'angularfire2'
-import { environment } from '../environments/environment'
-import { NotificationModule } from './components/notification/notification.module'
+import { AppComponent } from './app.component'
+import { AppRoutingModule } from './app-routing.module'
 import { AngularFireAuthModule } from 'angularfire2/auth'
+import { environment } from '../environments/environment'
+import { ServiceWorkerModule } from '@angular/service-worker'
+import { NotificationModule } from './components/notification/notification.module'
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth'
     AngularFireAuthModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -164,6 +164,12 @@
   dependencies:
     tslib "^1.7.1"
 
+"@angular/service-worker@~5.1.1":
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/@angular/service-worker/-/service-worker-5.1.1.tgz#af63b815c1567a7b648268399359c23338440dc7"
+  dependencies:
+    tslib "^1.7.1"
+
 "@firebase/app@0.1.4":
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/@firebase/app/-/app-0.1.4.tgz#595b85390b1dc5846a88933d65d4fae7208f835d"
@@ -335,8 +341,8 @@ ajv@^4.9.1:
     json-stable-stringify "^1.0.1"
 
 ajv@^5.0.0, ajv@^5.1.0, ajv@^5.1.5:
-  version "5.5.1"
-  resolved "https://registry.yarnpkg.com/ajv/-/ajv-5.5.1.tgz#b38bb8876d9e86bee994956a04e721e88b248eb2"
+  version "5.5.2"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-5.5.2.tgz#73b5eeca3fab653e3d3f9422b341ad42205dc965"
   dependencies:
     co "^4.6.0"
     fast-deep-equal "^1.0.0"
@@ -2940,8 +2946,8 @@ is-glob@^4.0.0:
     is-extglob "^2.1.1"
 
 is-my-json-valid@^2.12.4:
-  version "2.16.1"
-  resolved "https://registry.yarnpkg.com/is-my-json-valid/-/is-my-json-valid-2.16.1.tgz#5a846777e2c2620d1e69104e5d3a03b1f6088f11"
+  version "2.17.1"
+  resolved "https://registry.yarnpkg.com/is-my-json-valid/-/is-my-json-valid-2.17.1.tgz#3da98914a70a22f0a8563ef1511a246c6fc55471"
   dependencies:
     generate-function "^2.0.0"
     generate-object-property "^1.1.0"
