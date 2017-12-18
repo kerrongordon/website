@@ -10,6 +10,7 @@
       "assets": [
         "assets",
         "favicon.ico",
+        "main.css",
         "manifest.json"
       ],
       "index": "index.html",
