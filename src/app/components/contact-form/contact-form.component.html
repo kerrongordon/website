@@ -18,10 +18,12 @@
     <div fxFlex="95">
       <input 
         type="text"  
-        class="item" 
+        class="item"
+        id="userName"
         placeholder="Your Name" 
         formControlName="userName"  
         (focus)="inputClass1 = 'isfocus'" (blur)="inputClass1 = ''">
+        <label for="userName">Your Name</label>
     </div>
 
   </div>
@@ -39,10 +41,12 @@
     <div fxFlex="95">
       <input 
         type="text" 
-        class="item" 
+        class="item"
+        id="userSubject"
         placeholder="Subject" 
         formControlName="userSubject" 
         (focus)="inputClass4 = 'isfocus'" (blur)="inputClass4 = ''">
+        <label for="userSubject">Subject</label>
     </div>
   
   </div>
@@ -60,10 +64,12 @@
     <div fxFlex="95">
       <input 
         class="item" 
-        type="email"  
+        type="email"
+        id="userEmail"
         placeholder="Your Email" 
         formControlName="userEmail" 
         (focus)="inputClass2 = 'isfocus'" (blur)="inputClass2 = ''">
+        <label for="userEmail">Your Email</label>
     </div>
   
   </div>
@@ -80,11 +86,13 @@
   
     <div fxFlex="95">
       <textarea 
-        class="item" 
+        class="item"
+        id="userMessage"
         placeholder="Your Massage" 
         formControlName="userMessage" 
         (keyup)="textToMarkDown($event.target.value)" 
         (focus)="inputClass3 = 'isfocus'" (blur)="inputClass3 = ''"></textarea>
+        <label for="userMessage">Your Massage</label>
     </div>
   
   </div>
