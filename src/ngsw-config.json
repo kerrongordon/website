@@ -25,8 +25,6 @@
           "/assets/**"
         ],
         "urls": [
-          "https://www.googletagmanager.com/gtag/js",
-          "https://connect.facebook.net/en_US/sdk.js",
           "https://fonts.googleapis.com/**"
         ]
       }
