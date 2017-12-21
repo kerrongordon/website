@@ -25,7 +25,10 @@
           "/assets/**"
         ],
         "urls": [
-          "https://fonts.googleapis.com/**"
+          "https://fonts.gstatic.com/**",
+          "https://fonts.googleapis.com/**",
+          "https://firestore.googleapis.com/**",
+          "https://firebasestorage.googleapis.com/**"
         ]
       }
     }
