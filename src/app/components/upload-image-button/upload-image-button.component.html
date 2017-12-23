@@ -1,0 +1,31 @@
+<label for="imageFile">
+  <img #imageSrc [id]="type" src="" alt="" (load)="onload()">
+</label>
+<input type="file" name="imageFile" id="imageFile" (change)="addfile($event)" accept="image/*">
+
+<kgp-progressbar [level]="uploadPercent" [ngClass]="{'hideE': !uploading}"></kgp-progressbar>
+
+<div class="buttons" [ngClass]="{'hideB': !uploading, 'showB': uploading}">
+  
+  <button type="button" class="btn primary" [ngClass]="{'pausehide': pauseUp}" (click)="pauseUpload()">
+    <div class="btnicon">
+      <i class="material-icons">pause</i>
+    </div>
+    <div>Pause</div>
+  </button>
+
+  <button type="button" class="btn secondary" [ngClass]="{'pausehide': !pauseUp}" (click)="resumeUpload()">
+    <div class="btnicon">
+      <i class="material-icons">play_arrow</i>
+    </div>
+    <div>Resume</div>
+  </button>
+
+  <button type="button" class="btn danger" (click)="cancelUpload()">
+    <div class="btnicon">
+      <i class="material-icons">cancel</i>
+    </div>
+    <div>Cancel</div>
+  </button>
+
+</div>
