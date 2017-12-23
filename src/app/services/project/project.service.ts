@@ -5,6 +5,8 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument,
 import * as firebase from 'firebase/app'
 import 'firebase/storage'
 
+import { AngularFireStorage } from 'angularfire2/storage'
+
 @Injectable()
 export class ProjectService {
 
@@ -16,7 +18,15 @@ export class ProjectService {
   private doc: AngularFirestoreDocument<Project>
   private projectOb: Observable<Project>
 
-  constructor(private _afs: AngularFirestore) { }
+  // smallUploadPercent: Observable<number>
+  // smallDownloadURL: Observable<string>
+  // bigUploadPercent: Observable<number>
+  // bigDownloadURL: Observable<string>
+
+  constructor(
+    private _afs: AngularFirestore,
+    private _afsage: AngularFireStorage
+  ) { }
 
   public loadListOfProjects() {
     this.projectCollection = this._afs
@@ -49,5 +59,23 @@ export class ProjectService {
     })
 
   }
+
+
+  // uploadFile(file: File, title: string, type: string) {
+  //   const metadata = { contentType: file.type }
+  //   const filePath = `/projects/${title}/${type}/${file.name}/`
+  //   const task = this._afsage.upload(filePath, file, metadata)
+
+  //   if (type === 'small') {
+  //     this.smallUploadPercent = task.percentageChanges()
+  //     return this.smallDownloadURL = task.downloadURL()
+  //   }
+
+  //   if (type === 'big') {
+  //     this.bigUploadPercent = task.percentageChanges()
+  //     return this.bigDownloadURL = task.downloadURL()
+  //   }
+
+  // }
 
 }

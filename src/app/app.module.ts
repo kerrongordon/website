@@ -9,6 +9,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth'
 import { environment } from '../environments/environment'
 import { ServiceWorkerModule } from '@angular/service-worker'
 import { NotificationModule } from './components/notification/notification.module'
+import { AngularFireStorageModule } from 'angularfire2/storage'
+
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { NotificationModule } from './components/notification/notification.modul
     AngularFireAuthModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
