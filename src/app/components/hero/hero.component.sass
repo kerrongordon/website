@@ -1,0 +1,69 @@
+\:host
+  background-color: green
+  width: 100%
+  overflow: hidden
+
+  .wave
+    // display: none
+    visibility: hidden
+    transition: var(--transition)
+
+  section
+    display: flex
+    place-content: center
+    background-color: var(--primary-color)
+
+  h1
+    font-size: 1.5em
+    margin: 4em 0
+    line-height: 1.5
+    color: var(--light-text-color)
+    filter: drop-shadow(0px 4px 4px #00000059)
+    transition: var(--transition)
+
+@media screen and ( min-width:  600px )
+  \:host
+    h1
+      font-size: 3em
+
+@media screen and ( min-width:  960px )
+  \:host
+    h1
+      font-size: 4.5em
+      margin: 2em 0 1em
+
+    .wave
+      background: url('../../../assets/wave.svg') repeat-x
+      width: 6400px
+      height: 198px
+      backface-visibility: hidden
+      will-change: transform
+      visibility: visible
+      filter: drop-shadow(0px 21px 11px rgb(0 0 0 / 25%))
+      animation: animation-ifxqja 12s linear infinite
+
+@-webkit-keyframes animation-ifxqja
+  to
+  -webkit-transform: translateX(-50%)
+  -moz-transform: translateX(-50%)
+  -ms-transform: translateX(-50%)
+  transform: translateX(-50%)
+
+@keyframes animation-ifxqja
+  to
+    -webkit-transform: translateX(-50%)
+    -moz-transform: translateX(-50%)
+    -ms-transform: translateX(-50%)
+    transform: translateX(-50%)
+
+  //  h1
+  //   font-size: 5em
+  //   margin: 2em 0 1em
+
+  // .wave
+  //   background: url('../../../assets/wave.svg') repeat-x
+  //   width: 6400px
+  //   height: 198px
+  //   backface-visibility: hidden
+  //   will-change: transform
+  //   animation: animation-ifxqja 12s linear infinite
