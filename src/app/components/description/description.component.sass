@@ -1,0 +1,32 @@
+\:host
+    display: grid
+    grid-template-columns: 1fr
+    padding: 0 1em
+    grid-gap: 1em
+
+.content
+    text-align: center
+    max-width: 650px
+    margin: 50px auto
+    line-height: 2
+    letter-spacing: .2px
+
+.contentload
+    max-width: 650px
+    margin: 50px auto
+    width: 100%
+
+    div
+        margin: 1em auto
+
+
+@media screen and (min-width: 600px)
+
+    \:host
+        grid-template-columns: 1fr 5fr 1fr
+
+    .content
+        grid-column: 2 / 3
+
+    .contentload
+        grid-column: 2 / 3

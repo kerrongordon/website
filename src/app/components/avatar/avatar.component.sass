@@ -1,0 +1,33 @@
+\:host
+  display: grid
+  margin: 0 auto
+  border-radius: 50%
+  position: relative
+  z-index: 5
+  background: var(--secondary-color)
+
+  &.avatar
+    width: 150px
+    height: 150px
+    margin-top: -75px
+
+img
+  border-radius: 50%
+  width: 100%
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 0px 0px 1px inset, rgba(255, 255, 255, 0.098) 0px 0px 0px 2px inset, rgba(255, 255, 255, 0.45) 0px 2px 0px 0px inset, rgba(255, 255, 255, 0.15) 0px -2px 0px 0px inset, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px, transparent 0px 1px 2px 0px, rgba(33, 37, 41, 0.1) 0px 10px 45px 18px
+
+@media screen and (min-width: 600px) and (max-width: 959px)
+
+  \:host
+    &.avatar
+      margin-top: -100px
+      height: 200px
+      width: 200px
+
+@media screen and (min-width: 960px)
+
+  \:host
+    &.avatar
+      margin-top: -150px
+      height: 250px
+      width: 250px
