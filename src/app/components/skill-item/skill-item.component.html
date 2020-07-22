@@ -1,0 +1,7 @@
+<div>
+    <h4>{{ content }}</h4>
+    <div>
+        <span [ngStyle]="{'left': level+'%'}">{{ level }}</span>
+        <app-progressbar [level]="level"></app-progressbar>
+    </div>
+</div>
