@@ -1,0 +1,56 @@
+<h2 class="cinzel section-title">Get in touch</h2>
+
+
+<form action="https://formspree.io/moqkykov" method="POST">
+    <div class="formitem" [ngClass]="inputClass1">
+        <div class="icon">
+            <img src="assets/icons/ios7-person.svg" alt="userName">
+        </div>
+        <div>
+            <input type="text" class="item" id="userName" placeholder="Your Name" name="name" (focus)="inputClass1 = 'isfocus'" (blur)="inputClass1 = ''">
+            <label for="userName">Your Name</label>
+        </div>
+    </div>
+    <div class="formitem" [ngClass]="inputClass4">
+
+        <div class="icon">
+            <img src="assets/icons/ios7-compose.svg" alt="subject">
+        </div>
+
+        <div>
+            <input type="text" class="item" id="userSubject" placeholder="Subject" name="subject" (focus)="inputClass4 = 'isfocus'" (blur)="inputClass4 = ''">
+            <label for="userSubject">Subject</label>
+        </div>
+
+    </div>
+
+
+    <div class="formitem" [ngClass]="inputClass2">
+
+        <div class="icon">
+            <img src="assets/icons/email.svg" alt="email">
+        </div>
+
+        <div>
+            <input class="item" type="email" id="userEmail" placeholder="Your Email" name="_replyto" (focus)="inputClass2 = 'isfocus'" (blur)="inputClass2 = ''">
+            <label for="userEmail">Your Email</label>
+        </div>
+
+    </div>
+    <div class="formitem" [ngClass]="inputClass3">
+
+        <div class="icon">
+            <img src="assets/icons/chatboxes.svg" alt="message">
+        </div>
+
+        <div>
+            <textarea class="item" id="userMessage" placeholder="Your Massage" name="message" (focus)="inputClass3 = 'isfocus'" (blur)="inputClass3 = ''"></textarea>
+            <label for="userMessage">Your Massage</label>
+        </div>
+
+    </div>
+    <div class="center-btn">
+        <button class="btn" type="submit"><img src="assets/icons/android-send.svg" alt="send email">Send
+      Message</button>
+    </div>
+</form>

@@ -1,7 +1,7 @@
-<div tabindex="0">
-    <i>{{ content }}</i>
+<div>
+    <i tabindex="0">{{ content }}</i>
     <div>
-        <span [ngStyle]="{'left': level+'%'}">{{ level }}</span>
+        <span [ngStyle]="{'left': level+'%'}" tabindex="0">{{ level }}</span>
         <app-progressbar [level]="level"></app-progressbar>
     </div>
 </div>

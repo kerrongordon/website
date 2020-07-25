@@ -1,0 +1,53 @@
+\:host
+  display: block
+  max-width: 700px
+  margin: 0 auto 60px
+
+form
+  padding: 0 1em
+
+  button
+    padding: 0.6em 1.2em
+
+.center-btn
+  display: grid
+  justify-content: center
+  margin-top: 2em
+
+.item
+  width: 100%
+  font-size: .8em
+  padding: .8em
+  border: none
+  color: inherit
+  vertical-align: top
+  outline: none
+
+.formitem
+  width: 100%
+  margin: 10px 0
+  background: var(--light-text-color)
+  display: grid
+  border-radius: 2px
+  overflow: hidden
+  grid-template-columns: auto 1fr
+  transition: transform .3s ease-in-out, box-shadow .3s ease-in-out
+  transform: translateY(0px)
+  box-shadow: 0 0 25px rgba(40,47,60,.05), 0 20px 25px rgba(40,47,60,.05), 0 3px 4px rgba(40,47,60,.05), 0px 0px 1px 0px rgba(0,0,0,.2)
+
+.icon
+  padding: .15em 0 .15em 0.4em
+
+  img
+    width: 1.6em
+
+textarea
+  resize: none
+  min-height: 250px
+
+.isfocus
+  transform: translateY(-5px)
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.21), 0 15px 12px transparent, 0px 0px 1px 0px rgba(0,0,0,.2)
+
+label
+  display: none

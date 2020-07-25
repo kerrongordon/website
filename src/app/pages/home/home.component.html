@@ -4,11 +4,17 @@
 <app-social-icon></app-social-icon>
 <div class="skill-wrap">
     <app-skill-item content="Communication" level="69"></app-skill-item>
-    <app-skill-item content="Learning" level="74"></app-skill-item>
-    <app-skill-item content="Planning" level="75"></app-skill-item>
-    <app-skill-item content="UX Design" level="64"></app-skill-item>
     <app-skill-item content="Organization" level="75"></app-skill-item>
+    <app-skill-item content="Learning" level="74"></app-skill-item>
     <app-skill-item content="Teaching" level="65"></app-skill-item>
+    <app-skill-item content="Planning" level="75"></app-skill-item>
     <app-skill-item content="Visual Design" level="84"></app-skill-item>
+    <app-skill-item content="UX Design" level="64"></app-skill-item>
     <app-skill-item content="Programming" level="67"></app-skill-item>
 </div>
+<app-project [limit]="true">
+    <a class="btn" [routerLink]="'/blog'">
+        <img src="assets/icons/ios7-albums.svg" alt="All Projects"> All Projects
+    </a>
+</app-project>
+<app-contact-form></app-contact-form>

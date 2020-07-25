@@ -8,10 +8,13 @@ import { AvatarModule } from './../../components/avatar/avatar.module';
 import { DescriptionModule } from './../../components/description/description.module';
 import { SocialIconModule } from './../../components/social-icon/social-icon.module';
 import { SkillItemModule } from './../../components/skill-item/skill-item.module';
+import { ProjectComponent } from './project/project.component';
+import { BlogModule } from '../../blog/blog.module';
+import { ContactFormModule } from './../../components/contact-form/contact-form.module';
 
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, ProjectComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
@@ -20,6 +23,8 @@ import { SkillItemModule } from './../../components/skill-item/skill-item.module
     DescriptionModule,
     SocialIconModule,
     SkillItemModule,
+    BlogModule,
+    ContactFormModule,
   ]
 })
 export class HomeModule { }

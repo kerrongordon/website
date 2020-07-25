@@ -1,0 +1,94 @@
+\:host
+  display: grid
+  background-color: var(--secondary-background-color)
+
+  &::before,
+  &::after
+    content: ''
+    border: solid 1px #e6e6e6
+
+  .card
+    position: relative
+    text-decoration: none
+    color: inherit
+    overflow: hidden
+    display: block
+    width: 100%
+    cursor: pointer
+    background: #ffffff
+    z-index: 1
+    will-change: transform, z-index, box-shadow
+    transform: translateY(0)
+    border-radius: 5px 5px 3px 3px
+    transition: transform .3s ease-in-out, box-shadow .3s ease-in-out
+    box-shadow: var(--card-shadow)
+
+    &:hover
+      transform: translateY(-5px)
+      z-index: 2
+      box-shadow: var(--card-shadow-hover)
+
+    &:nth-last-child(1),
+    &:nth-last-child(2)
+      display: none
+
+  .card-img
+    height: 120px
+
+  .list
+    display: grid
+    grid-gap: 2em
+    max-width: 450px
+    padding: 1em
+    margin: 0 auto 3em
+    grid-template-columns: repeat(2, 1fr)
+
+  .card-title
+    text-transform: capitalize
+    padding: 15px 20px 0
+    line-height: 30px
+    font-weight: 700
+    -webkit-box-flex: 1
+    flex: 1
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+
+  .card-p
+    font-size: 12px
+    line-height: 1.4rem
+    margin: 10px 20px 20px 20px
+    overflow: hidden
+    display: -webkit-box
+    -webkit-line-clamp: 3
+    -webkit-box-orient: vertical
+
+  .via
+    margin: 0 auto 4em
+
+  @media screen and ( min-width: 750px )
+    .list
+      max-width: 700px
+      grid-template-columns: repeat(3, 1fr)
+
+    .card
+      &:nth-last-child(1)
+        display: none
+
+      &:nth-last-child(2)
+        display: block
+
+    .card-img
+      height: 130px
+
+  @media screen and ( min-width: 1100px )
+    .list
+      max-width: 1000px
+      grid-template-columns: repeat(4, 1fr)
+
+    .card
+      &:nth-last-child(1)
+        display: block
+
+    .card-img
+      height: 135px

@@ -1,0 +1,27 @@
+<h2 class="cinzel section-title" *ngIf="limit">Projects</h2>
+
+<div class="list">
+    <ng-container *ngIf="limit; else blog">
+        <ng-container *ngFor="let post of posts$ | async let i=index">
+            <a class="card" *ngIf="i<4" [routerLink]="post.route" tabindex="0" [title]="post.title">
+                <img class="card-img" [src]="'assets/blog/' + post.thumbnail" loading="lazy" [alt]="post.title">
+                <h3 class="card-title">{{ post.title }}</h3>
+                <p class="card-p">{{ post.description }}</p>
+            </a>
+        </ng-container>
+    </ng-container>
+
+    <ng-template #blog>
+        <ng-container *ngFor="let post of posts$ | async let i=index">
+            <a class="card" [routerLink]="post.route" tabindex="0" [title]="post.title">
+                <img class="card-img" [src]="'assets/blog/' + post.thumbnail" loading="lazy" [alt]="post.title">
+                <h3 class="card-title">{{ post.title }}</h3>
+                <p class="card-p">{{ post.description }}</p>
+            </a>
+        </ng-container>
+    </ng-template>
+</div>
+
+<div class="via">
+    <ng-content *ngIf="limit"></ng-content>
+</div>
