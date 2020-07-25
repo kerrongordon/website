@@ -6,7 +6,6 @@ import { BlogComponent } from './blog.component';
 
 @NgModule({
   declarations: [BlogComponent],
-  imports: [CommonModule, BlogRoutingModule, ScullyLibModule],
-  exports: [BlogComponent]
+  imports: [CommonModule, BlogRoutingModule, ScullyLibModule]
 })
 export class BlogModule { }

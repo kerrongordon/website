@@ -9,7 +9,6 @@ import { DescriptionModule } from './../../components/description/description.mo
 import { SocialIconModule } from './../../components/social-icon/social-icon.module';
 import { SkillItemModule } from './../../components/skill-item/skill-item.module';
 import { ProjectComponent } from './project/project.component';
-import { BlogModule } from '../../blog/blog.module';
 import { ContactFormModule } from './../../components/contact-form/contact-form.module';
 
 
@@ -23,7 +22,6 @@ import { ContactFormModule } from './../../components/contact-form/contact-form.
     DescriptionModule,
     SocialIconModule,
     SkillItemModule,
-    BlogModule,
     ContactFormModule,
   ]
 })
