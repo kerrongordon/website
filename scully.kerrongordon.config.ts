@@ -1,8 +1,12 @@
-import { ScullyConfig } from '@scullyio/scully';
+import { ScullyConfig, setPluginConfig } from '@scullyio/scully';
 import { MinifyHtml } from 'scully-plugin-minify-html';
-// import { DisableAngular } from 'scully-plugin-disable-angular';
+import { DisableAngular } from 'scully-plugin-disable-angular';
 
-const postRenderers = [MinifyHtml];
+const postRenderers = [DisableAngular, MinifyHtml];
+
+setPluginConfig(DisableAngular, 'render', {
+  removeState: true
+});
 
 export const config: ScullyConfig = {
   thumbnails: true,
