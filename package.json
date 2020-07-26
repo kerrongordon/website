@@ -47,7 +47,7 @@
         "protractor": "7.0.0",
         "scully-plugin-disable-angular": "5.0.2",
         "scully-plugin-minify-html": "3.1.2",
-        "ts-node": "8.3.0",
+        "ts-node": "8.10.2",
         "tslint": "6.1.2",
         "typescript": "3.9.7"
     }
