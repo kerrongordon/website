@@ -6,6 +6,8 @@ name: Node.js CI
 on:
   push:
     branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   build:
@@ -26,10 +28,3 @@ jobs:
     - run: npm install -g @angular/cli
     - run: ng build --prod
     - run: npm run scully -- --scanRoutes
-      
-    - name: Deploy to Firebase
-      uses: lowply/deploy-firebase@v0.0.3
-      env:
-        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-        FIREBASE_PROJECT: kerron-gordon
-        TARGET_BRANCH: master
