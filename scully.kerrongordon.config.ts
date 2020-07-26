@@ -6,12 +6,13 @@ import { MinifyHtml } from 'scully-plugin-minify-html';
 const postRenderers = [MinifyHtml];
 
 export const config: ScullyConfig = {
+  thumbnails: true,
   projectRoot: './src',
   defaultPostRenderers: postRenderers,
   projectName: 'kerrongordon',
   outDir: './dist/static',
   routes: {
-    '/blog/:slug': {
+    '/projects/:slug': {
       type: 'contentFolder',
       slug: {
         folder: './blog'

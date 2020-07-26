@@ -18,7 +18,7 @@ export class ProjectComponent implements OnInit {
 
   ngOnInit(): void {
     this.posts$ = this.srs.available$.pipe(
-      map(routeList => routeList.filter((route: ScullyRoute) => route.route.startsWith(`/blog/`))),
+      map(routeList => routeList.filter((route: ScullyRoute) => route.route.startsWith(`/projects/`))),
       map(blogs => blogs.sort((a, b) => (a.date > b.date ? -1 : 1))),
     );
   }

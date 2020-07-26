@@ -4,3 +4,22 @@ h1
   padding: 5px
   border-radius: 5px
   width: fit-content
+
+.card-big
+  display: block
+  position: relative
+  padding: 2em
+  background: #fff
+
+@media screen and ( min-width: 600px )
+  .card-big
+    padding: 1em
+    margin: -4em 1em 0
+    border-radius: 10px
+    box-shadow: var(--card-shadow)
+
+@media screen and ( min-width: 950px )
+  .card-big
+    max-width: 900px
+    margin: -6em auto 0
+    z-index: 5

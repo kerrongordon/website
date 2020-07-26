@@ -1,7 +1,6 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {ActivatedRoute, Router, ROUTES} from '@angular/router';
-
-declare var ng: any;
+import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
+import { ScullyRoutesService } from '@scullyio/ng-lib';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-blog',
@@ -11,9 +10,20 @@ declare var ng: any;
   encapsulation: ViewEncapsulation.Emulated
 
 })
-export class BlogComponent implements OnInit {
-  ngOnInit() {}
+export class BlogComponent implements OnInit, OnDestroy {
 
-  constructor(private router: Router, private route: ActivatedRoute) {
+  titleSub: Subscription | undefined;
+  title: string | undefined;
+
+  constructor(
+    private srs: ScullyRoutesService
+  ) { }
+
+  ngOnInit(): void {
+    this.titleSub = this.srs.getCurrent().subscribe(d => this.title = d.title);
+  }
+
+  ngOnDestroy(): void {
+    this.titleSub?.unsubscribe();
   }
 }
