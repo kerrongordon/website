@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { ScullyRoutesService } from '@scullyio/ng-lib';
+// import { Meta } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -16,11 +17,15 @@ export class BlogComponent implements OnInit, OnDestroy {
   title: string | undefined;
 
   constructor(
-    private srs: ScullyRoutesService
+    private srs: ScullyRoutesService,
+    // private meta: Meta
   ) { }
 
   ngOnInit(): void {
     this.titleSub = this.srs.getCurrent().subscribe(d => this.title = d.title);
+    // this.meta.updateTag([
+    //   {}
+    // ]);
   }
 
   ngOnDestroy(): void {
