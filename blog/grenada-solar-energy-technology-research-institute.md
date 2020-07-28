@@ -1,6 +1,6 @@
 ---
 title: Grenada Solar Energy Technology Research Institute
-description: blog description
+description: Grenada Solar Energy Technology Research Institute is a static html5 and css3 template build with grunt and jekyll
 thumbnail: gsetri/thumb.jpg
 date: 2016-10-02
 published: true
