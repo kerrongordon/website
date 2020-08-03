@@ -44,7 +44,7 @@ jobs:
         uses: crazy-max/ghaction-github-pages@v2
         if: success()
         with:
-          repo: git@github.com:kerrongordon/kerrongordon.github.io.git
+          repo: kerrongordon/kerrongordon.github.io
           target_branch: gh-pages
           build_dir: ./dist/static/
         env:
