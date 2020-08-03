@@ -32,3 +32,21 @@ jobs:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
           FIREBASE_PROJECT: kerron-gordon
           TARGET_BRANCH: master
+       
+      - name: Import GPG key
+        uses: crazy-max/ghaction-import-gpg@v2
+        with:
+          git_user_signingkey: true
+          git_commit_gpgsign: true
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+      - name: Sign commit and push chang
+      - name: Deploy to GitHub Pages
+        if: success()
+        uses: crazy-max/ghaction-github-pages@v2
+        with:
+          repo: git@github.com:kerrongordon/kerrongordon.github.io.git
+          target_branch: gh-pages
+          build_dir: ./dist/static/
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
