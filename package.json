@@ -45,7 +45,7 @@
     "karma-jasmine": "4.0.1",
     "karma-jasmine-html-reporter": "1.5.4",
     "protractor": "7.0.0",
-    "scully-plugin-disable-angular": "6.1.0",
+    "scully-plugin-disable-angular": "6.2.0",
     "scully-plugin-minify-html": "5.0.0",
     "ts-node": "9.0.0",
     "tslint": "6.1.3",
