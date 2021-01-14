@@ -29,7 +29,7 @@
     "zone.js": "0.11.3"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "0.1100.5",
+    "@angular-devkit/build-angular": "0.1100.7",
     "@angular/cli": "10.2.1",
     "@angular/compiler-cli": "10.2.4",
     "@notiz/scully-plugin-lazy-images": "0.3.0",
