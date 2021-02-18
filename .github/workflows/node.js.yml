@@ -33,13 +33,6 @@ jobs:
           FIREBASE_PROJECT: kerron-gordon
           TARGET_BRANCH: master
        
-      - name: Import GPG key
-        uses: crazy-max/ghaction-import-gpg@v3
-        with:
-          git_user_signingkey: true
-          git_commit_gpgsign: true
-        env:
-          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v2
         if: success()
